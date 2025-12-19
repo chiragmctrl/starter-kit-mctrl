@@ -1,0 +1,11 @@
+mutation updateAuthSession($setObj: auth_session_set_input!, $sessionId: String!) {
+  update_auth_session(_set: $setObj, where: { id: { _eq: $sessionId } }) {
+    affected_rows
+  }
+}
+
+query test {
+  auth_user {
+    name
+  }
+}

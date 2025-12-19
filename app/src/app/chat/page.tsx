@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChatMessage } from "@/components/chat/ChatMessage";
 import { useChat } from "@/lib/chat/hooks";
+import { Send } from "lucide-react";
 
 export default function ChatPage() {
   const [input, setInput] = useState("");
@@ -69,7 +70,10 @@ export default function ChatPage() {
             type="submit"
             //  disabled={isLoading || !input.trim()}
           >
-            {/* {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />} */}
+            {/* {isLoading ? 
+            <Loader2 className="h-4 w-4 animate-spin" /> :  */}
+            <Send className="h-4 w-4" />
+            {/* } */}
           </Button>
         </form>
       </div>

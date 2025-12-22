@@ -1,22 +1,34 @@
-// import { anthropic } from "@ai-sdk/anthropic";
+import { streamText, UIMessage, convertToModelMessages } from "ai";
 import { openai } from "@ai-sdk/openai";
-import { streamText, convertToModelMessages } from "ai";
 
+// Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
-const openAiModel = openai("gpt-4o-mini");
-// const claudeModel = anthropic("claude-sonnet-4-20250514");
-
 export async function POST(req: Request) {
-  const { messages } = await req.json();
-
-  // Convert UIMessages to ModelMessages
-  const modelMessages = convertToModelMessages(messages);
-
+  const {
+    messages,
+    model,
+    webSearch
+  }: {
+    messages: UIMessage[];
+    model: string;
+    webSearch: boolean;
+  } = await req.json();
+  const webSearchObj = webSearch
+    ? {
+        tools: {
+          web_search: openai.tools.webSearch({})
+        }
+      }
+    : {};
   const result = streamText({
-    model: openAiModel,
-    messages: modelMessages,
-    system: "You are a helpful assistant. You can help users with various tasks and provide information."
+    model: openai(model),
+    messages: convertToModelMessages(messages),
+    system: "You are a helpful assistant that can answer questions and help with tasks",
+    ...webSearchObj
   });
-
-  return result.toUIMessageStreamResponse();
+  // send sources and reasoning back to the client
+  return result.toUIMessageStreamResponse({
+    sendSources: true,
+    sendReasoning: true
+  });
 }

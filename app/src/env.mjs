@@ -10,7 +10,8 @@ const server = z.object({
   BETTER_AUTH_SECRET: z.string(),
   BETTER_AUTH_URL: z.string(),
   AUTH_DATABASE_URL: z.string(),
-  HASURA_GRAPHQL_TOKEN_SECRET: z.string()
+  HASURA_GRAPHQL_TOKEN_SECRET: z.string(),
+  ANTHROPIC_API_KEY: z.string()
 });
 
 /**
@@ -36,7 +37,8 @@ const processEnv = {
   BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
   BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
   AUTH_DATABASE_URL: process.env.AUTH_DATABASE_URL,
-  HASURA_GRAPHQL_TOKEN_SECRET: process.env.HASURA_GRAPHQL_TOKEN_SECRET
+  HASURA_GRAPHQL_TOKEN_SECRET: process.env.HASURA_GRAPHQL_TOKEN_SECRET,
+  ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
 };
 
 // Don't touch the part below

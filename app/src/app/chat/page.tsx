@@ -5,20 +5,20 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChatMessage } from "@/components/chat/ChatMessage";
-import { useChat } from "@/lib/chat/hooks";
-import { Send } from "lucide-react";
+import { useChat } from "@ai-sdk/react";
+import { Send, Loader2 } from "lucide-react";
 
 export default function ChatPage() {
   const [input, setInput] = useState("");
-  const { messages, sendMessage, error } = useChat();
+  const { messages, sendMessage, error, status } = useChat();
+  const isLoading = status === "streaming" || status === "submitted";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
-    const userInput = input;
+    const userInput = structuredClone(input);
     setInput("");
-
     // Send message with proper UIMessage structure
     await sendMessage({
       role: "user",
@@ -47,33 +47,21 @@ export default function ChatPage() {
           <ChatMessage key={message.id} message={message} />
         ))}
 
-        {/* {isLoading && (
+        {isLoading && (
           <div className="flex items-center gap-2 text-muted-foreground">
             <Loader2 className="h-4 w-4 animate-spin" />
             <span className="text-sm">Thinking...</span>
           </div>
-        )} */}
+        )}
 
         {error && <div className="p-3 bg-destructive/10 border border-destructive/50 rounded text-sm text-destructive">Error: {error.message}</div>}
       </div>
 
       <div className="border-t p-4">
         <form onSubmit={handleSubmit} className="flex gap-2">
-          <Input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Type your message here..."
-            className="flex-1"
-            // disabled={isLoading}
-          />
-          <Button
-            type="submit"
-            //  disabled={isLoading || !input.trim()}
-          >
-            {/* {isLoading ? 
-            <Loader2 className="h-4 w-4 animate-spin" /> :  */}
-            <Send className="h-4 w-4" />
-            {/* } */}
+          <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type your message here..." className="flex-1" disabled={isLoading} />
+          <Button type="submit" disabled={isLoading || !input.trim()}>
+            {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
           </Button>
         </form>
       </div>

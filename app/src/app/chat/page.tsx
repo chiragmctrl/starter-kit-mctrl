@@ -29,19 +29,11 @@ import { CopyIcon, GlobeIcon } from "lucide-react";
 import { Source, Sources, SourcesContent, SourcesTrigger } from "@/components/ai-elements/sources";
 import { Reasoning, ReasoningContent, ReasoningTrigger } from "@/components/ai-elements/reasoning";
 import { Loader } from "@/components/ai-elements/loader";
-const models = [
-  {
-    name: "gpt-4o-mini",
-    value: "gpt-4o-mini"
-  },
-  {
-    name: "gpt-4o",
-    value: "gpt-4o"
-  }
-];
+import { MODEL_PROVIDERS } from "@/constants";
+
 const ChatBotDemo = () => {
   const [input, setInput] = useState("");
-  const [model, setModel] = useState<string>(models[0]?.value as string);
+  const [model, setModel] = useState<string>(MODEL_PROVIDERS[0]?.value as string);
   const [webSearch, setWebSearch] = useState(false);
   const { messages, sendMessage, status } = useChat();
 
@@ -151,7 +143,7 @@ const ChatBotDemo = () => {
                   <PromptInputSelectValue />
                 </PromptInputSelectTrigger>
                 <PromptInputSelectContent>
-                  {models.map((model) => (
+                  {MODEL_PROVIDERS.map((model) => (
                     <PromptInputSelectItem key={model.value} value={model.value}>
                       {model.name}
                     </PromptInputSelectItem>

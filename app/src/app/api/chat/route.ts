@@ -1,5 +1,6 @@
 import { streamText, UIMessage, convertToModelMessages } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { anthropic } from "@ai-sdk/anthropic";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -21,7 +22,7 @@ export async function POST(req: Request) {
       }
     : {};
   const result = streamText({
-    model: openai(model),
+    model: anthropic(model),
     messages: convertToModelMessages(messages),
     system: "You are a helpful assistant that can answer questions and help with tasks",
     ...webSearchObj

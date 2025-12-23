@@ -8,7 +8,7 @@ import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupTextarea } fro
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import type { ChatStatus, FileUIPart } from "ai";
-import { CornerDownLeftIcon, ImageIcon, Loader2Icon, MicIcon, PaperclipIcon, PlusIcon, SquareIcon, XIcon } from "lucide-react";
+import { ImageIcon, Loader2Icon, MicIcon, PaperclipIcon, PlusIcon, Send, SquareIcon, XIcon } from "lucide-react";
 import { nanoid } from "nanoid";
 import {
   type ChangeEvent,
@@ -798,7 +798,7 @@ export type PromptInputActionMenuTriggerProps = PromptInputButtonProps;
 export const PromptInputActionMenuTrigger = ({ className, children, ...props }: PromptInputActionMenuTriggerProps) => (
   <DropdownMenuTrigger asChild>
     <PromptInputButton className={className} {...props}>
-      {children ?? <PlusIcon className="size-4" />}
+      {children ?? <PlusIcon className="h-5! w-5!" size={22} />}
     </PromptInputButton>
   </DropdownMenuTrigger>
 );
@@ -819,12 +819,12 @@ export type PromptInputSubmitProps = ComponentProps<typeof InputGroupButton> & {
 };
 
 export const PromptInputSubmit = ({ className, variant = "default", size = "icon-sm", status, children, ...props }: PromptInputSubmitProps) => {
-  let Icon = <CornerDownLeftIcon className="size-4" />;
+  let Icon = <Send className="size-4" />;
 
   if (status === "submitted") {
     Icon = <Loader2Icon className="size-4 animate-spin" />;
   } else if (status === "streaming") {
-    Icon = <SquareIcon className="size-4" />;
+    Icon = <SquareIcon color="white" className="size-4" />;
   } else if (status === "error") {
     Icon = <XIcon className="size-4" />;
   }

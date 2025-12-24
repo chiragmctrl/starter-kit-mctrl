@@ -16,4 +16,15 @@ declare module "@better-auth/core/db" {
     // Custom field
     hasuraToken: string;
   }
+
+  export interface User {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    email: string;
+    emailVerified: boolean;
+    name: string;
+    image?: string | null;
+    role: string;
+  }
 }

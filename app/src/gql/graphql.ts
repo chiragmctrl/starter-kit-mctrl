@@ -327,13 +327,574 @@ export type Auth_Account_Updates = {
   where: Auth_Account_Bool_Exp;
 };
 
+/** columns and relationships of "auth.invitation" */
+export type Auth_Invitation = {
+  __typename?: "auth_invitation";
+  createdAt: Scalars["timestamptz"]["output"];
+  email: Scalars["String"]["output"];
+  expiresAt: Scalars["timestamptz"]["output"];
+  id: Scalars["String"]["output"];
+  inviterId: Scalars["String"]["output"];
+  organizationId: Scalars["String"]["output"];
+  role?: Maybe<Scalars["String"]["output"]>;
+  status: Scalars["String"]["output"];
+};
+
+/** aggregated selection of "auth.invitation" */
+export type Auth_Invitation_Aggregate = {
+  __typename?: "auth_invitation_aggregate";
+  aggregate?: Maybe<Auth_Invitation_Aggregate_Fields>;
+  nodes: Array<Auth_Invitation>;
+};
+
+/** aggregate fields of "auth.invitation" */
+export type Auth_Invitation_Aggregate_Fields = {
+  __typename?: "auth_invitation_aggregate_fields";
+  count: Scalars["Int"]["output"];
+  max?: Maybe<Auth_Invitation_Max_Fields>;
+  min?: Maybe<Auth_Invitation_Min_Fields>;
+};
+
+/** aggregate fields of "auth.invitation" */
+export type Auth_Invitation_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
+  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+/** Boolean expression to filter rows from the table "auth.invitation". All fields are combined with a logical 'AND'. */
+export type Auth_Invitation_Bool_Exp = {
+  _and?: InputMaybe<Array<Auth_Invitation_Bool_Exp>>;
+  _not?: InputMaybe<Auth_Invitation_Bool_Exp>;
+  _or?: InputMaybe<Array<Auth_Invitation_Bool_Exp>>;
+  createdAt?: InputMaybe<Timestamptz_Comparison_Exp>;
+  email?: InputMaybe<String_Comparison_Exp>;
+  expiresAt?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  inviterId?: InputMaybe<String_Comparison_Exp>;
+  organizationId?: InputMaybe<String_Comparison_Exp>;
+  role?: InputMaybe<String_Comparison_Exp>;
+  status?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "auth.invitation" */
+export enum Auth_Invitation_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  InvitationPkey = "invitation_pkey"
+}
+
+/** input type for inserting data into table "auth.invitation" */
+export type Auth_Invitation_Insert_Input = {
+  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  email?: InputMaybe<Scalars["String"]["input"]>;
+  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  id?: InputMaybe<Scalars["String"]["input"]>;
+  inviterId?: InputMaybe<Scalars["String"]["input"]>;
+  organizationId?: InputMaybe<Scalars["String"]["input"]>;
+  role?: InputMaybe<Scalars["String"]["input"]>;
+  status?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** aggregate max on columns */
+export type Auth_Invitation_Max_Fields = {
+  __typename?: "auth_invitation_max_fields";
+  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
+  email?: Maybe<Scalars["String"]["output"]>;
+  expiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
+  id?: Maybe<Scalars["String"]["output"]>;
+  inviterId?: Maybe<Scalars["String"]["output"]>;
+  organizationId?: Maybe<Scalars["String"]["output"]>;
+  role?: Maybe<Scalars["String"]["output"]>;
+  status?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** aggregate min on columns */
+export type Auth_Invitation_Min_Fields = {
+  __typename?: "auth_invitation_min_fields";
+  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
+  email?: Maybe<Scalars["String"]["output"]>;
+  expiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
+  id?: Maybe<Scalars["String"]["output"]>;
+  inviterId?: Maybe<Scalars["String"]["output"]>;
+  organizationId?: Maybe<Scalars["String"]["output"]>;
+  role?: Maybe<Scalars["String"]["output"]>;
+  status?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** response of any mutation on the table "auth.invitation" */
+export type Auth_Invitation_Mutation_Response = {
+  __typename?: "auth_invitation_mutation_response";
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars["Int"]["output"];
+  /** data from the rows affected by the mutation */
+  returning: Array<Auth_Invitation>;
+};
+
+/** on_conflict condition type for table "auth.invitation" */
+export type Auth_Invitation_On_Conflict = {
+  constraint: Auth_Invitation_Constraint;
+  update_columns?: Array<Auth_Invitation_Update_Column>;
+  where?: InputMaybe<Auth_Invitation_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "auth.invitation". */
+export type Auth_Invitation_Order_By = {
+  createdAt?: InputMaybe<Order_By>;
+  email?: InputMaybe<Order_By>;
+  expiresAt?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  inviterId?: InputMaybe<Order_By>;
+  organizationId?: InputMaybe<Order_By>;
+  role?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: auth.invitation */
+export type Auth_Invitation_Pk_Columns_Input = {
+  id: Scalars["String"]["input"];
+};
+
+/** select columns of table "auth.invitation" */
+export enum Auth_Invitation_Select_Column {
+  /** column name */
+  CreatedAt = "createdAt",
+  /** column name */
+  Email = "email",
+  /** column name */
+  ExpiresAt = "expiresAt",
+  /** column name */
+  Id = "id",
+  /** column name */
+  InviterId = "inviterId",
+  /** column name */
+  OrganizationId = "organizationId",
+  /** column name */
+  Role = "role",
+  /** column name */
+  Status = "status"
+}
+
+/** input type for updating data in table "auth.invitation" */
+export type Auth_Invitation_Set_Input = {
+  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  email?: InputMaybe<Scalars["String"]["input"]>;
+  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  id?: InputMaybe<Scalars["String"]["input"]>;
+  inviterId?: InputMaybe<Scalars["String"]["input"]>;
+  organizationId?: InputMaybe<Scalars["String"]["input"]>;
+  role?: InputMaybe<Scalars["String"]["input"]>;
+  status?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Streaming cursor of the table "auth_invitation" */
+export type Auth_Invitation_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Auth_Invitation_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Auth_Invitation_Stream_Cursor_Value_Input = {
+  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  email?: InputMaybe<Scalars["String"]["input"]>;
+  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  id?: InputMaybe<Scalars["String"]["input"]>;
+  inviterId?: InputMaybe<Scalars["String"]["input"]>;
+  organizationId?: InputMaybe<Scalars["String"]["input"]>;
+  role?: InputMaybe<Scalars["String"]["input"]>;
+  status?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** update columns of table "auth.invitation" */
+export enum Auth_Invitation_Update_Column {
+  /** column name */
+  CreatedAt = "createdAt",
+  /** column name */
+  Email = "email",
+  /** column name */
+  ExpiresAt = "expiresAt",
+  /** column name */
+  Id = "id",
+  /** column name */
+  InviterId = "inviterId",
+  /** column name */
+  OrganizationId = "organizationId",
+  /** column name */
+  Role = "role",
+  /** column name */
+  Status = "status"
+}
+
+export type Auth_Invitation_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Auth_Invitation_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Auth_Invitation_Bool_Exp;
+};
+
+/** columns and relationships of "auth.member" */
+export type Auth_Member = {
+  __typename?: "auth_member";
+  createdAt: Scalars["timestamptz"]["output"];
+  id: Scalars["String"]["output"];
+  organizationId: Scalars["String"]["output"];
+  role: Scalars["String"]["output"];
+  userId: Scalars["String"]["output"];
+};
+
+/** aggregated selection of "auth.member" */
+export type Auth_Member_Aggregate = {
+  __typename?: "auth_member_aggregate";
+  aggregate?: Maybe<Auth_Member_Aggregate_Fields>;
+  nodes: Array<Auth_Member>;
+};
+
+/** aggregate fields of "auth.member" */
+export type Auth_Member_Aggregate_Fields = {
+  __typename?: "auth_member_aggregate_fields";
+  count: Scalars["Int"]["output"];
+  max?: Maybe<Auth_Member_Max_Fields>;
+  min?: Maybe<Auth_Member_Min_Fields>;
+};
+
+/** aggregate fields of "auth.member" */
+export type Auth_Member_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Auth_Member_Select_Column>>;
+  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+/** Boolean expression to filter rows from the table "auth.member". All fields are combined with a logical 'AND'. */
+export type Auth_Member_Bool_Exp = {
+  _and?: InputMaybe<Array<Auth_Member_Bool_Exp>>;
+  _not?: InputMaybe<Auth_Member_Bool_Exp>;
+  _or?: InputMaybe<Array<Auth_Member_Bool_Exp>>;
+  createdAt?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  organizationId?: InputMaybe<String_Comparison_Exp>;
+  role?: InputMaybe<String_Comparison_Exp>;
+  userId?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "auth.member" */
+export enum Auth_Member_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  MemberPkey = "member_pkey"
+}
+
+/** input type for inserting data into table "auth.member" */
+export type Auth_Member_Insert_Input = {
+  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  id?: InputMaybe<Scalars["String"]["input"]>;
+  organizationId?: InputMaybe<Scalars["String"]["input"]>;
+  role?: InputMaybe<Scalars["String"]["input"]>;
+  userId?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** aggregate max on columns */
+export type Auth_Member_Max_Fields = {
+  __typename?: "auth_member_max_fields";
+  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
+  id?: Maybe<Scalars["String"]["output"]>;
+  organizationId?: Maybe<Scalars["String"]["output"]>;
+  role?: Maybe<Scalars["String"]["output"]>;
+  userId?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** aggregate min on columns */
+export type Auth_Member_Min_Fields = {
+  __typename?: "auth_member_min_fields";
+  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
+  id?: Maybe<Scalars["String"]["output"]>;
+  organizationId?: Maybe<Scalars["String"]["output"]>;
+  role?: Maybe<Scalars["String"]["output"]>;
+  userId?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** response of any mutation on the table "auth.member" */
+export type Auth_Member_Mutation_Response = {
+  __typename?: "auth_member_mutation_response";
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars["Int"]["output"];
+  /** data from the rows affected by the mutation */
+  returning: Array<Auth_Member>;
+};
+
+/** on_conflict condition type for table "auth.member" */
+export type Auth_Member_On_Conflict = {
+  constraint: Auth_Member_Constraint;
+  update_columns?: Array<Auth_Member_Update_Column>;
+  where?: InputMaybe<Auth_Member_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "auth.member". */
+export type Auth_Member_Order_By = {
+  createdAt?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  organizationId?: InputMaybe<Order_By>;
+  role?: InputMaybe<Order_By>;
+  userId?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: auth.member */
+export type Auth_Member_Pk_Columns_Input = {
+  id: Scalars["String"]["input"];
+};
+
+/** select columns of table "auth.member" */
+export enum Auth_Member_Select_Column {
+  /** column name */
+  CreatedAt = "createdAt",
+  /** column name */
+  Id = "id",
+  /** column name */
+  OrganizationId = "organizationId",
+  /** column name */
+  Role = "role",
+  /** column name */
+  UserId = "userId"
+}
+
+/** input type for updating data in table "auth.member" */
+export type Auth_Member_Set_Input = {
+  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  id?: InputMaybe<Scalars["String"]["input"]>;
+  organizationId?: InputMaybe<Scalars["String"]["input"]>;
+  role?: InputMaybe<Scalars["String"]["input"]>;
+  userId?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Streaming cursor of the table "auth_member" */
+export type Auth_Member_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Auth_Member_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Auth_Member_Stream_Cursor_Value_Input = {
+  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  id?: InputMaybe<Scalars["String"]["input"]>;
+  organizationId?: InputMaybe<Scalars["String"]["input"]>;
+  role?: InputMaybe<Scalars["String"]["input"]>;
+  userId?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** update columns of table "auth.member" */
+export enum Auth_Member_Update_Column {
+  /** column name */
+  CreatedAt = "createdAt",
+  /** column name */
+  Id = "id",
+  /** column name */
+  OrganizationId = "organizationId",
+  /** column name */
+  Role = "role",
+  /** column name */
+  UserId = "userId"
+}
+
+export type Auth_Member_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Auth_Member_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Auth_Member_Bool_Exp;
+};
+
+/** columns and relationships of "auth.organization" */
+export type Auth_Organization = {
+  __typename?: "auth_organization";
+  createdAt: Scalars["timestamptz"]["output"];
+  id: Scalars["String"]["output"];
+  logo?: Maybe<Scalars["String"]["output"]>;
+  metadata?: Maybe<Scalars["String"]["output"]>;
+  name: Scalars["String"]["output"];
+  slug: Scalars["String"]["output"];
+};
+
+/** aggregated selection of "auth.organization" */
+export type Auth_Organization_Aggregate = {
+  __typename?: "auth_organization_aggregate";
+  aggregate?: Maybe<Auth_Organization_Aggregate_Fields>;
+  nodes: Array<Auth_Organization>;
+};
+
+/** aggregate fields of "auth.organization" */
+export type Auth_Organization_Aggregate_Fields = {
+  __typename?: "auth_organization_aggregate_fields";
+  count: Scalars["Int"]["output"];
+  max?: Maybe<Auth_Organization_Max_Fields>;
+  min?: Maybe<Auth_Organization_Min_Fields>;
+};
+
+/** aggregate fields of "auth.organization" */
+export type Auth_Organization_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Auth_Organization_Select_Column>>;
+  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+/** Boolean expression to filter rows from the table "auth.organization". All fields are combined with a logical 'AND'. */
+export type Auth_Organization_Bool_Exp = {
+  _and?: InputMaybe<Array<Auth_Organization_Bool_Exp>>;
+  _not?: InputMaybe<Auth_Organization_Bool_Exp>;
+  _or?: InputMaybe<Array<Auth_Organization_Bool_Exp>>;
+  createdAt?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  logo?: InputMaybe<String_Comparison_Exp>;
+  metadata?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  slug?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "auth.organization" */
+export enum Auth_Organization_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  OrganizationPkey = "organization_pkey",
+  /** unique or primary key constraint on columns "slug" */
+  OrganizationSlugKey = "organization_slug_key",
+  /** unique or primary key constraint on columns "slug" */
+  OrganizationSlugUidx = "organization_slug_uidx"
+}
+
+/** input type for inserting data into table "auth.organization" */
+export type Auth_Organization_Insert_Input = {
+  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  id?: InputMaybe<Scalars["String"]["input"]>;
+  logo?: InputMaybe<Scalars["String"]["input"]>;
+  metadata?: InputMaybe<Scalars["String"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** aggregate max on columns */
+export type Auth_Organization_Max_Fields = {
+  __typename?: "auth_organization_max_fields";
+  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
+  id?: Maybe<Scalars["String"]["output"]>;
+  logo?: Maybe<Scalars["String"]["output"]>;
+  metadata?: Maybe<Scalars["String"]["output"]>;
+  name?: Maybe<Scalars["String"]["output"]>;
+  slug?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** aggregate min on columns */
+export type Auth_Organization_Min_Fields = {
+  __typename?: "auth_organization_min_fields";
+  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
+  id?: Maybe<Scalars["String"]["output"]>;
+  logo?: Maybe<Scalars["String"]["output"]>;
+  metadata?: Maybe<Scalars["String"]["output"]>;
+  name?: Maybe<Scalars["String"]["output"]>;
+  slug?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** response of any mutation on the table "auth.organization" */
+export type Auth_Organization_Mutation_Response = {
+  __typename?: "auth_organization_mutation_response";
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars["Int"]["output"];
+  /** data from the rows affected by the mutation */
+  returning: Array<Auth_Organization>;
+};
+
+/** on_conflict condition type for table "auth.organization" */
+export type Auth_Organization_On_Conflict = {
+  constraint: Auth_Organization_Constraint;
+  update_columns?: Array<Auth_Organization_Update_Column>;
+  where?: InputMaybe<Auth_Organization_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "auth.organization". */
+export type Auth_Organization_Order_By = {
+  createdAt?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  logo?: InputMaybe<Order_By>;
+  metadata?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  slug?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: auth.organization */
+export type Auth_Organization_Pk_Columns_Input = {
+  id: Scalars["String"]["input"];
+};
+
+/** select columns of table "auth.organization" */
+export enum Auth_Organization_Select_Column {
+  /** column name */
+  CreatedAt = "createdAt",
+  /** column name */
+  Id = "id",
+  /** column name */
+  Logo = "logo",
+  /** column name */
+  Metadata = "metadata",
+  /** column name */
+  Name = "name",
+  /** column name */
+  Slug = "slug"
+}
+
+/** input type for updating data in table "auth.organization" */
+export type Auth_Organization_Set_Input = {
+  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  id?: InputMaybe<Scalars["String"]["input"]>;
+  logo?: InputMaybe<Scalars["String"]["input"]>;
+  metadata?: InputMaybe<Scalars["String"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Streaming cursor of the table "auth_organization" */
+export type Auth_Organization_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Auth_Organization_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Auth_Organization_Stream_Cursor_Value_Input = {
+  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  id?: InputMaybe<Scalars["String"]["input"]>;
+  logo?: InputMaybe<Scalars["String"]["input"]>;
+  metadata?: InputMaybe<Scalars["String"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** update columns of table "auth.organization" */
+export enum Auth_Organization_Update_Column {
+  /** column name */
+  CreatedAt = "createdAt",
+  /** column name */
+  Id = "id",
+  /** column name */
+  Logo = "logo",
+  /** column name */
+  Metadata = "metadata",
+  /** column name */
+  Name = "name",
+  /** column name */
+  Slug = "slug"
+}
+
+export type Auth_Organization_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Auth_Organization_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Auth_Organization_Bool_Exp;
+};
+
 /** columns and relationships of "auth.session" */
 export type Auth_Session = {
   __typename?: "auth_session";
+  activeOrganizationId?: Maybe<Scalars["String"]["output"]>;
   createdAt: Scalars["timestamptz"]["output"];
   expiresAt: Scalars["timestamptz"]["output"];
   hasuraToken: Scalars["String"]["output"];
   id: Scalars["String"]["output"];
+  impersonatedBy?: Maybe<Scalars["String"]["output"]>;
   ipAddress?: Maybe<Scalars["String"]["output"]>;
   token: Scalars["String"]["output"];
   updatedAt: Scalars["timestamptz"]["output"];
@@ -367,10 +928,12 @@ export type Auth_Session_Bool_Exp = {
   _and?: InputMaybe<Array<Auth_Session_Bool_Exp>>;
   _not?: InputMaybe<Auth_Session_Bool_Exp>;
   _or?: InputMaybe<Array<Auth_Session_Bool_Exp>>;
+  activeOrganizationId?: InputMaybe<String_Comparison_Exp>;
   createdAt?: InputMaybe<Timestamptz_Comparison_Exp>;
   expiresAt?: InputMaybe<Timestamptz_Comparison_Exp>;
   hasuraToken?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
+  impersonatedBy?: InputMaybe<String_Comparison_Exp>;
   ipAddress?: InputMaybe<String_Comparison_Exp>;
   token?: InputMaybe<String_Comparison_Exp>;
   updatedAt?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -388,10 +951,12 @@ export enum Auth_Session_Constraint {
 
 /** input type for inserting data into table "auth.session" */
 export type Auth_Session_Insert_Input = {
+  activeOrganizationId?: InputMaybe<Scalars["String"]["input"]>;
   createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
   expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
   hasuraToken?: InputMaybe<Scalars["String"]["input"]>;
   id?: InputMaybe<Scalars["String"]["input"]>;
+  impersonatedBy?: InputMaybe<Scalars["String"]["input"]>;
   ipAddress?: InputMaybe<Scalars["String"]["input"]>;
   token?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
@@ -402,10 +967,12 @@ export type Auth_Session_Insert_Input = {
 /** aggregate max on columns */
 export type Auth_Session_Max_Fields = {
   __typename?: "auth_session_max_fields";
+  activeOrganizationId?: Maybe<Scalars["String"]["output"]>;
   createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
   expiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
   hasuraToken?: Maybe<Scalars["String"]["output"]>;
   id?: Maybe<Scalars["String"]["output"]>;
+  impersonatedBy?: Maybe<Scalars["String"]["output"]>;
   ipAddress?: Maybe<Scalars["String"]["output"]>;
   token?: Maybe<Scalars["String"]["output"]>;
   updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
@@ -416,10 +983,12 @@ export type Auth_Session_Max_Fields = {
 /** aggregate min on columns */
 export type Auth_Session_Min_Fields = {
   __typename?: "auth_session_min_fields";
+  activeOrganizationId?: Maybe<Scalars["String"]["output"]>;
   createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
   expiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
   hasuraToken?: Maybe<Scalars["String"]["output"]>;
   id?: Maybe<Scalars["String"]["output"]>;
+  impersonatedBy?: Maybe<Scalars["String"]["output"]>;
   ipAddress?: Maybe<Scalars["String"]["output"]>;
   token?: Maybe<Scalars["String"]["output"]>;
   updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
@@ -445,10 +1014,12 @@ export type Auth_Session_On_Conflict = {
 
 /** Ordering options when selecting data from "auth.session". */
 export type Auth_Session_Order_By = {
+  activeOrganizationId?: InputMaybe<Order_By>;
   createdAt?: InputMaybe<Order_By>;
   expiresAt?: InputMaybe<Order_By>;
   hasuraToken?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  impersonatedBy?: InputMaybe<Order_By>;
   ipAddress?: InputMaybe<Order_By>;
   token?: InputMaybe<Order_By>;
   updatedAt?: InputMaybe<Order_By>;
@@ -464,6 +1035,8 @@ export type Auth_Session_Pk_Columns_Input = {
 /** select columns of table "auth.session" */
 export enum Auth_Session_Select_Column {
   /** column name */
+  ActiveOrganizationId = "activeOrganizationId",
+  /** column name */
   CreatedAt = "createdAt",
   /** column name */
   ExpiresAt = "expiresAt",
@@ -471,6 +1044,8 @@ export enum Auth_Session_Select_Column {
   HasuraToken = "hasuraToken",
   /** column name */
   Id = "id",
+  /** column name */
+  ImpersonatedBy = "impersonatedBy",
   /** column name */
   IpAddress = "ipAddress",
   /** column name */
@@ -485,10 +1060,12 @@ export enum Auth_Session_Select_Column {
 
 /** input type for updating data in table "auth.session" */
 export type Auth_Session_Set_Input = {
+  activeOrganizationId?: InputMaybe<Scalars["String"]["input"]>;
   createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
   expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
   hasuraToken?: InputMaybe<Scalars["String"]["input"]>;
   id?: InputMaybe<Scalars["String"]["input"]>;
+  impersonatedBy?: InputMaybe<Scalars["String"]["input"]>;
   ipAddress?: InputMaybe<Scalars["String"]["input"]>;
   token?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
@@ -506,10 +1083,12 @@ export type Auth_Session_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Auth_Session_Stream_Cursor_Value_Input = {
+  activeOrganizationId?: InputMaybe<Scalars["String"]["input"]>;
   createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
   expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
   hasuraToken?: InputMaybe<Scalars["String"]["input"]>;
   id?: InputMaybe<Scalars["String"]["input"]>;
+  impersonatedBy?: InputMaybe<Scalars["String"]["input"]>;
   ipAddress?: InputMaybe<Scalars["String"]["input"]>;
   token?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
@@ -520,6 +1099,8 @@ export type Auth_Session_Stream_Cursor_Value_Input = {
 /** update columns of table "auth.session" */
 export enum Auth_Session_Update_Column {
   /** column name */
+  ActiveOrganizationId = "activeOrganizationId",
+  /** column name */
   CreatedAt = "createdAt",
   /** column name */
   ExpiresAt = "expiresAt",
@@ -527,6 +1108,8 @@ export enum Auth_Session_Update_Column {
   HasuraToken = "hasuraToken",
   /** column name */
   Id = "id",
+  /** column name */
+  ImpersonatedBy = "impersonatedBy",
   /** column name */
   IpAddress = "ipAddress",
   /** column name */
@@ -549,12 +1132,16 @@ export type Auth_Session_Updates = {
 /** columns and relationships of "auth.user" */
 export type Auth_User = {
   __typename?: "auth_user";
+  banExpires?: Maybe<Scalars["timestamptz"]["output"]>;
+  banReason?: Maybe<Scalars["String"]["output"]>;
+  banned?: Maybe<Scalars["Boolean"]["output"]>;
   createdAt: Scalars["timestamptz"]["output"];
   email: Scalars["String"]["output"];
   emailVerified: Scalars["Boolean"]["output"];
   id: Scalars["String"]["output"];
   image?: Maybe<Scalars["String"]["output"]>;
   name: Scalars["String"]["output"];
+  role?: Maybe<Scalars["String"]["output"]>;
   updatedAt: Scalars["timestamptz"]["output"];
 };
 
@@ -584,12 +1171,16 @@ export type Auth_User_Bool_Exp = {
   _and?: InputMaybe<Array<Auth_User_Bool_Exp>>;
   _not?: InputMaybe<Auth_User_Bool_Exp>;
   _or?: InputMaybe<Array<Auth_User_Bool_Exp>>;
+  banExpires?: InputMaybe<Timestamptz_Comparison_Exp>;
+  banReason?: InputMaybe<String_Comparison_Exp>;
+  banned?: InputMaybe<Boolean_Comparison_Exp>;
   createdAt?: InputMaybe<Timestamptz_Comparison_Exp>;
   email?: InputMaybe<String_Comparison_Exp>;
   emailVerified?: InputMaybe<Boolean_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   image?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  role?: InputMaybe<String_Comparison_Exp>;
   updatedAt?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -603,34 +1194,44 @@ export enum Auth_User_Constraint {
 
 /** input type for inserting data into table "auth.user" */
 export type Auth_User_Insert_Input = {
+  banExpires?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  banReason?: InputMaybe<Scalars["String"]["input"]>;
+  banned?: InputMaybe<Scalars["Boolean"]["input"]>;
   createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
   email?: InputMaybe<Scalars["String"]["input"]>;
   emailVerified?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["String"]["input"]>;
   image?: InputMaybe<Scalars["String"]["input"]>;
   name?: InputMaybe<Scalars["String"]["input"]>;
+  role?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
 };
 
 /** aggregate max on columns */
 export type Auth_User_Max_Fields = {
   __typename?: "auth_user_max_fields";
+  banExpires?: Maybe<Scalars["timestamptz"]["output"]>;
+  banReason?: Maybe<Scalars["String"]["output"]>;
   createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
   email?: Maybe<Scalars["String"]["output"]>;
   id?: Maybe<Scalars["String"]["output"]>;
   image?: Maybe<Scalars["String"]["output"]>;
   name?: Maybe<Scalars["String"]["output"]>;
+  role?: Maybe<Scalars["String"]["output"]>;
   updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
 };
 
 /** aggregate min on columns */
 export type Auth_User_Min_Fields = {
   __typename?: "auth_user_min_fields";
+  banExpires?: Maybe<Scalars["timestamptz"]["output"]>;
+  banReason?: Maybe<Scalars["String"]["output"]>;
   createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
   email?: Maybe<Scalars["String"]["output"]>;
   id?: Maybe<Scalars["String"]["output"]>;
   image?: Maybe<Scalars["String"]["output"]>;
   name?: Maybe<Scalars["String"]["output"]>;
+  role?: Maybe<Scalars["String"]["output"]>;
   updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
 };
 
@@ -652,12 +1253,16 @@ export type Auth_User_On_Conflict = {
 
 /** Ordering options when selecting data from "auth.user". */
 export type Auth_User_Order_By = {
+  banExpires?: InputMaybe<Order_By>;
+  banReason?: InputMaybe<Order_By>;
+  banned?: InputMaybe<Order_By>;
   createdAt?: InputMaybe<Order_By>;
   email?: InputMaybe<Order_By>;
   emailVerified?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   image?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  role?: InputMaybe<Order_By>;
   updatedAt?: InputMaybe<Order_By>;
 };
 
@@ -668,6 +1273,12 @@ export type Auth_User_Pk_Columns_Input = {
 
 /** select columns of table "auth.user" */
 export enum Auth_User_Select_Column {
+  /** column name */
+  BanExpires = "banExpires",
+  /** column name */
+  BanReason = "banReason",
+  /** column name */
+  Banned = "banned",
   /** column name */
   CreatedAt = "createdAt",
   /** column name */
@@ -681,17 +1292,23 @@ export enum Auth_User_Select_Column {
   /** column name */
   Name = "name",
   /** column name */
+  Role = "role",
+  /** column name */
   UpdatedAt = "updatedAt"
 }
 
 /** input type for updating data in table "auth.user" */
 export type Auth_User_Set_Input = {
+  banExpires?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  banReason?: InputMaybe<Scalars["String"]["input"]>;
+  banned?: InputMaybe<Scalars["Boolean"]["input"]>;
   createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
   email?: InputMaybe<Scalars["String"]["input"]>;
   emailVerified?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["String"]["input"]>;
   image?: InputMaybe<Scalars["String"]["input"]>;
   name?: InputMaybe<Scalars["String"]["input"]>;
+  role?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
 };
 
@@ -705,17 +1322,27 @@ export type Auth_User_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Auth_User_Stream_Cursor_Value_Input = {
+  banExpires?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  banReason?: InputMaybe<Scalars["String"]["input"]>;
+  banned?: InputMaybe<Scalars["Boolean"]["input"]>;
   createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
   email?: InputMaybe<Scalars["String"]["input"]>;
   emailVerified?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["String"]["input"]>;
   image?: InputMaybe<Scalars["String"]["input"]>;
   name?: InputMaybe<Scalars["String"]["input"]>;
+  role?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
 };
 
 /** update columns of table "auth.user" */
 export enum Auth_User_Update_Column {
+  /** column name */
+  BanExpires = "banExpires",
+  /** column name */
+  BanReason = "banReason",
+  /** column name */
+  Banned = "banned",
   /** column name */
   CreatedAt = "createdAt",
   /** column name */
@@ -728,6 +1355,8 @@ export enum Auth_User_Update_Column {
   Image = "image",
   /** column name */
   Name = "name",
+  /** column name */
+  Role = "role",
   /** column name */
   UpdatedAt = "updatedAt"
 }
@@ -935,6 +1564,18 @@ export type Mutation_Root = {
   delete_auth_account?: Maybe<Auth_Account_Mutation_Response>;
   /** delete single row from the table: "auth.account" */
   delete_auth_account_by_pk?: Maybe<Auth_Account>;
+  /** delete data from the table: "auth.invitation" */
+  delete_auth_invitation?: Maybe<Auth_Invitation_Mutation_Response>;
+  /** delete single row from the table: "auth.invitation" */
+  delete_auth_invitation_by_pk?: Maybe<Auth_Invitation>;
+  /** delete data from the table: "auth.member" */
+  delete_auth_member?: Maybe<Auth_Member_Mutation_Response>;
+  /** delete single row from the table: "auth.member" */
+  delete_auth_member_by_pk?: Maybe<Auth_Member>;
+  /** delete data from the table: "auth.organization" */
+  delete_auth_organization?: Maybe<Auth_Organization_Mutation_Response>;
+  /** delete single row from the table: "auth.organization" */
+  delete_auth_organization_by_pk?: Maybe<Auth_Organization>;
   /** delete data from the table: "auth.session" */
   delete_auth_session?: Maybe<Auth_Session_Mutation_Response>;
   /** delete single row from the table: "auth.session" */
@@ -951,6 +1592,18 @@ export type Mutation_Root = {
   insert_auth_account?: Maybe<Auth_Account_Mutation_Response>;
   /** insert a single row into the table: "auth.account" */
   insert_auth_account_one?: Maybe<Auth_Account>;
+  /** insert data into the table: "auth.invitation" */
+  insert_auth_invitation?: Maybe<Auth_Invitation_Mutation_Response>;
+  /** insert a single row into the table: "auth.invitation" */
+  insert_auth_invitation_one?: Maybe<Auth_Invitation>;
+  /** insert data into the table: "auth.member" */
+  insert_auth_member?: Maybe<Auth_Member_Mutation_Response>;
+  /** insert a single row into the table: "auth.member" */
+  insert_auth_member_one?: Maybe<Auth_Member>;
+  /** insert data into the table: "auth.organization" */
+  insert_auth_organization?: Maybe<Auth_Organization_Mutation_Response>;
+  /** insert a single row into the table: "auth.organization" */
+  insert_auth_organization_one?: Maybe<Auth_Organization>;
   /** insert data into the table: "auth.session" */
   insert_auth_session?: Maybe<Auth_Session_Mutation_Response>;
   /** insert a single row into the table: "auth.session" */
@@ -969,6 +1622,24 @@ export type Mutation_Root = {
   update_auth_account_by_pk?: Maybe<Auth_Account>;
   /** update multiples rows of table: "auth.account" */
   update_auth_account_many?: Maybe<Array<Maybe<Auth_Account_Mutation_Response>>>;
+  /** update data of the table: "auth.invitation" */
+  update_auth_invitation?: Maybe<Auth_Invitation_Mutation_Response>;
+  /** update single row of the table: "auth.invitation" */
+  update_auth_invitation_by_pk?: Maybe<Auth_Invitation>;
+  /** update multiples rows of table: "auth.invitation" */
+  update_auth_invitation_many?: Maybe<Array<Maybe<Auth_Invitation_Mutation_Response>>>;
+  /** update data of the table: "auth.member" */
+  update_auth_member?: Maybe<Auth_Member_Mutation_Response>;
+  /** update single row of the table: "auth.member" */
+  update_auth_member_by_pk?: Maybe<Auth_Member>;
+  /** update multiples rows of table: "auth.member" */
+  update_auth_member_many?: Maybe<Array<Maybe<Auth_Member_Mutation_Response>>>;
+  /** update data of the table: "auth.organization" */
+  update_auth_organization?: Maybe<Auth_Organization_Mutation_Response>;
+  /** update single row of the table: "auth.organization" */
+  update_auth_organization_by_pk?: Maybe<Auth_Organization>;
+  /** update multiples rows of table: "auth.organization" */
+  update_auth_organization_many?: Maybe<Array<Maybe<Auth_Organization_Mutation_Response>>>;
   /** update data of the table: "auth.session" */
   update_auth_session?: Maybe<Auth_Session_Mutation_Response>;
   /** update single row of the table: "auth.session" */
@@ -996,6 +1667,36 @@ export type Mutation_RootDelete_Auth_AccountArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Auth_Account_By_PkArgs = {
+  id: Scalars["String"]["input"];
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Auth_InvitationArgs = {
+  where: Auth_Invitation_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Auth_Invitation_By_PkArgs = {
+  id: Scalars["String"]["input"];
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Auth_MemberArgs = {
+  where: Auth_Member_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Auth_Member_By_PkArgs = {
+  id: Scalars["String"]["input"];
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Auth_OrganizationArgs = {
+  where: Auth_Organization_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Auth_Organization_By_PkArgs = {
   id: Scalars["String"]["input"];
 };
 
@@ -1039,6 +1740,42 @@ export type Mutation_RootInsert_Auth_AccountArgs = {
 export type Mutation_RootInsert_Auth_Account_OneArgs = {
   object: Auth_Account_Insert_Input;
   on_conflict?: InputMaybe<Auth_Account_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Auth_InvitationArgs = {
+  objects: Array<Auth_Invitation_Insert_Input>;
+  on_conflict?: InputMaybe<Auth_Invitation_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Auth_Invitation_OneArgs = {
+  object: Auth_Invitation_Insert_Input;
+  on_conflict?: InputMaybe<Auth_Invitation_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Auth_MemberArgs = {
+  objects: Array<Auth_Member_Insert_Input>;
+  on_conflict?: InputMaybe<Auth_Member_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Auth_Member_OneArgs = {
+  object: Auth_Member_Insert_Input;
+  on_conflict?: InputMaybe<Auth_Member_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Auth_OrganizationArgs = {
+  objects: Array<Auth_Organization_Insert_Input>;
+  on_conflict?: InputMaybe<Auth_Organization_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Auth_Organization_OneArgs = {
+  object: Auth_Organization_Insert_Input;
+  on_conflict?: InputMaybe<Auth_Organization_On_Conflict>;
 };
 
 /** mutation root */
@@ -1092,6 +1829,57 @@ export type Mutation_RootUpdate_Auth_Account_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Account_ManyArgs = {
   updates: Array<Auth_Account_Updates>;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Auth_InvitationArgs = {
+  _set?: InputMaybe<Auth_Invitation_Set_Input>;
+  where: Auth_Invitation_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Auth_Invitation_By_PkArgs = {
+  _set?: InputMaybe<Auth_Invitation_Set_Input>;
+  pk_columns: Auth_Invitation_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Auth_Invitation_ManyArgs = {
+  updates: Array<Auth_Invitation_Updates>;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Auth_MemberArgs = {
+  _set?: InputMaybe<Auth_Member_Set_Input>;
+  where: Auth_Member_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Auth_Member_By_PkArgs = {
+  _set?: InputMaybe<Auth_Member_Set_Input>;
+  pk_columns: Auth_Member_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Auth_Member_ManyArgs = {
+  updates: Array<Auth_Member_Updates>;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Auth_OrganizationArgs = {
+  _set?: InputMaybe<Auth_Organization_Set_Input>;
+  where: Auth_Organization_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Auth_Organization_By_PkArgs = {
+  _set?: InputMaybe<Auth_Organization_Set_Input>;
+  pk_columns: Auth_Organization_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Auth_Organization_ManyArgs = {
+  updates: Array<Auth_Organization_Updates>;
 };
 
 /** mutation root */
@@ -1169,6 +1957,24 @@ export type Query_Root = {
   auth_account_aggregate: Auth_Account_Aggregate;
   /** fetch data from the table: "auth.account" using primary key columns */
   auth_account_by_pk?: Maybe<Auth_Account>;
+  /** fetch data from the table: "auth.invitation" */
+  auth_invitation: Array<Auth_Invitation>;
+  /** fetch aggregated fields from the table: "auth.invitation" */
+  auth_invitation_aggregate: Auth_Invitation_Aggregate;
+  /** fetch data from the table: "auth.invitation" using primary key columns */
+  auth_invitation_by_pk?: Maybe<Auth_Invitation>;
+  /** fetch data from the table: "auth.member" */
+  auth_member: Array<Auth_Member>;
+  /** fetch aggregated fields from the table: "auth.member" */
+  auth_member_aggregate: Auth_Member_Aggregate;
+  /** fetch data from the table: "auth.member" using primary key columns */
+  auth_member_by_pk?: Maybe<Auth_Member>;
+  /** fetch data from the table: "auth.organization" */
+  auth_organization: Array<Auth_Organization>;
+  /** fetch aggregated fields from the table: "auth.organization" */
+  auth_organization_aggregate: Auth_Organization_Aggregate;
+  /** fetch data from the table: "auth.organization" using primary key columns */
+  auth_organization_by_pk?: Maybe<Auth_Organization>;
   /** fetch data from the table: "auth.session" */
   auth_session: Array<Auth_Session>;
   /** fetch aggregated fields from the table: "auth.session" */
@@ -1206,6 +2012,66 @@ export type Query_RootAuth_Account_AggregateArgs = {
 };
 
 export type Query_RootAuth_Account_By_PkArgs = {
+  id: Scalars["String"]["input"];
+};
+
+export type Query_RootAuth_InvitationArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
+  where?: InputMaybe<Auth_Invitation_Bool_Exp>;
+};
+
+export type Query_RootAuth_Invitation_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
+  where?: InputMaybe<Auth_Invitation_Bool_Exp>;
+};
+
+export type Query_RootAuth_Invitation_By_PkArgs = {
+  id: Scalars["String"]["input"];
+};
+
+export type Query_RootAuth_MemberArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
+  where?: InputMaybe<Auth_Member_Bool_Exp>;
+};
+
+export type Query_RootAuth_Member_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
+  where?: InputMaybe<Auth_Member_Bool_Exp>;
+};
+
+export type Query_RootAuth_Member_By_PkArgs = {
+  id: Scalars["String"]["input"];
+};
+
+export type Query_RootAuth_OrganizationArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Organization_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Organization_Order_By>>;
+  where?: InputMaybe<Auth_Organization_Bool_Exp>;
+};
+
+export type Query_RootAuth_Organization_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Organization_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Organization_Order_By>>;
+  where?: InputMaybe<Auth_Organization_Bool_Exp>;
+};
+
+export type Query_RootAuth_Organization_By_PkArgs = {
   id: Scalars["String"]["input"];
 };
 
@@ -1279,6 +2145,30 @@ export type Subscription_Root = {
   auth_account_by_pk?: Maybe<Auth_Account>;
   /** fetch data from the table in a streaming manner: "auth.account" */
   auth_account_stream: Array<Auth_Account>;
+  /** fetch data from the table: "auth.invitation" */
+  auth_invitation: Array<Auth_Invitation>;
+  /** fetch aggregated fields from the table: "auth.invitation" */
+  auth_invitation_aggregate: Auth_Invitation_Aggregate;
+  /** fetch data from the table: "auth.invitation" using primary key columns */
+  auth_invitation_by_pk?: Maybe<Auth_Invitation>;
+  /** fetch data from the table in a streaming manner: "auth.invitation" */
+  auth_invitation_stream: Array<Auth_Invitation>;
+  /** fetch data from the table: "auth.member" */
+  auth_member: Array<Auth_Member>;
+  /** fetch aggregated fields from the table: "auth.member" */
+  auth_member_aggregate: Auth_Member_Aggregate;
+  /** fetch data from the table: "auth.member" using primary key columns */
+  auth_member_by_pk?: Maybe<Auth_Member>;
+  /** fetch data from the table in a streaming manner: "auth.member" */
+  auth_member_stream: Array<Auth_Member>;
+  /** fetch data from the table: "auth.organization" */
+  auth_organization: Array<Auth_Organization>;
+  /** fetch aggregated fields from the table: "auth.organization" */
+  auth_organization_aggregate: Auth_Organization_Aggregate;
+  /** fetch data from the table: "auth.organization" using primary key columns */
+  auth_organization_by_pk?: Maybe<Auth_Organization>;
+  /** fetch data from the table in a streaming manner: "auth.organization" */
+  auth_organization_stream: Array<Auth_Organization>;
   /** fetch data from the table: "auth.session" */
   auth_session: Array<Auth_Session>;
   /** fetch aggregated fields from the table: "auth.session" */
@@ -1329,6 +2219,84 @@ export type Subscription_RootAuth_Account_StreamArgs = {
   batch_size: Scalars["Int"]["input"];
   cursor: Array<InputMaybe<Auth_Account_Stream_Cursor_Input>>;
   where?: InputMaybe<Auth_Account_Bool_Exp>;
+};
+
+export type Subscription_RootAuth_InvitationArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
+  where?: InputMaybe<Auth_Invitation_Bool_Exp>;
+};
+
+export type Subscription_RootAuth_Invitation_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
+  where?: InputMaybe<Auth_Invitation_Bool_Exp>;
+};
+
+export type Subscription_RootAuth_Invitation_By_PkArgs = {
+  id: Scalars["String"]["input"];
+};
+
+export type Subscription_RootAuth_Invitation_StreamArgs = {
+  batch_size: Scalars["Int"]["input"];
+  cursor: Array<InputMaybe<Auth_Invitation_Stream_Cursor_Input>>;
+  where?: InputMaybe<Auth_Invitation_Bool_Exp>;
+};
+
+export type Subscription_RootAuth_MemberArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
+  where?: InputMaybe<Auth_Member_Bool_Exp>;
+};
+
+export type Subscription_RootAuth_Member_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
+  where?: InputMaybe<Auth_Member_Bool_Exp>;
+};
+
+export type Subscription_RootAuth_Member_By_PkArgs = {
+  id: Scalars["String"]["input"];
+};
+
+export type Subscription_RootAuth_Member_StreamArgs = {
+  batch_size: Scalars["Int"]["input"];
+  cursor: Array<InputMaybe<Auth_Member_Stream_Cursor_Input>>;
+  where?: InputMaybe<Auth_Member_Bool_Exp>;
+};
+
+export type Subscription_RootAuth_OrganizationArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Organization_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Organization_Order_By>>;
+  where?: InputMaybe<Auth_Organization_Bool_Exp>;
+};
+
+export type Subscription_RootAuth_Organization_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Auth_Organization_Select_Column>>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<Array<Auth_Organization_Order_By>>;
+  where?: InputMaybe<Auth_Organization_Bool_Exp>;
+};
+
+export type Subscription_RootAuth_Organization_By_PkArgs = {
+  id: Scalars["String"]["input"];
+};
+
+export type Subscription_RootAuth_Organization_StreamArgs = {
+  batch_size: Scalars["Int"]["input"];
+  cursor: Array<InputMaybe<Auth_Organization_Stream_Cursor_Input>>;
+  where?: InputMaybe<Auth_Organization_Bool_Exp>;
 };
 
 export type Subscription_RootAuth_SessionArgs = {
@@ -1431,6 +2399,14 @@ export type UpdateAuthSessionMutation = { __typename?: "mutation_root" } & {
   update_auth_session?: Maybe<{ __typename?: "auth_session_mutation_response" } & Pick<Auth_Session_Mutation_Response, "affected_rows">>;
 };
 
+export type GetAllOrganizationsByUserIdQueryVariables = Exact<{
+  userId: Scalars["String"]["input"];
+}>;
+
+export type GetAllOrganizationsByUserIdQuery = { __typename?: "query_root" } & {
+  auth_member: Array<{ __typename?: "auth_member" } & Pick<Auth_Member, "organizationId" | "role">>;
+};
+
 export type TestQueryVariables = Exact<{ [key: string]: never }>;
 
 export type TestQuery = { __typename?: "query_root" } & { auth_user: Array<{ __typename?: "auth_user" } & Pick<Auth_User, "name">> };
@@ -1439,6 +2415,14 @@ export const UpdateAuthSession = gql`
   mutation updateAuthSession($setObj: auth_session_set_input!, $sessionId: String!) {
     update_auth_session(_set: $setObj, where: { id: { _eq: $sessionId } }) {
       affected_rows
+    }
+  }
+`;
+export const GetAllOrganizationsByUserId = gql`
+  query getAllOrganizationsByUserId($userId: String!) {
+    auth_member(where: { userId: { _eq: $userId } }) {
+      organizationId
+      role
     }
   }
 `;
@@ -1945,8 +2929,964 @@ export default {
       },
       {
         kind: "OBJECT",
+        name: "auth_invitation",
+        fields: [
+          {
+            name: "createdAt",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "email",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "expiresAt",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "inviterId",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "organizationId",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "role",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "status",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_invitation_aggregate",
+        fields: [
+          {
+            name: "aggregate",
+            type: {
+              kind: "OBJECT",
+              name: "auth_invitation_aggregate_fields",
+              ofType: null
+            },
+            args: []
+          },
+          {
+            name: "nodes",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_invitation",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_invitation_aggregate_fields",
+        fields: [
+          {
+            name: "count",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: [
+              {
+                name: "columns",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "distinct",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "max",
+            type: {
+              kind: "OBJECT",
+              name: "auth_invitation_max_fields",
+              ofType: null
+            },
+            args: []
+          },
+          {
+            name: "min",
+            type: {
+              kind: "OBJECT",
+              name: "auth_invitation_min_fields",
+              ofType: null
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_invitation_max_fields",
+        fields: [
+          {
+            name: "createdAt",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "email",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "expiresAt",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "inviterId",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "organizationId",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "role",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "status",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_invitation_min_fields",
+        fields: [
+          {
+            name: "createdAt",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "email",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "expiresAt",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "inviterId",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "organizationId",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "role",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "status",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_invitation_mutation_response",
+        fields: [
+          {
+            name: "affected_rows",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "returning",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_invitation",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_member",
+        fields: [
+          {
+            name: "createdAt",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "organizationId",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "role",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "userId",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_member_aggregate",
+        fields: [
+          {
+            name: "aggregate",
+            type: {
+              kind: "OBJECT",
+              name: "auth_member_aggregate_fields",
+              ofType: null
+            },
+            args: []
+          },
+          {
+            name: "nodes",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_member",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_member_aggregate_fields",
+        fields: [
+          {
+            name: "count",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: [
+              {
+                name: "columns",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "distinct",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "max",
+            type: {
+              kind: "OBJECT",
+              name: "auth_member_max_fields",
+              ofType: null
+            },
+            args: []
+          },
+          {
+            name: "min",
+            type: {
+              kind: "OBJECT",
+              name: "auth_member_min_fields",
+              ofType: null
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_member_max_fields",
+        fields: [
+          {
+            name: "createdAt",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "organizationId",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "role",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "userId",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_member_min_fields",
+        fields: [
+          {
+            name: "createdAt",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "organizationId",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "role",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "userId",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_member_mutation_response",
+        fields: [
+          {
+            name: "affected_rows",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "returning",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_member",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_organization",
+        fields: [
+          {
+            name: "createdAt",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "logo",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "metadata",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "name",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "slug",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_organization_aggregate",
+        fields: [
+          {
+            name: "aggregate",
+            type: {
+              kind: "OBJECT",
+              name: "auth_organization_aggregate_fields",
+              ofType: null
+            },
+            args: []
+          },
+          {
+            name: "nodes",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_organization",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_organization_aggregate_fields",
+        fields: [
+          {
+            name: "count",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: [
+              {
+                name: "columns",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "distinct",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "max",
+            type: {
+              kind: "OBJECT",
+              name: "auth_organization_max_fields",
+              ofType: null
+            },
+            args: []
+          },
+          {
+            name: "min",
+            type: {
+              kind: "OBJECT",
+              name: "auth_organization_min_fields",
+              ofType: null
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_organization_max_fields",
+        fields: [
+          {
+            name: "createdAt",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "logo",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "metadata",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "name",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "slug",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_organization_min_fields",
+        fields: [
+          {
+            name: "createdAt",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "logo",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "metadata",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "name",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "slug",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "auth_organization_mutation_response",
+        fields: [
+          {
+            name: "affected_rows",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "returning",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_organization",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
         name: "auth_session",
         fields: [
+          {
+            name: "activeOrganizationId",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
           {
             name: "createdAt",
             type: {
@@ -1988,6 +3928,14 @@ export default {
                 kind: "SCALAR",
                 name: "Any"
               }
+            },
+            args: []
+          },
+          {
+            name: "impersonatedBy",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
             },
             args: []
           },
@@ -2139,6 +4087,14 @@ export default {
         name: "auth_session_max_fields",
         fields: [
           {
+            name: "activeOrganizationId",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
             name: "createdAt",
             type: {
               kind: "SCALAR",
@@ -2164,6 +4120,14 @@ export default {
           },
           {
             name: "id",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "impersonatedBy",
             type: {
               kind: "SCALAR",
               name: "Any"
@@ -2218,6 +4182,14 @@ export default {
         name: "auth_session_min_fields",
         fields: [
           {
+            name: "activeOrganizationId",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
             name: "createdAt",
             type: {
               kind: "SCALAR",
@@ -2243,6 +4215,14 @@ export default {
           },
           {
             name: "id",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "impersonatedBy",
             type: {
               kind: "SCALAR",
               name: "Any"
@@ -2333,6 +4313,30 @@ export default {
         name: "auth_user",
         fields: [
           {
+            name: "banExpires",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "banReason",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "banned",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
             name: "createdAt",
             type: {
               kind: "NON_NULL",
@@ -2392,6 +4396,14 @@ export default {
                 kind: "SCALAR",
                 name: "Any"
               }
+            },
+            args: []
+          },
+          {
+            name: "role",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
             },
             args: []
           },
@@ -2505,6 +4517,22 @@ export default {
         name: "auth_user_max_fields",
         fields: [
           {
+            name: "banExpires",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "banReason",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
             name: "createdAt",
             type: {
               kind: "SCALAR",
@@ -2538,6 +4566,14 @@ export default {
           },
           {
             name: "name",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "role",
             type: {
               kind: "SCALAR",
               name: "Any"
@@ -2560,6 +4596,22 @@ export default {
         name: "auth_user_min_fields",
         fields: [
           {
+            name: "banExpires",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "banReason",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
             name: "createdAt",
             type: {
               kind: "SCALAR",
@@ -2593,6 +4645,14 @@ export default {
           },
           {
             name: "name",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "role",
             type: {
               kind: "SCALAR",
               name: "Any"
@@ -3001,6 +5061,126 @@ export default {
             ]
           },
           {
+            name: "delete_auth_invitation",
+            type: {
+              kind: "OBJECT",
+              name: "auth_invitation_mutation_response",
+              ofType: null
+            },
+            args: [
+              {
+                name: "where",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "delete_auth_invitation_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_invitation",
+              ofType: null
+            },
+            args: [
+              {
+                name: "id",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "delete_auth_member",
+            type: {
+              kind: "OBJECT",
+              name: "auth_member_mutation_response",
+              ofType: null
+            },
+            args: [
+              {
+                name: "where",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "delete_auth_member_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_member",
+              ofType: null
+            },
+            args: [
+              {
+                name: "id",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "delete_auth_organization",
+            type: {
+              kind: "OBJECT",
+              name: "auth_organization_mutation_response",
+              ofType: null
+            },
+            args: [
+              {
+                name: "where",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "delete_auth_organization_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_organization",
+              ofType: null
+            },
+            args: [
+              {
+                name: "id",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
             name: "delete_auth_session",
             type: {
               kind: "OBJECT",
@@ -3158,6 +5338,186 @@ export default {
             type: {
               kind: "OBJECT",
               name: "auth_account",
+              ofType: null
+            },
+            args: [
+              {
+                name: "object",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              },
+              {
+                name: "on_conflict",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "insert_auth_invitation",
+            type: {
+              kind: "OBJECT",
+              name: "auth_invitation_mutation_response",
+              ofType: null
+            },
+            args: [
+              {
+                name: "objects",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "LIST",
+                    ofType: {
+                      kind: "NON_NULL",
+                      ofType: {
+                        kind: "SCALAR",
+                        name: "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                name: "on_conflict",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "insert_auth_invitation_one",
+            type: {
+              kind: "OBJECT",
+              name: "auth_invitation",
+              ofType: null
+            },
+            args: [
+              {
+                name: "object",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              },
+              {
+                name: "on_conflict",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "insert_auth_member",
+            type: {
+              kind: "OBJECT",
+              name: "auth_member_mutation_response",
+              ofType: null
+            },
+            args: [
+              {
+                name: "objects",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "LIST",
+                    ofType: {
+                      kind: "NON_NULL",
+                      ofType: {
+                        kind: "SCALAR",
+                        name: "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                name: "on_conflict",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "insert_auth_member_one",
+            type: {
+              kind: "OBJECT",
+              name: "auth_member",
+              ofType: null
+            },
+            args: [
+              {
+                name: "object",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              },
+              {
+                name: "on_conflict",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "insert_auth_organization",
+            type: {
+              kind: "OBJECT",
+              name: "auth_organization_mutation_response",
+              ofType: null
+            },
+            args: [
+              {
+                name: "objects",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "LIST",
+                    ofType: {
+                      kind: "NON_NULL",
+                      ofType: {
+                        kind: "SCALAR",
+                        name: "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                name: "on_conflict",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "insert_auth_organization_one",
+            type: {
+              kind: "OBJECT",
+              name: "auth_organization",
               ofType: null
             },
             args: [
@@ -3421,6 +5781,255 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "auth_account_mutation_response",
+                ofType: null
+              }
+            },
+            args: [
+              {
+                name: "updates",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "LIST",
+                    ofType: {
+                      kind: "NON_NULL",
+                      ofType: {
+                        kind: "SCALAR",
+                        name: "Any"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "update_auth_invitation",
+            type: {
+              kind: "OBJECT",
+              name: "auth_invitation_mutation_response",
+              ofType: null
+            },
+            args: [
+              {
+                name: "_set",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "update_auth_invitation_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_invitation",
+              ofType: null
+            },
+            args: [
+              {
+                name: "_set",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "pk_columns",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "update_auth_invitation_many",
+            type: {
+              kind: "LIST",
+              ofType: {
+                kind: "OBJECT",
+                name: "auth_invitation_mutation_response",
+                ofType: null
+              }
+            },
+            args: [
+              {
+                name: "updates",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "LIST",
+                    ofType: {
+                      kind: "NON_NULL",
+                      ofType: {
+                        kind: "SCALAR",
+                        name: "Any"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "update_auth_member",
+            type: {
+              kind: "OBJECT",
+              name: "auth_member_mutation_response",
+              ofType: null
+            },
+            args: [
+              {
+                name: "_set",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "update_auth_member_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_member",
+              ofType: null
+            },
+            args: [
+              {
+                name: "_set",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "pk_columns",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "update_auth_member_many",
+            type: {
+              kind: "LIST",
+              ofType: {
+                kind: "OBJECT",
+                name: "auth_member_mutation_response",
+                ofType: null
+              }
+            },
+            args: [
+              {
+                name: "updates",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "LIST",
+                    ofType: {
+                      kind: "NON_NULL",
+                      ofType: {
+                        kind: "SCALAR",
+                        name: "Any"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "update_auth_organization",
+            type: {
+              kind: "OBJECT",
+              name: "auth_organization_mutation_response",
+              ofType: null
+            },
+            args: [
+              {
+                name: "_set",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "update_auth_organization_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_organization",
+              ofType: null
+            },
+            args: [
+              {
+                name: "_set",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "pk_columns",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "update_auth_organization_many",
+            type: {
+              kind: "LIST",
+              ofType: {
+                kind: "OBJECT",
+                name: "auth_organization_mutation_response",
                 ofType: null
               }
             },
@@ -3830,6 +6439,444 @@ export default {
             type: {
               kind: "OBJECT",
               name: "auth_account",
+              ofType: null
+            },
+            args: [
+              {
+                name: "id",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_invitation",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_invitation",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_invitation_aggregate",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "OBJECT",
+                name: "auth_invitation_aggregate",
+                ofType: null
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_invitation_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_invitation",
+              ofType: null
+            },
+            args: [
+              {
+                name: "id",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_member",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_member",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_member_aggregate",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "OBJECT",
+                name: "auth_member_aggregate",
+                ofType: null
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_member_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_member",
+              ofType: null
+            },
+            args: [
+              {
+                name: "id",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_organization",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_organization",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_organization_aggregate",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "OBJECT",
+                name: "auth_organization_aggregate",
+                ofType: null
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_organization_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_organization",
               ofType: null
             },
             args: [
@@ -4447,6 +7494,591 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "auth_account",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: [
+              {
+                name: "batch_size",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              },
+              {
+                name: "cursor",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "LIST",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_invitation",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_invitation",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_invitation_aggregate",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "OBJECT",
+                name: "auth_invitation_aggregate",
+                ofType: null
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_invitation_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_invitation",
+              ofType: null
+            },
+            args: [
+              {
+                name: "id",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_invitation_stream",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_invitation",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: [
+              {
+                name: "batch_size",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              },
+              {
+                name: "cursor",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "LIST",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_member",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_member",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_member_aggregate",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "OBJECT",
+                name: "auth_member_aggregate",
+                ofType: null
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_member_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_member",
+              ofType: null
+            },
+            args: [
+              {
+                name: "id",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_member_stream",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_member",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: [
+              {
+                name: "batch_size",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              },
+              {
+                name: "cursor",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "LIST",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_organization",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_organization",
+                    ofType: null
+                  }
+                }
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_organization_aggregate",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "OBJECT",
+                name: "auth_organization_aggregate",
+                ofType: null
+              }
+            },
+            args: [
+              {
+                name: "distinct_on",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "limit",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "offset",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "order_by",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "NON_NULL",
+                    ofType: {
+                      kind: "SCALAR",
+                      name: "Any"
+                    }
+                  }
+                }
+              },
+              {
+                name: "where",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_organization_by_pk",
+            type: {
+              kind: "OBJECT",
+              name: "auth_organization",
+              ofType: null
+            },
+            args: [
+              {
+                name: "id",
+                type: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "auth_organization_stream",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "LIST",
+                ofType: {
+                  kind: "NON_NULL",
+                  ofType: {
+                    kind: "OBJECT",
+                    name: "auth_organization",
                     ofType: null
                   }
                 }

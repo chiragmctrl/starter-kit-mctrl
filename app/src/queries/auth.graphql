@@ -4,6 +4,13 @@ mutation updateAuthSession($setObj: auth_session_set_input!, $sessionId: String!
   }
 }
 
+query getAllOrganizationsByUserId($userId: String!) {
+  auth_member(where: { userId: { _eq: $userId } }) {
+    organizationId
+    role
+  }
+}
+
 query test {
   auth_user {
     name

@@ -1,7 +1,16 @@
 import { betterAuth, type InferSession } from "better-auth";
 import { Pool } from "pg";
 import jwt from "jsonwebtoken";
-import { UpdateAuthSession, UpdateAuthSessionMutation, UpdateAuthSessionMutationVariables } from "@/gql/graphql";
+import {
+  GetAllOrganizationsByUserId,
+  GetAllOrganizationsByUserIdQuery,
+  GetAllOrganizationsByUserIdQueryVariables,
+  UpdateAuthSession,
+  UpdateAuthSessionMutation,
+  UpdateAuthSessionMutationVariables
+} from "@/gql/graphql";
+import { admin, organization } from "better-auth/plugins";
+import { initCronUrqlClient } from "urql/initializeClient";
 
 // Helper function to generate JWT token for Hasura
 // Uses the expiry from Better Auth session for consistency
@@ -48,10 +57,16 @@ export const auth = betterAuth({
       create: {
         before: async (session) => {
           const hasuraToken = generateHasuraToken(session.userId, session.expiresAt);
+          const client = initCronUrqlClient();
+          const res = await client.query<GetAllOrganizationsByUserIdQuery, GetAllOrganizationsByUserIdQueryVariables>(GetAllOrganizationsByUserId, {
+            userId: session.userId
+          });
+          const organizationId = res.data?.auth_member[0]?.organizationId;
           return {
             data: {
               ...session,
-              hasuraToken
+              hasuraToken,
+              activeOrganizationId: organizationId
             }
           };
         }
@@ -68,7 +83,8 @@ export const auth = betterAuth({
         }
       }
     }
-  }
+  },
+  plugins: [organization(), admin()]
 });
 
 export type Session = InferSession<typeof auth>;

@@ -39,7 +39,7 @@ const page = () => {
         onSuccess: () => {
           //redirect to the dashboard or sign in page
           setSubmitLoader(false);
-          redirect("/dashboard");
+          redirect("/onboard-organization");
         },
         onError: (ctx) => {
           // display the error message

@@ -1,7 +1,10 @@
 import { env } from "@/env.mjs";
 import { createAuthClient } from "better-auth/react";
+import { organizationClient } from "better-auth/client/plugins";
+import { admin } from "better-auth/plugins";
 
 export const authClient = createAuthClient({
   /** The base URL of the server (optional if you're using the same domain) */
-  baseURL: env.NEXT_PUBLIC_BETTER_AUTH_URL
+  baseURL: env.NEXT_PUBLIC_BETTER_AUTH_URL,
+  plugins: [organizationClient(), admin()]
 });

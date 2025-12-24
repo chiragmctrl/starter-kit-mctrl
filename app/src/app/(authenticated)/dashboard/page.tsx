@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 const page = () => {
   const router = useRouter();
+  const { data: activeOrganization } = authClient.useActiveOrganization();
 
   const onLogout = async () => {
     await authClient.signOut({
@@ -18,7 +19,11 @@ const page = () => {
 
   return (
     <div>
-      Dashbaord<Button onClick={() => onLogout()}>Logout</Button>
+      <div className="flex items-center gap-2">
+        <div>Organization:</div>
+        <div>{activeOrganization?.name ?? "Unknown"}</div>
+      </div>
+      <Button onClick={() => onLogout()}>Logout</Button>
     </div>
   );
 };

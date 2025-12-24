@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
-export default async function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
+export default async function OnboardLayout({ children }: { children: React.ReactNode }) {
   // Validate session in Server Component
   const session = await auth.api.getSession({
     headers: await headers()
@@ -13,8 +13,8 @@ export default async function AuthenticatedLayout({ children }: { children: Reac
     redirect("/signin");
   }
 
-  if (session && !session.session.activeOrganizationId) {
-    redirect("/onboard-organization");
+  if (session && session.session.activeOrganizationId) {
+    redirect("/dashboard");
   }
 
   // User is authenticated, render the protected content

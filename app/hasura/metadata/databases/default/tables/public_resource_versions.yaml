@@ -1,0 +1,10 @@
+table:
+  name: resource_versions
+  schema: public
+object_relationships:
+  - name: chat_message
+    using:
+      foreign_key_constraint_on: message_id
+  - name: resource
+    using:
+      foreign_key_constraint_on: resource_id

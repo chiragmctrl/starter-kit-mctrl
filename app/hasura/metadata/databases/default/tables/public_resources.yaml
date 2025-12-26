@@ -1,0 +1,27 @@
+table:
+  name: resources
+  schema: public
+object_relationships:
+  - name: chat_conversation
+    using:
+      foreign_key_constraint_on: conversation_id
+  - name: current_version
+    using:
+      manual_configuration:
+        column_mapping:
+          current_version_id: id
+        insertion_order: null
+        remote_table:
+          name: resource_versions
+          schema: public
+  - name: organization
+    using:
+      foreign_key_constraint_on: organization_id
+array_relationships:
+  - name: resource_versions
+    using:
+      foreign_key_constraint_on:
+        column: resource_id
+        table:
+          name: resource_versions
+          schema: public

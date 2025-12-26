@@ -1,0 +1,39 @@
+table:
+  name: user
+  schema: auth
+array_relationships:
+  - name: accounts
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          name: account
+          schema: auth
+  - name: chat_conversations
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: chat_conversations
+          schema: public
+  - name: invitations
+    using:
+      foreign_key_constraint_on:
+        column: inviterId
+        table:
+          name: invitation
+          schema: auth
+  - name: members
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          name: member
+          schema: auth
+  - name: sessions
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          name: session
+          schema: auth

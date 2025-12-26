@@ -1,0 +1,7 @@
+table:
+  name: chat_messages
+  schema: public
+object_relationships:
+  - name: chat_conversation
+    using:
+      foreign_key_constraint_on: conversation_id

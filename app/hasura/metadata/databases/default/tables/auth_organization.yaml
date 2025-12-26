@@ -1,0 +1,25 @@
+table:
+  name: organization
+  schema: auth
+array_relationships:
+  - name: chat_conversations
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: chat_conversations
+          schema: public
+  - name: invitations
+    using:
+      foreign_key_constraint_on:
+        column: organizationId
+        table:
+          name: invitation
+          schema: auth
+  - name: members
+    using:
+      foreign_key_constraint_on:
+        column: organizationId
+        table:
+          name: member
+          schema: auth

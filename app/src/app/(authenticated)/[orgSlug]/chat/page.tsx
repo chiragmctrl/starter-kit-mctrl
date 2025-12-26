@@ -59,11 +59,11 @@ const ChatBotDemo = () => {
       <div className="max-w-4xl mx-auto p-6 relative size-full h-screen ">
         <div className="flex flex-col h-full">
           <Conversation className="h-full dark-scrollbar">
-            <ConversationContent className="chirag-1">
+            <ConversationContent className="">
               {messages.map((message) => (
                 <div key={message.id} className="">
                   {message.role === "assistant" && message.parts.filter((part) => part.type === "source-url").length > 0 && (
-                    <Sources className="chirag-2">
+                    <Sources className="">
                       <SourcesTrigger count={message.parts.filter((part) => part.type === "source-url").length} />
                       {message.parts
                         .filter((part) => part.type === "source-url")
@@ -80,12 +80,12 @@ const ChatBotDemo = () => {
                         return (
                           <Message key={`${message.id}-${i}`} from={message.role}>
                             <MessageContent
-                              className={`chirag-3 text-white! ${message.role === "user" ? "group-[.is-user]:rounded-full group-[.is-user]:font-medium group-[.is-user]:bg-base-msg-bg!" : ""}`}
+                              className={` text-white! ${message.role === "user" ? "group-[.is-user]:rounded-full group-[.is-user]:font-medium group-[.is-user]:bg-base-msg-bg!" : ""}`}
                             >
                               <MessageResponse className={`text-white!`}>{part.text}</MessageResponse>
                             </MessageContent>
                             {message.role === "assistant" && i === messages.length - 1 && (
-                              <MessageActions className="chirag-4">
+                              <MessageActions className="">
                                 <MessageAction
                                   className="hover:bg-base-hover cursor-pointer"
                                   onClick={() => navigator.clipboard.writeText(part.text)}
@@ -105,7 +105,7 @@ const ChatBotDemo = () => {
                             isStreaming={status === "streaming" && i === message.parts.length - 1 && message.id === messages.at(-1)?.id}
                           >
                             <ReasoningTrigger />
-                            <ReasoningContent className="text-white! chirag-5">{part.text}</ReasoningContent>
+                            <ReasoningContent className="text-white! ">{part.text}</ReasoningContent>
                           </Reasoning>
                         );
                       default:

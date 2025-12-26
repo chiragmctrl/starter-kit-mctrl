@@ -55,8 +55,8 @@ const ChatBotDemo = () => {
     setInput("");
   };
   return (
-    <div className="bg-base-bg">
-      <div className="max-w-4xl mx-auto p-6 relative size-full h-screen ">
+    <div className="bg-base-bg h-full">
+      <div className="max-w-4xl mx-auto p-6 relative size-full  ">
         <div className="flex flex-col h-full">
           <Conversation className="h-full dark-scrollbar">
             <ConversationContent className="">

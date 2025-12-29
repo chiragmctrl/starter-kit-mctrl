@@ -1,8 +1,8 @@
-import { exampleRouter } from "./routers/example";
+import { chatRouter } from "./routers/chatRouter";
 import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
 
 export const appRouter = createTRPCRouter({
-  example: exampleRouter
+  chat: chatRouter
 });
 
 export type AppRouter = typeof appRouter;

@@ -816,12 +816,13 @@ export const PromptInputActionMenuItem = ({ className, ...props }: PromptInputAc
 
 export type PromptInputSubmitProps = ComponentProps<typeof InputGroupButton> & {
   status?: ChatStatus;
+  submitLoader?: boolean;
 };
 
-export const PromptInputSubmit = ({ className, variant = "default", size = "icon-sm", status, children, ...props }: PromptInputSubmitProps) => {
+export const PromptInputSubmit = ({ className, variant = "default", size = "icon-sm", status, submitLoader, children, ...props }: PromptInputSubmitProps) => {
   let Icon = <Send className="size-4" />;
 
-  if (status === "submitted") {
+  if (status === "submitted" || submitLoader) {
     Icon = <Loader2Icon className="size-4 animate-spin" />;
   } else if (status === "streaming") {
     Icon = <SquareIcon color="white" className="size-4" />;

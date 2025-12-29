@@ -1,0 +1,134 @@
+# Create a new conversation
+mutation createConversation($object: chat_conversations_insert_input!) {
+  insert_chat_conversations_one(object: $object) {
+    id
+    organization_id
+    user_id
+    title
+    is_archived
+    visibility
+    created_at
+    updated_at
+  }
+}
+
+# Update conversation (e.g., update title or archive)
+mutation updateConversation($id: uuid!, $setObj: chat_conversations_set_input!) {
+  update_chat_conversations_by_pk(pk_columns: { id: $id }, _set: $setObj) {
+    id
+    title
+    is_archived
+    updated_at
+  }
+}
+
+# Insert a chat message
+mutation insertChatMessage($object: chat_messages_insert_input!) {
+  insert_chat_messages_one(object: $object) {
+    id
+    conversation_id
+    role
+    content
+    token_usage
+    model
+    provider_metadata
+    created_at
+  }
+}
+
+# Insert multiple chat messages
+mutation insertChatMessages($objects: [chat_messages_insert_input!]!) {
+  insert_chat_messages(objects: $objects) {
+    affected_rows
+    returning {
+      id
+      conversation_id
+      role
+      content
+      created_at
+    }
+  }
+}
+
+# Get conversation by ID
+query getConversationById($id: uuid!) {
+  chat_conversations_by_pk(id: $id) {
+    id
+    organization_id
+    user_id
+    title
+    is_archived
+    visibility
+    created_at
+    updated_at
+  }
+}
+
+# Get conversations for a user
+query getConversationsByUser($userId: String!, $organizationId: String!) {
+  chat_conversations(
+    where: { user_id: { _eq: $userId }, organization_id: { _eq: $organizationId }, is_archived: { _eq: false } }
+    order_by: { updated_at: desc }
+  ) {
+    id
+    title
+    visibility
+    created_at
+    updated_at
+  }
+}
+
+# Get messages for a conversation
+query getMessagesByConversation($conversationId: uuid!) {
+  chat_messages(where: { conversation_id: { _eq: $conversationId } }, order_by: { created_at: asc }) {
+    id
+    conversation_id
+    role
+    content
+    token_usage
+    model
+    provider_metadata
+    created_at
+  }
+}
+
+# Get conversation with messages
+query getConversationWithMessages($conversationId: uuid!) {
+  chat_conversations_by_pk(id: $conversationId) {
+    id
+    organization_id
+    user_id
+    title
+    is_archived
+    visibility
+    created_at
+    updated_at
+    messages: chat_messages(order_by: { created_at: asc }) {
+      id
+      role
+      content
+      token_usage
+      model
+      provider_metadata
+      created_at
+    }
+  }
+}
+
+# Delete conversation (soft delete by archiving)
+mutation archiveConversation($id: uuid!) {
+  update_chat_conversations_by_pk(pk_columns: { id: $id }, _set: { is_archived: true }) {
+    id
+    is_archived
+  }
+}
+
+# Delete conversation permanently
+mutation deleteConversation($id: uuid!) {
+  delete_chat_messages(where: { conversation_id: { _eq: $id } }) {
+    affected_rows
+  }
+  delete_chat_conversations_by_pk(id: $id) {
+    id
+  }
+}

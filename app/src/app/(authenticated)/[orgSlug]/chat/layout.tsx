@@ -14,7 +14,7 @@ export default async function ChatLayout({ children }: { children: React.ReactNo
             <div className="text-sm font-medium">Chat App</div>
           </div>
         </header>
-        <div className="h-[calc(100vh-48px)]">{children}</div>
+        <div className="h-[calc(100vh-48px)] bg-base-bg!">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

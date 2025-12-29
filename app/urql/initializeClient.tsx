@@ -1,3 +1,4 @@
+"use client";
 import { env } from "@/env.mjs";
 import { cacheExchange, type Client, createClient, type Exchange, fetchExchange, type SSRData, ssrExchange, subscriptionExchange } from "@urql/next";
 import { authExchange } from "@urql/exchange-auth";
@@ -70,16 +71,3 @@ export function initUrqlClient(token: string | null, initialState?: SSRData) {
   // Return both the Client instance and the ssrCache.
   return { urqlClient, ssrCache };
 }
-
-export const initCronUrqlClient = () => {
-  return createClient({
-    url: env.NEXT_PUBLIC_HASURA_GRAPHQL_API,
-    exchanges: [cacheExchange, fetchExchange],
-    preferGetMethod: false,
-    fetchOptions: {
-      headers: {
-        "x-hasura-admin-secret": env.HASURA_GRAPHQL_ADMIN_SECRET
-      }
-    }
-  });
-};

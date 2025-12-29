@@ -1,19 +1,21 @@
 "use client";
-
 import * as React from "react";
 import { SquarePen } from "lucide-react";
-
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail, useSidebar } from "@/components/ui/sidebar";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { state } = useSidebar();
+  const params = useParams();
   const isOpen = state === "expanded";
   return (
     <Sidebar className="bg-base-bg-black border-base-popover/35 text-white" collapsible="icon" {...props}>
       <SidebarHeader>
-        <div
+        <Link
+          href={`/${params.orgSlug}/chat`}
           className={`${isOpen ? "py-2 px-4 ps-2! gap-2" : ""} flex items-center  hover:bg-base-popover cursor-pointer  rounded-lg group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-2
           `}
         >
@@ -21,11 +23,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <div className="text-sm transition-all duration-200 group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:w-0 group-data-[collapsible=icon]:overflow-hidden">
             New chat
           </div>
-        </div>
+        </Link>
       </SidebarHeader>
-      <SidebarContent>
-        <NavMain />
-      </SidebarContent>
+      <SidebarContent>{isOpen && <NavMain />}</SidebarContent>
       <SidebarFooter>
         <NavUser />
       </SidebarFooter>

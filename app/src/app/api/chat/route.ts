@@ -66,12 +66,8 @@ export async function POST(req: Request) {
   const modelMessages = await convertToModelMessages(messages);
 
   try {
-    // Get or create conversation
     let currentConversationId = id;
     if (isNewChat) {
-      // Create new conversation
-      // const firstUserMessage = messages.find((m) => m.role === "user");
-
       // Extract text content from message parts for title generation
       let messageText = "New Chat";
       if (message?.parts) {
@@ -87,15 +83,14 @@ export async function POST(req: Request) {
         }
       }
 
-      chatService.generateTitle(messageText);
-
-      chatService.createConversation({
+      await chatService.createConversation({
         id: currentConversationId,
         user_id: userId,
         organization_id: organizationId,
         title: "New Chat",
         visibility: "private"
       });
+      chatService.generateTitle({ message: messageText, conversationId: currentConversationId });
 
       if (!currentConversationId) {
         throw new Error("Failed to create conversation");

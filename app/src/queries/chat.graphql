@@ -78,6 +78,20 @@ query getConversationsByUser($userId: String!, $organizationId: String!) {
   }
 }
 
+# Get conversations for a user subscription
+subscription getConversationsByUserSubscription($userId: String!, $organizationId: String!) {
+  chat_conversations(
+    where: { user_id: { _eq: $userId }, organization_id: { _eq: $organizationId }, is_archived: { _eq: false } }
+    order_by: { updated_at: desc }
+  ) {
+    id
+    title
+    visibility
+    created_at
+    updated_at
+  }
+}
+
 # Get messages for a conversation
 query getMessagesByConversation($conversationId: uuid!) {
   chat_messages(where: { conversation_id: { _eq: $conversationId } }, order_by: { created_at: asc }) {

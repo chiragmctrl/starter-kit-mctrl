@@ -5297,6 +5297,15 @@ export type GetConversationsByUserQuery = { __typename?: "query_root" } & {
   chat_conversations: Array<{ __typename?: "chat_conversations" } & Pick<Chat_Conversations, "id" | "title" | "visibility" | "created_at" | "updated_at">>;
 };
 
+export type GetConversationsByUserSubscriptionSubscriptionVariables = Exact<{
+  userId: Scalars["String"]["input"];
+  organizationId: Scalars["String"]["input"];
+}>;
+
+export type GetConversationsByUserSubscriptionSubscription = { __typename?: "subscription_root" } & {
+  chat_conversations: Array<{ __typename?: "chat_conversations" } & Pick<Chat_Conversations, "id" | "title" | "visibility" | "created_at" | "updated_at">>;
+};
+
 export type GetMessagesByConversationQueryVariables = Exact<{
   conversationId: Scalars["uuid"]["input"];
 }>;
@@ -5434,6 +5443,20 @@ export const GetConversationById = gql`
 `;
 export const GetConversationsByUser = gql`
   query getConversationsByUser($userId: String!, $organizationId: String!) {
+    chat_conversations(
+      where: { user_id: { _eq: $userId }, organization_id: { _eq: $organizationId }, is_archived: { _eq: false } }
+      order_by: { updated_at: desc }
+    ) {
+      id
+      title
+      visibility
+      created_at
+      updated_at
+    }
+  }
+`;
+export const GetConversationsByUserSubscription = gql`
+  subscription getConversationsByUserSubscription($userId: String!, $organizationId: String!) {
     chat_conversations(
       where: { user_id: { _eq: $userId }, organization_id: { _eq: $organizationId }, is_archived: { _eq: false } }
       order_by: { updated_at: desc }

@@ -20,5 +20,10 @@ export const chatRouter = createTRPCRouter({
     const oldMessages = await chatService.getMessages(conversationId);
     const contructOldMsg: UIMessage[] = constructChatMessages(oldMessages);
     return contructOldMsg;
+  }),
+  getAllConversationsByUserAndOrg: protectedProcedure.input(z.object({ userId: z.string(), orgId: z.string() })).query(async ({ input }) => {
+    const { userId, orgId } = input;
+    const conversations = await chatService.getAllConversationsByUserAndOrg({ userId, orgId });
+    return conversations;
   })
 });

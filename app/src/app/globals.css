@@ -50,7 +50,9 @@
   --color-base-msg-bg: #303030;
   --color-base-bg: #212121;
   --color-base-text-active: #99ceff;
-  --color-base-bg-black: #212121;
+  --color-base-bg-black: #181818;
+  --color-base-text-light: #afafaf;
+  --color-base-active-option: #242424;
 }
 
 :root {

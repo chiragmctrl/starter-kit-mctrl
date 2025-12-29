@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 const page = () => {
   const params = useParams();
   const chatId = params.id as string;
+
   const oldMessages = api.chat.getConversationMessages.useQuery({ conversationId: chatId as string }, { enabled: chatId !== undefined });
   if (oldMessages.isFetching) {
     return (

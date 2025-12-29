@@ -22,7 +22,7 @@ import {
   PromptInputFooter,
   PromptInputTools
 } from "@/components/ai-elements/prompt-input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { CopyIcon, PlusIcon } from "lucide-react";
 import { Source, Sources, SourcesContent, SourcesTrigger } from "@/components/ai-elements/sources";
@@ -30,6 +30,7 @@ import { Reasoning, ReasoningContent, ReasoningTrigger } from "@/components/ai-e
 import { Loader } from "@/components/ai-elements/loader";
 import { MODEL_PROVIDERS } from "@/constants";
 import { DefaultChatTransport, UIMessage } from "ai";
+import { useParams } from "next/navigation";
 
 interface IChatBot {
   conversationId: string;
@@ -39,6 +40,7 @@ interface IChatBot {
 const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
   const [input, setInput] = useState("");
   const [model, setModel] = useState<string>(MODEL_PROVIDERS[0]?.value as string);
+  const params = useParams();
 
   const { messages, sendMessage, status } = useChat({
     id: conversationId,
@@ -50,6 +52,12 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
       }
     })
   });
+
+  useEffect(() => {
+    if (status === "ready" && messages.length > 1 && params.id === undefined) {
+      window.history.replaceState(null, "", `/mission-ctrl/chat/${conversationId}`);
+    }
+  }, [status]);
 
   const handleSubmit = async (message: PromptInputMessage) => {
     const hasText = Boolean(message.text);

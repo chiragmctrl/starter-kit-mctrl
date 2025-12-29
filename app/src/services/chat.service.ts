@@ -18,9 +18,16 @@ import {
   GetMessagesByConversation,
   type GetMessagesByConversationQuery,
   type GetMessagesByConversationQueryVariables,
-  Chat_Messages_Insert_Input
+  Chat_Messages_Insert_Input,
+  GetConversationsByUserQuery,
+  GetConversationsByUserQueryVariables,
+  GetConversationsByUser
 } from "@/gql/graphql";
 import { initCronUrqlClient } from "urql/client";
+import { generateText, Output } from "ai";
+import { anthropic } from "@ai-sdk/anthropic";
+import { buildChatTitlePrompt } from "@/server/ai/prompts/chat";
+import z from "zod";
 
 /**
  * Chat service for handling chat-related database operations
@@ -159,6 +166,25 @@ export class ChatService {
   }
 
   /**
+   * Get all conversations by user and organizations
+   */
+  async getAllConversationsByUserAndOrg({ userId, orgId }: { userId: string; orgId: string }) {
+    const result = await this.client
+      .query<GetConversationsByUserQuery, GetConversationsByUserQueryVariables>(GetConversationsByUser, {
+        userId,
+        organizationId: orgId
+      })
+      .toPromise();
+
+    if (result.error) {
+      console.error("Error fetching conversations:", result.error);
+      throw new Error(`Failed to fetch conversations: ${result.error.message}`);
+    }
+
+    return result.data?.chat_conversations;
+  }
+
+  /**
    * Get all messages for a conversation
    */
   async getMessages(conversationId: string) {
@@ -179,10 +205,28 @@ export class ChatService {
   /**
    * Generate a title for the conversation based on first user message
    */
-  generateTitle(firstUserMessage: string): string {
+  async generateTitle({ message, conversationId }: { conversationId: string; message: string }) {
     // Take first 50 characters or until first newline
-    const title = firstUserMessage.split("\n")[0]?.substring(0, 50) || "New Chat";
-    return title.length < firstUserMessage.length ? `${title}...` : title;
+    const titleResult = await generateText({
+      model: anthropic("claude-3-5-haiku-20241022"),
+      messages: buildChatTitlePrompt(message),
+      output: Output.object({
+        schema: z.object({ title: z.string().describe("a short title for a chat conversation") })
+      }),
+      temperature: 0.3
+    });
+
+    const result = await this.client
+      .mutation<UpdateConversationMutation, UpdateConversationMutationVariables>(UpdateConversation, {
+        id: conversationId,
+        setObj: { title: titleResult.output.title }
+      })
+      .toPromise();
+
+    if (result.error) {
+      console.error("Error updating conversation:", result.error);
+      throw new Error(`Failed to update conversation: ${result.error.message}`);
+    }
   }
 }
 

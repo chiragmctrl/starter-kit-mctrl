@@ -22,50 +22,49 @@ export async function POST(req: Request) {
     organizationId?: string;
     id: string;
   } = await req.json();
-
-  const session = await auth.api.getSession({
-    headers: await headers()
-  });
-
-  if (!session?.session || !session.user) {
-    return new Response(JSON.stringify({ error: "Unauthorized" }), {
-      status: 401,
-      headers: { "Content-Type": "application/json" }
-    });
-  }
-
-  // Check if session is expired
-  const expiresAt = new Date(session.session.expiresAt);
-  if (!session.session.expiresAt || Number.isNaN(expiresAt.getTime()) || expiresAt <= new Date()) {
-    return new Response(JSON.stringify({ error: "Session expired" }), {
-      status: 401,
-      headers: { "Content-Type": "application/json" }
-    });
-  }
-
-  const userId = session.user.id;
-
-  // Get organization ID from request or session
-  const organizationId = requestOrgId || (session.session as any).activeOrganizationId;
-
-  if (!organizationId) {
-    return new Response(
-      JSON.stringify({
-        error: "Organization ID is required. Please provide organizationId in the request or ensure your session has an active organization."
-      }),
-      {
-        status: 400,
-        headers: { "Content-Type": "application/json" }
-      }
-    );
-  }
-
-  const oldMessages = await chatService.getMessages(id);
-  const contructOldMsg: UIMessage[] = constructChatMessages(oldMessages);
-  const messages = [...contructOldMsg, message];
-  const modelMessages = await convertToModelMessages(messages);
-
   try {
+    const session = await auth.api.getSession({
+      headers: await headers()
+    });
+
+    if (!session?.session || !session.user) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+
+    // Check if session is expired
+    const expiresAt = new Date(session.session.expiresAt);
+    if (!session.session.expiresAt || Number.isNaN(expiresAt.getTime()) || expiresAt <= new Date()) {
+      return new Response(JSON.stringify({ error: "Session expired" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+
+    const userId = session.user.id;
+
+    // Get organization ID from request or session
+    const organizationId = requestOrgId || (session.session as any).activeOrganizationId;
+
+    if (!organizationId) {
+      return new Response(
+        JSON.stringify({
+          error: "Organization ID is required. Please provide organizationId in the request or ensure your session has an active organization."
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" }
+        }
+      );
+    }
+
+    const oldMessages = await chatService.getMessages(id);
+    const contructOldMsg: UIMessage[] = constructChatMessages(oldMessages);
+    const messages = [...contructOldMsg, message];
+    const modelMessages = await convertToModelMessages(messages);
+
     let currentConversationId = id;
     if (isNewChat) {
       // Extract text content from message parts for title generation

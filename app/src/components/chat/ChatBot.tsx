@@ -31,6 +31,7 @@ import { Loader } from "@/components/ai-elements/loader";
 import { MODEL_PROVIDERS } from "@/constants";
 import { DefaultChatTransport, UIMessage } from "ai";
 import { useParams } from "next/navigation";
+import { toast } from "sonner";
 
 interface IChatBot {
   conversationId: string;
@@ -52,7 +53,11 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
       prepareSendMessagesRequest({ messages, id }) {
         return { body: { message: messages[messages.length - 1], id: id, model, isNewChat: messages.length <= 1 } };
       }
-    })
+    }),
+    onError: (error) => {
+      console.log(error);
+      toast.error(error.message);
+    }
   });
 
   useEffect(() => {

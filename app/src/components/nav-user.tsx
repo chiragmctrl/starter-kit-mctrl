@@ -16,6 +16,7 @@ import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/c
 import useSession from "@/hooks/useSession";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { getInitialCharacter } from "@/helper";
 
 export function NavUser() {
   const { isMobile } = useSidebar();
@@ -56,8 +57,7 @@ export function NavUser() {
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton size="lg" className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground" tooltip={user?.name}>
               <Avatar className="h-8 w-8 rounded-lg">
-                {/* <AvatarImage src={"/avatars/shadcn.jpg"} alt={"user"} /> */}
-                <AvatarFallback className="rounded-lg text-base-bg-black">CN</AvatarFallback>
+                <AvatarFallback className="rounded-lg text-base-bg-black">{user?.name ? getInitialCharacter(user.name) : "U"}</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight transition-opacity group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:w-0 group-data-[collapsible=icon]:overflow-hidden">
                 <span className="truncate font-semibold">{user?.name}</span>
@@ -76,7 +76,7 @@ export function NavUser() {
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   {/* <AvatarImage src={"/avatars/shadcn.jpg"} alt={"user"} /> */}
-                  <AvatarFallback className="rounded-lg text-base-bg-black">CN</AvatarFallback>
+                  <AvatarFallback className="rounded-lg text-base-bg-black">{user?.name ? getInitialCharacter(user.name) : "U"}</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">{user?.name}</span>

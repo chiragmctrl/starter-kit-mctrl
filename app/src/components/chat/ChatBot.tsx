@@ -22,7 +22,7 @@ import {
   PromptInputFooter,
   PromptInputTools
 } from "@/components/ai-elements/prompt-input";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useChat } from "@ai-sdk/react";
 import { CopyIcon, PlusIcon } from "lucide-react";
 import { Source, Sources, SourcesContent, SourcesTrigger } from "@/components/ai-elements/sources";
@@ -79,25 +79,28 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
     isInitialMount.current = true;
   }, [conversationId]);
 
-  const handleSubmit = async (message: PromptInputMessage) => {
-    const hasText = Boolean(message.text);
-    const hasAttachments = Boolean(message.files?.length);
-    if (!(hasText || hasAttachments)) {
-      return;
-    }
-    sendMessage(
-      {
-        text: message.text || "Sent with attachments",
-        files: message.files
-      },
-      {
-        body: {
-          model: model
-        }
+  const handleSubmit = useCallback(
+    async (message: PromptInputMessage) => {
+      const hasText = Boolean(message.text);
+      const hasAttachments = Boolean(message.files?.length);
+      if (!(hasText || hasAttachments)) {
+        return;
       }
-    );
-    setInput("");
-  };
+      sendMessage(
+        {
+          text: message.text || "Sent with attachments",
+          files: message.files
+        },
+        {
+          body: {
+            model: model
+          }
+        }
+      );
+      setInput("");
+    },
+    [sendMessage, model]
+  );
 
   return (
     <div className="h-full">
@@ -129,7 +132,7 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
                             >
                               <MessageResponse className={`text-white!`}>{part.text}</MessageResponse>
                             </MessageContent>
-                            {message.role === "assistant" && i === messages.length - 1 && (
+                            {message.role === "assistant" && message.id === messages[messages.length - 1]?.id && (
                               <MessageActions className="">
                                 <MessageAction
                                   className="hover:bg-base-hover cursor-pointer"

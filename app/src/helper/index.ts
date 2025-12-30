@@ -13,3 +13,12 @@ export const constructChatMessages = (oldMessages: OldMessagesType) => {
 
   return contructOldMsg;
 };
+
+export const getInitialCharacter = (name: string) => {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+};

@@ -7,12 +7,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
 
 const page = () => {
   const [submitLoader, setSubmitLoader] = useState(false);
+  const router = useRouter();
+
   const form = useForm<SignUpSchemaType>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -39,7 +41,7 @@ const page = () => {
         onSuccess: () => {
           //redirect to the dashboard or sign in page
           setSubmitLoader(false);
-          redirect("/onboard-organization");
+          router.push("/onboard-organization");
         },
         onError: (ctx) => {
           // display the error message

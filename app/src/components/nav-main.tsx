@@ -24,7 +24,20 @@ export function NavMain() {
     return (
       <SidebarGroup>
         <SidebarGroupLabel className="text-sm text-base-text-light">Your chats</SidebarGroupLabel>
-        <div className="text-sm text-base-text-light px-2.5 py-1.5">Loading...</div>
+        <div className="space-y-2 px-2.5">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="h-8 bg-base-dark-secondary animate-pulse rounded-lg" />
+          ))}
+        </div>
+      </SidebarGroup>
+    );
+  }
+
+  if (conversationData.error) {
+    return (
+      <SidebarGroup>
+        <SidebarGroupLabel className="text-sm text-base-text-light">Your chats</SidebarGroupLabel>
+        <div className="text-sm text-red-400 px-2.5 py-1.5">Failed to load chats</div>
       </SidebarGroup>
     );
   }

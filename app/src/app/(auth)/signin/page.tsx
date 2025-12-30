@@ -7,16 +7,15 @@ import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
 import { signInSchema, SignInSchemaType } from "@/lib/schemas/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
+import { toast } from "sonner";
 
-const page = () => {
+const SignInPage = () => {
   const [submitLoader, setSubmitLoader] = useState(false);
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirect") || "/dashboard";
 
   const form = useForm<SignInSchemaType>({
     resolver: zodResolver(signInSchema),
@@ -33,7 +32,7 @@ const page = () => {
       {
         email, // user email address
         password, // user password -> min 8 characters by default
-        callbackURL: redirectTo // Redirect to the original page or dashboard
+        callbackURL: "/dashboard" // Redirect to the original page or dashboard
       },
       {
         onRequest: () => {
@@ -43,12 +42,12 @@ const page = () => {
           //redirect to the intended page or dashboard
           setSubmitLoader(false);
           // Use window.location.href for a full page reload to ensure session is properly loaded
-          router.push(redirectTo);
+          router.push("/dashboard");
         },
         onError: (ctx) => {
           // display the error message
           setSubmitLoader(false);
-          alert(ctx.error.message);
+          toast.error(ctx.error.message);
         }
       }
     );
@@ -125,4 +124,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default SignInPage;

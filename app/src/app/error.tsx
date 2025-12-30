@@ -3,8 +3,10 @@
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useRouter } from "next/router";
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+  const router = useRouter();
   useEffect(() => {
     // Log the error to an error reporting service
     console.error("Global error:", error);
@@ -59,7 +61,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
             <Button onClick={reset} variant="default">
               Try Again
             </Button>
-            <Button onClick={() => (window.location.href = "/")} variant="outline">
+            <Button onClick={() => router.push("/")} variant="outline">
               Go Home
             </Button>
           </div>

@@ -8,7 +8,8 @@ import { useParams } from "next/navigation";
 import { useSubscription } from "urql";
 
 export function NavMain() {
-  const { session, user } = useSession();
+  const { session, user, isPending } = useSession();
+
   const params = useParams();
 
   const chatId = params.id as string;
@@ -16,8 +17,17 @@ export function NavMain() {
   const [conversationData] = useSubscription<GetConversationsByUserSubscriptionSubscription>({
     query: GetConversationsByUserSubscription,
     variables: { userId: user?.id as string, organizationId: session?.activeOrganizationId as string },
-    pause: user?.id === undefined || session?.activeOrganizationId === undefined
+    pause: isPending || user?.id === undefined || session?.activeOrganizationId === undefined
   });
+
+  if (isPending) {
+    return (
+      <SidebarGroup>
+        <SidebarGroupLabel className="text-sm text-base-text-light">Your chats</SidebarGroupLabel>
+        <div className="text-sm text-base-text-light px-2.5 py-1.5">Loading...</div>
+      </SidebarGroup>
+    );
+  }
 
   return (
     <SidebarGroup>

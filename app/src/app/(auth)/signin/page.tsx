@@ -7,12 +7,13 @@ import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
 import { signInSchema, SignInSchemaType } from "@/lib/schemas/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { redirect, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const page = () => {
   const [submitLoader, setSubmitLoader] = useState(false);
+  const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect") || "/dashboard";
 
@@ -37,10 +38,11 @@ const page = () => {
         onRequest: () => {
           //show loading
         },
-        onSuccess: () => {
+        onSuccess: async () => {
           //redirect to the intended page or dashboard
           setSubmitLoader(false);
-          redirect(redirectTo);
+          // Use window.location.href for a full page reload to ensure session is properly loaded
+          router.push(redirectTo);
         },
         onError: (ctx) => {
           // display the error message

@@ -8,7 +8,14 @@ export function buildChatTitlePrompt(messages: string) {
     },
     {
       role: "user",
-      content: `User message: ${messages}`
+      content: `
+      Below is the user message which will ask to assistant, and assistant will give answer, you just need to create a title which consicely describe the convesation
+
+      Example:
+      User message: i hope you are fine with it?
+      title => Seeking confirmation
+
+      User message: ${messages}`
     }
   ] as ModelMessage[];
 }

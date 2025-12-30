@@ -1,8 +1,9 @@
+"use client";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Separator } from "@/components/ui/separator";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
-export default async function ChatLayout({ children }: { children: React.ReactNode }) {
+export default function ChatLayout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <AppSidebar />

@@ -1,8 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function GlobalError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+  const router = useRouter();
+
   useEffect(() => {
     // Log the error to an error reporting service
     console.error("Global error (root layout):", error);
@@ -113,7 +116,7 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
                 Try Again
               </button>
               <button
-                onClick={() => (window.location.href = "/")}
+                onClick={() => router.push("/")}
                 style={{
                   padding: "0.5rem 1rem",
                   backgroundColor: "white",

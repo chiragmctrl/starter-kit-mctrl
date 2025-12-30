@@ -1,3 +1,4 @@
+"use client";
 import { env } from "@/env.mjs";
 import { createAuthClient } from "better-auth/react";
 import { organizationClient } from "better-auth/client/plugins";

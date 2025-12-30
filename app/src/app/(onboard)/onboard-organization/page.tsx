@@ -50,9 +50,11 @@ const CreateOrganizationPage = () => {
           onRequest: () => {
             // Show loading
           },
-          onSuccess: () => {
+          onSuccess: async () => {
             setSubmitLoader(false);
-            // Redirect to dashboard or organization page
+            // Force refresh session data before navigation
+            await authClient.$fetch("/session");
+            // Use window.location.href for a full page reload to ensure session is properly updated
             router.push("/dashboard");
           },
           onError: (ctx) => {

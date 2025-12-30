@@ -4,6 +4,7 @@ import "./globals.css";
 import { TRPCReactProvider } from "@/trpc/react";
 import UrqlProvider from "urql/Provider";
 import { ErrorBoundary } from "@/components/error-boundary";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

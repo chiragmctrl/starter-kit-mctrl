@@ -143,6 +143,11 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
             </ConversationContent>
             <ConversationScrollButton className="bg-base-bg-black border-gray-50/15 border text-white cursor-pointer" />
           </Conversation>
+          {messages.length === 0 && (
+            <div className="h-full text-2xl font-bold text-white flex items-center justify-center">
+              <div>What’s on your mind today?</div>
+            </div>
+          )}
           <PromptInput onSubmit={handleSubmit} className="mt-4 bg-base-dark-secondary rounded-2xl" globalDrop multiple>
             <PromptInputHeader className="py-0! pt-1!">
               <PromptInputAttachments className="">{(attachment) => <PromptInputAttachment className="" data={attachment} />}</PromptInputAttachments>

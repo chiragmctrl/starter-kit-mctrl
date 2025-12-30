@@ -9,7 +9,7 @@ const useSession = () => {
     isPending: session.isPending,
     error: session.error,
     user: session.data?.user,
-    session: session.data?.session,
+    session: session.data?.session
   };
 };
 

@@ -7,10 +7,12 @@ import type { ComponentProps } from "react";
 import { useCallback } from "react";
 import { StickToBottom, useStickToBottomContext } from "use-stick-to-bottom";
 
-export type ConversationProps = ComponentProps<typeof StickToBottom>;
+export type ConversationProps = ComponentProps<typeof StickToBottom> & {
+  scrollBehavior?: "instant" | "smooth";
+};
 
-export const Conversation = ({ className, ...props }: ConversationProps) => (
-  <StickToBottom className={cn("relative flex-1 overflow-y-hidden", className)} initial="smooth" resize="smooth" role="log" {...props} />
+export const Conversation = ({ className, scrollBehavior = "instant", ...props }: ConversationProps) => (
+  <StickToBottom className={cn("relative flex-1 overflow-y-hidden", className)} initial="instant" resize={scrollBehavior} role="log" {...props} />
 );
 
 export type ConversationContentProps = ComponentProps<typeof StickToBottom.Content>;

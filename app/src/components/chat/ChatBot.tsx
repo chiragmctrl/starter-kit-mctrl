@@ -22,7 +22,7 @@ import {
   PromptInputFooter,
   PromptInputTools
 } from "@/components/ai-elements/prompt-input";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useChat } from "@ai-sdk/react";
 import { CopyIcon, PlusIcon } from "lucide-react";
 import { Source, Sources, SourcesContent, SourcesTrigger } from "@/components/ai-elements/sources";
@@ -40,7 +40,9 @@ interface IChatBot {
 const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
   const [input, setInput] = useState("");
   const [model, setModel] = useState<string>(MODEL_PROVIDERS[0]?.value as string);
+  const [scrollBehavior, setScrollBehavior] = useState<"instant" | "smooth">("instant");
   const params = useParams();
+  const isInitialMount = useRef(true);
 
   const { messages, sendMessage, status } = useChat({
     id: conversationId,
@@ -58,6 +60,24 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
       window.history.replaceState(null, "", `/mission-ctrl/chat/${conversationId}`);
     }
   }, [status]);
+
+  // After initial mount, enable smooth scrolling for new messages
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      // Switch to smooth after initial render
+      const timer = setTimeout(() => {
+        setScrollBehavior("smooth");
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  // Reset scroll behavior when conversation changes
+  useEffect(() => {
+    setScrollBehavior("instant");
+    isInitialMount.current = true;
+  }, [conversationId]);
 
   const handleSubmit = async (message: PromptInputMessage) => {
     const hasText = Boolean(message.text);
@@ -83,7 +103,7 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
     <div className="h-full">
       <div className="max-w-4xl mx-auto p-6 relative size-full  ">
         <div className="flex flex-col h-full dark-mode">
-          <Conversation className="h-full dark-scrollbar">
+          <Conversation key={conversationId} className="h-full dark-scrollbar" scrollBehavior={scrollBehavior}>
             <ConversationContent className="">
               {messages.map((message) => (
                 <div key={message.id} className="">

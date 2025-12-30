@@ -109,3 +109,25 @@
   background: #6b6b6b;
   border-radius: 8px;
 }
+
+.dark-mode [data-streamdown="code-block"] {
+  background-color: #171717 !important;
+  border: none !important;
+}
+
+.dark-mode [data-streamdown="code-block-body"] {
+  border-top: 1px solid rgba(128, 128, 128, 0.199) !important;
+}
+
+.dark-mode [data-streamdown="inline-code"] {
+  background-color: #374151; /* gray-700 */
+  color: #f9fafb;
+  border: 1px solid #1f2937;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.dark-mode [data-streamdown="code-block-download-button"]:hover,
+.dark-mode [data-streamdown="code-block-copy-button"]:hover {
+  color: white !important;
+}

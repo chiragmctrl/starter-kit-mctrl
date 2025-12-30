@@ -82,7 +82,7 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
   return (
     <div className="h-full">
       <div className="max-w-4xl mx-auto p-6 relative size-full  ">
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full dark-mode">
           <Conversation className="h-full dark-scrollbar">
             <ConversationContent className="">
               {messages.map((message) => (

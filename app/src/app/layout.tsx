@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import "./code-highlighting.css"; // Custom code syntax colors
 import { TRPCReactProvider } from "@/trpc/react";
 import UrqlProvider from "urql/Provider";
 import { ErrorBoundary } from "@/components/error-boundary";

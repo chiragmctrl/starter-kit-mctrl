@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 
 const page = () => {
   const [submitLoader, setSubmitLoader] = useState(false);
@@ -54,13 +55,13 @@ const page = () => {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center">
+    <div className="min-h-screen w-full flex items-center justify-center bg-base-bg">
       <Form {...form}>
         <form suppressHydrationWarning onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <Card className="w-full max-w-sm">
+          <Card className="w-full max-w-sm bg-base-dark-secondary border-gray-50/10">
             <CardHeader>
-              <CardTitle>Login to your account</CardTitle>
-              <CardDescription>Enter your email below to login to your account</CardDescription>
+              <CardTitle className="text-white text-2xl">Login to your account</CardTitle>
+              <CardDescription className="text-base-text-light">Enter your email below to login to your account</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col gap-6">
@@ -70,11 +71,16 @@ const page = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel className="text-base-text-color">Email</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="john" {...field} />
+                          <Input
+                            type="email"
+                            placeholder="john@example.com"
+                            className="bg-base-bg border-gray-50/15 text-white placeholder:text-base-text-light focus:border-base-text-active"
+                            {...field}
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-red-400" />
                       </FormItem>
                     )}
                   />
@@ -85,21 +91,32 @@ const page = () => {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Password</FormLabel>
+                        <FormLabel className="text-base-text-color">Password</FormLabel>
                         <FormControl>
-                          <Input type="password" placeholder="••••••••" {...field} />
+                          <Input
+                            type="password"
+                            placeholder="••••••••"
+                            className="bg-base-bg border-gray-50/15 text-white placeholder:text-base-text-light focus:border-base-text-active"
+                            {...field}
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-red-400" />
                       </FormItem>
                     )}
-                  />{" "}
+                  />
                 </div>
               </div>
             </CardContent>
             <CardFooter className="flex-col gap-2">
-              <Button type="submit" disabled={submitLoader} className="w-full">
-                Login
+              <Button type="submit" disabled={submitLoader} className="w-full cursor-pointer bg-white hover:bg-white/90 text-black font-medium">
+                {submitLoader ? "Logging in..." : "Login"}
               </Button>
+              <div className="text-center text-sm text-base-text-light mt-2">
+                Don't have an account?{" "}
+                <Link href="/signup" className="text-base-text-active hover:underline font-medium">
+                  Sign up
+                </Link>
+              </div>
             </CardFooter>
           </Card>
         </form>

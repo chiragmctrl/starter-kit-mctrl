@@ -9,6 +9,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 
 const page = () => {
   const [submitLoader, setSubmitLoader] = useState(false);
@@ -23,7 +24,6 @@ const page = () => {
 
   async function onSubmit(values: SignUpSchemaType) {
     const { email, password, name } = values;
-    console.log(values);
     setSubmitLoader(true);
     await authClient.signUp.email(
       {
@@ -51,11 +51,11 @@ const page = () => {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center">
-      <Card className="w-full max-w-sm">
+    <div className="min-h-screen w-full flex items-center justify-center bg-base-bg">
+      <Card className="w-full max-w-sm bg-base-dark-secondary border-gray-50/10">
         <CardHeader>
-          <CardTitle>Create your account</CardTitle>
-          <CardDescription>Enter your details below to create your account</CardDescription>
+          <CardTitle className="text-white text-2xl">Create your account</CardTitle>
+          <CardDescription className="text-base-text-light">Enter your details below to create your account</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -67,11 +67,16 @@ const page = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel className="text-base-text-color">Email</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="shadcn" {...field} />
+                          <Input
+                            type="email"
+                            placeholder="john@example.com"
+                            className="bg-base-bg border-gray-50/15 text-white placeholder:text-base-text-light focus:border-base-text-active"
+                            {...field}
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-red-400" />
                       </FormItem>
                     )}
                   />
@@ -82,11 +87,16 @@ const page = () => {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Name</FormLabel>
+                        <FormLabel className="text-base-text-color">Name</FormLabel>
                         <FormControl>
-                          <Input type="text" placeholder="john" {...field} />
+                          <Input
+                            type="text"
+                            placeholder="John Doe"
+                            className="bg-base-bg border-gray-50/15 text-white placeholder:text-base-text-light focus:border-base-text-active"
+                            {...field}
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-red-400" />
                       </FormItem>
                     )}
                   />
@@ -97,20 +107,24 @@ const page = () => {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Password</FormLabel>
+                        <FormLabel className="text-base-text-color">Password</FormLabel>
                         <FormControl>
-                          <Input type="password" placeholder="••••••••" {...field} />
+                          <Input
+                            type="password"
+                            placeholder="••••••••"
+                            className="bg-base-bg border-gray-50/15 text-white placeholder:text-base-text-light focus:border-base-text-active"
+                            {...field}
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-red-400" />
                       </FormItem>
                     )}
-                  />{" "}
+                  />
                 </div>
               </div>
               <div>
-                {" "}
-                <Button type="submit" disabled={submitLoader} className="w-full">
-                  Sign up
+                <Button type="submit" disabled={submitLoader} className="w-full bg-white hover:bg-white/90 text-black cursor-pointer font-medium">
+                  {submitLoader ? "Creating account..." : "Sign up"}
                 </Button>
               </div>
             </form>
@@ -118,9 +132,15 @@ const page = () => {
         </CardContent>
 
         <CardFooter className="flex-col gap-2">
-          <Button variant="outline" className="w-full">
+          <Button variant="outline" className="w-full bg-transparent border-gray-50/20 text-base-text-color hover:bg-base-hover hover:text-white">
             Login with Google
           </Button>
+          <div className="text-center text-sm text-base-text-light mt-2">
+            Already have an account?{" "}
+            <Link href="/signin" className="text-base-text-active hover:underline font-medium">
+              Sign in
+            </Link>
+          </div>
         </CardFooter>
       </Card>
     </div>

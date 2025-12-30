@@ -7,11 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
 import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const CreateOrganizationPage = () => {
-  const router = useRouter();
   const [submitLoader, setSubmitLoader] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -52,10 +50,8 @@ const CreateOrganizationPage = () => {
           },
           onSuccess: async () => {
             setSubmitLoader(false);
-            // Force refresh session data before navigation
-            await authClient.$fetch("/session");
-            // Use window.location.href for a full page reload to ensure session is properly updated
-            router.push("/dashboard");
+            // Use full page reload to ensure fresh session after organization creation
+            window.location.href = "/dashboard";
           },
           onError: (ctx) => {
             setSubmitLoader(false);
@@ -71,17 +67,17 @@ const CreateOrganizationPage = () => {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center">
-      <Card className="w-full max-w-sm">
+    <div className="min-h-screen w-full flex items-center justify-center bg-base-bg">
+      <Card className="w-full max-w-sm bg-base-dark-secondary border-gray-50/10">
         <CardHeader>
-          <CardTitle>Create Organization</CardTitle>
-          <CardDescription>Set up your new organization</CardDescription>
+          <CardTitle className="text-white text-2xl">Create Organization</CardTitle>
+          <CardDescription className="text-base-text-light">Set up your new organization</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form suppressHydrationWarning onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="flex flex-col gap-6">
-                {error && <div className="text-sm font-medium text-destructive bg-destructive/10 p-3 rounded-md">{error}</div>}
+                {error && <div className="text-sm font-medium text-red-300 bg-red-500/10 p-3 rounded-md border border-red-500/20">{error}</div>}
 
                 <div className="grid gap-2">
                   <FormField
@@ -89,12 +85,17 @@ const CreateOrganizationPage = () => {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Organization Name</FormLabel>
+                        <FormLabel className="text-base-text-color">Organization Name</FormLabel>
                         <FormControl>
-                          <Input type="text" placeholder="Acme Inc." {...field} />
+                          <Input
+                            type="text"
+                            placeholder="Acme Inc."
+                            className="bg-base-bg border-gray-50/15 text-white placeholder:text-base-text-light focus:border-base-text-active"
+                            {...field}
+                          />
                         </FormControl>
-                        <FormDescription>The display name for your organization</FormDescription>
-                        <FormMessage />
+                        <FormDescription className="text-base-text-light text-xs">The display name for your organization</FormDescription>
+                        <FormMessage className="text-red-400" />
                       </FormItem>
                     )}
                   />
@@ -106,11 +107,12 @@ const CreateOrganizationPage = () => {
                     name="slug"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Slug</FormLabel>
+                        <FormLabel className="text-base-text-color">Slug</FormLabel>
                         <FormControl>
                           <Input
                             type="text"
                             placeholder="acme-inc"
+                            className="bg-base-bg border-gray-50/15 text-white placeholder:text-base-text-light focus:border-base-text-active"
                             {...field}
                             onChange={(e) => {
                               // Auto-convert to lowercase and replace spaces with hyphens
@@ -119,15 +121,17 @@ const CreateOrganizationPage = () => {
                             }}
                           />
                         </FormControl>
-                        <FormDescription>A unique identifier for your organization (lowercase, hyphens allowed)</FormDescription>
-                        <FormMessage />
+                        <FormDescription className="text-base-text-light text-xs">
+                          A unique identifier for your organization (lowercase, hyphens allowed)
+                        </FormDescription>
+                        <FormMessage className="text-red-400" />
                       </FormItem>
                     )}
                   />
                 </div>
               </div>
 
-              <Button type="submit" disabled={submitLoader} className="w-full">
+              <Button type="submit" disabled={submitLoader} className="w-full bg-white cursor-pointer hover:bg-white/90 text-black font-medium">
                 {submitLoader ? "Creating..." : "Create Organization"}
               </Button>
             </form>

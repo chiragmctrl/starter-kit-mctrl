@@ -3,7 +3,9 @@ import { anthropic } from "@ai-sdk/anthropic";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { chatService } from "@/services/chat.service";
+import { organizationService } from "@/services/organization.service";
 import { constructChatMessages } from "@/helper";
+import { webSearchTool } from "@/server/ai/tools";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -14,13 +16,15 @@ export async function POST(req: Request) {
     model,
     organizationId: requestOrgId,
     id,
-    isNewChat
+    isNewChat,
+    useWebSearch
   }: {
     message: UIMessage;
     model: string;
     isNewChat: boolean;
     organizationId?: string;
     id: string;
+    useWebSearch: boolean;
   } = await req.json();
   try {
     const session = await auth.api.getSession({
@@ -58,6 +62,44 @@ export async function POST(req: Request) {
           headers: { "Content-Type": "application/json" }
         }
       );
+    }
+
+    // Validate organization membership
+    const membership = await organizationService.isMember(userId, organizationId);
+
+    if (!membership) {
+      return new Response(JSON.stringify({ error: "You are not a member of this organization" }), {
+        status: 403,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+
+    // For existing conversations, verify ownership before accessing
+    if (!isNewChat) {
+      const existingConversation = await chatService.getConversation(id);
+
+      if (!existingConversation) {
+        return new Response(JSON.stringify({ error: "Conversation not found" }), {
+          status: 404,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+
+      // Verify the conversation belongs to the authenticated user
+      if (existingConversation.user_id !== userId) {
+        return new Response(JSON.stringify({ error: "You don't have permission to access this conversation" }), {
+          status: 403,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+
+      // Verify the conversation belongs to the specified organization
+      if (existingConversation.organization_id !== organizationId) {
+        return new Response(JSON.stringify({ error: "Conversation does not belong to this organization" }), {
+          status: 403,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
     }
 
     const oldMessages = await chatService.getMessages(id);
@@ -117,6 +159,9 @@ export async function POST(req: Request) {
       model: anthropic(model),
       messages: modelMessages,
       system: "You are a helpful assistant that can answer questions and help with tasks",
+      tools: {
+        ...(useWebSearch ? { webSearchTool: webSearchTool } : {})
+      },
       onFinish: async ({ text, usage, reasoning, sources }) => {
         // Save assistant response to database after streaming completes
         try {

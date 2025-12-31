@@ -11,6 +11,15 @@ query getAllOrganizationsByUserId($userId: String!) {
   }
 }
 
+query getMemberByUserAndOrg($userId: String!, $organizationId: String!) {
+  auth_member(where: { userId: { _eq: $userId }, organizationId: { _eq: $organizationId } }) {
+    userId
+    organizationId
+    role
+    createdAt
+  }
+}
+
 query test {
   auth_user {
     name

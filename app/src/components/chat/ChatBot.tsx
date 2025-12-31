@@ -20,11 +20,12 @@ import {
   PromptInputSubmit,
   PromptInputTextarea,
   PromptInputFooter,
-  PromptInputTools
+  PromptInputTools,
+  PromptInputButton
 } from "@/components/ai-elements/prompt-input";
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback, Activity } from "react";
 import { useChat } from "@ai-sdk/react";
-import { CopyIcon, PlusIcon } from "lucide-react";
+import { CopyIcon, GlobeIcon, PlusIcon } from "lucide-react";
 import { Source, Sources, SourcesContent, SourcesTrigger } from "@/components/ai-elements/sources";
 import { Reasoning, ReasoningContent, ReasoningTrigger } from "@/components/ai-elements/reasoning";
 import { Loader } from "@/components/ai-elements/loader";
@@ -32,6 +33,7 @@ import { MODEL_PROVIDERS } from "@/constants";
 import { DefaultChatTransport, UIMessage } from "ai";
 import { useParams } from "next/navigation";
 import { toast } from "sonner";
+import { AutoScrollManager } from "./AutoScrollManager";
 
 interface IChatBot {
   conversationId: string;
@@ -42,6 +44,8 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
   const [input, setInput] = useState("");
   const [model, setModel] = useState<string>(MODEL_PROVIDERS[0]?.value as string);
   const [scrollBehavior, setScrollBehavior] = useState<"instant" | "smooth">("instant");
+  const [useWebSearch, setUseWebSearch] = useState<boolean>(false);
+
   const params = useParams();
   const isInitialMount = useRef(true);
 
@@ -98,7 +102,8 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
         },
         {
           body: {
-            model: model
+            model: model,
+            useWebSearch
           }
         }
       );
@@ -116,28 +121,29 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
               {messages.map((message) => (
                 <div key={message.id} className="">
                   {message.role === "assistant" && message.parts.filter((part) => part.type === "source-url").length > 0 && (
-                    <Sources className="">
+                    <Sources className="text-white! border rounded-lg p-3 border-white/10">
                       <SourcesTrigger count={message.parts.filter((part) => part.type === "source-url").length} />
                       {message.parts
                         .filter((part) => part.type === "source-url")
                         .map((part, i) => (
                           <SourcesContent key={`${message.id}-${i}`}>
-                            <Source key={`${message.id}-${i}`} href={part.url} title={part.url} />
+                            <Source className="text-base-link! flex gap-2" key={`${message.id}-${i}`} href={part.url} title={part.url} />
                           </SourcesContent>
                         ))}
                     </Sources>
                   )}
                   {message.parts.map((part, i) => {
+                    const isLast = message.parts.length - 1 === i;
                     switch (part.type) {
                       case "text":
                         return (
                           <Message key={`${message.id}-${i}`} from={message.role}>
                             <MessageContent
-                              className={` text-white! ${message.role === "user" ? "group-[.is-user]:rounded-full group-[.is-user]:font-medium group-[.is-user]:bg-base-msg-bg!" : ""}`}
+                              className={` text-white! ${message.role === "user" ? "group-[.is-user]:rounded-[18px] group-[.is-user]:font-medium group-[.is-user]:bg-base-msg-bg!" : ""}`}
                             >
                               <MessageResponse className={`text-white!`}>{part.text}</MessageResponse>
                             </MessageContent>
-                            {message.role === "assistant" && message.id === messages[messages.length - 1]?.id && (
+                            {message.role === "assistant" && isLast && (
                               <MessageActions className="">
                                 <MessageAction
                                   className="hover:bg-base-hover cursor-pointer"
@@ -167,15 +173,18 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
                   })}
                 </div>
               ))}
-              {status === "submitted" && <Loader />}
+              <Activity mode={status === "submitted" ? "visible" : "hidden"}>
+                <Loader />
+              </Activity>
             </ConversationContent>
+            <AutoScrollManager isStreaming={status === "streaming"} />
             <ConversationScrollButton className="bg-base-bg-black border-gray-50/15 border text-white cursor-pointer" />
           </Conversation>
-          {messages.length === 0 && (
+          <Activity mode={messages.length === 0 ? "visible" : "hidden"}>
             <div className="h-full text-2xl font-bold text-white flex items-center justify-center">
               <div>What’s on your mind today?</div>
             </div>
-          )}
+          </Activity>
           <PromptInput onSubmit={handleSubmit} className="mt-4 bg-base-dark-secondary rounded-2xl" globalDrop multiple>
             <PromptInputHeader className="py-0! pt-1!">
               <PromptInputAttachments className="">{(attachment) => <PromptInputAttachment className="" data={attachment} />}</PromptInputAttachments>
@@ -210,6 +219,13 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
                     ))}
                   </PromptInputSelectContent>
                 </PromptInputSelect>
+                <PromptInputButton
+                  className={`${useWebSearch ? "text-base-link bg-base-link/10 hover:bg-base-link/20 hover:text-base-link" : "text-base-text-color hover:bg-base-hover hover:text-base-text-color"} cursor-pointer `}
+                  onClick={() => setUseWebSearch(!useWebSearch)}
+                >
+                  <GlobeIcon size={16} />
+                  <span>Search</span>
+                </PromptInputButton>
               </PromptInputTools>
               <PromptInputSubmit className="p-5! cursor-pointer" disabled={!input && !status} status={status} />
             </PromptInputFooter>

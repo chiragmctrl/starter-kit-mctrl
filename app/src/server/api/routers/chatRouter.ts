@@ -1,10 +1,11 @@
 import { z } from "zod";
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
+import { createTRPCRouter, protectedConversationProcedure, protectedOrgUserProcedure, publicProcedure } from "../trpc";
 import { Test, TestQuery, TestQueryVariables } from "@/gql/graphql";
 import { chatService } from "@/services/chat.service";
 import { constructChatMessages } from "@/helper";
 import { UIMessage } from "ai";
 import { initCronUrqlClient } from "urql/client";
+import { getAllConversationsByUserAndOrgInputSchema, getConversationMessagesInputSchema } from "@/lib/schemas/trpcSchema";
 
 export const chatRouter = createTRPCRouter({
   hello: publicProcedure.input(z.object({ name: z.string().optional() })).query(async ({ input }) => {
@@ -15,14 +16,18 @@ export const chatRouter = createTRPCRouter({
       greeting: `Hello ${input?.name ?? "world."}`
     };
   }),
-  getConversationMessages: protectedProcedure.input(z.object({ conversationId: z.string() })).query(async ({ input }) => {
+  // CHANGING PARAMS WILL EFFECT THE MIDDLEWEAR
+  getConversationMessages: protectedConversationProcedure.input(getConversationMessagesInputSchema).query(async ({ input }) => {
     const { conversationId } = input;
+    // Conversation ownership is already validated by middleware
     const oldMessages = await chatService.getMessages(conversationId);
     const contructOldMsg: UIMessage[] = constructChatMessages(oldMessages);
     return contructOldMsg;
   }),
-  getAllConversationsByUserAndOrg: protectedProcedure.input(z.object({ userId: z.string(), orgId: z.string() })).query(async ({ input }) => {
+  // CHANGING PARAMS WILL EFFECT THE MIDDLEWEAR
+  getAllConversationsByUserAndOrg: protectedOrgUserProcedure.input(getAllConversationsByUserAndOrgInputSchema).query(async ({ input }) => {
     const { userId, orgId } = input;
+    // userId and organization membership are already validated by middleware
     const conversations = await chatService.getAllConversationsByUserAndOrg({ userId, orgId });
     return conversations;
   })

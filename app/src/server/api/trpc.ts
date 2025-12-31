@@ -9,8 +9,8 @@
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
-import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
+import { getAllConversationsByUserAndOrgInputType, getConversationMessagesInputType } from "@/lib/schemas/trpcSchema";
 
 // import { env } from "@/env.mjs";
 
@@ -27,10 +27,12 @@ import { auth } from "@/lib/auth";
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
-  //   const session = await getServerAuthSession();
-  const session = null;
+  const session = await auth.api.getSession({
+    headers: opts.headers
+  });
+
   return {
-    session,
+    session: session?.session && session?.user ? { session: session.session, user: session.user } : null,
     ...opts
   };
 };
@@ -93,10 +95,8 @@ export const publicProcedure = t.procedure;
  *
  * @see https://trpc.io/docs/procedures
  */
-export const protectedProcedure = t.procedure.use(async ({ next }) => {
-  const session = await auth.api.getSession({
-    headers: await headers() // you need to pass the headers object.
-  });
+export const protectedProcedure = t.procedure.use(async ({ next, ctx }) => {
+  const session = ctx.session;
 
   if (!session?.session || !session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
@@ -118,3 +118,128 @@ export const protectedProcedure = t.procedure.use(async ({ next }) => {
     }
   });
 });
+
+/**
+ * Middleware to validate userId in input matches authenticated user
+ *
+ * Ensures users can only access their own data by validating the userId
+ * parameter in the request input matches the authenticated user's ID
+ */
+const validateUserIdMiddleware = t.middleware(async ({ ctx, next, input }) => {
+  const session = ctx.session;
+
+  if (!session?.user) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+
+  const inputData = input as { userId?: string };
+
+  if (inputData?.userId && inputData.userId !== session.user.id) {
+    throw new TRPCError({
+      code: "FORBIDDEN",
+      message: "You can only access your own data"
+    });
+  }
+
+  return next({ ctx });
+});
+
+/**
+ * Protected procedure with userId validation
+ *
+ * Use this when your input contains a userId field that should match
+ * the authenticated user's ID. Prevents users from accessing other users' data.
+ */
+export const protectedUserProcedure = protectedProcedure.use(validateUserIdMiddleware);
+
+/**
+ * Middleware to validate organization membership
+ *
+ * Ensures the user is a member of the organization they're trying to access
+ */
+const validateOrgMembershipMiddleware = t.middleware(async ({ ctx, next, input }) => {
+  const session = ctx.session;
+
+  if (!session?.user) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+
+  const inputData = input as getAllConversationsByUserAndOrgInputType;
+
+  // First validate userId matches authenticated user
+  if (inputData?.userId && inputData.userId !== session.user.id) {
+    throw new TRPCError({
+      code: "FORBIDDEN",
+      message: "You can only access your own data"
+    });
+  }
+
+  // Then validate organization membership
+  if (inputData?.orgId) {
+    const { organizationService } = await import("@/services/organization.service");
+
+    const membership = await organizationService.isMember(session.user.id, inputData.orgId);
+
+    if (!membership) {
+      throw new TRPCError({
+        code: "FORBIDDEN",
+        message: "You are not a member of this organization"
+      });
+    }
+  }
+
+  return next({ ctx });
+});
+
+/**
+ * Protected procedure with userId and organization membership validation
+ *
+ * Use this when your input contains userId and orgId fields.
+ * Validates that userId matches authenticated user and that user is a member of the organization.
+ */
+export const protectedOrgUserProcedure = protectedProcedure.use(validateOrgMembershipMiddleware);
+
+/**
+ * Middleware to validate conversation ownership
+ *
+ * Ensures the conversation belongs to the authenticated user
+ */
+const validateConversationOwnershipMiddleware = t.middleware(async ({ ctx, next, input }) => {
+  const session = ctx.session;
+
+  if (!session?.user) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+
+  const inputData = input as getConversationMessagesInputType;
+
+  if (inputData?.conversationId) {
+    const { chatService } = await import("@/services/chat.service");
+
+    const conversation = await chatService.getConversation(inputData.conversationId);
+
+    if (!conversation) {
+      throw new TRPCError({
+        code: "NOT_FOUND",
+        message: "Conversation not found"
+      });
+    }
+
+    if (conversation.user_id !== session.user.id) {
+      throw new TRPCError({
+        code: "FORBIDDEN",
+        message: "You don't have permission to access this conversation"
+      });
+    }
+  }
+
+  return next({ ctx });
+});
+
+/**
+ * Protected procedure with conversation ownership validation
+ *
+ * Use this when your input contains conversationId.
+ * Validates that the conversation belongs to the authenticated user.
+ */
+export const protectedConversationProcedure = protectedProcedure.use(validateConversationOwnershipMiddleware);

@@ -1,106 +1,106 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
-  bigint: { input: any; output: any };
-  jsonb: { input: any; output: any };
-  timestamptz: { input: any; output: any };
-  uuid: { input: any; output: any };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  bigint: { input: any; output: any; }
+  jsonb: { input: any; output: any; }
+  timestamptz: { input: any; output: any; }
+  uuid: { input: any; output: any; }
 };
 
 /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
 export type Boolean_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _gt?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _gte?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _in?: InputMaybe<Array<Scalars["Boolean"]["input"]>>;
-  _is_null?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _lt?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _lte?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _neq?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _nin?: InputMaybe<Array<Scalars["Boolean"]["input"]>>;
+  _eq?: InputMaybe<Scalars['Boolean']['input']>;
+  _gt?: InputMaybe<Scalars['Boolean']['input']>;
+  _gte?: InputMaybe<Scalars['Boolean']['input']>;
+  _in?: InputMaybe<Array<Scalars['Boolean']['input']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
+  _lt?: InputMaybe<Scalars['Boolean']['input']>;
+  _lte?: InputMaybe<Scalars['Boolean']['input']>;
+  _neq?: InputMaybe<Scalars['Boolean']['input']>;
+  _nin?: InputMaybe<Array<Scalars['Boolean']['input']>>;
 };
 
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars["Int"]["input"]>;
-  _gt?: InputMaybe<Scalars["Int"]["input"]>;
-  _gte?: InputMaybe<Scalars["Int"]["input"]>;
-  _in?: InputMaybe<Array<Scalars["Int"]["input"]>>;
-  _is_null?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _lt?: InputMaybe<Scalars["Int"]["input"]>;
-  _lte?: InputMaybe<Scalars["Int"]["input"]>;
-  _neq?: InputMaybe<Scalars["Int"]["input"]>;
-  _nin?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  _eq?: InputMaybe<Scalars['Int']['input']>;
+  _gt?: InputMaybe<Scalars['Int']['input']>;
+  _gte?: InputMaybe<Scalars['Int']['input']>;
+  _in?: InputMaybe<Array<Scalars['Int']['input']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
+  _lt?: InputMaybe<Scalars['Int']['input']>;
+  _lte?: InputMaybe<Scalars['Int']['input']>;
+  _neq?: InputMaybe<Scalars['Int']['input']>;
+  _nin?: InputMaybe<Array<Scalars['Int']['input']>>;
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 export type String_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars["String"]["input"]>;
-  _gt?: InputMaybe<Scalars["String"]["input"]>;
-  _gte?: InputMaybe<Scalars["String"]["input"]>;
+  _eq?: InputMaybe<Scalars['String']['input']>;
+  _gt?: InputMaybe<Scalars['String']['input']>;
+  _gte?: InputMaybe<Scalars['String']['input']>;
   /** does the column match the given case-insensitive pattern */
-  _ilike?: InputMaybe<Scalars["String"]["input"]>;
-  _in?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  _ilike?: InputMaybe<Scalars['String']['input']>;
+  _in?: InputMaybe<Array<Scalars['String']['input']>>;
   /** does the column match the given POSIX regular expression, case insensitive */
-  _iregex?: InputMaybe<Scalars["String"]["input"]>;
-  _is_null?: InputMaybe<Scalars["Boolean"]["input"]>;
+  _iregex?: InputMaybe<Scalars['String']['input']>;
+  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
   /** does the column match the given pattern */
-  _like?: InputMaybe<Scalars["String"]["input"]>;
-  _lt?: InputMaybe<Scalars["String"]["input"]>;
-  _lte?: InputMaybe<Scalars["String"]["input"]>;
-  _neq?: InputMaybe<Scalars["String"]["input"]>;
+  _like?: InputMaybe<Scalars['String']['input']>;
+  _lt?: InputMaybe<Scalars['String']['input']>;
+  _lte?: InputMaybe<Scalars['String']['input']>;
+  _neq?: InputMaybe<Scalars['String']['input']>;
   /** does the column NOT match the given case-insensitive pattern */
-  _nilike?: InputMaybe<Scalars["String"]["input"]>;
-  _nin?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  _nilike?: InputMaybe<Scalars['String']['input']>;
+  _nin?: InputMaybe<Array<Scalars['String']['input']>>;
   /** does the column NOT match the given POSIX regular expression, case insensitive */
-  _niregex?: InputMaybe<Scalars["String"]["input"]>;
+  _niregex?: InputMaybe<Scalars['String']['input']>;
   /** does the column NOT match the given pattern */
-  _nlike?: InputMaybe<Scalars["String"]["input"]>;
+  _nlike?: InputMaybe<Scalars['String']['input']>;
   /** does the column NOT match the given POSIX regular expression, case sensitive */
-  _nregex?: InputMaybe<Scalars["String"]["input"]>;
+  _nregex?: InputMaybe<Scalars['String']['input']>;
   /** does the column NOT match the given SQL regular expression */
-  _nsimilar?: InputMaybe<Scalars["String"]["input"]>;
+  _nsimilar?: InputMaybe<Scalars['String']['input']>;
   /** does the column match the given POSIX regular expression, case sensitive */
-  _regex?: InputMaybe<Scalars["String"]["input"]>;
+  _regex?: InputMaybe<Scalars['String']['input']>;
   /** does the column match the given SQL regular expression */
-  _similar?: InputMaybe<Scalars["String"]["input"]>;
+  _similar?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** columns and relationships of "auth.account" */
 export type Auth_Account = {
-  __typename?: "auth_account";
-  accessToken?: Maybe<Scalars["String"]["output"]>;
-  accessTokenExpiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  accountId: Scalars["String"]["output"];
-  createdAt: Scalars["timestamptz"]["output"];
-  id: Scalars["String"]["output"];
-  idToken?: Maybe<Scalars["String"]["output"]>;
-  password?: Maybe<Scalars["String"]["output"]>;
-  providerId: Scalars["String"]["output"];
-  refreshToken?: Maybe<Scalars["String"]["output"]>;
-  refreshTokenExpiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  scope?: Maybe<Scalars["String"]["output"]>;
-  updatedAt: Scalars["timestamptz"]["output"];
+  __typename?: 'auth_account';
+  accessToken?: Maybe<Scalars['String']['output']>;
+  accessTokenExpiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  accountId: Scalars['String']['output'];
+  createdAt: Scalars['timestamptz']['output'];
+  id: Scalars['String']['output'];
+  idToken?: Maybe<Scalars['String']['output']>;
+  password?: Maybe<Scalars['String']['output']>;
+  providerId: Scalars['String']['output'];
+  refreshToken?: Maybe<Scalars['String']['output']>;
+  refreshTokenExpiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  scope?: Maybe<Scalars['String']['output']>;
+  updatedAt: Scalars['timestamptz']['output'];
   /** An object relationship */
   user: Auth_User;
-  userId: Scalars["String"]["output"];
+  userId: Scalars['String']['output'];
 };
 
 /** aggregated selection of "auth.account" */
 export type Auth_Account_Aggregate = {
-  __typename?: "auth_account_aggregate";
+  __typename?: 'auth_account_aggregate';
   aggregate?: Maybe<Auth_Account_Aggregate_Fields>;
   nodes: Array<Auth_Account>;
 };
@@ -111,23 +111,24 @@ export type Auth_Account_Aggregate_Bool_Exp = {
 
 export type Auth_Account_Aggregate_Bool_Exp_Count = {
   arguments?: InputMaybe<Array<Auth_Account_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
   filter?: InputMaybe<Auth_Account_Bool_Exp>;
   predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "auth.account" */
 export type Auth_Account_Aggregate_Fields = {
-  __typename?: "auth_account_aggregate_fields";
-  count: Scalars["Int"]["output"];
+  __typename?: 'auth_account_aggregate_fields';
+  count: Scalars['Int']['output'];
   max?: Maybe<Auth_Account_Max_Fields>;
   min?: Maybe<Auth_Account_Min_Fields>;
 };
 
+
 /** aggregate fields of "auth.account" */
 export type Auth_Account_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Auth_Account_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** order by aggregate values of table "auth.account" */
@@ -168,43 +169,43 @@ export type Auth_Account_Bool_Exp = {
 /** unique or primary key constraints on table "auth.account" */
 export enum Auth_Account_Constraint {
   /** unique or primary key constraint on columns "id" */
-  AccountPkey = "account_pkey"
+  AccountPkey = 'account_pkey'
 }
 
 /** input type for inserting data into table "auth.account" */
 export type Auth_Account_Insert_Input = {
-  accessToken?: InputMaybe<Scalars["String"]["input"]>;
-  accessTokenExpiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  accountId?: InputMaybe<Scalars["String"]["input"]>;
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  idToken?: InputMaybe<Scalars["String"]["input"]>;
-  password?: InputMaybe<Scalars["String"]["input"]>;
-  providerId?: InputMaybe<Scalars["String"]["input"]>;
-  refreshToken?: InputMaybe<Scalars["String"]["input"]>;
-  refreshTokenExpiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  scope?: InputMaybe<Scalars["String"]["input"]>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  accessToken?: InputMaybe<Scalars['String']['input']>;
+  accessTokenExpiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  accountId?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  idToken?: InputMaybe<Scalars['String']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
+  providerId?: InputMaybe<Scalars['String']['input']>;
+  refreshToken?: InputMaybe<Scalars['String']['input']>;
+  refreshTokenExpiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
   user?: InputMaybe<Auth_User_Obj_Rel_Insert_Input>;
-  userId?: InputMaybe<Scalars["String"]["input"]>;
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
 export type Auth_Account_Max_Fields = {
-  __typename?: "auth_account_max_fields";
-  accessToken?: Maybe<Scalars["String"]["output"]>;
-  accessTokenExpiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  accountId?: Maybe<Scalars["String"]["output"]>;
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  idToken?: Maybe<Scalars["String"]["output"]>;
-  password?: Maybe<Scalars["String"]["output"]>;
-  providerId?: Maybe<Scalars["String"]["output"]>;
-  refreshToken?: Maybe<Scalars["String"]["output"]>;
-  refreshTokenExpiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  scope?: Maybe<Scalars["String"]["output"]>;
-  updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  userId?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_account_max_fields';
+  accessToken?: Maybe<Scalars['String']['output']>;
+  accessTokenExpiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  accountId?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  idToken?: Maybe<Scalars['String']['output']>;
+  password?: Maybe<Scalars['String']['output']>;
+  providerId?: Maybe<Scalars['String']['output']>;
+  refreshToken?: Maybe<Scalars['String']['output']>;
+  refreshTokenExpiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  scope?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['timestamptz']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by max() on columns of table "auth.account" */
@@ -226,20 +227,20 @@ export type Auth_Account_Max_Order_By = {
 
 /** aggregate min on columns */
 export type Auth_Account_Min_Fields = {
-  __typename?: "auth_account_min_fields";
-  accessToken?: Maybe<Scalars["String"]["output"]>;
-  accessTokenExpiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  accountId?: Maybe<Scalars["String"]["output"]>;
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  idToken?: Maybe<Scalars["String"]["output"]>;
-  password?: Maybe<Scalars["String"]["output"]>;
-  providerId?: Maybe<Scalars["String"]["output"]>;
-  refreshToken?: Maybe<Scalars["String"]["output"]>;
-  refreshTokenExpiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  scope?: Maybe<Scalars["String"]["output"]>;
-  updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  userId?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_account_min_fields';
+  accessToken?: Maybe<Scalars['String']['output']>;
+  accessTokenExpiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  accountId?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  idToken?: Maybe<Scalars['String']['output']>;
+  password?: Maybe<Scalars['String']['output']>;
+  providerId?: Maybe<Scalars['String']['output']>;
+  refreshToken?: Maybe<Scalars['String']['output']>;
+  refreshTokenExpiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  scope?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['timestamptz']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by min() on columns of table "auth.account" */
@@ -261,9 +262,9 @@ export type Auth_Account_Min_Order_By = {
 
 /** response of any mutation on the table "auth.account" */
 export type Auth_Account_Mutation_Response = {
-  __typename?: "auth_account_mutation_response";
+  __typename?: 'auth_account_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Auth_Account>;
 };
@@ -295,54 +296,54 @@ export type Auth_Account_Order_By = {
 
 /** primary key columns input for table: auth.account */
 export type Auth_Account_Pk_Columns_Input = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
 /** select columns of table "auth.account" */
 export enum Auth_Account_Select_Column {
   /** column name */
-  AccessToken = "accessToken",
+  AccessToken = 'accessToken',
   /** column name */
-  AccessTokenExpiresAt = "accessTokenExpiresAt",
+  AccessTokenExpiresAt = 'accessTokenExpiresAt',
   /** column name */
-  AccountId = "accountId",
+  AccountId = 'accountId',
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  IdToken = "idToken",
+  IdToken = 'idToken',
   /** column name */
-  Password = "password",
+  Password = 'password',
   /** column name */
-  ProviderId = "providerId",
+  ProviderId = 'providerId',
   /** column name */
-  RefreshToken = "refreshToken",
+  RefreshToken = 'refreshToken',
   /** column name */
-  RefreshTokenExpiresAt = "refreshTokenExpiresAt",
+  RefreshTokenExpiresAt = 'refreshTokenExpiresAt',
   /** column name */
-  Scope = "scope",
+  Scope = 'scope',
   /** column name */
-  UpdatedAt = "updatedAt",
+  UpdatedAt = 'updatedAt',
   /** column name */
-  UserId = "userId"
+  UserId = 'userId'
 }
 
 /** input type for updating data in table "auth.account" */
 export type Auth_Account_Set_Input = {
-  accessToken?: InputMaybe<Scalars["String"]["input"]>;
-  accessTokenExpiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  accountId?: InputMaybe<Scalars["String"]["input"]>;
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  idToken?: InputMaybe<Scalars["String"]["input"]>;
-  password?: InputMaybe<Scalars["String"]["input"]>;
-  providerId?: InputMaybe<Scalars["String"]["input"]>;
-  refreshToken?: InputMaybe<Scalars["String"]["input"]>;
-  refreshTokenExpiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  scope?: InputMaybe<Scalars["String"]["input"]>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  userId?: InputMaybe<Scalars["String"]["input"]>;
+  accessToken?: InputMaybe<Scalars['String']['input']>;
+  accessTokenExpiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  accountId?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  idToken?: InputMaybe<Scalars['String']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
+  providerId?: InputMaybe<Scalars['String']['input']>;
+  refreshToken?: InputMaybe<Scalars['String']['input']>;
+  refreshTokenExpiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "auth_account" */
@@ -355,49 +356,49 @@ export type Auth_Account_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Auth_Account_Stream_Cursor_Value_Input = {
-  accessToken?: InputMaybe<Scalars["String"]["input"]>;
-  accessTokenExpiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  accountId?: InputMaybe<Scalars["String"]["input"]>;
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  idToken?: InputMaybe<Scalars["String"]["input"]>;
-  password?: InputMaybe<Scalars["String"]["input"]>;
-  providerId?: InputMaybe<Scalars["String"]["input"]>;
-  refreshToken?: InputMaybe<Scalars["String"]["input"]>;
-  refreshTokenExpiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  scope?: InputMaybe<Scalars["String"]["input"]>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  userId?: InputMaybe<Scalars["String"]["input"]>;
+  accessToken?: InputMaybe<Scalars['String']['input']>;
+  accessTokenExpiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  accountId?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  idToken?: InputMaybe<Scalars['String']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
+  providerId?: InputMaybe<Scalars['String']['input']>;
+  refreshToken?: InputMaybe<Scalars['String']['input']>;
+  refreshTokenExpiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  scope?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "auth.account" */
 export enum Auth_Account_Update_Column {
   /** column name */
-  AccessToken = "accessToken",
+  AccessToken = 'accessToken',
   /** column name */
-  AccessTokenExpiresAt = "accessTokenExpiresAt",
+  AccessTokenExpiresAt = 'accessTokenExpiresAt',
   /** column name */
-  AccountId = "accountId",
+  AccountId = 'accountId',
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  IdToken = "idToken",
+  IdToken = 'idToken',
   /** column name */
-  Password = "password",
+  Password = 'password',
   /** column name */
-  ProviderId = "providerId",
+  ProviderId = 'providerId',
   /** column name */
-  RefreshToken = "refreshToken",
+  RefreshToken = 'refreshToken',
   /** column name */
-  RefreshTokenExpiresAt = "refreshTokenExpiresAt",
+  RefreshTokenExpiresAt = 'refreshTokenExpiresAt',
   /** column name */
-  Scope = "scope",
+  Scope = 'scope',
   /** column name */
-  UpdatedAt = "updatedAt",
+  UpdatedAt = 'updatedAt',
   /** column name */
-  UserId = "userId"
+  UserId = 'userId'
 }
 
 export type Auth_Account_Updates = {
@@ -409,24 +410,24 @@ export type Auth_Account_Updates = {
 
 /** columns and relationships of "auth.invitation" */
 export type Auth_Invitation = {
-  __typename?: "auth_invitation";
-  createdAt: Scalars["timestamptz"]["output"];
-  email: Scalars["String"]["output"];
-  expiresAt: Scalars["timestamptz"]["output"];
-  id: Scalars["String"]["output"];
-  inviterId: Scalars["String"]["output"];
+  __typename?: 'auth_invitation';
+  createdAt: Scalars['timestamptz']['output'];
+  email: Scalars['String']['output'];
+  expiresAt: Scalars['timestamptz']['output'];
+  id: Scalars['String']['output'];
+  inviterId: Scalars['String']['output'];
   /** An object relationship */
   organization: Auth_Organization;
-  organizationId: Scalars["String"]["output"];
-  role?: Maybe<Scalars["String"]["output"]>;
-  status: Scalars["String"]["output"];
+  organizationId: Scalars['String']['output'];
+  role?: Maybe<Scalars['String']['output']>;
+  status: Scalars['String']['output'];
   /** An object relationship */
   user: Auth_User;
 };
 
 /** aggregated selection of "auth.invitation" */
 export type Auth_Invitation_Aggregate = {
-  __typename?: "auth_invitation_aggregate";
+  __typename?: 'auth_invitation_aggregate';
   aggregate?: Maybe<Auth_Invitation_Aggregate_Fields>;
   nodes: Array<Auth_Invitation>;
 };
@@ -437,23 +438,24 @@ export type Auth_Invitation_Aggregate_Bool_Exp = {
 
 export type Auth_Invitation_Aggregate_Bool_Exp_Count = {
   arguments?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
   filter?: InputMaybe<Auth_Invitation_Bool_Exp>;
   predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "auth.invitation" */
 export type Auth_Invitation_Aggregate_Fields = {
-  __typename?: "auth_invitation_aggregate_fields";
-  count: Scalars["Int"]["output"];
+  __typename?: 'auth_invitation_aggregate_fields';
+  count: Scalars['Int']['output'];
   max?: Maybe<Auth_Invitation_Max_Fields>;
   min?: Maybe<Auth_Invitation_Min_Fields>;
 };
 
+
 /** aggregate fields of "auth.invitation" */
 export type Auth_Invitation_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** order by aggregate values of table "auth.invitation" */
@@ -490,34 +492,34 @@ export type Auth_Invitation_Bool_Exp = {
 /** unique or primary key constraints on table "auth.invitation" */
 export enum Auth_Invitation_Constraint {
   /** unique or primary key constraint on columns "id" */
-  InvitationPkey = "invitation_pkey"
+  InvitationPkey = 'invitation_pkey'
 }
 
 /** input type for inserting data into table "auth.invitation" */
 export type Auth_Invitation_Insert_Input = {
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  email?: InputMaybe<Scalars["String"]["input"]>;
-  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  inviterId?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  expiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  inviterId?: InputMaybe<Scalars['String']['input']>;
   organization?: InputMaybe<Auth_Organization_Obj_Rel_Insert_Input>;
-  organizationId?: InputMaybe<Scalars["String"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
-  status?: InputMaybe<Scalars["String"]["input"]>;
+  organizationId?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  status?: InputMaybe<Scalars['String']['input']>;
   user?: InputMaybe<Auth_User_Obj_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
 export type Auth_Invitation_Max_Fields = {
-  __typename?: "auth_invitation_max_fields";
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  email?: Maybe<Scalars["String"]["output"]>;
-  expiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  inviterId?: Maybe<Scalars["String"]["output"]>;
-  organizationId?: Maybe<Scalars["String"]["output"]>;
-  role?: Maybe<Scalars["String"]["output"]>;
-  status?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_invitation_max_fields';
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  expiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  inviterId?: Maybe<Scalars['String']['output']>;
+  organizationId?: Maybe<Scalars['String']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
+  status?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by max() on columns of table "auth.invitation" */
@@ -534,15 +536,15 @@ export type Auth_Invitation_Max_Order_By = {
 
 /** aggregate min on columns */
 export type Auth_Invitation_Min_Fields = {
-  __typename?: "auth_invitation_min_fields";
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  email?: Maybe<Scalars["String"]["output"]>;
-  expiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  inviterId?: Maybe<Scalars["String"]["output"]>;
-  organizationId?: Maybe<Scalars["String"]["output"]>;
-  role?: Maybe<Scalars["String"]["output"]>;
-  status?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_invitation_min_fields';
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  expiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  inviterId?: Maybe<Scalars['String']['output']>;
+  organizationId?: Maybe<Scalars['String']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
+  status?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by min() on columns of table "auth.invitation" */
@@ -559,9 +561,9 @@ export type Auth_Invitation_Min_Order_By = {
 
 /** response of any mutation on the table "auth.invitation" */
 export type Auth_Invitation_Mutation_Response = {
-  __typename?: "auth_invitation_mutation_response";
+  __typename?: 'auth_invitation_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Auth_Invitation>;
 };
@@ -589,39 +591,39 @@ export type Auth_Invitation_Order_By = {
 
 /** primary key columns input for table: auth.invitation */
 export type Auth_Invitation_Pk_Columns_Input = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
 /** select columns of table "auth.invitation" */
 export enum Auth_Invitation_Select_Column {
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  Email = "email",
+  Email = 'email',
   /** column name */
-  ExpiresAt = "expiresAt",
+  ExpiresAt = 'expiresAt',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  InviterId = "inviterId",
+  InviterId = 'inviterId',
   /** column name */
-  OrganizationId = "organizationId",
+  OrganizationId = 'organizationId',
   /** column name */
-  Role = "role",
+  Role = 'role',
   /** column name */
-  Status = "status"
+  Status = 'status'
 }
 
 /** input type for updating data in table "auth.invitation" */
 export type Auth_Invitation_Set_Input = {
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  email?: InputMaybe<Scalars["String"]["input"]>;
-  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  inviterId?: InputMaybe<Scalars["String"]["input"]>;
-  organizationId?: InputMaybe<Scalars["String"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
-  status?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  expiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  inviterId?: InputMaybe<Scalars['String']['input']>;
+  organizationId?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  status?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "auth_invitation" */
@@ -634,34 +636,34 @@ export type Auth_Invitation_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Auth_Invitation_Stream_Cursor_Value_Input = {
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  email?: InputMaybe<Scalars["String"]["input"]>;
-  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  inviterId?: InputMaybe<Scalars["String"]["input"]>;
-  organizationId?: InputMaybe<Scalars["String"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
-  status?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  expiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  inviterId?: InputMaybe<Scalars['String']['input']>;
+  organizationId?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  status?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "auth.invitation" */
 export enum Auth_Invitation_Update_Column {
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  Email = "email",
+  Email = 'email',
   /** column name */
-  ExpiresAt = "expiresAt",
+  ExpiresAt = 'expiresAt',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  InviterId = "inviterId",
+  InviterId = 'inviterId',
   /** column name */
-  OrganizationId = "organizationId",
+  OrganizationId = 'organizationId',
   /** column name */
-  Role = "role",
+  Role = 'role',
   /** column name */
-  Status = "status"
+  Status = 'status'
 }
 
 export type Auth_Invitation_Updates = {
@@ -673,21 +675,21 @@ export type Auth_Invitation_Updates = {
 
 /** columns and relationships of "auth.member" */
 export type Auth_Member = {
-  __typename?: "auth_member";
-  createdAt: Scalars["timestamptz"]["output"];
-  id: Scalars["String"]["output"];
+  __typename?: 'auth_member';
+  createdAt: Scalars['timestamptz']['output'];
+  id: Scalars['String']['output'];
   /** An object relationship */
   organization: Auth_Organization;
-  organizationId: Scalars["String"]["output"];
-  role: Scalars["String"]["output"];
+  organizationId: Scalars['String']['output'];
+  role: Scalars['String']['output'];
   /** An object relationship */
   user: Auth_User;
-  userId: Scalars["String"]["output"];
+  userId: Scalars['String']['output'];
 };
 
 /** aggregated selection of "auth.member" */
 export type Auth_Member_Aggregate = {
-  __typename?: "auth_member_aggregate";
+  __typename?: 'auth_member_aggregate';
   aggregate?: Maybe<Auth_Member_Aggregate_Fields>;
   nodes: Array<Auth_Member>;
 };
@@ -698,23 +700,24 @@ export type Auth_Member_Aggregate_Bool_Exp = {
 
 export type Auth_Member_Aggregate_Bool_Exp_Count = {
   arguments?: InputMaybe<Array<Auth_Member_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
   filter?: InputMaybe<Auth_Member_Bool_Exp>;
   predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "auth.member" */
 export type Auth_Member_Aggregate_Fields = {
-  __typename?: "auth_member_aggregate_fields";
-  count: Scalars["Int"]["output"];
+  __typename?: 'auth_member_aggregate_fields';
+  count: Scalars['Int']['output'];
   max?: Maybe<Auth_Member_Max_Fields>;
   min?: Maybe<Auth_Member_Min_Fields>;
 };
 
+
 /** aggregate fields of "auth.member" */
 export type Auth_Member_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Auth_Member_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** order by aggregate values of table "auth.member" */
@@ -748,28 +751,28 @@ export type Auth_Member_Bool_Exp = {
 /** unique or primary key constraints on table "auth.member" */
 export enum Auth_Member_Constraint {
   /** unique or primary key constraint on columns "id" */
-  MemberPkey = "member_pkey"
+  MemberPkey = 'member_pkey'
 }
 
 /** input type for inserting data into table "auth.member" */
 export type Auth_Member_Insert_Input = {
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   organization?: InputMaybe<Auth_Organization_Obj_Rel_Insert_Input>;
-  organizationId?: InputMaybe<Scalars["String"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
+  organizationId?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
   user?: InputMaybe<Auth_User_Obj_Rel_Insert_Input>;
-  userId?: InputMaybe<Scalars["String"]["input"]>;
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
 export type Auth_Member_Max_Fields = {
-  __typename?: "auth_member_max_fields";
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  organizationId?: Maybe<Scalars["String"]["output"]>;
-  role?: Maybe<Scalars["String"]["output"]>;
-  userId?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_member_max_fields';
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  organizationId?: Maybe<Scalars['String']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by max() on columns of table "auth.member" */
@@ -783,12 +786,12 @@ export type Auth_Member_Max_Order_By = {
 
 /** aggregate min on columns */
 export type Auth_Member_Min_Fields = {
-  __typename?: "auth_member_min_fields";
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  organizationId?: Maybe<Scalars["String"]["output"]>;
-  role?: Maybe<Scalars["String"]["output"]>;
-  userId?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_member_min_fields';
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  organizationId?: Maybe<Scalars['String']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by min() on columns of table "auth.member" */
@@ -802,9 +805,9 @@ export type Auth_Member_Min_Order_By = {
 
 /** response of any mutation on the table "auth.member" */
 export type Auth_Member_Mutation_Response = {
-  __typename?: "auth_member_mutation_response";
+  __typename?: 'auth_member_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Auth_Member>;
 };
@@ -829,30 +832,30 @@ export type Auth_Member_Order_By = {
 
 /** primary key columns input for table: auth.member */
 export type Auth_Member_Pk_Columns_Input = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
 /** select columns of table "auth.member" */
 export enum Auth_Member_Select_Column {
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  OrganizationId = "organizationId",
+  OrganizationId = 'organizationId',
   /** column name */
-  Role = "role",
+  Role = 'role',
   /** column name */
-  UserId = "userId"
+  UserId = 'userId'
 }
 
 /** input type for updating data in table "auth.member" */
 export type Auth_Member_Set_Input = {
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  organizationId?: InputMaybe<Scalars["String"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
-  userId?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  organizationId?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "auth_member" */
@@ -865,25 +868,25 @@ export type Auth_Member_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Auth_Member_Stream_Cursor_Value_Input = {
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  organizationId?: InputMaybe<Scalars["String"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
-  userId?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  organizationId?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "auth.member" */
 export enum Auth_Member_Update_Column {
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  OrganizationId = "organizationId",
+  OrganizationId = 'organizationId',
   /** column name */
-  Role = "role",
+  Role = 'role',
   /** column name */
-  UserId = "userId"
+  UserId = 'userId'
 }
 
 export type Auth_Member_Updates = {
@@ -895,100 +898,107 @@ export type Auth_Member_Updates = {
 
 /** columns and relationships of "auth.organization" */
 export type Auth_Organization = {
-  __typename?: "auth_organization";
+  __typename?: 'auth_organization';
   /** An array relationship */
   chat_conversations: Array<Chat_Conversations>;
   /** An aggregate relationship */
   chat_conversations_aggregate: Chat_Conversations_Aggregate;
-  createdAt: Scalars["timestamptz"]["output"];
-  id: Scalars["String"]["output"];
+  createdAt: Scalars['timestamptz']['output'];
+  id: Scalars['String']['output'];
   /** An array relationship */
   invitations: Array<Auth_Invitation>;
   /** An aggregate relationship */
   invitations_aggregate: Auth_Invitation_Aggregate;
-  logo?: Maybe<Scalars["String"]["output"]>;
+  logo?: Maybe<Scalars['String']['output']>;
   /** An array relationship */
   members: Array<Auth_Member>;
   /** An aggregate relationship */
   members_aggregate: Auth_Member_Aggregate;
-  metadata?: Maybe<Scalars["String"]["output"]>;
-  name: Scalars["String"]["output"];
-  slug: Scalars["String"]["output"];
+  metadata?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  slug: Scalars['String']['output'];
 };
+
 
 /** columns and relationships of "auth.organization" */
 export type Auth_OrganizationChat_ConversationsArgs = {
   distinct_on?: InputMaybe<Array<Chat_Conversations_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Conversations_Order_By>>;
   where?: InputMaybe<Chat_Conversations_Bool_Exp>;
 };
+
 
 /** columns and relationships of "auth.organization" */
 export type Auth_OrganizationChat_Conversations_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Chat_Conversations_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Conversations_Order_By>>;
   where?: InputMaybe<Chat_Conversations_Bool_Exp>;
 };
 
+
 /** columns and relationships of "auth.organization" */
 export type Auth_OrganizationInvitationsArgs = {
   distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
   where?: InputMaybe<Auth_Invitation_Bool_Exp>;
 };
+
 
 /** columns and relationships of "auth.organization" */
 export type Auth_OrganizationInvitations_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
   where?: InputMaybe<Auth_Invitation_Bool_Exp>;
 };
 
+
 /** columns and relationships of "auth.organization" */
 export type Auth_OrganizationMembersArgs = {
   distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
   where?: InputMaybe<Auth_Member_Bool_Exp>;
 };
 
+
 /** columns and relationships of "auth.organization" */
 export type Auth_OrganizationMembers_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
   where?: InputMaybe<Auth_Member_Bool_Exp>;
 };
 
 /** aggregated selection of "auth.organization" */
 export type Auth_Organization_Aggregate = {
-  __typename?: "auth_organization_aggregate";
+  __typename?: 'auth_organization_aggregate';
   aggregate?: Maybe<Auth_Organization_Aggregate_Fields>;
   nodes: Array<Auth_Organization>;
 };
 
 /** aggregate fields of "auth.organization" */
 export type Auth_Organization_Aggregate_Fields = {
-  __typename?: "auth_organization_aggregate_fields";
-  count: Scalars["Int"]["output"];
+  __typename?: 'auth_organization_aggregate_fields';
+  count: Scalars['Int']['output'];
   max?: Maybe<Auth_Organization_Max_Fields>;
   min?: Maybe<Auth_Organization_Min_Fields>;
 };
 
+
 /** aggregate fields of "auth.organization" */
 export type Auth_Organization_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Auth_Organization_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** Boolean expression to filter rows from the table "auth.organization". All fields are combined with a logical 'AND'. */
@@ -1013,53 +1023,53 @@ export type Auth_Organization_Bool_Exp = {
 /** unique or primary key constraints on table "auth.organization" */
 export enum Auth_Organization_Constraint {
   /** unique or primary key constraint on columns "id" */
-  OrganizationPkey = "organization_pkey",
+  OrganizationPkey = 'organization_pkey',
   /** unique or primary key constraint on columns "slug" */
-  OrganizationSlugKey = "organization_slug_key",
+  OrganizationSlugKey = 'organization_slug_key',
   /** unique or primary key constraint on columns "slug" */
-  OrganizationSlugUidx = "organization_slug_uidx"
+  OrganizationSlugUidx = 'organization_slug_uidx'
 }
 
 /** input type for inserting data into table "auth.organization" */
 export type Auth_Organization_Insert_Input = {
   chat_conversations?: InputMaybe<Chat_Conversations_Arr_Rel_Insert_Input>;
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   invitations?: InputMaybe<Auth_Invitation_Arr_Rel_Insert_Input>;
-  logo?: InputMaybe<Scalars["String"]["input"]>;
+  logo?: InputMaybe<Scalars['String']['input']>;
   members?: InputMaybe<Auth_Member_Arr_Rel_Insert_Input>;
-  metadata?: InputMaybe<Scalars["String"]["input"]>;
-  name?: InputMaybe<Scalars["String"]["input"]>;
-  slug?: InputMaybe<Scalars["String"]["input"]>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
 export type Auth_Organization_Max_Fields = {
-  __typename?: "auth_organization_max_fields";
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  logo?: Maybe<Scalars["String"]["output"]>;
-  metadata?: Maybe<Scalars["String"]["output"]>;
-  name?: Maybe<Scalars["String"]["output"]>;
-  slug?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_organization_max_fields';
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+  metadata?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
 };
 
 /** aggregate min on columns */
 export type Auth_Organization_Min_Fields = {
-  __typename?: "auth_organization_min_fields";
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  logo?: Maybe<Scalars["String"]["output"]>;
-  metadata?: Maybe<Scalars["String"]["output"]>;
-  name?: Maybe<Scalars["String"]["output"]>;
-  slug?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_organization_min_fields';
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+  metadata?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
 };
 
 /** response of any mutation on the table "auth.organization" */
 export type Auth_Organization_Mutation_Response = {
-  __typename?: "auth_organization_mutation_response";
+  __typename?: 'auth_organization_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Auth_Organization>;
 };
@@ -1093,33 +1103,33 @@ export type Auth_Organization_Order_By = {
 
 /** primary key columns input for table: auth.organization */
 export type Auth_Organization_Pk_Columns_Input = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
 /** select columns of table "auth.organization" */
 export enum Auth_Organization_Select_Column {
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  Logo = "logo",
+  Logo = 'logo',
   /** column name */
-  Metadata = "metadata",
+  Metadata = 'metadata',
   /** column name */
-  Name = "name",
+  Name = 'name',
   /** column name */
-  Slug = "slug"
+  Slug = 'slug'
 }
 
 /** input type for updating data in table "auth.organization" */
 export type Auth_Organization_Set_Input = {
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  logo?: InputMaybe<Scalars["String"]["input"]>;
-  metadata?: InputMaybe<Scalars["String"]["input"]>;
-  name?: InputMaybe<Scalars["String"]["input"]>;
-  slug?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "auth_organization" */
@@ -1132,28 +1142,28 @@ export type Auth_Organization_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Auth_Organization_Stream_Cursor_Value_Input = {
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  logo?: InputMaybe<Scalars["String"]["input"]>;
-  metadata?: InputMaybe<Scalars["String"]["input"]>;
-  name?: InputMaybe<Scalars["String"]["input"]>;
-  slug?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "auth.organization" */
 export enum Auth_Organization_Update_Column {
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  Logo = "logo",
+  Logo = 'logo',
   /** column name */
-  Metadata = "metadata",
+  Metadata = 'metadata',
   /** column name */
-  Name = "name",
+  Name = 'name',
   /** column name */
-  Slug = "slug"
+  Slug = 'slug'
 }
 
 export type Auth_Organization_Updates = {
@@ -1165,25 +1175,25 @@ export type Auth_Organization_Updates = {
 
 /** columns and relationships of "auth.session" */
 export type Auth_Session = {
-  __typename?: "auth_session";
-  activeOrganizationId?: Maybe<Scalars["String"]["output"]>;
-  createdAt: Scalars["timestamptz"]["output"];
-  expiresAt: Scalars["timestamptz"]["output"];
-  hasuraToken: Scalars["String"]["output"];
-  id: Scalars["String"]["output"];
-  impersonatedBy?: Maybe<Scalars["String"]["output"]>;
-  ipAddress?: Maybe<Scalars["String"]["output"]>;
-  token: Scalars["String"]["output"];
-  updatedAt: Scalars["timestamptz"]["output"];
+  __typename?: 'auth_session';
+  activeOrganizationId?: Maybe<Scalars['String']['output']>;
+  createdAt: Scalars['timestamptz']['output'];
+  expiresAt: Scalars['timestamptz']['output'];
+  hasuraToken: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  impersonatedBy?: Maybe<Scalars['String']['output']>;
+  ipAddress?: Maybe<Scalars['String']['output']>;
+  token: Scalars['String']['output'];
+  updatedAt: Scalars['timestamptz']['output'];
   /** An object relationship */
   user: Auth_User;
-  userAgent?: Maybe<Scalars["String"]["output"]>;
-  userId: Scalars["String"]["output"];
+  userAgent?: Maybe<Scalars['String']['output']>;
+  userId: Scalars['String']['output'];
 };
 
 /** aggregated selection of "auth.session" */
 export type Auth_Session_Aggregate = {
-  __typename?: "auth_session_aggregate";
+  __typename?: 'auth_session_aggregate';
   aggregate?: Maybe<Auth_Session_Aggregate_Fields>;
   nodes: Array<Auth_Session>;
 };
@@ -1194,23 +1204,24 @@ export type Auth_Session_Aggregate_Bool_Exp = {
 
 export type Auth_Session_Aggregate_Bool_Exp_Count = {
   arguments?: InputMaybe<Array<Auth_Session_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
   filter?: InputMaybe<Auth_Session_Bool_Exp>;
   predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "auth.session" */
 export type Auth_Session_Aggregate_Fields = {
-  __typename?: "auth_session_aggregate_fields";
-  count: Scalars["Int"]["output"];
+  __typename?: 'auth_session_aggregate_fields';
+  count: Scalars['Int']['output'];
   max?: Maybe<Auth_Session_Max_Fields>;
   min?: Maybe<Auth_Session_Min_Fields>;
 };
 
+
 /** aggregate fields of "auth.session" */
 export type Auth_Session_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Auth_Session_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** order by aggregate values of table "auth.session" */
@@ -1249,41 +1260,41 @@ export type Auth_Session_Bool_Exp = {
 /** unique or primary key constraints on table "auth.session" */
 export enum Auth_Session_Constraint {
   /** unique or primary key constraint on columns "id" */
-  SessionPkey = "session_pkey",
+  SessionPkey = 'session_pkey',
   /** unique or primary key constraint on columns "token" */
-  SessionTokenKey = "session_token_key"
+  SessionTokenKey = 'session_token_key'
 }
 
 /** input type for inserting data into table "auth.session" */
 export type Auth_Session_Insert_Input = {
-  activeOrganizationId?: InputMaybe<Scalars["String"]["input"]>;
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  hasuraToken?: InputMaybe<Scalars["String"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  impersonatedBy?: InputMaybe<Scalars["String"]["input"]>;
-  ipAddress?: InputMaybe<Scalars["String"]["input"]>;
-  token?: InputMaybe<Scalars["String"]["input"]>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  activeOrganizationId?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  expiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  hasuraToken?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  impersonatedBy?: InputMaybe<Scalars['String']['input']>;
+  ipAddress?: InputMaybe<Scalars['String']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
   user?: InputMaybe<Auth_User_Obj_Rel_Insert_Input>;
-  userAgent?: InputMaybe<Scalars["String"]["input"]>;
-  userId?: InputMaybe<Scalars["String"]["input"]>;
+  userAgent?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
 export type Auth_Session_Max_Fields = {
-  __typename?: "auth_session_max_fields";
-  activeOrganizationId?: Maybe<Scalars["String"]["output"]>;
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  expiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  hasuraToken?: Maybe<Scalars["String"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  impersonatedBy?: Maybe<Scalars["String"]["output"]>;
-  ipAddress?: Maybe<Scalars["String"]["output"]>;
-  token?: Maybe<Scalars["String"]["output"]>;
-  updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  userAgent?: Maybe<Scalars["String"]["output"]>;
-  userId?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_session_max_fields';
+  activeOrganizationId?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  expiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  hasuraToken?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  impersonatedBy?: Maybe<Scalars['String']['output']>;
+  ipAddress?: Maybe<Scalars['String']['output']>;
+  token?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['timestamptz']['output']>;
+  userAgent?: Maybe<Scalars['String']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by max() on columns of table "auth.session" */
@@ -1303,18 +1314,18 @@ export type Auth_Session_Max_Order_By = {
 
 /** aggregate min on columns */
 export type Auth_Session_Min_Fields = {
-  __typename?: "auth_session_min_fields";
-  activeOrganizationId?: Maybe<Scalars["String"]["output"]>;
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  expiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  hasuraToken?: Maybe<Scalars["String"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  impersonatedBy?: Maybe<Scalars["String"]["output"]>;
-  ipAddress?: Maybe<Scalars["String"]["output"]>;
-  token?: Maybe<Scalars["String"]["output"]>;
-  updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  userAgent?: Maybe<Scalars["String"]["output"]>;
-  userId?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_session_min_fields';
+  activeOrganizationId?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  expiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  hasuraToken?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  impersonatedBy?: Maybe<Scalars['String']['output']>;
+  ipAddress?: Maybe<Scalars['String']['output']>;
+  token?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['timestamptz']['output']>;
+  userAgent?: Maybe<Scalars['String']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by min() on columns of table "auth.session" */
@@ -1334,9 +1345,9 @@ export type Auth_Session_Min_Order_By = {
 
 /** response of any mutation on the table "auth.session" */
 export type Auth_Session_Mutation_Response = {
-  __typename?: "auth_session_mutation_response";
+  __typename?: 'auth_session_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Auth_Session>;
 };
@@ -1366,48 +1377,48 @@ export type Auth_Session_Order_By = {
 
 /** primary key columns input for table: auth.session */
 export type Auth_Session_Pk_Columns_Input = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
 /** select columns of table "auth.session" */
 export enum Auth_Session_Select_Column {
   /** column name */
-  ActiveOrganizationId = "activeOrganizationId",
+  ActiveOrganizationId = 'activeOrganizationId',
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  ExpiresAt = "expiresAt",
+  ExpiresAt = 'expiresAt',
   /** column name */
-  HasuraToken = "hasuraToken",
+  HasuraToken = 'hasuraToken',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  ImpersonatedBy = "impersonatedBy",
+  ImpersonatedBy = 'impersonatedBy',
   /** column name */
-  IpAddress = "ipAddress",
+  IpAddress = 'ipAddress',
   /** column name */
-  Token = "token",
+  Token = 'token',
   /** column name */
-  UpdatedAt = "updatedAt",
+  UpdatedAt = 'updatedAt',
   /** column name */
-  UserAgent = "userAgent",
+  UserAgent = 'userAgent',
   /** column name */
-  UserId = "userId"
+  UserId = 'userId'
 }
 
 /** input type for updating data in table "auth.session" */
 export type Auth_Session_Set_Input = {
-  activeOrganizationId?: InputMaybe<Scalars["String"]["input"]>;
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  hasuraToken?: InputMaybe<Scalars["String"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  impersonatedBy?: InputMaybe<Scalars["String"]["input"]>;
-  ipAddress?: InputMaybe<Scalars["String"]["input"]>;
-  token?: InputMaybe<Scalars["String"]["input"]>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  userAgent?: InputMaybe<Scalars["String"]["input"]>;
-  userId?: InputMaybe<Scalars["String"]["input"]>;
+  activeOrganizationId?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  expiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  hasuraToken?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  impersonatedBy?: InputMaybe<Scalars['String']['input']>;
+  ipAddress?: InputMaybe<Scalars['String']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  userAgent?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "auth_session" */
@@ -1420,43 +1431,43 @@ export type Auth_Session_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Auth_Session_Stream_Cursor_Value_Input = {
-  activeOrganizationId?: InputMaybe<Scalars["String"]["input"]>;
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  hasuraToken?: InputMaybe<Scalars["String"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  impersonatedBy?: InputMaybe<Scalars["String"]["input"]>;
-  ipAddress?: InputMaybe<Scalars["String"]["input"]>;
-  token?: InputMaybe<Scalars["String"]["input"]>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  userAgent?: InputMaybe<Scalars["String"]["input"]>;
-  userId?: InputMaybe<Scalars["String"]["input"]>;
+  activeOrganizationId?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  expiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  hasuraToken?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  impersonatedBy?: InputMaybe<Scalars['String']['input']>;
+  ipAddress?: InputMaybe<Scalars['String']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  userAgent?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "auth.session" */
 export enum Auth_Session_Update_Column {
   /** column name */
-  ActiveOrganizationId = "activeOrganizationId",
+  ActiveOrganizationId = 'activeOrganizationId',
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  ExpiresAt = "expiresAt",
+  ExpiresAt = 'expiresAt',
   /** column name */
-  HasuraToken = "hasuraToken",
+  HasuraToken = 'hasuraToken',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  ImpersonatedBy = "impersonatedBy",
+  ImpersonatedBy = 'impersonatedBy',
   /** column name */
-  IpAddress = "ipAddress",
+  IpAddress = 'ipAddress',
   /** column name */
-  Token = "token",
+  Token = 'token',
   /** column name */
-  UpdatedAt = "updatedAt",
+  UpdatedAt = 'updatedAt',
   /** column name */
-  UserAgent = "userAgent",
+  UserAgent = 'userAgent',
   /** column name */
-  UserId = "userId"
+  UserId = 'userId'
 }
 
 export type Auth_Session_Updates = {
@@ -1468,23 +1479,23 @@ export type Auth_Session_Updates = {
 
 /** columns and relationships of "auth.user" */
 export type Auth_User = {
-  __typename?: "auth_user";
+  __typename?: 'auth_user';
   /** An array relationship */
   accounts: Array<Auth_Account>;
   /** An aggregate relationship */
   accounts_aggregate: Auth_Account_Aggregate;
-  banExpires?: Maybe<Scalars["timestamptz"]["output"]>;
-  banReason?: Maybe<Scalars["String"]["output"]>;
-  banned?: Maybe<Scalars["Boolean"]["output"]>;
+  banExpires?: Maybe<Scalars['timestamptz']['output']>;
+  banReason?: Maybe<Scalars['String']['output']>;
+  banned?: Maybe<Scalars['Boolean']['output']>;
   /** An array relationship */
   chat_conversations: Array<Chat_Conversations>;
   /** An aggregate relationship */
   chat_conversations_aggregate: Chat_Conversations_Aggregate;
-  createdAt: Scalars["timestamptz"]["output"];
-  email: Scalars["String"]["output"];
-  emailVerified: Scalars["Boolean"]["output"];
-  id: Scalars["String"]["output"];
-  image?: Maybe<Scalars["String"]["output"]>;
+  createdAt: Scalars['timestamptz']['output'];
+  email: Scalars['String']['output'];
+  emailVerified: Scalars['Boolean']['output'];
+  id: Scalars['String']['output'];
+  image?: Maybe<Scalars['String']['output']>;
   /** An array relationship */
   invitations: Array<Auth_Invitation>;
   /** An aggregate relationship */
@@ -1493,124 +1504,135 @@ export type Auth_User = {
   members: Array<Auth_Member>;
   /** An aggregate relationship */
   members_aggregate: Auth_Member_Aggregate;
-  name: Scalars["String"]["output"];
-  role?: Maybe<Scalars["String"]["output"]>;
+  name: Scalars['String']['output'];
+  role?: Maybe<Scalars['String']['output']>;
   /** An array relationship */
   sessions: Array<Auth_Session>;
   /** An aggregate relationship */
   sessions_aggregate: Auth_Session_Aggregate;
-  updatedAt: Scalars["timestamptz"]["output"];
+  updatedAt: Scalars['timestamptz']['output'];
 };
+
 
 /** columns and relationships of "auth.user" */
 export type Auth_UserAccountsArgs = {
   distinct_on?: InputMaybe<Array<Auth_Account_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Account_Order_By>>;
   where?: InputMaybe<Auth_Account_Bool_Exp>;
 };
+
 
 /** columns and relationships of "auth.user" */
 export type Auth_UserAccounts_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Account_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Account_Order_By>>;
   where?: InputMaybe<Auth_Account_Bool_Exp>;
 };
 
+
 /** columns and relationships of "auth.user" */
 export type Auth_UserChat_ConversationsArgs = {
   distinct_on?: InputMaybe<Array<Chat_Conversations_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Conversations_Order_By>>;
   where?: InputMaybe<Chat_Conversations_Bool_Exp>;
 };
+
 
 /** columns and relationships of "auth.user" */
 export type Auth_UserChat_Conversations_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Chat_Conversations_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Conversations_Order_By>>;
   where?: InputMaybe<Chat_Conversations_Bool_Exp>;
 };
 
+
 /** columns and relationships of "auth.user" */
 export type Auth_UserInvitationsArgs = {
   distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
   where?: InputMaybe<Auth_Invitation_Bool_Exp>;
 };
+
 
 /** columns and relationships of "auth.user" */
 export type Auth_UserInvitations_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
   where?: InputMaybe<Auth_Invitation_Bool_Exp>;
 };
 
+
 /** columns and relationships of "auth.user" */
 export type Auth_UserMembersArgs = {
   distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
   where?: InputMaybe<Auth_Member_Bool_Exp>;
 };
+
 
 /** columns and relationships of "auth.user" */
 export type Auth_UserMembers_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
   where?: InputMaybe<Auth_Member_Bool_Exp>;
 };
 
+
 /** columns and relationships of "auth.user" */
 export type Auth_UserSessionsArgs = {
   distinct_on?: InputMaybe<Array<Auth_Session_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Session_Order_By>>;
   where?: InputMaybe<Auth_Session_Bool_Exp>;
 };
 
+
 /** columns and relationships of "auth.user" */
 export type Auth_UserSessions_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Session_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Session_Order_By>>;
   where?: InputMaybe<Auth_Session_Bool_Exp>;
 };
 
 /** aggregated selection of "auth.user" */
 export type Auth_User_Aggregate = {
-  __typename?: "auth_user_aggregate";
+  __typename?: 'auth_user_aggregate';
   aggregate?: Maybe<Auth_User_Aggregate_Fields>;
   nodes: Array<Auth_User>;
 };
 
 /** aggregate fields of "auth.user" */
 export type Auth_User_Aggregate_Fields = {
-  __typename?: "auth_user_aggregate_fields";
-  count: Scalars["Int"]["output"];
+  __typename?: 'auth_user_aggregate_fields';
+  count: Scalars['Int']['output'];
   max?: Maybe<Auth_User_Max_Fields>;
   min?: Maybe<Auth_User_Min_Fields>;
 };
 
+
 /** aggregate fields of "auth.user" */
 export type Auth_User_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Auth_User_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** Boolean expression to filter rows from the table "auth.user". All fields are combined with a logical 'AND'. */
@@ -1644,64 +1666,64 @@ export type Auth_User_Bool_Exp = {
 /** unique or primary key constraints on table "auth.user" */
 export enum Auth_User_Constraint {
   /** unique or primary key constraint on columns "email" */
-  UserEmailKey = "user_email_key",
+  UserEmailKey = 'user_email_key',
   /** unique or primary key constraint on columns "id" */
-  UserPkey = "user_pkey"
+  UserPkey = 'user_pkey'
 }
 
 /** input type for inserting data into table "auth.user" */
 export type Auth_User_Insert_Input = {
   accounts?: InputMaybe<Auth_Account_Arr_Rel_Insert_Input>;
-  banExpires?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  banReason?: InputMaybe<Scalars["String"]["input"]>;
-  banned?: InputMaybe<Scalars["Boolean"]["input"]>;
+  banExpires?: InputMaybe<Scalars['timestamptz']['input']>;
+  banReason?: InputMaybe<Scalars['String']['input']>;
+  banned?: InputMaybe<Scalars['Boolean']['input']>;
   chat_conversations?: InputMaybe<Chat_Conversations_Arr_Rel_Insert_Input>;
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  email?: InputMaybe<Scalars["String"]["input"]>;
-  emailVerified?: InputMaybe<Scalars["Boolean"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  image?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  emailVerified?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
   invitations?: InputMaybe<Auth_Invitation_Arr_Rel_Insert_Input>;
   members?: InputMaybe<Auth_Member_Arr_Rel_Insert_Input>;
-  name?: InputMaybe<Scalars["String"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
   sessions?: InputMaybe<Auth_Session_Arr_Rel_Insert_Input>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
 };
 
 /** aggregate max on columns */
 export type Auth_User_Max_Fields = {
-  __typename?: "auth_user_max_fields";
-  banExpires?: Maybe<Scalars["timestamptz"]["output"]>;
-  banReason?: Maybe<Scalars["String"]["output"]>;
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  email?: Maybe<Scalars["String"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  image?: Maybe<Scalars["String"]["output"]>;
-  name?: Maybe<Scalars["String"]["output"]>;
-  role?: Maybe<Scalars["String"]["output"]>;
-  updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
+  __typename?: 'auth_user_max_fields';
+  banExpires?: Maybe<Scalars['timestamptz']['output']>;
+  banReason?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['timestamptz']['output']>;
 };
 
 /** aggregate min on columns */
 export type Auth_User_Min_Fields = {
-  __typename?: "auth_user_min_fields";
-  banExpires?: Maybe<Scalars["timestamptz"]["output"]>;
-  banReason?: Maybe<Scalars["String"]["output"]>;
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  email?: Maybe<Scalars["String"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  image?: Maybe<Scalars["String"]["output"]>;
-  name?: Maybe<Scalars["String"]["output"]>;
-  role?: Maybe<Scalars["String"]["output"]>;
-  updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
+  __typename?: 'auth_user_min_fields';
+  banExpires?: Maybe<Scalars['timestamptz']['output']>;
+  banReason?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['timestamptz']['output']>;
 };
 
 /** response of any mutation on the table "auth.user" */
 export type Auth_User_Mutation_Response = {
-  __typename?: "auth_user_mutation_response";
+  __typename?: 'auth_user_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Auth_User>;
 };
@@ -1742,48 +1764,48 @@ export type Auth_User_Order_By = {
 
 /** primary key columns input for table: auth.user */
 export type Auth_User_Pk_Columns_Input = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
 /** select columns of table "auth.user" */
 export enum Auth_User_Select_Column {
   /** column name */
-  BanExpires = "banExpires",
+  BanExpires = 'banExpires',
   /** column name */
-  BanReason = "banReason",
+  BanReason = 'banReason',
   /** column name */
-  Banned = "banned",
+  Banned = 'banned',
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  Email = "email",
+  Email = 'email',
   /** column name */
-  EmailVerified = "emailVerified",
+  EmailVerified = 'emailVerified',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  Image = "image",
+  Image = 'image',
   /** column name */
-  Name = "name",
+  Name = 'name',
   /** column name */
-  Role = "role",
+  Role = 'role',
   /** column name */
-  UpdatedAt = "updatedAt"
+  UpdatedAt = 'updatedAt'
 }
 
 /** input type for updating data in table "auth.user" */
 export type Auth_User_Set_Input = {
-  banExpires?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  banReason?: InputMaybe<Scalars["String"]["input"]>;
-  banned?: InputMaybe<Scalars["Boolean"]["input"]>;
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  email?: InputMaybe<Scalars["String"]["input"]>;
-  emailVerified?: InputMaybe<Scalars["Boolean"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  image?: InputMaybe<Scalars["String"]["input"]>;
-  name?: InputMaybe<Scalars["String"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  banExpires?: InputMaybe<Scalars['timestamptz']['input']>;
+  banReason?: InputMaybe<Scalars['String']['input']>;
+  banned?: InputMaybe<Scalars['Boolean']['input']>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  emailVerified?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
 };
 
 /** Streaming cursor of the table "auth_user" */
@@ -1796,43 +1818,43 @@ export type Auth_User_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Auth_User_Stream_Cursor_Value_Input = {
-  banExpires?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  banReason?: InputMaybe<Scalars["String"]["input"]>;
-  banned?: InputMaybe<Scalars["Boolean"]["input"]>;
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  email?: InputMaybe<Scalars["String"]["input"]>;
-  emailVerified?: InputMaybe<Scalars["Boolean"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  image?: InputMaybe<Scalars["String"]["input"]>;
-  name?: InputMaybe<Scalars["String"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  banExpires?: InputMaybe<Scalars['timestamptz']['input']>;
+  banReason?: InputMaybe<Scalars['String']['input']>;
+  banned?: InputMaybe<Scalars['Boolean']['input']>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  emailVerified?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
 };
 
 /** update columns of table "auth.user" */
 export enum Auth_User_Update_Column {
   /** column name */
-  BanExpires = "banExpires",
+  BanExpires = 'banExpires',
   /** column name */
-  BanReason = "banReason",
+  BanReason = 'banReason',
   /** column name */
-  Banned = "banned",
+  Banned = 'banned',
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  Email = "email",
+  Email = 'email',
   /** column name */
-  EmailVerified = "emailVerified",
+  EmailVerified = 'emailVerified',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  Image = "image",
+  Image = 'image',
   /** column name */
-  Name = "name",
+  Name = 'name',
   /** column name */
-  Role = "role",
+  Role = 'role',
   /** column name */
-  UpdatedAt = "updatedAt"
+  UpdatedAt = 'updatedAt'
 }
 
 export type Auth_User_Updates = {
@@ -1844,34 +1866,35 @@ export type Auth_User_Updates = {
 
 /** columns and relationships of "auth.verification" */
 export type Auth_Verification = {
-  __typename?: "auth_verification";
-  createdAt: Scalars["timestamptz"]["output"];
-  expiresAt: Scalars["timestamptz"]["output"];
-  id: Scalars["String"]["output"];
-  identifier: Scalars["String"]["output"];
-  updatedAt: Scalars["timestamptz"]["output"];
-  value: Scalars["String"]["output"];
+  __typename?: 'auth_verification';
+  createdAt: Scalars['timestamptz']['output'];
+  expiresAt: Scalars['timestamptz']['output'];
+  id: Scalars['String']['output'];
+  identifier: Scalars['String']['output'];
+  updatedAt: Scalars['timestamptz']['output'];
+  value: Scalars['String']['output'];
 };
 
 /** aggregated selection of "auth.verification" */
 export type Auth_Verification_Aggregate = {
-  __typename?: "auth_verification_aggregate";
+  __typename?: 'auth_verification_aggregate';
   aggregate?: Maybe<Auth_Verification_Aggregate_Fields>;
   nodes: Array<Auth_Verification>;
 };
 
 /** aggregate fields of "auth.verification" */
 export type Auth_Verification_Aggregate_Fields = {
-  __typename?: "auth_verification_aggregate_fields";
-  count: Scalars["Int"]["output"];
+  __typename?: 'auth_verification_aggregate_fields';
+  count: Scalars['Int']['output'];
   max?: Maybe<Auth_Verification_Max_Fields>;
   min?: Maybe<Auth_Verification_Min_Fields>;
 };
 
+
 /** aggregate fields of "auth.verification" */
 export type Auth_Verification_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Auth_Verification_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** Boolean expression to filter rows from the table "auth.verification". All fields are combined with a logical 'AND'. */
@@ -1890,46 +1913,46 @@ export type Auth_Verification_Bool_Exp = {
 /** unique or primary key constraints on table "auth.verification" */
 export enum Auth_Verification_Constraint {
   /** unique or primary key constraint on columns "id" */
-  VerificationPkey = "verification_pkey"
+  VerificationPkey = 'verification_pkey'
 }
 
 /** input type for inserting data into table "auth.verification" */
 export type Auth_Verification_Insert_Input = {
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  identifier?: InputMaybe<Scalars["String"]["input"]>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  value?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  expiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  identifier?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
 export type Auth_Verification_Max_Fields = {
-  __typename?: "auth_verification_max_fields";
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  expiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  identifier?: Maybe<Scalars["String"]["output"]>;
-  updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  value?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_verification_max_fields';
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  expiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  identifier?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['timestamptz']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
 };
 
 /** aggregate min on columns */
 export type Auth_Verification_Min_Fields = {
-  __typename?: "auth_verification_min_fields";
-  createdAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  expiresAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["String"]["output"]>;
-  identifier?: Maybe<Scalars["String"]["output"]>;
-  updatedAt?: Maybe<Scalars["timestamptz"]["output"]>;
-  value?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'auth_verification_min_fields';
+  createdAt?: Maybe<Scalars['timestamptz']['output']>;
+  expiresAt?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  identifier?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['timestamptz']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
 };
 
 /** response of any mutation on the table "auth.verification" */
 export type Auth_Verification_Mutation_Response = {
-  __typename?: "auth_verification_mutation_response";
+  __typename?: 'auth_verification_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Auth_Verification>;
 };
@@ -1953,33 +1976,33 @@ export type Auth_Verification_Order_By = {
 
 /** primary key columns input for table: auth.verification */
 export type Auth_Verification_Pk_Columns_Input = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
 /** select columns of table "auth.verification" */
 export enum Auth_Verification_Select_Column {
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  ExpiresAt = "expiresAt",
+  ExpiresAt = 'expiresAt',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  Identifier = "identifier",
+  Identifier = 'identifier',
   /** column name */
-  UpdatedAt = "updatedAt",
+  UpdatedAt = 'updatedAt',
   /** column name */
-  Value = "value"
+  Value = 'value'
 }
 
 /** input type for updating data in table "auth.verification" */
 export type Auth_Verification_Set_Input = {
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  identifier?: InputMaybe<Scalars["String"]["input"]>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  value?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  expiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  identifier?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "auth_verification" */
@@ -1992,28 +2015,28 @@ export type Auth_Verification_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Auth_Verification_Stream_Cursor_Value_Input = {
-  createdAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  expiresAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["String"]["input"]>;
-  identifier?: InputMaybe<Scalars["String"]["input"]>;
-  updatedAt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  value?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  expiresAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  identifier?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "auth.verification" */
 export enum Auth_Verification_Update_Column {
   /** column name */
-  CreatedAt = "createdAt",
+  CreatedAt = 'createdAt',
   /** column name */
-  ExpiresAt = "expiresAt",
+  ExpiresAt = 'expiresAt',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  Identifier = "identifier",
+  Identifier = 'identifier',
   /** column name */
-  UpdatedAt = "updatedAt",
+  UpdatedAt = 'updatedAt',
   /** column name */
-  Value = "value"
+  Value = 'value'
 }
 
 export type Auth_Verification_Updates = {
@@ -2025,59 +2048,61 @@ export type Auth_Verification_Updates = {
 
 /** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
 export type Bigint_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars["bigint"]["input"]>;
-  _gt?: InputMaybe<Scalars["bigint"]["input"]>;
-  _gte?: InputMaybe<Scalars["bigint"]["input"]>;
-  _in?: InputMaybe<Array<Scalars["bigint"]["input"]>>;
-  _is_null?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _lt?: InputMaybe<Scalars["bigint"]["input"]>;
-  _lte?: InputMaybe<Scalars["bigint"]["input"]>;
-  _neq?: InputMaybe<Scalars["bigint"]["input"]>;
-  _nin?: InputMaybe<Array<Scalars["bigint"]["input"]>>;
+  _eq?: InputMaybe<Scalars['bigint']['input']>;
+  _gt?: InputMaybe<Scalars['bigint']['input']>;
+  _gte?: InputMaybe<Scalars['bigint']['input']>;
+  _in?: InputMaybe<Array<Scalars['bigint']['input']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
+  _lt?: InputMaybe<Scalars['bigint']['input']>;
+  _lte?: InputMaybe<Scalars['bigint']['input']>;
+  _neq?: InputMaybe<Scalars['bigint']['input']>;
+  _nin?: InputMaybe<Array<Scalars['bigint']['input']>>;
 };
 
 /** columns and relationships of "chat_conversations" */
 export type Chat_Conversations = {
-  __typename?: "chat_conversations";
+  __typename?: 'chat_conversations';
   /** An array relationship */
   chat_messages: Array<Chat_Messages>;
   /** An aggregate relationship */
   chat_messages_aggregate: Chat_Messages_Aggregate;
-  created_at: Scalars["timestamptz"]["output"];
-  id: Scalars["uuid"]["output"];
-  is_archived: Scalars["Boolean"]["output"];
+  created_at: Scalars['timestamptz']['output'];
+  id: Scalars['uuid']['output'];
+  is_archived: Scalars['Boolean']['output'];
   /** An object relationship */
   organization: Auth_Organization;
-  organization_id: Scalars["String"]["output"];
-  title: Scalars["String"]["output"];
-  updated_at?: Maybe<Scalars["timestamptz"]["output"]>;
+  organization_id: Scalars['String']['output'];
+  title: Scalars['String']['output'];
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
   /** An object relationship */
   user: Auth_User;
-  user_id: Scalars["String"]["output"];
-  visibility: Scalars["String"]["output"];
+  user_id: Scalars['String']['output'];
+  visibility: Scalars['String']['output'];
 };
+
 
 /** columns and relationships of "chat_conversations" */
 export type Chat_ConversationsChat_MessagesArgs = {
   distinct_on?: InputMaybe<Array<Chat_Messages_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Messages_Order_By>>;
   where?: InputMaybe<Chat_Messages_Bool_Exp>;
 };
 
+
 /** columns and relationships of "chat_conversations" */
 export type Chat_ConversationsChat_Messages_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Chat_Messages_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Messages_Order_By>>;
   where?: InputMaybe<Chat_Messages_Bool_Exp>;
 };
 
 /** aggregated selection of "chat_conversations" */
 export type Chat_Conversations_Aggregate = {
-  __typename?: "chat_conversations_aggregate";
+  __typename?: 'chat_conversations_aggregate';
   aggregate?: Maybe<Chat_Conversations_Aggregate_Fields>;
   nodes: Array<Chat_Conversations>;
 };
@@ -2090,37 +2115,38 @@ export type Chat_Conversations_Aggregate_Bool_Exp = {
 
 export type Chat_Conversations_Aggregate_Bool_Exp_Bool_And = {
   arguments: Chat_Conversations_Select_Column_Chat_Conversations_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
   filter?: InputMaybe<Chat_Conversations_Bool_Exp>;
   predicate: Boolean_Comparison_Exp;
 };
 
 export type Chat_Conversations_Aggregate_Bool_Exp_Bool_Or = {
   arguments: Chat_Conversations_Select_Column_Chat_Conversations_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
   filter?: InputMaybe<Chat_Conversations_Bool_Exp>;
   predicate: Boolean_Comparison_Exp;
 };
 
 export type Chat_Conversations_Aggregate_Bool_Exp_Count = {
   arguments?: InputMaybe<Array<Chat_Conversations_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
   filter?: InputMaybe<Chat_Conversations_Bool_Exp>;
   predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "chat_conversations" */
 export type Chat_Conversations_Aggregate_Fields = {
-  __typename?: "chat_conversations_aggregate_fields";
-  count: Scalars["Int"]["output"];
+  __typename?: 'chat_conversations_aggregate_fields';
+  count: Scalars['Int']['output'];
   max?: Maybe<Chat_Conversations_Max_Fields>;
   min?: Maybe<Chat_Conversations_Min_Fields>;
 };
 
+
 /** aggregate fields of "chat_conversations" */
 export type Chat_Conversations_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Chat_Conversations_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** order by aggregate values of table "chat_conversations" */
@@ -2159,34 +2185,34 @@ export type Chat_Conversations_Bool_Exp = {
 /** unique or primary key constraints on table "chat_conversations" */
 export enum Chat_Conversations_Constraint {
   /** unique or primary key constraint on columns "id" */
-  ChatConversationsPkey = "chat_conversations_pkey"
+  ChatConversationsPkey = 'chat_conversations_pkey'
 }
 
 /** input type for inserting data into table "chat_conversations" */
 export type Chat_Conversations_Insert_Input = {
   chat_messages?: InputMaybe<Chat_Messages_Arr_Rel_Insert_Input>;
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  is_archived?: InputMaybe<Scalars["Boolean"]["input"]>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  is_archived?: InputMaybe<Scalars['Boolean']['input']>;
   organization?: InputMaybe<Auth_Organization_Obj_Rel_Insert_Input>;
-  organization_id?: InputMaybe<Scalars["String"]["input"]>;
-  title?: InputMaybe<Scalars["String"]["input"]>;
-  updated_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
+  organization_id?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
   user?: InputMaybe<Auth_User_Obj_Rel_Insert_Input>;
-  user_id?: InputMaybe<Scalars["String"]["input"]>;
-  visibility?: InputMaybe<Scalars["String"]["input"]>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+  visibility?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
 export type Chat_Conversations_Max_Fields = {
-  __typename?: "chat_conversations_max_fields";
-  created_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["uuid"]["output"]>;
-  organization_id?: Maybe<Scalars["String"]["output"]>;
-  title?: Maybe<Scalars["String"]["output"]>;
-  updated_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  user_id?: Maybe<Scalars["String"]["output"]>;
-  visibility?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'chat_conversations_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  organization_id?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+  visibility?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by max() on columns of table "chat_conversations" */
@@ -2202,14 +2228,14 @@ export type Chat_Conversations_Max_Order_By = {
 
 /** aggregate min on columns */
 export type Chat_Conversations_Min_Fields = {
-  __typename?: "chat_conversations_min_fields";
-  created_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["uuid"]["output"]>;
-  organization_id?: Maybe<Scalars["String"]["output"]>;
-  title?: Maybe<Scalars["String"]["output"]>;
-  updated_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  user_id?: Maybe<Scalars["String"]["output"]>;
-  visibility?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'chat_conversations_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  organization_id?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+  visibility?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by min() on columns of table "chat_conversations" */
@@ -2225,9 +2251,9 @@ export type Chat_Conversations_Min_Order_By = {
 
 /** response of any mutation on the table "chat_conversations" */
 export type Chat_Conversations_Mutation_Response = {
-  __typename?: "chat_conversations_mutation_response";
+  __typename?: 'chat_conversations_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Chat_Conversations>;
 };
@@ -2263,51 +2289,51 @@ export type Chat_Conversations_Order_By = {
 
 /** primary key columns input for table: chat_conversations */
 export type Chat_Conversations_Pk_Columns_Input = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
 
 /** select columns of table "chat_conversations" */
 export enum Chat_Conversations_Select_Column {
   /** column name */
-  CreatedAt = "created_at",
+  CreatedAt = 'created_at',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  IsArchived = "is_archived",
+  IsArchived = 'is_archived',
   /** column name */
-  OrganizationId = "organization_id",
+  OrganizationId = 'organization_id',
   /** column name */
-  Title = "title",
+  Title = 'title',
   /** column name */
-  UpdatedAt = "updated_at",
+  UpdatedAt = 'updated_at',
   /** column name */
-  UserId = "user_id",
+  UserId = 'user_id',
   /** column name */
-  Visibility = "visibility"
+  Visibility = 'visibility'
 }
 
 /** select "chat_conversations_aggregate_bool_exp_bool_and_arguments_columns" columns of table "chat_conversations" */
 export enum Chat_Conversations_Select_Column_Chat_Conversations_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
   /** column name */
-  IsArchived = "is_archived"
+  IsArchived = 'is_archived'
 }
 
 /** select "chat_conversations_aggregate_bool_exp_bool_or_arguments_columns" columns of table "chat_conversations" */
 export enum Chat_Conversations_Select_Column_Chat_Conversations_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
   /** column name */
-  IsArchived = "is_archived"
+  IsArchived = 'is_archived'
 }
 
 /** input type for updating data in table "chat_conversations" */
 export type Chat_Conversations_Set_Input = {
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  is_archived?: InputMaybe<Scalars["Boolean"]["input"]>;
-  organization_id?: InputMaybe<Scalars["String"]["input"]>;
-  title?: InputMaybe<Scalars["String"]["input"]>;
-  updated_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  user_id?: InputMaybe<Scalars["String"]["input"]>;
-  visibility?: InputMaybe<Scalars["String"]["input"]>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  is_archived?: InputMaybe<Scalars['Boolean']['input']>;
+  organization_id?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+  visibility?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "chat_conversations" */
@@ -2320,34 +2346,34 @@ export type Chat_Conversations_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Chat_Conversations_Stream_Cursor_Value_Input = {
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  is_archived?: InputMaybe<Scalars["Boolean"]["input"]>;
-  organization_id?: InputMaybe<Scalars["String"]["input"]>;
-  title?: InputMaybe<Scalars["String"]["input"]>;
-  updated_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  user_id?: InputMaybe<Scalars["String"]["input"]>;
-  visibility?: InputMaybe<Scalars["String"]["input"]>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  is_archived?: InputMaybe<Scalars['Boolean']['input']>;
+  organization_id?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+  visibility?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "chat_conversations" */
 export enum Chat_Conversations_Update_Column {
   /** column name */
-  CreatedAt = "created_at",
+  CreatedAt = 'created_at',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  IsArchived = "is_archived",
+  IsArchived = 'is_archived',
   /** column name */
-  OrganizationId = "organization_id",
+  OrganizationId = 'organization_id',
   /** column name */
-  Title = "title",
+  Title = 'title',
   /** column name */
-  UpdatedAt = "updated_at",
+  UpdatedAt = 'updated_at',
   /** column name */
-  UserId = "user_id",
+  UserId = 'user_id',
   /** column name */
-  Visibility = "visibility"
+  Visibility = 'visibility'
 }
 
 export type Chat_Conversations_Updates = {
@@ -2359,37 +2385,40 @@ export type Chat_Conversations_Updates = {
 
 /** columns and relationships of "chat_messages" */
 export type Chat_Messages = {
-  __typename?: "chat_messages";
+  __typename?: 'chat_messages';
   /** An object relationship */
   chat_conversation: Chat_Conversations;
-  content: Scalars["jsonb"]["output"];
-  conversation_id: Scalars["uuid"]["output"];
-  created_at: Scalars["timestamptz"]["output"];
-  id: Scalars["uuid"]["output"];
-  model: Scalars["String"]["output"];
-  provider_metadata: Scalars["jsonb"]["output"];
-  role: Scalars["String"]["output"];
-  token_usage: Scalars["jsonb"]["output"];
+  content: Scalars['jsonb']['output'];
+  conversation_id: Scalars['uuid']['output'];
+  created_at: Scalars['timestamptz']['output'];
+  id: Scalars['uuid']['output'];
+  model: Scalars['String']['output'];
+  provider_metadata: Scalars['jsonb']['output'];
+  role: Scalars['String']['output'];
+  token_usage: Scalars['jsonb']['output'];
 };
+
 
 /** columns and relationships of "chat_messages" */
 export type Chat_MessagesContentArgs = {
-  path?: InputMaybe<Scalars["String"]["input"]>;
+  path?: InputMaybe<Scalars['String']['input']>;
 };
+
 
 /** columns and relationships of "chat_messages" */
 export type Chat_MessagesProvider_MetadataArgs = {
-  path?: InputMaybe<Scalars["String"]["input"]>;
+  path?: InputMaybe<Scalars['String']['input']>;
 };
+
 
 /** columns and relationships of "chat_messages" */
 export type Chat_MessagesToken_UsageArgs = {
-  path?: InputMaybe<Scalars["String"]["input"]>;
+  path?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregated selection of "chat_messages" */
 export type Chat_Messages_Aggregate = {
-  __typename?: "chat_messages_aggregate";
+  __typename?: 'chat_messages_aggregate';
   aggregate?: Maybe<Chat_Messages_Aggregate_Fields>;
   nodes: Array<Chat_Messages>;
 };
@@ -2400,23 +2429,24 @@ export type Chat_Messages_Aggregate_Bool_Exp = {
 
 export type Chat_Messages_Aggregate_Bool_Exp_Count = {
   arguments?: InputMaybe<Array<Chat_Messages_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
   filter?: InputMaybe<Chat_Messages_Bool_Exp>;
   predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "chat_messages" */
 export type Chat_Messages_Aggregate_Fields = {
-  __typename?: "chat_messages_aggregate_fields";
-  count: Scalars["Int"]["output"];
+  __typename?: 'chat_messages_aggregate_fields';
+  count: Scalars['Int']['output'];
   max?: Maybe<Chat_Messages_Max_Fields>;
   min?: Maybe<Chat_Messages_Min_Fields>;
 };
 
+
 /** aggregate fields of "chat_messages" */
 export type Chat_Messages_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Chat_Messages_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** order by aggregate values of table "chat_messages" */
@@ -2428,9 +2458,9 @@ export type Chat_Messages_Aggregate_Order_By = {
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Chat_Messages_Append_Input = {
-  content?: InputMaybe<Scalars["jsonb"]["input"]>;
-  provider_metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  token_usage?: InputMaybe<Scalars["jsonb"]["input"]>;
+  content?: InputMaybe<Scalars['jsonb']['input']>;
+  provider_metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  token_usage?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** input type for inserting array relation for remote table "chat_messages" */
@@ -2459,51 +2489,51 @@ export type Chat_Messages_Bool_Exp = {
 /** unique or primary key constraints on table "chat_messages" */
 export enum Chat_Messages_Constraint {
   /** unique or primary key constraint on columns "id" */
-  ChatMessagesPkey = "chat_messages_pkey"
+  ChatMessagesPkey = 'chat_messages_pkey'
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Chat_Messages_Delete_At_Path_Input = {
-  content?: InputMaybe<Array<Scalars["String"]["input"]>>;
-  provider_metadata?: InputMaybe<Array<Scalars["String"]["input"]>>;
-  token_usage?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  content?: InputMaybe<Array<Scalars['String']['input']>>;
+  provider_metadata?: InputMaybe<Array<Scalars['String']['input']>>;
+  token_usage?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Chat_Messages_Delete_Elem_Input = {
-  content?: InputMaybe<Scalars["Int"]["input"]>;
-  provider_metadata?: InputMaybe<Scalars["Int"]["input"]>;
-  token_usage?: InputMaybe<Scalars["Int"]["input"]>;
+  content?: InputMaybe<Scalars['Int']['input']>;
+  provider_metadata?: InputMaybe<Scalars['Int']['input']>;
+  token_usage?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Chat_Messages_Delete_Key_Input = {
-  content?: InputMaybe<Scalars["String"]["input"]>;
-  provider_metadata?: InputMaybe<Scalars["String"]["input"]>;
-  token_usage?: InputMaybe<Scalars["String"]["input"]>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  provider_metadata?: InputMaybe<Scalars['String']['input']>;
+  token_usage?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** input type for inserting data into table "chat_messages" */
 export type Chat_Messages_Insert_Input = {
   chat_conversation?: InputMaybe<Chat_Conversations_Obj_Rel_Insert_Input>;
-  content?: InputMaybe<Scalars["jsonb"]["input"]>;
-  conversation_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  model?: InputMaybe<Scalars["String"]["input"]>;
-  provider_metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
-  token_usage?: InputMaybe<Scalars["jsonb"]["input"]>;
+  content?: InputMaybe<Scalars['jsonb']['input']>;
+  conversation_id?: InputMaybe<Scalars['uuid']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  model?: InputMaybe<Scalars['String']['input']>;
+  provider_metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  token_usage?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** aggregate max on columns */
 export type Chat_Messages_Max_Fields = {
-  __typename?: "chat_messages_max_fields";
-  conversation_id?: Maybe<Scalars["uuid"]["output"]>;
-  created_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["uuid"]["output"]>;
-  model?: Maybe<Scalars["String"]["output"]>;
-  role?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'chat_messages_max_fields';
+  conversation_id?: Maybe<Scalars['uuid']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  model?: Maybe<Scalars['String']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by max() on columns of table "chat_messages" */
@@ -2517,12 +2547,12 @@ export type Chat_Messages_Max_Order_By = {
 
 /** aggregate min on columns */
 export type Chat_Messages_Min_Fields = {
-  __typename?: "chat_messages_min_fields";
-  conversation_id?: Maybe<Scalars["uuid"]["output"]>;
-  created_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  id?: Maybe<Scalars["uuid"]["output"]>;
-  model?: Maybe<Scalars["String"]["output"]>;
-  role?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'chat_messages_min_fields';
+  conversation_id?: Maybe<Scalars['uuid']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  model?: Maybe<Scalars['String']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by min() on columns of table "chat_messages" */
@@ -2536,9 +2566,9 @@ export type Chat_Messages_Min_Order_By = {
 
 /** response of any mutation on the table "chat_messages" */
 export type Chat_Messages_Mutation_Response = {
-  __typename?: "chat_messages_mutation_response";
+  __typename?: 'chat_messages_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Chat_Messages>;
 };
@@ -2572,46 +2602,46 @@ export type Chat_Messages_Order_By = {
 
 /** primary key columns input for table: chat_messages */
 export type Chat_Messages_Pk_Columns_Input = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Chat_Messages_Prepend_Input = {
-  content?: InputMaybe<Scalars["jsonb"]["input"]>;
-  provider_metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  token_usage?: InputMaybe<Scalars["jsonb"]["input"]>;
+  content?: InputMaybe<Scalars['jsonb']['input']>;
+  provider_metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  token_usage?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** select columns of table "chat_messages" */
 export enum Chat_Messages_Select_Column {
   /** column name */
-  Content = "content",
+  Content = 'content',
   /** column name */
-  ConversationId = "conversation_id",
+  ConversationId = 'conversation_id',
   /** column name */
-  CreatedAt = "created_at",
+  CreatedAt = 'created_at',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  Model = "model",
+  Model = 'model',
   /** column name */
-  ProviderMetadata = "provider_metadata",
+  ProviderMetadata = 'provider_metadata',
   /** column name */
-  Role = "role",
+  Role = 'role',
   /** column name */
-  TokenUsage = "token_usage"
+  TokenUsage = 'token_usage'
 }
 
 /** input type for updating data in table "chat_messages" */
 export type Chat_Messages_Set_Input = {
-  content?: InputMaybe<Scalars["jsonb"]["input"]>;
-  conversation_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  model?: InputMaybe<Scalars["String"]["input"]>;
-  provider_metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
-  token_usage?: InputMaybe<Scalars["jsonb"]["input"]>;
+  content?: InputMaybe<Scalars['jsonb']['input']>;
+  conversation_id?: InputMaybe<Scalars['uuid']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  model?: InputMaybe<Scalars['String']['input']>;
+  provider_metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  token_usage?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** Streaming cursor of the table "chat_messages" */
@@ -2624,34 +2654,34 @@ export type Chat_Messages_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Chat_Messages_Stream_Cursor_Value_Input = {
-  content?: InputMaybe<Scalars["jsonb"]["input"]>;
-  conversation_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  model?: InputMaybe<Scalars["String"]["input"]>;
-  provider_metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  role?: InputMaybe<Scalars["String"]["input"]>;
-  token_usage?: InputMaybe<Scalars["jsonb"]["input"]>;
+  content?: InputMaybe<Scalars['jsonb']['input']>;
+  conversation_id?: InputMaybe<Scalars['uuid']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  model?: InputMaybe<Scalars['String']['input']>;
+  provider_metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  token_usage?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** update columns of table "chat_messages" */
 export enum Chat_Messages_Update_Column {
   /** column name */
-  Content = "content",
+  Content = 'content',
   /** column name */
-  ConversationId = "conversation_id",
+  ConversationId = 'conversation_id',
   /** column name */
-  CreatedAt = "created_at",
+  CreatedAt = 'created_at',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  Model = "model",
+  Model = 'model',
   /** column name */
-  ProviderMetadata = "provider_metadata",
+  ProviderMetadata = 'provider_metadata',
   /** column name */
-  Role = "role",
+  Role = 'role',
   /** column name */
-  TokenUsage = "token_usage"
+  TokenUsage = 'token_usage'
 }
 
 export type Chat_Messages_Updates = {
@@ -2674,9 +2704,9 @@ export type Chat_Messages_Updates = {
 /** ordering argument of a cursor */
 export enum Cursor_Ordering {
   /** ascending ordering of the cursor */
-  Asc = "ASC",
+  Asc = 'ASC',
   /** descending ordering of the cursor */
-  Desc = "DESC"
+  Desc = 'DESC'
 }
 
 export type Jsonb_Cast_Exp = {
@@ -2687,29 +2717,29 @@ export type Jsonb_Cast_Exp = {
 export type Jsonb_Comparison_Exp = {
   _cast?: InputMaybe<Jsonb_Cast_Exp>;
   /** is the column contained in the given json value */
-  _contained_in?: InputMaybe<Scalars["jsonb"]["input"]>;
+  _contained_in?: InputMaybe<Scalars['jsonb']['input']>;
   /** does the column contain the given json value at the top level */
-  _contains?: InputMaybe<Scalars["jsonb"]["input"]>;
-  _eq?: InputMaybe<Scalars["jsonb"]["input"]>;
-  _gt?: InputMaybe<Scalars["jsonb"]["input"]>;
-  _gte?: InputMaybe<Scalars["jsonb"]["input"]>;
+  _contains?: InputMaybe<Scalars['jsonb']['input']>;
+  _eq?: InputMaybe<Scalars['jsonb']['input']>;
+  _gt?: InputMaybe<Scalars['jsonb']['input']>;
+  _gte?: InputMaybe<Scalars['jsonb']['input']>;
   /** does the string exist as a top-level key in the column */
-  _has_key?: InputMaybe<Scalars["String"]["input"]>;
+  _has_key?: InputMaybe<Scalars['String']['input']>;
   /** do all of these strings exist as top-level keys in the column */
-  _has_keys_all?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  _has_keys_all?: InputMaybe<Array<Scalars['String']['input']>>;
   /** do any of these strings exist as top-level keys in the column */
-  _has_keys_any?: InputMaybe<Array<Scalars["String"]["input"]>>;
-  _in?: InputMaybe<Array<Scalars["jsonb"]["input"]>>;
-  _is_null?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _lt?: InputMaybe<Scalars["jsonb"]["input"]>;
-  _lte?: InputMaybe<Scalars["jsonb"]["input"]>;
-  _neq?: InputMaybe<Scalars["jsonb"]["input"]>;
-  _nin?: InputMaybe<Array<Scalars["jsonb"]["input"]>>;
+  _has_keys_any?: InputMaybe<Array<Scalars['String']['input']>>;
+  _in?: InputMaybe<Array<Scalars['jsonb']['input']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
+  _lt?: InputMaybe<Scalars['jsonb']['input']>;
+  _lte?: InputMaybe<Scalars['jsonb']['input']>;
+  _neq?: InputMaybe<Scalars['jsonb']['input']>;
+  _nin?: InputMaybe<Array<Scalars['jsonb']['input']>>;
 };
 
 /** mutation root */
 export type Mutation_Root = {
-  __typename?: "mutation_root";
+  __typename?: 'mutation_root';
   /** delete data from the table: "auth.account" */
   delete_auth_account?: Maybe<Auth_Account_Mutation_Response>;
   /** delete single row from the table: "auth.account" */
@@ -2880,125 +2910,150 @@ export type Mutation_Root = {
   update_resources_many?: Maybe<Array<Maybe<Resources_Mutation_Response>>>;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Auth_AccountArgs = {
   where: Auth_Account_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Auth_Account_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Auth_InvitationArgs = {
   where: Auth_Invitation_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Auth_Invitation_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Auth_MemberArgs = {
   where: Auth_Member_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Auth_Member_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Auth_OrganizationArgs = {
   where: Auth_Organization_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Auth_Organization_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Auth_SessionArgs = {
   where: Auth_Session_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Auth_Session_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Auth_UserArgs = {
   where: Auth_User_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Auth_User_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Auth_VerificationArgs = {
   where: Auth_Verification_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Auth_Verification_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Chat_ConversationsArgs = {
   where: Chat_Conversations_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Chat_Conversations_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Chat_MessagesArgs = {
   where: Chat_Messages_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Chat_Messages_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Resource_EventsArgs = {
   where: Resource_Events_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Resource_Events_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Resource_VersionsArgs = {
   where: Resource_Versions_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Resource_Versions_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_ResourcesArgs = {
   where: Resources_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Resources_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_Auth_AccountArgs = {
@@ -3006,11 +3061,13 @@ export type Mutation_RootInsert_Auth_AccountArgs = {
   on_conflict?: InputMaybe<Auth_Account_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Auth_Account_OneArgs = {
   object: Auth_Account_Insert_Input;
   on_conflict?: InputMaybe<Auth_Account_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_Auth_InvitationArgs = {
@@ -3018,11 +3075,13 @@ export type Mutation_RootInsert_Auth_InvitationArgs = {
   on_conflict?: InputMaybe<Auth_Invitation_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Auth_Invitation_OneArgs = {
   object: Auth_Invitation_Insert_Input;
   on_conflict?: InputMaybe<Auth_Invitation_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_Auth_MemberArgs = {
@@ -3030,11 +3089,13 @@ export type Mutation_RootInsert_Auth_MemberArgs = {
   on_conflict?: InputMaybe<Auth_Member_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Auth_Member_OneArgs = {
   object: Auth_Member_Insert_Input;
   on_conflict?: InputMaybe<Auth_Member_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_Auth_OrganizationArgs = {
@@ -3042,11 +3103,13 @@ export type Mutation_RootInsert_Auth_OrganizationArgs = {
   on_conflict?: InputMaybe<Auth_Organization_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Auth_Organization_OneArgs = {
   object: Auth_Organization_Insert_Input;
   on_conflict?: InputMaybe<Auth_Organization_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_Auth_SessionArgs = {
@@ -3054,11 +3117,13 @@ export type Mutation_RootInsert_Auth_SessionArgs = {
   on_conflict?: InputMaybe<Auth_Session_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Auth_Session_OneArgs = {
   object: Auth_Session_Insert_Input;
   on_conflict?: InputMaybe<Auth_Session_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_Auth_UserArgs = {
@@ -3066,11 +3131,13 @@ export type Mutation_RootInsert_Auth_UserArgs = {
   on_conflict?: InputMaybe<Auth_User_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Auth_User_OneArgs = {
   object: Auth_User_Insert_Input;
   on_conflict?: InputMaybe<Auth_User_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_Auth_VerificationArgs = {
@@ -3078,11 +3145,13 @@ export type Mutation_RootInsert_Auth_VerificationArgs = {
   on_conflict?: InputMaybe<Auth_Verification_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Auth_Verification_OneArgs = {
   object: Auth_Verification_Insert_Input;
   on_conflict?: InputMaybe<Auth_Verification_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_Chat_ConversationsArgs = {
@@ -3090,11 +3159,13 @@ export type Mutation_RootInsert_Chat_ConversationsArgs = {
   on_conflict?: InputMaybe<Chat_Conversations_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Chat_Conversations_OneArgs = {
   object: Chat_Conversations_Insert_Input;
   on_conflict?: InputMaybe<Chat_Conversations_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_Chat_MessagesArgs = {
@@ -3102,11 +3173,13 @@ export type Mutation_RootInsert_Chat_MessagesArgs = {
   on_conflict?: InputMaybe<Chat_Messages_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Chat_Messages_OneArgs = {
   object: Chat_Messages_Insert_Input;
   on_conflict?: InputMaybe<Chat_Messages_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_Resource_EventsArgs = {
@@ -3114,11 +3187,13 @@ export type Mutation_RootInsert_Resource_EventsArgs = {
   on_conflict?: InputMaybe<Resource_Events_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Resource_Events_OneArgs = {
   object: Resource_Events_Insert_Input;
   on_conflict?: InputMaybe<Resource_Events_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_Resource_VersionsArgs = {
@@ -3126,11 +3201,13 @@ export type Mutation_RootInsert_Resource_VersionsArgs = {
   on_conflict?: InputMaybe<Resource_Versions_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Resource_Versions_OneArgs = {
   object: Resource_Versions_Insert_Input;
   on_conflict?: InputMaybe<Resource_Versions_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_ResourcesArgs = {
@@ -3138,11 +3215,13 @@ export type Mutation_RootInsert_ResourcesArgs = {
   on_conflict?: InputMaybe<Resources_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Resources_OneArgs = {
   object: Resources_Insert_Input;
   on_conflict?: InputMaybe<Resources_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Auth_AccountArgs = {
@@ -3150,16 +3229,19 @@ export type Mutation_RootUpdate_Auth_AccountArgs = {
   where: Auth_Account_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Account_By_PkArgs = {
   _set?: InputMaybe<Auth_Account_Set_Input>;
   pk_columns: Auth_Account_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Account_ManyArgs = {
   updates: Array<Auth_Account_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Auth_InvitationArgs = {
@@ -3167,16 +3249,19 @@ export type Mutation_RootUpdate_Auth_InvitationArgs = {
   where: Auth_Invitation_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Invitation_By_PkArgs = {
   _set?: InputMaybe<Auth_Invitation_Set_Input>;
   pk_columns: Auth_Invitation_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Invitation_ManyArgs = {
   updates: Array<Auth_Invitation_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Auth_MemberArgs = {
@@ -3184,16 +3269,19 @@ export type Mutation_RootUpdate_Auth_MemberArgs = {
   where: Auth_Member_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Member_By_PkArgs = {
   _set?: InputMaybe<Auth_Member_Set_Input>;
   pk_columns: Auth_Member_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Member_ManyArgs = {
   updates: Array<Auth_Member_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Auth_OrganizationArgs = {
@@ -3201,16 +3289,19 @@ export type Mutation_RootUpdate_Auth_OrganizationArgs = {
   where: Auth_Organization_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Organization_By_PkArgs = {
   _set?: InputMaybe<Auth_Organization_Set_Input>;
   pk_columns: Auth_Organization_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Organization_ManyArgs = {
   updates: Array<Auth_Organization_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Auth_SessionArgs = {
@@ -3218,16 +3309,19 @@ export type Mutation_RootUpdate_Auth_SessionArgs = {
   where: Auth_Session_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Session_By_PkArgs = {
   _set?: InputMaybe<Auth_Session_Set_Input>;
   pk_columns: Auth_Session_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Session_ManyArgs = {
   updates: Array<Auth_Session_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Auth_UserArgs = {
@@ -3235,16 +3329,19 @@ export type Mutation_RootUpdate_Auth_UserArgs = {
   where: Auth_User_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_User_By_PkArgs = {
   _set?: InputMaybe<Auth_User_Set_Input>;
   pk_columns: Auth_User_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_User_ManyArgs = {
   updates: Array<Auth_User_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Auth_VerificationArgs = {
@@ -3252,16 +3349,19 @@ export type Mutation_RootUpdate_Auth_VerificationArgs = {
   where: Auth_Verification_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Verification_By_PkArgs = {
   _set?: InputMaybe<Auth_Verification_Set_Input>;
   pk_columns: Auth_Verification_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Auth_Verification_ManyArgs = {
   updates: Array<Auth_Verification_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Chat_ConversationsArgs = {
@@ -3269,16 +3369,19 @@ export type Mutation_RootUpdate_Chat_ConversationsArgs = {
   where: Chat_Conversations_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Chat_Conversations_By_PkArgs = {
   _set?: InputMaybe<Chat_Conversations_Set_Input>;
   pk_columns: Chat_Conversations_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Chat_Conversations_ManyArgs = {
   updates: Array<Chat_Conversations_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Chat_MessagesArgs = {
@@ -3291,6 +3394,7 @@ export type Mutation_RootUpdate_Chat_MessagesArgs = {
   where: Chat_Messages_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Chat_Messages_By_PkArgs = {
   _append?: InputMaybe<Chat_Messages_Append_Input>;
@@ -3302,10 +3406,12 @@ export type Mutation_RootUpdate_Chat_Messages_By_PkArgs = {
   pk_columns: Chat_Messages_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Chat_Messages_ManyArgs = {
   updates: Array<Chat_Messages_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Resource_EventsArgs = {
@@ -3318,6 +3424,7 @@ export type Mutation_RootUpdate_Resource_EventsArgs = {
   where: Resource_Events_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Resource_Events_By_PkArgs = {
   _append?: InputMaybe<Resource_Events_Append_Input>;
@@ -3329,10 +3436,12 @@ export type Mutation_RootUpdate_Resource_Events_By_PkArgs = {
   pk_columns: Resource_Events_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Resource_Events_ManyArgs = {
   updates: Array<Resource_Events_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Resource_VersionsArgs = {
@@ -3346,6 +3455,7 @@ export type Mutation_RootUpdate_Resource_VersionsArgs = {
   where: Resource_Versions_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Resource_Versions_By_PkArgs = {
   _append?: InputMaybe<Resource_Versions_Append_Input>;
@@ -3358,10 +3468,12 @@ export type Mutation_RootUpdate_Resource_Versions_By_PkArgs = {
   pk_columns: Resource_Versions_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Resource_Versions_ManyArgs = {
   updates: Array<Resource_Versions_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_ResourcesArgs = {
@@ -3374,6 +3486,7 @@ export type Mutation_RootUpdate_ResourcesArgs = {
   where: Resources_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Resources_By_PkArgs = {
   _append?: InputMaybe<Resources_Append_Input>;
@@ -3385,6 +3498,7 @@ export type Mutation_RootUpdate_Resources_By_PkArgs = {
   pk_columns: Resources_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Resources_ManyArgs = {
   updates: Array<Resources_Updates>;
@@ -3393,21 +3507,21 @@ export type Mutation_RootUpdate_Resources_ManyArgs = {
 /** column ordering options */
 export enum Order_By {
   /** in ascending order, nulls last */
-  Asc = "asc",
+  Asc = 'asc',
   /** in ascending order, nulls first */
-  AscNullsFirst = "asc_nulls_first",
+  AscNullsFirst = 'asc_nulls_first',
   /** in ascending order, nulls last */
-  AscNullsLast = "asc_nulls_last",
+  AscNullsLast = 'asc_nulls_last',
   /** in descending order, nulls first */
-  Desc = "desc",
+  Desc = 'desc',
   /** in descending order, nulls first */
-  DescNullsFirst = "desc_nulls_first",
+  DescNullsFirst = 'desc_nulls_first',
   /** in descending order, nulls last */
-  DescNullsLast = "desc_nulls_last"
+  DescNullsLast = 'desc_nulls_last'
 }
 
 export type Query_Root = {
-  __typename?: "query_root";
+  __typename?: 'query_root';
   /** fetch data from the table: "auth.account" */
   auth_account: Array<Auth_Account>;
   /** fetch aggregated fields from the table: "auth.account" */
@@ -3482,289 +3596,327 @@ export type Query_Root = {
   resources_by_pk?: Maybe<Resources>;
 };
 
+
 export type Query_RootAuth_AccountArgs = {
   distinct_on?: InputMaybe<Array<Auth_Account_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Account_Order_By>>;
   where?: InputMaybe<Auth_Account_Bool_Exp>;
 };
+
 
 export type Query_RootAuth_Account_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Account_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Account_Order_By>>;
   where?: InputMaybe<Auth_Account_Bool_Exp>;
 };
 
+
 export type Query_RootAuth_Account_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 export type Query_RootAuth_InvitationArgs = {
   distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
   where?: InputMaybe<Auth_Invitation_Bool_Exp>;
 };
+
 
 export type Query_RootAuth_Invitation_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
   where?: InputMaybe<Auth_Invitation_Bool_Exp>;
 };
 
+
 export type Query_RootAuth_Invitation_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 export type Query_RootAuth_MemberArgs = {
   distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
   where?: InputMaybe<Auth_Member_Bool_Exp>;
 };
+
 
 export type Query_RootAuth_Member_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
   where?: InputMaybe<Auth_Member_Bool_Exp>;
 };
 
+
 export type Query_RootAuth_Member_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 export type Query_RootAuth_OrganizationArgs = {
   distinct_on?: InputMaybe<Array<Auth_Organization_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Organization_Order_By>>;
   where?: InputMaybe<Auth_Organization_Bool_Exp>;
 };
+
 
 export type Query_RootAuth_Organization_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Organization_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Organization_Order_By>>;
   where?: InputMaybe<Auth_Organization_Bool_Exp>;
 };
 
+
 export type Query_RootAuth_Organization_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 export type Query_RootAuth_SessionArgs = {
   distinct_on?: InputMaybe<Array<Auth_Session_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Session_Order_By>>;
   where?: InputMaybe<Auth_Session_Bool_Exp>;
 };
+
 
 export type Query_RootAuth_Session_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Session_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Session_Order_By>>;
   where?: InputMaybe<Auth_Session_Bool_Exp>;
 };
 
+
 export type Query_RootAuth_Session_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 export type Query_RootAuth_UserArgs = {
   distinct_on?: InputMaybe<Array<Auth_User_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_User_Order_By>>;
   where?: InputMaybe<Auth_User_Bool_Exp>;
 };
+
 
 export type Query_RootAuth_User_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_User_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_User_Order_By>>;
   where?: InputMaybe<Auth_User_Bool_Exp>;
 };
 
+
 export type Query_RootAuth_User_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 export type Query_RootAuth_VerificationArgs = {
   distinct_on?: InputMaybe<Array<Auth_Verification_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Verification_Order_By>>;
   where?: InputMaybe<Auth_Verification_Bool_Exp>;
 };
+
 
 export type Query_RootAuth_Verification_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Verification_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Verification_Order_By>>;
   where?: InputMaybe<Auth_Verification_Bool_Exp>;
 };
 
+
 export type Query_RootAuth_Verification_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
+
 
 export type Query_RootChat_ConversationsArgs = {
   distinct_on?: InputMaybe<Array<Chat_Conversations_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Conversations_Order_By>>;
   where?: InputMaybe<Chat_Conversations_Bool_Exp>;
 };
+
 
 export type Query_RootChat_Conversations_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Chat_Conversations_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Conversations_Order_By>>;
   where?: InputMaybe<Chat_Conversations_Bool_Exp>;
 };
 
+
 export type Query_RootChat_Conversations_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
+
 
 export type Query_RootChat_MessagesArgs = {
   distinct_on?: InputMaybe<Array<Chat_Messages_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Messages_Order_By>>;
   where?: InputMaybe<Chat_Messages_Bool_Exp>;
 };
+
 
 export type Query_RootChat_Messages_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Chat_Messages_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Messages_Order_By>>;
   where?: InputMaybe<Chat_Messages_Bool_Exp>;
 };
 
+
 export type Query_RootChat_Messages_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
+
 
 export type Query_RootResource_EventsArgs = {
   distinct_on?: InputMaybe<Array<Resource_Events_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resource_Events_Order_By>>;
   where?: InputMaybe<Resource_Events_Bool_Exp>;
 };
+
 
 export type Query_RootResource_Events_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Resource_Events_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resource_Events_Order_By>>;
   where?: InputMaybe<Resource_Events_Bool_Exp>;
 };
 
+
 export type Query_RootResource_Events_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
+
 
 export type Query_RootResource_VersionsArgs = {
   distinct_on?: InputMaybe<Array<Resource_Versions_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resource_Versions_Order_By>>;
   where?: InputMaybe<Resource_Versions_Bool_Exp>;
 };
+
 
 export type Query_RootResource_Versions_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Resource_Versions_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resource_Versions_Order_By>>;
   where?: InputMaybe<Resource_Versions_Bool_Exp>;
 };
 
+
 export type Query_RootResource_Versions_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
+
 
 export type Query_RootResourcesArgs = {
   distinct_on?: InputMaybe<Array<Resources_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resources_Order_By>>;
   where?: InputMaybe<Resources_Bool_Exp>;
 };
+
 
 export type Query_RootResources_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Resources_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resources_Order_By>>;
   where?: InputMaybe<Resources_Bool_Exp>;
 };
 
+
 export type Query_RootResources_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
 
 /** columns and relationships of "resource_events" */
 export type Resource_Events = {
-  __typename?: "resource_events";
-  actor_type: Scalars["String"]["output"];
-  created_at: Scalars["timestamptz"]["output"];
-  event_type: Scalars["String"]["output"];
-  id: Scalars["uuid"]["output"];
-  message_id: Scalars["uuid"]["output"];
-  metadata: Scalars["jsonb"]["output"];
-  resource_id: Scalars["uuid"]["output"];
-  resource_version_id: Scalars["uuid"]["output"];
-  user_id: Scalars["String"]["output"];
+  __typename?: 'resource_events';
+  actor_type: Scalars['String']['output'];
+  created_at: Scalars['timestamptz']['output'];
+  event_type: Scalars['String']['output'];
+  id: Scalars['uuid']['output'];
+  message_id: Scalars['uuid']['output'];
+  metadata: Scalars['jsonb']['output'];
+  resource_id: Scalars['uuid']['output'];
+  resource_version_id: Scalars['uuid']['output'];
+  user_id: Scalars['String']['output'];
 };
+
 
 /** columns and relationships of "resource_events" */
 export type Resource_EventsMetadataArgs = {
-  path?: InputMaybe<Scalars["String"]["input"]>;
+  path?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregated selection of "resource_events" */
 export type Resource_Events_Aggregate = {
-  __typename?: "resource_events_aggregate";
+  __typename?: 'resource_events_aggregate';
   aggregate?: Maybe<Resource_Events_Aggregate_Fields>;
   nodes: Array<Resource_Events>;
 };
 
 /** aggregate fields of "resource_events" */
 export type Resource_Events_Aggregate_Fields = {
-  __typename?: "resource_events_aggregate_fields";
-  count: Scalars["Int"]["output"];
+  __typename?: 'resource_events_aggregate_fields';
+  count: Scalars['Int']['output'];
   max?: Maybe<Resource_Events_Max_Fields>;
   min?: Maybe<Resource_Events_Min_Fields>;
 };
 
+
 /** aggregate fields of "resource_events" */
 export type Resource_Events_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Resource_Events_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Resource_Events_Append_Input = {
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** Boolean expression to filter rows from the table "resource_events". All fields are combined with a logical 'AND'. */
@@ -3786,68 +3938,68 @@ export type Resource_Events_Bool_Exp = {
 /** unique or primary key constraints on table "resource_events" */
 export enum Resource_Events_Constraint {
   /** unique or primary key constraint on columns "id" */
-  ResourceEventsPkey = "resource_events_pkey"
+  ResourceEventsPkey = 'resource_events_pkey'
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Resource_Events_Delete_At_Path_Input = {
-  metadata?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  metadata?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Resource_Events_Delete_Elem_Input = {
-  metadata?: InputMaybe<Scalars["Int"]["input"]>;
+  metadata?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Resource_Events_Delete_Key_Input = {
-  metadata?: InputMaybe<Scalars["String"]["input"]>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** input type for inserting data into table "resource_events" */
 export type Resource_Events_Insert_Input = {
-  actor_type?: InputMaybe<Scalars["String"]["input"]>;
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  event_type?: InputMaybe<Scalars["String"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  message_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  resource_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  resource_version_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  user_id?: InputMaybe<Scalars["String"]["input"]>;
+  actor_type?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  event_type?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  message_id?: InputMaybe<Scalars['uuid']['input']>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  resource_id?: InputMaybe<Scalars['uuid']['input']>;
+  resource_version_id?: InputMaybe<Scalars['uuid']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
 export type Resource_Events_Max_Fields = {
-  __typename?: "resource_events_max_fields";
-  actor_type?: Maybe<Scalars["String"]["output"]>;
-  created_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  event_type?: Maybe<Scalars["String"]["output"]>;
-  id?: Maybe<Scalars["uuid"]["output"]>;
-  message_id?: Maybe<Scalars["uuid"]["output"]>;
-  resource_id?: Maybe<Scalars["uuid"]["output"]>;
-  resource_version_id?: Maybe<Scalars["uuid"]["output"]>;
-  user_id?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'resource_events_max_fields';
+  actor_type?: Maybe<Scalars['String']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  event_type?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  message_id?: Maybe<Scalars['uuid']['output']>;
+  resource_id?: Maybe<Scalars['uuid']['output']>;
+  resource_version_id?: Maybe<Scalars['uuid']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
 };
 
 /** aggregate min on columns */
 export type Resource_Events_Min_Fields = {
-  __typename?: "resource_events_min_fields";
-  actor_type?: Maybe<Scalars["String"]["output"]>;
-  created_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  event_type?: Maybe<Scalars["String"]["output"]>;
-  id?: Maybe<Scalars["uuid"]["output"]>;
-  message_id?: Maybe<Scalars["uuid"]["output"]>;
-  resource_id?: Maybe<Scalars["uuid"]["output"]>;
-  resource_version_id?: Maybe<Scalars["uuid"]["output"]>;
-  user_id?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'resource_events_min_fields';
+  actor_type?: Maybe<Scalars['String']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  event_type?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  message_id?: Maybe<Scalars['uuid']['output']>;
+  resource_id?: Maybe<Scalars['uuid']['output']>;
+  resource_version_id?: Maybe<Scalars['uuid']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
 };
 
 /** response of any mutation on the table "resource_events" */
 export type Resource_Events_Mutation_Response = {
-  __typename?: "resource_events_mutation_response";
+  __typename?: 'resource_events_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Resource_Events>;
 };
@@ -3874,47 +4026,47 @@ export type Resource_Events_Order_By = {
 
 /** primary key columns input for table: resource_events */
 export type Resource_Events_Pk_Columns_Input = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Resource_Events_Prepend_Input = {
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** select columns of table "resource_events" */
 export enum Resource_Events_Select_Column {
   /** column name */
-  ActorType = "actor_type",
+  ActorType = 'actor_type',
   /** column name */
-  CreatedAt = "created_at",
+  CreatedAt = 'created_at',
   /** column name */
-  EventType = "event_type",
+  EventType = 'event_type',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  MessageId = "message_id",
+  MessageId = 'message_id',
   /** column name */
-  Metadata = "metadata",
+  Metadata = 'metadata',
   /** column name */
-  ResourceId = "resource_id",
+  ResourceId = 'resource_id',
   /** column name */
-  ResourceVersionId = "resource_version_id",
+  ResourceVersionId = 'resource_version_id',
   /** column name */
-  UserId = "user_id"
+  UserId = 'user_id'
 }
 
 /** input type for updating data in table "resource_events" */
 export type Resource_Events_Set_Input = {
-  actor_type?: InputMaybe<Scalars["String"]["input"]>;
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  event_type?: InputMaybe<Scalars["String"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  message_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  resource_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  resource_version_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  user_id?: InputMaybe<Scalars["String"]["input"]>;
+  actor_type?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  event_type?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  message_id?: InputMaybe<Scalars['uuid']['input']>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  resource_id?: InputMaybe<Scalars['uuid']['input']>;
+  resource_version_id?: InputMaybe<Scalars['uuid']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "resource_events" */
@@ -3927,37 +4079,37 @@ export type Resource_Events_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Resource_Events_Stream_Cursor_Value_Input = {
-  actor_type?: InputMaybe<Scalars["String"]["input"]>;
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  event_type?: InputMaybe<Scalars["String"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  message_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  resource_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  resource_version_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  user_id?: InputMaybe<Scalars["String"]["input"]>;
+  actor_type?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  event_type?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  message_id?: InputMaybe<Scalars['uuid']['input']>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  resource_id?: InputMaybe<Scalars['uuid']['input']>;
+  resource_version_id?: InputMaybe<Scalars['uuid']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "resource_events" */
 export enum Resource_Events_Update_Column {
   /** column name */
-  ActorType = "actor_type",
+  ActorType = 'actor_type',
   /** column name */
-  CreatedAt = "created_at",
+  CreatedAt = 'created_at',
   /** column name */
-  EventType = "event_type",
+  EventType = 'event_type',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  MessageId = "message_id",
+  MessageId = 'message_id',
   /** column name */
-  Metadata = "metadata",
+  Metadata = 'metadata',
   /** column name */
-  ResourceId = "resource_id",
+  ResourceId = 'resource_id',
   /** column name */
-  ResourceVersionId = "resource_version_id",
+  ResourceVersionId = 'resource_version_id',
   /** column name */
-  UserId = "user_id"
+  UserId = 'user_id'
 }
 
 export type Resource_Events_Updates = {
@@ -3979,33 +4131,34 @@ export type Resource_Events_Updates = {
 
 /** columns and relationships of "resource_versions" */
 export type Resource_Versions = {
-  __typename?: "resource_versions";
+  __typename?: 'resource_versions';
   /** An object relationship */
   chat_message: Chat_Messages;
-  created_at: Scalars["timestamptz"]["output"];
-  file_name: Scalars["String"]["output"];
-  file_type: Scalars["String"]["output"];
-  id: Scalars["uuid"]["output"];
-  message_id: Scalars["uuid"]["output"];
-  metadata: Scalars["jsonb"]["output"];
-  mime_type?: Maybe<Scalars["String"]["output"]>;
-  model?: Maybe<Scalars["String"]["output"]>;
+  created_at: Scalars['timestamptz']['output'];
+  file_name: Scalars['String']['output'];
+  file_type: Scalars['String']['output'];
+  id: Scalars['uuid']['output'];
+  message_id: Scalars['uuid']['output'];
+  metadata: Scalars['jsonb']['output'];
+  mime_type?: Maybe<Scalars['String']['output']>;
+  model?: Maybe<Scalars['String']['output']>;
   /** An object relationship */
   resource: Resources;
-  resource_id: Scalars["uuid"]["output"];
-  size_bytes?: Maybe<Scalars["bigint"]["output"]>;
-  storage_path: Scalars["String"]["output"];
-  version_number: Scalars["Int"]["output"];
+  resource_id: Scalars['uuid']['output'];
+  size_bytes?: Maybe<Scalars['bigint']['output']>;
+  storage_path: Scalars['String']['output'];
+  version_number: Scalars['Int']['output'];
 };
+
 
 /** columns and relationships of "resource_versions" */
 export type Resource_VersionsMetadataArgs = {
-  path?: InputMaybe<Scalars["String"]["input"]>;
+  path?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregated selection of "resource_versions" */
 export type Resource_Versions_Aggregate = {
-  __typename?: "resource_versions_aggregate";
+  __typename?: 'resource_versions_aggregate';
   aggregate?: Maybe<Resource_Versions_Aggregate_Fields>;
   nodes: Array<Resource_Versions>;
 };
@@ -4016,16 +4169,16 @@ export type Resource_Versions_Aggregate_Bool_Exp = {
 
 export type Resource_Versions_Aggregate_Bool_Exp_Count = {
   arguments?: InputMaybe<Array<Resource_Versions_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
   filter?: InputMaybe<Resource_Versions_Bool_Exp>;
   predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "resource_versions" */
 export type Resource_Versions_Aggregate_Fields = {
-  __typename?: "resource_versions_aggregate_fields";
+  __typename?: 'resource_versions_aggregate_fields';
   avg?: Maybe<Resource_Versions_Avg_Fields>;
-  count: Scalars["Int"]["output"];
+  count: Scalars['Int']['output'];
   max?: Maybe<Resource_Versions_Max_Fields>;
   min?: Maybe<Resource_Versions_Min_Fields>;
   stddev?: Maybe<Resource_Versions_Stddev_Fields>;
@@ -4037,10 +4190,11 @@ export type Resource_Versions_Aggregate_Fields = {
   variance?: Maybe<Resource_Versions_Variance_Fields>;
 };
 
+
 /** aggregate fields of "resource_versions" */
 export type Resource_Versions_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Resource_Versions_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** order by aggregate values of table "resource_versions" */
@@ -4060,7 +4214,7 @@ export type Resource_Versions_Aggregate_Order_By = {
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Resource_Versions_Append_Input = {
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** input type for inserting array relation for remote table "resource_versions" */
@@ -4072,9 +4226,9 @@ export type Resource_Versions_Arr_Rel_Insert_Input = {
 
 /** aggregate avg on columns */
 export type Resource_Versions_Avg_Fields = {
-  __typename?: "resource_versions_avg_fields";
-  size_bytes?: Maybe<Scalars["Float"]["output"]>;
-  version_number?: Maybe<Scalars["Float"]["output"]>;
+  __typename?: 'resource_versions_avg_fields';
+  size_bytes?: Maybe<Scalars['Float']['output']>;
+  version_number?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by avg() on columns of table "resource_versions" */
@@ -4107,62 +4261,62 @@ export type Resource_Versions_Bool_Exp = {
 /** unique or primary key constraints on table "resource_versions" */
 export enum Resource_Versions_Constraint {
   /** unique or primary key constraint on columns "id" */
-  ResourceVersionsPkey = "resource_versions_pkey"
+  ResourceVersionsPkey = 'resource_versions_pkey'
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Resource_Versions_Delete_At_Path_Input = {
-  metadata?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  metadata?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Resource_Versions_Delete_Elem_Input = {
-  metadata?: InputMaybe<Scalars["Int"]["input"]>;
+  metadata?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Resource_Versions_Delete_Key_Input = {
-  metadata?: InputMaybe<Scalars["String"]["input"]>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** input type for incrementing numeric columns in table "resource_versions" */
 export type Resource_Versions_Inc_Input = {
-  size_bytes?: InputMaybe<Scalars["bigint"]["input"]>;
-  version_number?: InputMaybe<Scalars["Int"]["input"]>;
+  size_bytes?: InputMaybe<Scalars['bigint']['input']>;
+  version_number?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** input type for inserting data into table "resource_versions" */
 export type Resource_Versions_Insert_Input = {
   chat_message?: InputMaybe<Chat_Messages_Obj_Rel_Insert_Input>;
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  file_name?: InputMaybe<Scalars["String"]["input"]>;
-  file_type?: InputMaybe<Scalars["String"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  message_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  mime_type?: InputMaybe<Scalars["String"]["input"]>;
-  model?: InputMaybe<Scalars["String"]["input"]>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  file_name?: InputMaybe<Scalars['String']['input']>;
+  file_type?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  message_id?: InputMaybe<Scalars['uuid']['input']>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  mime_type?: InputMaybe<Scalars['String']['input']>;
+  model?: InputMaybe<Scalars['String']['input']>;
   resource?: InputMaybe<Resources_Obj_Rel_Insert_Input>;
-  resource_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  size_bytes?: InputMaybe<Scalars["bigint"]["input"]>;
-  storage_path?: InputMaybe<Scalars["String"]["input"]>;
-  version_number?: InputMaybe<Scalars["Int"]["input"]>;
+  resource_id?: InputMaybe<Scalars['uuid']['input']>;
+  size_bytes?: InputMaybe<Scalars['bigint']['input']>;
+  storage_path?: InputMaybe<Scalars['String']['input']>;
+  version_number?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** aggregate max on columns */
 export type Resource_Versions_Max_Fields = {
-  __typename?: "resource_versions_max_fields";
-  created_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  file_name?: Maybe<Scalars["String"]["output"]>;
-  file_type?: Maybe<Scalars["String"]["output"]>;
-  id?: Maybe<Scalars["uuid"]["output"]>;
-  message_id?: Maybe<Scalars["uuid"]["output"]>;
-  mime_type?: Maybe<Scalars["String"]["output"]>;
-  model?: Maybe<Scalars["String"]["output"]>;
-  resource_id?: Maybe<Scalars["uuid"]["output"]>;
-  size_bytes?: Maybe<Scalars["bigint"]["output"]>;
-  storage_path?: Maybe<Scalars["String"]["output"]>;
-  version_number?: Maybe<Scalars["Int"]["output"]>;
+  __typename?: 'resource_versions_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  file_name?: Maybe<Scalars['String']['output']>;
+  file_type?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  message_id?: Maybe<Scalars['uuid']['output']>;
+  mime_type?: Maybe<Scalars['String']['output']>;
+  model?: Maybe<Scalars['String']['output']>;
+  resource_id?: Maybe<Scalars['uuid']['output']>;
+  size_bytes?: Maybe<Scalars['bigint']['output']>;
+  storage_path?: Maybe<Scalars['String']['output']>;
+  version_number?: Maybe<Scalars['Int']['output']>;
 };
 
 /** order by max() on columns of table "resource_versions" */
@@ -4182,18 +4336,18 @@ export type Resource_Versions_Max_Order_By = {
 
 /** aggregate min on columns */
 export type Resource_Versions_Min_Fields = {
-  __typename?: "resource_versions_min_fields";
-  created_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  file_name?: Maybe<Scalars["String"]["output"]>;
-  file_type?: Maybe<Scalars["String"]["output"]>;
-  id?: Maybe<Scalars["uuid"]["output"]>;
-  message_id?: Maybe<Scalars["uuid"]["output"]>;
-  mime_type?: Maybe<Scalars["String"]["output"]>;
-  model?: Maybe<Scalars["String"]["output"]>;
-  resource_id?: Maybe<Scalars["uuid"]["output"]>;
-  size_bytes?: Maybe<Scalars["bigint"]["output"]>;
-  storage_path?: Maybe<Scalars["String"]["output"]>;
-  version_number?: Maybe<Scalars["Int"]["output"]>;
+  __typename?: 'resource_versions_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  file_name?: Maybe<Scalars['String']['output']>;
+  file_type?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  message_id?: Maybe<Scalars['uuid']['output']>;
+  mime_type?: Maybe<Scalars['String']['output']>;
+  model?: Maybe<Scalars['String']['output']>;
+  resource_id?: Maybe<Scalars['uuid']['output']>;
+  size_bytes?: Maybe<Scalars['bigint']['output']>;
+  storage_path?: Maybe<Scalars['String']['output']>;
+  version_number?: Maybe<Scalars['Int']['output']>;
 };
 
 /** order by min() on columns of table "resource_versions" */
@@ -4213,9 +4367,9 @@ export type Resource_Versions_Min_Order_By = {
 
 /** response of any mutation on the table "resource_versions" */
 export type Resource_Versions_Mutation_Response = {
-  __typename?: "resource_versions_mutation_response";
+  __typename?: 'resource_versions_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Resource_Versions>;
 };
@@ -4254,63 +4408,63 @@ export type Resource_Versions_Order_By = {
 
 /** primary key columns input for table: resource_versions */
 export type Resource_Versions_Pk_Columns_Input = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Resource_Versions_Prepend_Input = {
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** select columns of table "resource_versions" */
 export enum Resource_Versions_Select_Column {
   /** column name */
-  CreatedAt = "created_at",
+  CreatedAt = 'created_at',
   /** column name */
-  FileName = "file_name",
+  FileName = 'file_name',
   /** column name */
-  FileType = "file_type",
+  FileType = 'file_type',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  MessageId = "message_id",
+  MessageId = 'message_id',
   /** column name */
-  Metadata = "metadata",
+  Metadata = 'metadata',
   /** column name */
-  MimeType = "mime_type",
+  MimeType = 'mime_type',
   /** column name */
-  Model = "model",
+  Model = 'model',
   /** column name */
-  ResourceId = "resource_id",
+  ResourceId = 'resource_id',
   /** column name */
-  SizeBytes = "size_bytes",
+  SizeBytes = 'size_bytes',
   /** column name */
-  StoragePath = "storage_path",
+  StoragePath = 'storage_path',
   /** column name */
-  VersionNumber = "version_number"
+  VersionNumber = 'version_number'
 }
 
 /** input type for updating data in table "resource_versions" */
 export type Resource_Versions_Set_Input = {
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  file_name?: InputMaybe<Scalars["String"]["input"]>;
-  file_type?: InputMaybe<Scalars["String"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  message_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  mime_type?: InputMaybe<Scalars["String"]["input"]>;
-  model?: InputMaybe<Scalars["String"]["input"]>;
-  resource_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  size_bytes?: InputMaybe<Scalars["bigint"]["input"]>;
-  storage_path?: InputMaybe<Scalars["String"]["input"]>;
-  version_number?: InputMaybe<Scalars["Int"]["input"]>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  file_name?: InputMaybe<Scalars['String']['input']>;
+  file_type?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  message_id?: InputMaybe<Scalars['uuid']['input']>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  mime_type?: InputMaybe<Scalars['String']['input']>;
+  model?: InputMaybe<Scalars['String']['input']>;
+  resource_id?: InputMaybe<Scalars['uuid']['input']>;
+  size_bytes?: InputMaybe<Scalars['bigint']['input']>;
+  storage_path?: InputMaybe<Scalars['String']['input']>;
+  version_number?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** aggregate stddev on columns */
 export type Resource_Versions_Stddev_Fields = {
-  __typename?: "resource_versions_stddev_fields";
-  size_bytes?: Maybe<Scalars["Float"]["output"]>;
-  version_number?: Maybe<Scalars["Float"]["output"]>;
+  __typename?: 'resource_versions_stddev_fields';
+  size_bytes?: Maybe<Scalars['Float']['output']>;
+  version_number?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by stddev() on columns of table "resource_versions" */
@@ -4321,9 +4475,9 @@ export type Resource_Versions_Stddev_Order_By = {
 
 /** aggregate stddev_pop on columns */
 export type Resource_Versions_Stddev_Pop_Fields = {
-  __typename?: "resource_versions_stddev_pop_fields";
-  size_bytes?: Maybe<Scalars["Float"]["output"]>;
-  version_number?: Maybe<Scalars["Float"]["output"]>;
+  __typename?: 'resource_versions_stddev_pop_fields';
+  size_bytes?: Maybe<Scalars['Float']['output']>;
+  version_number?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by stddev_pop() on columns of table "resource_versions" */
@@ -4334,9 +4488,9 @@ export type Resource_Versions_Stddev_Pop_Order_By = {
 
 /** aggregate stddev_samp on columns */
 export type Resource_Versions_Stddev_Samp_Fields = {
-  __typename?: "resource_versions_stddev_samp_fields";
-  size_bytes?: Maybe<Scalars["Float"]["output"]>;
-  version_number?: Maybe<Scalars["Float"]["output"]>;
+  __typename?: 'resource_versions_stddev_samp_fields';
+  size_bytes?: Maybe<Scalars['Float']['output']>;
+  version_number?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by stddev_samp() on columns of table "resource_versions" */
@@ -4355,25 +4509,25 @@ export type Resource_Versions_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Resource_Versions_Stream_Cursor_Value_Input = {
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  file_name?: InputMaybe<Scalars["String"]["input"]>;
-  file_type?: InputMaybe<Scalars["String"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  message_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  mime_type?: InputMaybe<Scalars["String"]["input"]>;
-  model?: InputMaybe<Scalars["String"]["input"]>;
-  resource_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  size_bytes?: InputMaybe<Scalars["bigint"]["input"]>;
-  storage_path?: InputMaybe<Scalars["String"]["input"]>;
-  version_number?: InputMaybe<Scalars["Int"]["input"]>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  file_name?: InputMaybe<Scalars['String']['input']>;
+  file_type?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  message_id?: InputMaybe<Scalars['uuid']['input']>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  mime_type?: InputMaybe<Scalars['String']['input']>;
+  model?: InputMaybe<Scalars['String']['input']>;
+  resource_id?: InputMaybe<Scalars['uuid']['input']>;
+  size_bytes?: InputMaybe<Scalars['bigint']['input']>;
+  storage_path?: InputMaybe<Scalars['String']['input']>;
+  version_number?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** aggregate sum on columns */
 export type Resource_Versions_Sum_Fields = {
-  __typename?: "resource_versions_sum_fields";
-  size_bytes?: Maybe<Scalars["bigint"]["output"]>;
-  version_number?: Maybe<Scalars["Int"]["output"]>;
+  __typename?: 'resource_versions_sum_fields';
+  size_bytes?: Maybe<Scalars['bigint']['output']>;
+  version_number?: Maybe<Scalars['Int']['output']>;
 };
 
 /** order by sum() on columns of table "resource_versions" */
@@ -4385,29 +4539,29 @@ export type Resource_Versions_Sum_Order_By = {
 /** update columns of table "resource_versions" */
 export enum Resource_Versions_Update_Column {
   /** column name */
-  CreatedAt = "created_at",
+  CreatedAt = 'created_at',
   /** column name */
-  FileName = "file_name",
+  FileName = 'file_name',
   /** column name */
-  FileType = "file_type",
+  FileType = 'file_type',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  MessageId = "message_id",
+  MessageId = 'message_id',
   /** column name */
-  Metadata = "metadata",
+  Metadata = 'metadata',
   /** column name */
-  MimeType = "mime_type",
+  MimeType = 'mime_type',
   /** column name */
-  Model = "model",
+  Model = 'model',
   /** column name */
-  ResourceId = "resource_id",
+  ResourceId = 'resource_id',
   /** column name */
-  SizeBytes = "size_bytes",
+  SizeBytes = 'size_bytes',
   /** column name */
-  StoragePath = "storage_path",
+  StoragePath = 'storage_path',
   /** column name */
-  VersionNumber = "version_number"
+  VersionNumber = 'version_number'
 }
 
 export type Resource_Versions_Updates = {
@@ -4431,9 +4585,9 @@ export type Resource_Versions_Updates = {
 
 /** aggregate var_pop on columns */
 export type Resource_Versions_Var_Pop_Fields = {
-  __typename?: "resource_versions_var_pop_fields";
-  size_bytes?: Maybe<Scalars["Float"]["output"]>;
-  version_number?: Maybe<Scalars["Float"]["output"]>;
+  __typename?: 'resource_versions_var_pop_fields';
+  size_bytes?: Maybe<Scalars['Float']['output']>;
+  version_number?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by var_pop() on columns of table "resource_versions" */
@@ -4444,9 +4598,9 @@ export type Resource_Versions_Var_Pop_Order_By = {
 
 /** aggregate var_samp on columns */
 export type Resource_Versions_Var_Samp_Fields = {
-  __typename?: "resource_versions_var_samp_fields";
-  size_bytes?: Maybe<Scalars["Float"]["output"]>;
-  version_number?: Maybe<Scalars["Float"]["output"]>;
+  __typename?: 'resource_versions_var_samp_fields';
+  size_bytes?: Maybe<Scalars['Float']['output']>;
+  version_number?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by var_samp() on columns of table "resource_versions" */
@@ -4457,9 +4611,9 @@ export type Resource_Versions_Var_Samp_Order_By = {
 
 /** aggregate variance on columns */
 export type Resource_Versions_Variance_Fields = {
-  __typename?: "resource_versions_variance_fields";
-  size_bytes?: Maybe<Scalars["Float"]["output"]>;
-  version_number?: Maybe<Scalars["Float"]["output"]>;
+  __typename?: 'resource_versions_variance_fields';
+  size_bytes?: Maybe<Scalars['Float']['output']>;
+  version_number?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by variance() on columns of table "resource_versions" */
@@ -4470,75 +4624,79 @@ export type Resource_Versions_Variance_Order_By = {
 
 /** columns and relationships of "resources" */
 export type Resources = {
-  __typename?: "resources";
+  __typename?: 'resources';
   /** An object relationship */
   chat_conversation: Chat_Conversations;
-  conversation_id: Scalars["uuid"]["output"];
-  created_at: Scalars["timestamptz"]["output"];
-  created_by: Scalars["String"]["output"];
+  conversation_id: Scalars['uuid']['output'];
+  created_at: Scalars['timestamptz']['output'];
+  created_by: Scalars['String']['output'];
   /** An object relationship */
   current_version?: Maybe<Resource_Versions>;
-  current_version_id: Scalars["uuid"]["output"];
-  id: Scalars["uuid"]["output"];
-  is_archived: Scalars["Boolean"]["output"];
-  metadata: Scalars["jsonb"]["output"];
+  current_version_id: Scalars['uuid']['output'];
+  id: Scalars['uuid']['output'];
+  is_archived: Scalars['Boolean']['output'];
+  metadata: Scalars['jsonb']['output'];
   /** An object relationship */
   organization: Auth_Organization;
-  organization_id: Scalars["String"]["output"];
+  organization_id: Scalars['String']['output'];
   /** An array relationship */
   resource_versions: Array<Resource_Versions>;
   /** An aggregate relationship */
   resource_versions_aggregate: Resource_Versions_Aggregate;
-  source: Scalars["String"]["output"];
+  source: Scalars['String']['output'];
 };
+
 
 /** columns and relationships of "resources" */
 export type ResourcesMetadataArgs = {
-  path?: InputMaybe<Scalars["String"]["input"]>;
+  path?: InputMaybe<Scalars['String']['input']>;
 };
+
 
 /** columns and relationships of "resources" */
 export type ResourcesResource_VersionsArgs = {
   distinct_on?: InputMaybe<Array<Resource_Versions_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resource_Versions_Order_By>>;
   where?: InputMaybe<Resource_Versions_Bool_Exp>;
 };
 
+
 /** columns and relationships of "resources" */
 export type ResourcesResource_Versions_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Resource_Versions_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resource_Versions_Order_By>>;
   where?: InputMaybe<Resource_Versions_Bool_Exp>;
 };
 
 /** aggregated selection of "resources" */
 export type Resources_Aggregate = {
-  __typename?: "resources_aggregate";
+  __typename?: 'resources_aggregate';
   aggregate?: Maybe<Resources_Aggregate_Fields>;
   nodes: Array<Resources>;
 };
 
 /** aggregate fields of "resources" */
 export type Resources_Aggregate_Fields = {
-  __typename?: "resources_aggregate_fields";
-  count: Scalars["Int"]["output"];
+  __typename?: 'resources_aggregate_fields';
+  count: Scalars['Int']['output'];
   max?: Maybe<Resources_Max_Fields>;
   min?: Maybe<Resources_Min_Fields>;
 };
 
+
 /** aggregate fields of "resources" */
 export type Resources_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Resources_Select_Column>>;
-  distinct?: InputMaybe<Scalars["Boolean"]["input"]>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Resources_Append_Input = {
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** Boolean expression to filter rows from the table "resources". All fields are combined with a logical 'AND'. */
@@ -4565,70 +4723,70 @@ export type Resources_Bool_Exp = {
 /** unique or primary key constraints on table "resources" */
 export enum Resources_Constraint {
   /** unique or primary key constraint on columns "id" */
-  ResourcesPkey = "resources_pkey"
+  ResourcesPkey = 'resources_pkey'
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Resources_Delete_At_Path_Input = {
-  metadata?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  metadata?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Resources_Delete_Elem_Input = {
-  metadata?: InputMaybe<Scalars["Int"]["input"]>;
+  metadata?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Resources_Delete_Key_Input = {
-  metadata?: InputMaybe<Scalars["String"]["input"]>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** input type for inserting data into table "resources" */
 export type Resources_Insert_Input = {
   chat_conversation?: InputMaybe<Chat_Conversations_Obj_Rel_Insert_Input>;
-  conversation_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  created_by?: InputMaybe<Scalars["String"]["input"]>;
+  conversation_id?: InputMaybe<Scalars['uuid']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  created_by?: InputMaybe<Scalars['String']['input']>;
   current_version?: InputMaybe<Resource_Versions_Obj_Rel_Insert_Input>;
-  current_version_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  is_archived?: InputMaybe<Scalars["Boolean"]["input"]>;
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
+  current_version_id?: InputMaybe<Scalars['uuid']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  is_archived?: InputMaybe<Scalars['Boolean']['input']>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
   organization?: InputMaybe<Auth_Organization_Obj_Rel_Insert_Input>;
-  organization_id?: InputMaybe<Scalars["String"]["input"]>;
+  organization_id?: InputMaybe<Scalars['String']['input']>;
   resource_versions?: InputMaybe<Resource_Versions_Arr_Rel_Insert_Input>;
-  source?: InputMaybe<Scalars["String"]["input"]>;
+  source?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
 export type Resources_Max_Fields = {
-  __typename?: "resources_max_fields";
-  conversation_id?: Maybe<Scalars["uuid"]["output"]>;
-  created_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  created_by?: Maybe<Scalars["String"]["output"]>;
-  current_version_id?: Maybe<Scalars["uuid"]["output"]>;
-  id?: Maybe<Scalars["uuid"]["output"]>;
-  organization_id?: Maybe<Scalars["String"]["output"]>;
-  source?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'resources_max_fields';
+  conversation_id?: Maybe<Scalars['uuid']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  created_by?: Maybe<Scalars['String']['output']>;
+  current_version_id?: Maybe<Scalars['uuid']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  organization_id?: Maybe<Scalars['String']['output']>;
+  source?: Maybe<Scalars['String']['output']>;
 };
 
 /** aggregate min on columns */
 export type Resources_Min_Fields = {
-  __typename?: "resources_min_fields";
-  conversation_id?: Maybe<Scalars["uuid"]["output"]>;
-  created_at?: Maybe<Scalars["timestamptz"]["output"]>;
-  created_by?: Maybe<Scalars["String"]["output"]>;
-  current_version_id?: Maybe<Scalars["uuid"]["output"]>;
-  id?: Maybe<Scalars["uuid"]["output"]>;
-  organization_id?: Maybe<Scalars["String"]["output"]>;
-  source?: Maybe<Scalars["String"]["output"]>;
+  __typename?: 'resources_min_fields';
+  conversation_id?: Maybe<Scalars['uuid']['output']>;
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  created_by?: Maybe<Scalars['String']['output']>;
+  current_version_id?: Maybe<Scalars['uuid']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  organization_id?: Maybe<Scalars['String']['output']>;
+  source?: Maybe<Scalars['String']['output']>;
 };
 
 /** response of any mutation on the table "resources" */
 export type Resources_Mutation_Response = {
-  __typename?: "resources_mutation_response";
+  __typename?: 'resources_mutation_response';
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]["output"];
+  affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Resources>;
 };
@@ -4666,47 +4824,47 @@ export type Resources_Order_By = {
 
 /** primary key columns input for table: resources */
 export type Resources_Pk_Columns_Input = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Resources_Prepend_Input = {
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** select columns of table "resources" */
 export enum Resources_Select_Column {
   /** column name */
-  ConversationId = "conversation_id",
+  ConversationId = 'conversation_id',
   /** column name */
-  CreatedAt = "created_at",
+  CreatedAt = 'created_at',
   /** column name */
-  CreatedBy = "created_by",
+  CreatedBy = 'created_by',
   /** column name */
-  CurrentVersionId = "current_version_id",
+  CurrentVersionId = 'current_version_id',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  IsArchived = "is_archived",
+  IsArchived = 'is_archived',
   /** column name */
-  Metadata = "metadata",
+  Metadata = 'metadata',
   /** column name */
-  OrganizationId = "organization_id",
+  OrganizationId = 'organization_id',
   /** column name */
-  Source = "source"
+  Source = 'source'
 }
 
 /** input type for updating data in table "resources" */
 export type Resources_Set_Input = {
-  conversation_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  created_by?: InputMaybe<Scalars["String"]["input"]>;
-  current_version_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  is_archived?: InputMaybe<Scalars["Boolean"]["input"]>;
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  organization_id?: InputMaybe<Scalars["String"]["input"]>;
-  source?: InputMaybe<Scalars["String"]["input"]>;
+  conversation_id?: InputMaybe<Scalars['uuid']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  created_by?: InputMaybe<Scalars['String']['input']>;
+  current_version_id?: InputMaybe<Scalars['uuid']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  is_archived?: InputMaybe<Scalars['Boolean']['input']>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  organization_id?: InputMaybe<Scalars['String']['input']>;
+  source?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "resources" */
@@ -4719,37 +4877,37 @@ export type Resources_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Resources_Stream_Cursor_Value_Input = {
-  conversation_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  created_at?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  created_by?: InputMaybe<Scalars["String"]["input"]>;
-  current_version_id?: InputMaybe<Scalars["uuid"]["input"]>;
-  id?: InputMaybe<Scalars["uuid"]["input"]>;
-  is_archived?: InputMaybe<Scalars["Boolean"]["input"]>;
-  metadata?: InputMaybe<Scalars["jsonb"]["input"]>;
-  organization_id?: InputMaybe<Scalars["String"]["input"]>;
-  source?: InputMaybe<Scalars["String"]["input"]>;
+  conversation_id?: InputMaybe<Scalars['uuid']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  created_by?: InputMaybe<Scalars['String']['input']>;
+  current_version_id?: InputMaybe<Scalars['uuid']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  is_archived?: InputMaybe<Scalars['Boolean']['input']>;
+  metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  organization_id?: InputMaybe<Scalars['String']['input']>;
+  source?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "resources" */
 export enum Resources_Update_Column {
   /** column name */
-  ConversationId = "conversation_id",
+  ConversationId = 'conversation_id',
   /** column name */
-  CreatedAt = "created_at",
+  CreatedAt = 'created_at',
   /** column name */
-  CreatedBy = "created_by",
+  CreatedBy = 'created_by',
   /** column name */
-  CurrentVersionId = "current_version_id",
+  CurrentVersionId = 'current_version_id',
   /** column name */
-  Id = "id",
+  Id = 'id',
   /** column name */
-  IsArchived = "is_archived",
+  IsArchived = 'is_archived',
   /** column name */
-  Metadata = "metadata",
+  Metadata = 'metadata',
   /** column name */
-  OrganizationId = "organization_id",
+  OrganizationId = 'organization_id',
   /** column name */
-  Source = "source"
+  Source = 'source'
 }
 
 export type Resources_Updates = {
@@ -4770,7 +4928,7 @@ export type Resources_Updates = {
 };
 
 export type Subscription_Root = {
-  __typename?: "subscription_root";
+  __typename?: 'subscription_root';
   /** fetch data from the table: "auth.account" */
   auth_account: Array<Auth_Account>;
   /** fetch aggregated fields from the table: "auth.account" */
@@ -4869,611 +5027,855 @@ export type Subscription_Root = {
   resources_stream: Array<Resources>;
 };
 
+
 export type Subscription_RootAuth_AccountArgs = {
   distinct_on?: InputMaybe<Array<Auth_Account_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Account_Order_By>>;
   where?: InputMaybe<Auth_Account_Bool_Exp>;
 };
+
 
 export type Subscription_RootAuth_Account_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Account_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Account_Order_By>>;
   where?: InputMaybe<Auth_Account_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_Account_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
+
 export type Subscription_RootAuth_Account_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Auth_Account_Stream_Cursor_Input>>;
   where?: InputMaybe<Auth_Account_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_InvitationArgs = {
   distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
   where?: InputMaybe<Auth_Invitation_Bool_Exp>;
 };
+
 
 export type Subscription_RootAuth_Invitation_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Invitation_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Invitation_Order_By>>;
   where?: InputMaybe<Auth_Invitation_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_Invitation_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
+
 export type Subscription_RootAuth_Invitation_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Auth_Invitation_Stream_Cursor_Input>>;
   where?: InputMaybe<Auth_Invitation_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_MemberArgs = {
   distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
   where?: InputMaybe<Auth_Member_Bool_Exp>;
 };
+
 
 export type Subscription_RootAuth_Member_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Member_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Member_Order_By>>;
   where?: InputMaybe<Auth_Member_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_Member_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
+
 export type Subscription_RootAuth_Member_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Auth_Member_Stream_Cursor_Input>>;
   where?: InputMaybe<Auth_Member_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_OrganizationArgs = {
   distinct_on?: InputMaybe<Array<Auth_Organization_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Organization_Order_By>>;
   where?: InputMaybe<Auth_Organization_Bool_Exp>;
 };
+
 
 export type Subscription_RootAuth_Organization_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Organization_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Organization_Order_By>>;
   where?: InputMaybe<Auth_Organization_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_Organization_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
+
 export type Subscription_RootAuth_Organization_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Auth_Organization_Stream_Cursor_Input>>;
   where?: InputMaybe<Auth_Organization_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_SessionArgs = {
   distinct_on?: InputMaybe<Array<Auth_Session_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Session_Order_By>>;
   where?: InputMaybe<Auth_Session_Bool_Exp>;
 };
+
 
 export type Subscription_RootAuth_Session_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Session_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Session_Order_By>>;
   where?: InputMaybe<Auth_Session_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_Session_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
+
 export type Subscription_RootAuth_Session_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Auth_Session_Stream_Cursor_Input>>;
   where?: InputMaybe<Auth_Session_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_UserArgs = {
   distinct_on?: InputMaybe<Array<Auth_User_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_User_Order_By>>;
   where?: InputMaybe<Auth_User_Bool_Exp>;
 };
+
 
 export type Subscription_RootAuth_User_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_User_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_User_Order_By>>;
   where?: InputMaybe<Auth_User_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_User_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
+
 export type Subscription_RootAuth_User_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Auth_User_Stream_Cursor_Input>>;
   where?: InputMaybe<Auth_User_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_VerificationArgs = {
   distinct_on?: InputMaybe<Array<Auth_Verification_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Verification_Order_By>>;
   where?: InputMaybe<Auth_Verification_Bool_Exp>;
 };
+
 
 export type Subscription_RootAuth_Verification_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Auth_Verification_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Auth_Verification_Order_By>>;
   where?: InputMaybe<Auth_Verification_Bool_Exp>;
 };
 
+
 export type Subscription_RootAuth_Verification_By_PkArgs = {
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 };
 
+
 export type Subscription_RootAuth_Verification_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Auth_Verification_Stream_Cursor_Input>>;
   where?: InputMaybe<Auth_Verification_Bool_Exp>;
 };
 
+
 export type Subscription_RootChat_ConversationsArgs = {
   distinct_on?: InputMaybe<Array<Chat_Conversations_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Conversations_Order_By>>;
   where?: InputMaybe<Chat_Conversations_Bool_Exp>;
 };
+
 
 export type Subscription_RootChat_Conversations_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Chat_Conversations_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Conversations_Order_By>>;
   where?: InputMaybe<Chat_Conversations_Bool_Exp>;
 };
 
+
 export type Subscription_RootChat_Conversations_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
 
+
 export type Subscription_RootChat_Conversations_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Chat_Conversations_Stream_Cursor_Input>>;
   where?: InputMaybe<Chat_Conversations_Bool_Exp>;
 };
 
+
 export type Subscription_RootChat_MessagesArgs = {
   distinct_on?: InputMaybe<Array<Chat_Messages_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Messages_Order_By>>;
   where?: InputMaybe<Chat_Messages_Bool_Exp>;
 };
+
 
 export type Subscription_RootChat_Messages_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Chat_Messages_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Chat_Messages_Order_By>>;
   where?: InputMaybe<Chat_Messages_Bool_Exp>;
 };
 
+
 export type Subscription_RootChat_Messages_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
 
+
 export type Subscription_RootChat_Messages_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Chat_Messages_Stream_Cursor_Input>>;
   where?: InputMaybe<Chat_Messages_Bool_Exp>;
 };
 
+
 export type Subscription_RootResource_EventsArgs = {
   distinct_on?: InputMaybe<Array<Resource_Events_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resource_Events_Order_By>>;
   where?: InputMaybe<Resource_Events_Bool_Exp>;
 };
+
 
 export type Subscription_RootResource_Events_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Resource_Events_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resource_Events_Order_By>>;
   where?: InputMaybe<Resource_Events_Bool_Exp>;
 };
 
+
 export type Subscription_RootResource_Events_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
 
+
 export type Subscription_RootResource_Events_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Resource_Events_Stream_Cursor_Input>>;
   where?: InputMaybe<Resource_Events_Bool_Exp>;
 };
 
+
 export type Subscription_RootResource_VersionsArgs = {
   distinct_on?: InputMaybe<Array<Resource_Versions_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resource_Versions_Order_By>>;
   where?: InputMaybe<Resource_Versions_Bool_Exp>;
 };
+
 
 export type Subscription_RootResource_Versions_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Resource_Versions_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resource_Versions_Order_By>>;
   where?: InputMaybe<Resource_Versions_Bool_Exp>;
 };
 
+
 export type Subscription_RootResource_Versions_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
 
+
 export type Subscription_RootResource_Versions_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Resource_Versions_Stream_Cursor_Input>>;
   where?: InputMaybe<Resource_Versions_Bool_Exp>;
 };
 
+
 export type Subscription_RootResourcesArgs = {
   distinct_on?: InputMaybe<Array<Resources_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resources_Order_By>>;
   where?: InputMaybe<Resources_Bool_Exp>;
 };
+
 
 export type Subscription_RootResources_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Resources_Select_Column>>;
-  limit?: InputMaybe<Scalars["Int"]["input"]>;
-  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Resources_Order_By>>;
   where?: InputMaybe<Resources_Bool_Exp>;
 };
 
+
 export type Subscription_RootResources_By_PkArgs = {
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 };
 
+
 export type Subscription_RootResources_StreamArgs = {
-  batch_size: Scalars["Int"]["input"];
+  batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Resources_Stream_Cursor_Input>>;
   where?: InputMaybe<Resources_Bool_Exp>;
 };
 
 /** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
 export type Timestamptz_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  _gt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  _gte?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  _in?: InputMaybe<Array<Scalars["timestamptz"]["input"]>>;
-  _is_null?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _lt?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  _lte?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  _neq?: InputMaybe<Scalars["timestamptz"]["input"]>;
-  _nin?: InputMaybe<Array<Scalars["timestamptz"]["input"]>>;
+  _eq?: InputMaybe<Scalars['timestamptz']['input']>;
+  _gt?: InputMaybe<Scalars['timestamptz']['input']>;
+  _gte?: InputMaybe<Scalars['timestamptz']['input']>;
+  _in?: InputMaybe<Array<Scalars['timestamptz']['input']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
+  _lt?: InputMaybe<Scalars['timestamptz']['input']>;
+  _lte?: InputMaybe<Scalars['timestamptz']['input']>;
+  _neq?: InputMaybe<Scalars['timestamptz']['input']>;
+  _nin?: InputMaybe<Array<Scalars['timestamptz']['input']>>;
 };
 
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
 export type Uuid_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars["uuid"]["input"]>;
-  _gt?: InputMaybe<Scalars["uuid"]["input"]>;
-  _gte?: InputMaybe<Scalars["uuid"]["input"]>;
-  _in?: InputMaybe<Array<Scalars["uuid"]["input"]>>;
-  _is_null?: InputMaybe<Scalars["Boolean"]["input"]>;
-  _lt?: InputMaybe<Scalars["uuid"]["input"]>;
-  _lte?: InputMaybe<Scalars["uuid"]["input"]>;
-  _neq?: InputMaybe<Scalars["uuid"]["input"]>;
-  _nin?: InputMaybe<Array<Scalars["uuid"]["input"]>>;
+  _eq?: InputMaybe<Scalars['uuid']['input']>;
+  _gt?: InputMaybe<Scalars['uuid']['input']>;
+  _gte?: InputMaybe<Scalars['uuid']['input']>;
+  _in?: InputMaybe<Array<Scalars['uuid']['input']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
+  _lt?: InputMaybe<Scalars['uuid']['input']>;
+  _lte?: InputMaybe<Scalars['uuid']['input']>;
+  _neq?: InputMaybe<Scalars['uuid']['input']>;
+  _nin?: InputMaybe<Array<Scalars['uuid']['input']>>;
 };
 
 export type UpdateAuthSessionMutationVariables = Exact<{
   setObj: Auth_Session_Set_Input;
-  sessionId: Scalars["String"]["input"];
+  sessionId: Scalars['String']['input'];
 }>;
 
-export type UpdateAuthSessionMutation = { __typename?: "mutation_root" } & {
-  update_auth_session?: Maybe<{ __typename?: "auth_session_mutation_response" } & Pick<Auth_Session_Mutation_Response, "affected_rows">>;
-};
+
+export type UpdateAuthSessionMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_auth_session?: Maybe<(
+    { __typename?: 'auth_session_mutation_response' }
+    & Pick<Auth_Session_Mutation_Response, 'affected_rows'>
+  )> }
+);
 
 export type GetAllOrganizationsByUserIdQueryVariables = Exact<{
-  userId: Scalars["String"]["input"];
+  userId: Scalars['String']['input'];
 }>;
 
-export type GetAllOrganizationsByUserIdQuery = { __typename?: "query_root" } & {
-  auth_member: Array<{ __typename?: "auth_member" } & Pick<Auth_Member, "organizationId" | "role">>;
-};
 
-export type TestQueryVariables = Exact<{ [key: string]: never }>;
+export type GetAllOrganizationsByUserIdQuery = (
+  { __typename?: 'query_root' }
+  & { auth_member: Array<(
+    { __typename?: 'auth_member' }
+    & Pick<Auth_Member, 'organizationId' | 'role'>
+  )> }
+);
 
-export type TestQuery = { __typename?: "query_root" } & { auth_user: Array<{ __typename?: "auth_user" } & Pick<Auth_User, "name">> };
+export type GetMemberByUserAndOrgQueryVariables = Exact<{
+  userId: Scalars['String']['input'];
+  organizationId: Scalars['String']['input'];
+}>;
+
+
+export type GetMemberByUserAndOrgQuery = (
+  { __typename?: 'query_root' }
+  & { auth_member: Array<(
+    { __typename?: 'auth_member' }
+    & Pick<
+      Auth_Member,
+      | 'userId'
+      | 'organizationId'
+      | 'role'
+      | 'createdAt'
+    >
+  )> }
+);
+
+export type TestQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TestQuery = (
+  { __typename?: 'query_root' }
+  & { auth_user: Array<(
+    { __typename?: 'auth_user' }
+    & Pick<Auth_User, 'name'>
+  )> }
+);
 
 export type CreateConversationMutationVariables = Exact<{
   object: Chat_Conversations_Insert_Input;
 }>;
 
-export type CreateConversationMutation = { __typename?: "mutation_root" } & {
-  insert_chat_conversations_one?: Maybe<
-    { __typename?: "chat_conversations" } & Pick<
+
+export type CreateConversationMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_chat_conversations_one?: Maybe<(
+    { __typename?: 'chat_conversations' }
+    & Pick<
       Chat_Conversations,
-      "id" | "organization_id" | "user_id" | "title" | "is_archived" | "visibility" | "created_at" | "updated_at"
+      | 'id'
+      | 'organization_id'
+      | 'user_id'
+      | 'title'
+      | 'is_archived'
+      | 'visibility'
+      | 'created_at'
+      | 'updated_at'
     >
-  >;
-};
+  )> }
+);
 
 export type UpdateConversationMutationVariables = Exact<{
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
   setObj: Chat_Conversations_Set_Input;
 }>;
 
-export type UpdateConversationMutation = { __typename?: "mutation_root" } & {
-  update_chat_conversations_by_pk?: Maybe<{ __typename?: "chat_conversations" } & Pick<Chat_Conversations, "id" | "title" | "is_archived" | "updated_at">>;
-};
+
+export type UpdateConversationMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_chat_conversations_by_pk?: Maybe<(
+    { __typename?: 'chat_conversations' }
+    & Pick<
+      Chat_Conversations,
+      | 'id'
+      | 'title'
+      | 'is_archived'
+      | 'updated_at'
+    >
+  )> }
+);
 
 export type InsertChatMessageMutationVariables = Exact<{
   object: Chat_Messages_Insert_Input;
 }>;
 
-export type InsertChatMessageMutation = { __typename?: "mutation_root" } & {
-  insert_chat_messages_one?: Maybe<
-    { __typename?: "chat_messages" } & Pick<
+
+export type InsertChatMessageMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_chat_messages_one?: Maybe<(
+    { __typename?: 'chat_messages' }
+    & Pick<
       Chat_Messages,
-      "id" | "conversation_id" | "role" | "content" | "token_usage" | "model" | "provider_metadata" | "created_at"
+      | 'id'
+      | 'conversation_id'
+      | 'role'
+      | 'content'
+      | 'token_usage'
+      | 'model'
+      | 'provider_metadata'
+      | 'created_at'
     >
-  >;
-};
+  )> }
+);
 
 export type InsertChatMessagesMutationVariables = Exact<{
   objects: Array<Chat_Messages_Insert_Input> | Chat_Messages_Insert_Input;
 }>;
 
-export type InsertChatMessagesMutation = { __typename?: "mutation_root" } & {
-  insert_chat_messages?: Maybe<
-    { __typename?: "chat_messages_mutation_response" } & Pick<Chat_Messages_Mutation_Response, "affected_rows"> & {
-        returning: Array<{ __typename?: "chat_messages" } & Pick<Chat_Messages, "id" | "conversation_id" | "role" | "content" | "created_at">>;
-      }
-  >;
-};
+
+export type InsertChatMessagesMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_chat_messages?: Maybe<(
+    { __typename?: 'chat_messages_mutation_response' }
+    & Pick<Chat_Messages_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename?: 'chat_messages' }
+      & Pick<
+        Chat_Messages,
+        | 'id'
+        | 'conversation_id'
+        | 'role'
+        | 'content'
+        | 'created_at'
+      >
+    )> }
+  )> }
+);
 
 export type GetConversationByIdQueryVariables = Exact<{
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 }>;
 
-export type GetConversationByIdQuery = { __typename?: "query_root" } & {
-  chat_conversations_by_pk?: Maybe<
-    { __typename?: "chat_conversations" } & Pick<
+
+export type GetConversationByIdQuery = (
+  { __typename?: 'query_root' }
+  & { chat_conversations_by_pk?: Maybe<(
+    { __typename?: 'chat_conversations' }
+    & Pick<
       Chat_Conversations,
-      "id" | "organization_id" | "user_id" | "title" | "is_archived" | "visibility" | "created_at" | "updated_at"
+      | 'id'
+      | 'organization_id'
+      | 'user_id'
+      | 'title'
+      | 'is_archived'
+      | 'visibility'
+      | 'created_at'
+      | 'updated_at'
     >
-  >;
-};
+  )> }
+);
 
 export type GetConversationsByUserQueryVariables = Exact<{
-  userId: Scalars["String"]["input"];
-  organizationId: Scalars["String"]["input"];
+  userId: Scalars['String']['input'];
+  organizationId: Scalars['String']['input'];
 }>;
 
-export type GetConversationsByUserQuery = { __typename?: "query_root" } & {
-  chat_conversations: Array<{ __typename?: "chat_conversations" } & Pick<Chat_Conversations, "id" | "title" | "visibility" | "created_at" | "updated_at">>;
-};
+
+export type GetConversationsByUserQuery = (
+  { __typename?: 'query_root' }
+  & { chat_conversations: Array<(
+    { __typename?: 'chat_conversations' }
+    & Pick<
+      Chat_Conversations,
+      | 'id'
+      | 'title'
+      | 'visibility'
+      | 'created_at'
+      | 'updated_at'
+    >
+  )> }
+);
 
 export type GetConversationsByUserSubscriptionSubscriptionVariables = Exact<{
-  userId: Scalars["String"]["input"];
-  organizationId: Scalars["String"]["input"];
+  userId: Scalars['String']['input'];
+  organizationId: Scalars['String']['input'];
 }>;
 
-export type GetConversationsByUserSubscriptionSubscription = { __typename?: "subscription_root" } & {
-  chat_conversations: Array<{ __typename?: "chat_conversations" } & Pick<Chat_Conversations, "id" | "title" | "visibility" | "created_at" | "updated_at">>;
-};
+
+export type GetConversationsByUserSubscriptionSubscription = (
+  { __typename?: 'subscription_root' }
+  & { chat_conversations: Array<(
+    { __typename?: 'chat_conversations' }
+    & Pick<
+      Chat_Conversations,
+      | 'id'
+      | 'title'
+      | 'visibility'
+      | 'created_at'
+      | 'updated_at'
+    >
+  )> }
+);
 
 export type GetMessagesByConversationQueryVariables = Exact<{
-  conversationId: Scalars["uuid"]["input"];
+  conversationId: Scalars['uuid']['input'];
 }>;
 
-export type GetMessagesByConversationQuery = { __typename?: "query_root" } & {
-  chat_messages: Array<
-    { __typename?: "chat_messages" } & Pick<
+
+export type GetMessagesByConversationQuery = (
+  { __typename?: 'query_root' }
+  & { chat_messages: Array<(
+    { __typename?: 'chat_messages' }
+    & Pick<
       Chat_Messages,
-      "id" | "conversation_id" | "role" | "content" | "token_usage" | "model" | "provider_metadata" | "created_at"
+      | 'id'
+      | 'conversation_id'
+      | 'role'
+      | 'content'
+      | 'token_usage'
+      | 'model'
+      | 'provider_metadata'
+      | 'created_at'
     >
-  >;
-};
+  )> }
+);
 
 export type GetConversationWithMessagesQueryVariables = Exact<{
-  conversationId: Scalars["uuid"]["input"];
+  conversationId: Scalars['uuid']['input'];
 }>;
 
-export type GetConversationWithMessagesQuery = { __typename?: "query_root" } & {
-  chat_conversations_by_pk?: Maybe<
-    { __typename?: "chat_conversations" } & Pick<
+
+export type GetConversationWithMessagesQuery = (
+  { __typename?: 'query_root' }
+  & { chat_conversations_by_pk?: Maybe<(
+    { __typename?: 'chat_conversations' }
+    & Pick<
       Chat_Conversations,
-      "id" | "organization_id" | "user_id" | "title" | "is_archived" | "visibility" | "created_at" | "updated_at"
-    > & {
-        messages: Array<
-          { __typename?: "chat_messages" } & Pick<Chat_Messages, "id" | "role" | "content" | "token_usage" | "model" | "provider_metadata" | "created_at">
-        >;
-      }
-  >;
-};
+      | 'id'
+      | 'organization_id'
+      | 'user_id'
+      | 'title'
+      | 'is_archived'
+      | 'visibility'
+      | 'created_at'
+      | 'updated_at'
+    >
+    & { messages: Array<(
+      { __typename?: 'chat_messages' }
+      & Pick<
+        Chat_Messages,
+        | 'id'
+        | 'role'
+        | 'content'
+        | 'token_usage'
+        | 'model'
+        | 'provider_metadata'
+        | 'created_at'
+      >
+    )> }
+  )> }
+);
 
 export type ArchiveConversationMutationVariables = Exact<{
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 }>;
 
-export type ArchiveConversationMutation = { __typename?: "mutation_root" } & {
-  update_chat_conversations_by_pk?: Maybe<{ __typename?: "chat_conversations" } & Pick<Chat_Conversations, "id" | "is_archived">>;
-};
+
+export type ArchiveConversationMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_chat_conversations_by_pk?: Maybe<(
+    { __typename?: 'chat_conversations' }
+    & Pick<Chat_Conversations, 'id' | 'is_archived'>
+  )> }
+);
 
 export type DeleteConversationMutationVariables = Exact<{
-  id: Scalars["uuid"]["input"];
+  id: Scalars['uuid']['input'];
 }>;
 
-export type DeleteConversationMutation = { __typename?: "mutation_root" } & {
-  delete_chat_messages?: Maybe<{ __typename?: "chat_messages_mutation_response" } & Pick<Chat_Messages_Mutation_Response, "affected_rows">>;
-  delete_chat_conversations_by_pk?: Maybe<{ __typename?: "chat_conversations" } & Pick<Chat_Conversations, "id">>;
-};
+
+export type DeleteConversationMutation = (
+  { __typename?: 'mutation_root' }
+  & {
+    delete_chat_messages?: Maybe<(
+      { __typename?: 'chat_messages_mutation_response' }
+      & Pick<Chat_Messages_Mutation_Response, 'affected_rows'>
+    )>,
+    delete_chat_conversations_by_pk?: Maybe<(
+      { __typename?: 'chat_conversations' }
+      & Pick<Chat_Conversations, 'id'>
+    )>,
+  }
+);
+
 
 export const UpdateAuthSession = gql`
-  mutation updateAuthSession($setObj: auth_session_set_input!, $sessionId: String!) {
-    update_auth_session(_set: $setObj, where: { id: { _eq: $sessionId } }) {
-      affected_rows
-    }
+    mutation updateAuthSession($setObj: auth_session_set_input!, $sessionId: String!) {
+  update_auth_session(_set: $setObj, where: {id: {_eq: $sessionId}}) {
+    affected_rows
   }
-`;
+}
+    `;
 export const GetAllOrganizationsByUserId = gql`
-  query getAllOrganizationsByUserId($userId: String!) {
-    auth_member(where: { userId: { _eq: $userId } }) {
-      organizationId
-      role
-    }
+    query getAllOrganizationsByUserId($userId: String!) {
+  auth_member(where: {userId: {_eq: $userId}}) {
+    organizationId
+    role
   }
-`;
+}
+    `;
+export const GetMemberByUserAndOrg = gql`
+    query getMemberByUserAndOrg($userId: String!, $organizationId: String!) {
+  auth_member(
+    where: {userId: {_eq: $userId}, organizationId: {_eq: $organizationId}}
+  ) {
+    userId
+    organizationId
+    role
+    createdAt
+  }
+}
+    `;
 export const Test = gql`
-  query test {
-    auth_user {
-      name
-    }
+    query test {
+  auth_user {
+    name
   }
-`;
+}
+    `;
 export const CreateConversation = gql`
-  mutation createConversation($object: chat_conversations_insert_input!) {
-    insert_chat_conversations_one(object: $object) {
-      id
-      organization_id
-      user_id
-      title
-      is_archived
-      visibility
-      created_at
-      updated_at
-    }
+    mutation createConversation($object: chat_conversations_insert_input!) {
+  insert_chat_conversations_one(object: $object) {
+    id
+    organization_id
+    user_id
+    title
+    is_archived
+    visibility
+    created_at
+    updated_at
   }
-`;
+}
+    `;
 export const UpdateConversation = gql`
-  mutation updateConversation($id: uuid!, $setObj: chat_conversations_set_input!) {
-    update_chat_conversations_by_pk(pk_columns: { id: $id }, _set: $setObj) {
-      id
-      title
-      is_archived
-      updated_at
-    }
+    mutation updateConversation($id: uuid!, $setObj: chat_conversations_set_input!) {
+  update_chat_conversations_by_pk(pk_columns: {id: $id}, _set: $setObj) {
+    id
+    title
+    is_archived
+    updated_at
   }
-`;
+}
+    `;
 export const InsertChatMessage = gql`
-  mutation insertChatMessage($object: chat_messages_insert_input!) {
-    insert_chat_messages_one(object: $object) {
-      id
-      conversation_id
-      role
-      content
-      token_usage
-      model
-      provider_metadata
-      created_at
-    }
+    mutation insertChatMessage($object: chat_messages_insert_input!) {
+  insert_chat_messages_one(object: $object) {
+    id
+    conversation_id
+    role
+    content
+    token_usage
+    model
+    provider_metadata
+    created_at
   }
-`;
+}
+    `;
 export const InsertChatMessages = gql`
-  mutation insertChatMessages($objects: [chat_messages_insert_input!]!) {
-    insert_chat_messages(objects: $objects) {
-      affected_rows
-      returning {
-        id
-        conversation_id
-        role
-        content
-        created_at
-      }
-    }
-  }
-`;
-export const GetConversationById = gql`
-  query getConversationById($id: uuid!) {
-    chat_conversations_by_pk(id: $id) {
-      id
-      organization_id
-      user_id
-      title
-      is_archived
-      visibility
-      created_at
-      updated_at
-    }
-  }
-`;
-export const GetConversationsByUser = gql`
-  query getConversationsByUser($userId: String!, $organizationId: String!) {
-    chat_conversations(
-      where: { user_id: { _eq: $userId }, organization_id: { _eq: $organizationId }, is_archived: { _eq: false } }
-      order_by: { updated_at: desc }
-    ) {
-      id
-      title
-      visibility
-      created_at
-      updated_at
-    }
-  }
-`;
-export const GetConversationsByUserSubscription = gql`
-  subscription getConversationsByUserSubscription($userId: String!, $organizationId: String!) {
-    chat_conversations(
-      where: { user_id: { _eq: $userId }, organization_id: { _eq: $organizationId }, is_archived: { _eq: false } }
-      order_by: { updated_at: desc }
-    ) {
-      id
-      title
-      visibility
-      created_at
-      updated_at
-    }
-  }
-`;
-export const GetMessagesByConversation = gql`
-  query getMessagesByConversation($conversationId: uuid!) {
-    chat_messages(where: { conversation_id: { _eq: $conversationId } }, order_by: { created_at: asc }) {
+    mutation insertChatMessages($objects: [chat_messages_insert_input!]!) {
+  insert_chat_messages(objects: $objects) {
+    affected_rows
+    returning {
       id
       conversation_id
+      role
+      content
+      created_at
+    }
+  }
+}
+    `;
+export const GetConversationById = gql`
+    query getConversationById($id: uuid!) {
+  chat_conversations_by_pk(id: $id) {
+    id
+    organization_id
+    user_id
+    title
+    is_archived
+    visibility
+    created_at
+    updated_at
+  }
+}
+    `;
+export const GetConversationsByUser = gql`
+    query getConversationsByUser($userId: String!, $organizationId: String!) {
+  chat_conversations(
+    where: {user_id: {_eq: $userId}, organization_id: {_eq: $organizationId}, is_archived: {_eq: false}}
+    order_by: {updated_at: desc}
+  ) {
+    id
+    title
+    visibility
+    created_at
+    updated_at
+  }
+}
+    `;
+export const GetConversationsByUserSubscription = gql`
+    subscription getConversationsByUserSubscription($userId: String!, $organizationId: String!) {
+  chat_conversations(
+    where: {user_id: {_eq: $userId}, organization_id: {_eq: $organizationId}, is_archived: {_eq: false}}
+    order_by: {updated_at: desc}
+  ) {
+    id
+    title
+    visibility
+    created_at
+    updated_at
+  }
+}
+    `;
+export const GetMessagesByConversation = gql`
+    query getMessagesByConversation($conversationId: uuid!) {
+  chat_messages(
+    where: {conversation_id: {_eq: $conversationId}}
+    order_by: {created_at: asc}
+  ) {
+    id
+    conversation_id
+    role
+    content
+    token_usage
+    model
+    provider_metadata
+    created_at
+  }
+}
+    `;
+export const GetConversationWithMessages = gql`
+    query getConversationWithMessages($conversationId: uuid!) {
+  chat_conversations_by_pk(id: $conversationId) {
+    id
+    organization_id
+    user_id
+    title
+    is_archived
+    visibility
+    created_at
+    updated_at
+    messages: chat_messages(order_by: {created_at: asc}) {
+      id
       role
       content
       token_usage
@@ -5482,5921 +5884,5819 @@ export const GetMessagesByConversation = gql`
       created_at
     }
   }
-`;
-export const GetConversationWithMessages = gql`
-  query getConversationWithMessages($conversationId: uuid!) {
-    chat_conversations_by_pk(id: $conversationId) {
-      id
-      organization_id
-      user_id
-      title
-      is_archived
-      visibility
-      created_at
-      updated_at
-      messages: chat_messages(order_by: { created_at: asc }) {
-        id
-        role
-        content
-        token_usage
-        model
-        provider_metadata
-        created_at
-      }
-    }
-  }
-`;
+}
+    `;
 export const ArchiveConversation = gql`
-  mutation archiveConversation($id: uuid!) {
-    update_chat_conversations_by_pk(pk_columns: { id: $id }, _set: { is_archived: true }) {
-      id
-      is_archived
-    }
+    mutation archiveConversation($id: uuid!) {
+  update_chat_conversations_by_pk(
+    pk_columns: {id: $id}
+    _set: {is_archived: true}
+  ) {
+    id
+    is_archived
   }
-`;
+}
+    `;
 export const DeleteConversation = gql`
-  mutation deleteConversation($id: uuid!) {
-    delete_chat_messages(where: { conversation_id: { _eq: $id } }) {
-      affected_rows
-    }
-    delete_chat_conversations_by_pk(id: $id) {
-      id
-    }
+    mutation deleteConversation($id: uuid!) {
+  delete_chat_messages(where: {conversation_id: {_eq: $id}}) {
+    affected_rows
   }
-`;
-import { IntrospectionQuery } from "graphql";
+  delete_chat_conversations_by_pk(id: $id) {
+    id
+  }
+}
+    `;
+import { IntrospectionQuery } from 'graphql';
 export default {
-  __schema: {
-    queryType: {
-      name: "query_root",
-      kind: "OBJECT"
+  "__schema": {
+    "queryType": {
+      "name": "query_root",
+      "kind": "OBJECT"
     },
-    mutationType: {
-      name: "mutation_root",
-      kind: "OBJECT"
+    "mutationType": {
+      "name": "mutation_root",
+      "kind": "OBJECT"
     },
-    subscriptionType: {
-      name: "subscription_root",
-      kind: "OBJECT"
+    "subscriptionType": {
+      "name": "subscription_root",
+      "kind": "OBJECT"
     },
-    types: [
+    "types": [
       {
-        kind: "OBJECT",
-        name: "auth_account",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_account",
+        "fields": [
           {
-            name: "accessToken",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "accessToken",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "accessTokenExpiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "accessTokenExpiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "accountId",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "accountId",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "createdAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "idToken",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "idToken",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "password",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "password",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "providerId",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "providerId",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "refreshToken",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "refreshToken",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "refreshTokenExpiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "refreshTokenExpiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "scope",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "scope",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "user",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_user",
-                ofType: null
+            "name": "user",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_user",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "userId",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "userId",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_account_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_account_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "auth_account_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_account_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_account",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_account",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_account_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_account_aggregate_fields",
+        "fields": [
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "auth_account_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_account_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "auth_account_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_account_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_account_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_account_max_fields",
+        "fields": [
           {
-            name: "accessToken",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "accessToken",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "accessTokenExpiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "accessTokenExpiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "accountId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "accountId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "idToken",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "idToken",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "password",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "password",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "providerId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "providerId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "refreshToken",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "refreshToken",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "refreshTokenExpiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "refreshTokenExpiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "scope",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "scope",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "userId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "userId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_account_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_account_min_fields",
+        "fields": [
           {
-            name: "accessToken",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "accessToken",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "accessTokenExpiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "accessTokenExpiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "accountId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "accountId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "idToken",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "idToken",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "password",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "password",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "providerId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "providerId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "refreshToken",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "refreshToken",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "refreshTokenExpiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "refreshTokenExpiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "scope",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "scope",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "userId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "userId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_account_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_account_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_account",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_account",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_invitation",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_invitation",
+        "fields": [
           {
-            name: "createdAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "email",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "email",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "expiresAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "expiresAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "inviterId",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "inviterId",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "organization",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_organization",
-                ofType: null
+            "name": "organization",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_organization",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "organizationId",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "organizationId",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "role",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "status",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "status",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "user",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_user",
-                ofType: null
+            "name": "user",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_user",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_invitation_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_invitation_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "auth_invitation_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_invitation_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_invitation",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_invitation",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_invitation_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_invitation_aggregate_fields",
+        "fields": [
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "auth_invitation_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_invitation_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "auth_invitation_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_invitation_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_invitation_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_invitation_max_fields",
+        "fields": [
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "email",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "email",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "expiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "expiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "inviterId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "inviterId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "organizationId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "organizationId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "role",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "status",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "status",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_invitation_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_invitation_min_fields",
+        "fields": [
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "email",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "email",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "expiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "expiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "inviterId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "inviterId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "organizationId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "organizationId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "role",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "status",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "status",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_invitation_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_invitation_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_invitation",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_invitation",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_member",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_member",
+        "fields": [
           {
-            name: "createdAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "organization",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_organization",
-                ofType: null
+            "name": "organization",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_organization",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "organizationId",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "organizationId",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "role",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "user",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_user",
-                ofType: null
+            "name": "user",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_user",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "userId",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "userId",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_member_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_member_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "auth_member_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_member_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_member",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_member",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_member_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_member_aggregate_fields",
+        "fields": [
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "auth_member_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_member_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "auth_member_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_member_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_member_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_member_max_fields",
+        "fields": [
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "organizationId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "organizationId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "role",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "userId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "userId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_member_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_member_min_fields",
+        "fields": [
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "organizationId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "organizationId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "role",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "userId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "userId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_member_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_member_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_member",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_member",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_organization",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_organization",
+        "fields": [
           {
-            name: "chat_conversations",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_conversations",
-                    ofType: null
+            "name": "chat_conversations",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_conversations",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "chat_conversations_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_conversations_aggregate",
-                ofType: null
+            "name": "chat_conversations_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_conversations_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "createdAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "invitations",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_invitation",
-                    ofType: null
+            "name": "invitations",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_invitation",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "invitations_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_invitation_aggregate",
-                ofType: null
+            "name": "invitations_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_invitation_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "logo",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "logo",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "members",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_member",
-                    ofType: null
+            "name": "members",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_member",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "members_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_member_aggregate",
-                ofType: null
+            "name": "members_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_member_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "metadata",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "metadata",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "name",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "name",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "slug",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "slug",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_organization_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_organization_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "auth_organization_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_organization_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_organization",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_organization",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_organization_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_organization_aggregate_fields",
+        "fields": [
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "auth_organization_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_organization_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "auth_organization_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_organization_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_organization_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_organization_max_fields",
+        "fields": [
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "logo",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "logo",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "metadata",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "metadata",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "name",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "name",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "slug",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "slug",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_organization_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_organization_min_fields",
+        "fields": [
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "logo",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "logo",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "metadata",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "metadata",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "name",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "name",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "slug",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "slug",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_organization_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_organization_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_organization",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_organization",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_session",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_session",
+        "fields": [
           {
-            name: "activeOrganizationId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "activeOrganizationId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "createdAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "expiresAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "expiresAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "hasuraToken",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "hasuraToken",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "impersonatedBy",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "impersonatedBy",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "ipAddress",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "ipAddress",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "token",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "token",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "user",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_user",
-                ofType: null
+            "name": "user",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_user",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "userAgent",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "userAgent",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "userId",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "userId",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_session_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_session_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "auth_session_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_session_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_session",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_session",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_session_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_session_aggregate_fields",
+        "fields": [
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "auth_session_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_session_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "auth_session_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_session_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_session_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_session_max_fields",
+        "fields": [
           {
-            name: "activeOrganizationId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "activeOrganizationId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "expiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "expiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "hasuraToken",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "hasuraToken",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "impersonatedBy",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "impersonatedBy",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "ipAddress",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "ipAddress",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "token",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "token",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "userAgent",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "userAgent",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "userId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "userId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_session_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_session_min_fields",
+        "fields": [
           {
-            name: "activeOrganizationId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "activeOrganizationId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "expiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "expiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "hasuraToken",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "hasuraToken",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "impersonatedBy",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "impersonatedBy",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "ipAddress",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "ipAddress",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "token",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "token",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "userAgent",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "userAgent",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "userId",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "userId",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_session_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_session_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_session",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_session",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_user",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_user",
+        "fields": [
           {
-            name: "accounts",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_account",
-                    ofType: null
+            "name": "accounts",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_account",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "accounts_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_account_aggregate",
-                ofType: null
+            "name": "accounts_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_account_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "banExpires",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "banExpires",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "banReason",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "banReason",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "banned",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "banned",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "chat_conversations",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_conversations",
-                    ofType: null
+            "name": "chat_conversations",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_conversations",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "chat_conversations_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_conversations_aggregate",
-                ofType: null
+            "name": "chat_conversations_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_conversations_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "createdAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "email",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "email",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "emailVerified",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "emailVerified",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "image",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "image",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "invitations",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_invitation",
-                    ofType: null
+            "name": "invitations",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_invitation",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "invitations_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_invitation_aggregate",
-                ofType: null
+            "name": "invitations_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_invitation_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "members",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_member",
-                    ofType: null
+            "name": "members",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_member",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "members_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_member_aggregate",
-                ofType: null
+            "name": "members_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_member_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "name",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "name",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "role",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "sessions",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_session",
-                    ofType: null
+            "name": "sessions",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_session",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "sessions_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_session_aggregate",
-                ofType: null
+            "name": "sessions_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_session_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_user_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_user_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "auth_user_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_user_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_user",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_user",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_user_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_user_aggregate_fields",
+        "fields": [
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "auth_user_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_user_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "auth_user_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_user_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_user_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_user_max_fields",
+        "fields": [
           {
-            name: "banExpires",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "banExpires",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "banReason",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "banReason",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "email",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "email",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "image",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "image",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "name",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "name",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "role",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_user_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_user_min_fields",
+        "fields": [
           {
-            name: "banExpires",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "banExpires",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "banReason",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "banReason",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "email",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "email",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "image",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "image",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "name",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "name",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "role",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_user_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_user_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_user",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_user",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_verification",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_verification",
+        "fields": [
           {
-            name: "createdAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "expiresAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "expiresAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "identifier",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "identifier",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "value",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "value",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_verification_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_verification_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "auth_verification_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_verification_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_verification",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_verification",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_verification_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_verification_aggregate_fields",
+        "fields": [
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "auth_verification_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_verification_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "auth_verification_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_verification_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_verification_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_verification_max_fields",
+        "fields": [
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "expiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "expiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "identifier",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "identifier",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "value",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "value",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_verification_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_verification_min_fields",
+        "fields": [
           {
-            name: "createdAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "createdAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "expiresAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "expiresAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "identifier",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "identifier",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "updatedAt",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "updatedAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "value",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "value",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "auth_verification_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "auth_verification_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_verification",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_verification",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_conversations",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_conversations",
+        "fields": [
           {
-            name: "chat_messages",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_messages",
-                    ofType: null
+            "name": "chat_messages",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_messages",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "chat_messages_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_messages_aggregate",
-                ofType: null
+            "name": "chat_messages_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_messages_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "created_at",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "is_archived",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "is_archived",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "organization",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_organization",
-                ofType: null
+            "name": "organization",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_organization",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "organization_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "organization_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "title",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "title",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "updated_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "updated_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "user",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_user",
-                ofType: null
+            "name": "user",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_user",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "user_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "user_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "visibility",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "visibility",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_conversations_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_conversations_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "chat_conversations_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_conversations_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_conversations",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_conversations",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_conversations_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_conversations_aggregate_fields",
+        "fields": [
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "chat_conversations_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_conversations_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "chat_conversations_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_conversations_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_conversations_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_conversations_max_fields",
+        "fields": [
           {
-            name: "created_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "organization_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "organization_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "title",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "title",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "updated_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "updated_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "user_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "user_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "visibility",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "visibility",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_conversations_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_conversations_min_fields",
+        "fields": [
           {
-            name: "created_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "organization_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "organization_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "title",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "title",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "updated_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "updated_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "user_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "user_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "visibility",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "visibility",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_conversations_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_conversations_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_conversations",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_conversations",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_messages",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_messages",
+        "fields": [
           {
-            name: "chat_conversation",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_conversations",
-                ofType: null
+            "name": "chat_conversation",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_conversations",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "content",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "content",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "conversation_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "conversation_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_at",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "model",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "model",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "provider_metadata",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "provider_metadata",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "role",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "token_usage",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "token_usage",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_messages_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_messages_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "chat_messages_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_messages_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_messages",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_messages",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_messages_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_messages_aggregate_fields",
+        "fields": [
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "chat_messages_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_messages_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "chat_messages_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_messages_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_messages_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_messages_max_fields",
+        "fields": [
           {
-            name: "conversation_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "conversation_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "model",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "model",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "role",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_messages_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_messages_min_fields",
+        "fields": [
           {
-            name: "conversation_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "conversation_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "model",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "model",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "role",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "role",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "chat_messages_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "chat_messages_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_messages",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_messages",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "mutation_root",
-        fields: [
+        "kind": "OBJECT",
+        "name": "mutation_root",
+        "fields": [
           {
-            name: "delete_auth_account",
-            type: {
-              kind: "OBJECT",
-              name: "auth_account_mutation_response",
-              ofType: null
+            "name": "delete_auth_account",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_account_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_account_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_account",
-              ofType: null
+            "name": "delete_auth_account_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_account",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_invitation",
-            type: {
-              kind: "OBJECT",
-              name: "auth_invitation_mutation_response",
-              ofType: null
+            "name": "delete_auth_invitation",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_invitation_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_invitation_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_invitation",
-              ofType: null
+            "name": "delete_auth_invitation_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_invitation",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_member",
-            type: {
-              kind: "OBJECT",
-              name: "auth_member_mutation_response",
-              ofType: null
+            "name": "delete_auth_member",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_member_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_member_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_member",
-              ofType: null
+            "name": "delete_auth_member_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_member",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_organization",
-            type: {
-              kind: "OBJECT",
-              name: "auth_organization_mutation_response",
-              ofType: null
+            "name": "delete_auth_organization",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_organization_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_organization_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_organization",
-              ofType: null
+            "name": "delete_auth_organization_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_organization",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_session",
-            type: {
-              kind: "OBJECT",
-              name: "auth_session_mutation_response",
-              ofType: null
+            "name": "delete_auth_session",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_session_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_session_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_session",
-              ofType: null
+            "name": "delete_auth_session_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_session",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_user",
-            type: {
-              kind: "OBJECT",
-              name: "auth_user_mutation_response",
-              ofType: null
+            "name": "delete_auth_user",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_user_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_user_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_user",
-              ofType: null
+            "name": "delete_auth_user_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_user",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_verification",
-            type: {
-              kind: "OBJECT",
-              name: "auth_verification_mutation_response",
-              ofType: null
+            "name": "delete_auth_verification",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_verification_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_auth_verification_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_verification",
-              ofType: null
+            "name": "delete_auth_verification_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_verification",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_chat_conversations",
-            type: {
-              kind: "OBJECT",
-              name: "chat_conversations_mutation_response",
-              ofType: null
+            "name": "delete_chat_conversations",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_conversations_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_chat_conversations_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "chat_conversations",
-              ofType: null
+            "name": "delete_chat_conversations_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_conversations",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_chat_messages",
-            type: {
-              kind: "OBJECT",
-              name: "chat_messages_mutation_response",
-              ofType: null
+            "name": "delete_chat_messages",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_messages_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_chat_messages_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "chat_messages",
-              ofType: null
+            "name": "delete_chat_messages_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_messages",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_resource_events",
-            type: {
-              kind: "OBJECT",
-              name: "resource_events_mutation_response",
-              ofType: null
+            "name": "delete_resource_events",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_events_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_resource_events_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resource_events",
-              ofType: null
+            "name": "delete_resource_events_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_events",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_resource_versions",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_mutation_response",
-              ofType: null
+            "name": "delete_resource_versions",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_resource_versions_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions",
-              ofType: null
+            "name": "delete_resource_versions_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_resources",
-            type: {
-              kind: "OBJECT",
-              name: "resources_mutation_response",
-              ofType: null
+            "name": "delete_resources",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resources_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "delete_resources_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resources",
-              ofType: null
+            "name": "delete_resources_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resources",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "insert_auth_account",
-            type: {
-              kind: "OBJECT",
-              name: "auth_account_mutation_response",
-              ofType: null
+            "name": "insert_auth_account",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_account_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_account_one",
-            type: {
-              kind: "OBJECT",
-              name: "auth_account",
-              ofType: null
+            "name": "insert_auth_account_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_account",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_invitation",
-            type: {
-              kind: "OBJECT",
-              name: "auth_invitation_mutation_response",
-              ofType: null
+            "name": "insert_auth_invitation",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_invitation_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_invitation_one",
-            type: {
-              kind: "OBJECT",
-              name: "auth_invitation",
-              ofType: null
+            "name": "insert_auth_invitation_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_invitation",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_member",
-            type: {
-              kind: "OBJECT",
-              name: "auth_member_mutation_response",
-              ofType: null
+            "name": "insert_auth_member",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_member_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_member_one",
-            type: {
-              kind: "OBJECT",
-              name: "auth_member",
-              ofType: null
+            "name": "insert_auth_member_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_member",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_organization",
-            type: {
-              kind: "OBJECT",
-              name: "auth_organization_mutation_response",
-              ofType: null
+            "name": "insert_auth_organization",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_organization_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_organization_one",
-            type: {
-              kind: "OBJECT",
-              name: "auth_organization",
-              ofType: null
+            "name": "insert_auth_organization_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_organization",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_session",
-            type: {
-              kind: "OBJECT",
-              name: "auth_session_mutation_response",
-              ofType: null
+            "name": "insert_auth_session",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_session_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_session_one",
-            type: {
-              kind: "OBJECT",
-              name: "auth_session",
-              ofType: null
+            "name": "insert_auth_session_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_session",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_user",
-            type: {
-              kind: "OBJECT",
-              name: "auth_user_mutation_response",
-              ofType: null
+            "name": "insert_auth_user",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_user_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_user_one",
-            type: {
-              kind: "OBJECT",
-              name: "auth_user",
-              ofType: null
+            "name": "insert_auth_user_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_user",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_verification",
-            type: {
-              kind: "OBJECT",
-              name: "auth_verification_mutation_response",
-              ofType: null
+            "name": "insert_auth_verification",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_verification_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_auth_verification_one",
-            type: {
-              kind: "OBJECT",
-              name: "auth_verification",
-              ofType: null
+            "name": "insert_auth_verification_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_verification",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_chat_conversations",
-            type: {
-              kind: "OBJECT",
-              name: "chat_conversations_mutation_response",
-              ofType: null
+            "name": "insert_chat_conversations",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_conversations_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_chat_conversations_one",
-            type: {
-              kind: "OBJECT",
-              name: "chat_conversations",
-              ofType: null
+            "name": "insert_chat_conversations_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_conversations",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_chat_messages",
-            type: {
-              kind: "OBJECT",
-              name: "chat_messages_mutation_response",
-              ofType: null
+            "name": "insert_chat_messages",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_messages_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_chat_messages_one",
-            type: {
-              kind: "OBJECT",
-              name: "chat_messages",
-              ofType: null
+            "name": "insert_chat_messages_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_messages",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_resource_events",
-            type: {
-              kind: "OBJECT",
-              name: "resource_events_mutation_response",
-              ofType: null
+            "name": "insert_resource_events",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_events_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_resource_events_one",
-            type: {
-              kind: "OBJECT",
-              name: "resource_events",
-              ofType: null
+            "name": "insert_resource_events_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_events",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_resource_versions",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_mutation_response",
-              ofType: null
+            "name": "insert_resource_versions",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_resource_versions_one",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions",
-              ofType: null
+            "name": "insert_resource_versions_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_resources",
-            type: {
-              kind: "OBJECT",
-              name: "resources_mutation_response",
-              ofType: null
+            "name": "insert_resources",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resources_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "objects",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "objects",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "insert_resources_one",
-            type: {
-              kind: "OBJECT",
-              name: "resources",
-              ofType: null
+            "name": "insert_resources_one",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resources",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "object",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "object",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "on_conflict",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "on_conflict",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "update_auth_account",
-            type: {
-              kind: "OBJECT",
-              name: "auth_account_mutation_response",
-              ofType: null
+            "name": "update_auth_account",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_account_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_account_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_account",
-              ofType: null
+            "name": "update_auth_account_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_account",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_account_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_account_mutation_response",
-                ofType: null
+            "name": "update_auth_account_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_account_mutation_response",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "update_auth_invitation",
-            type: {
-              kind: "OBJECT",
-              name: "auth_invitation_mutation_response",
-              ofType: null
-            },
-            args: [
-              {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "update_auth_invitation_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_invitation",
-              ofType: null
-            },
-            args: [
-              {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "update_auth_invitation_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_invitation_mutation_response",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
@@ -11405,81 +11705,81 @@ export default {
             ]
           },
           {
-            name: "update_auth_member",
-            type: {
-              kind: "OBJECT",
-              name: "auth_member_mutation_response",
-              ofType: null
+            "name": "update_auth_invitation",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_invitation_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_member_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_member",
-              ofType: null
+            "name": "update_auth_invitation_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_invitation",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_member_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_member_mutation_response",
-                ofType: null
+            "name": "update_auth_invitation_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_invitation_mutation_response",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
@@ -11488,81 +11788,81 @@ export default {
             ]
           },
           {
-            name: "update_auth_organization",
-            type: {
-              kind: "OBJECT",
-              name: "auth_organization_mutation_response",
-              ofType: null
+            "name": "update_auth_member",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_member_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_organization_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_organization",
-              ofType: null
+            "name": "update_auth_member_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_member",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_organization_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_organization_mutation_response",
-                ofType: null
+            "name": "update_auth_member_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_member_mutation_response",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
@@ -11571,81 +11871,81 @@ export default {
             ]
           },
           {
-            name: "update_auth_session",
-            type: {
-              kind: "OBJECT",
-              name: "auth_session_mutation_response",
-              ofType: null
+            "name": "update_auth_organization",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_organization_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_session_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_session",
-              ofType: null
+            "name": "update_auth_organization_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_organization",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_session_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_session_mutation_response",
-                ofType: null
+            "name": "update_auth_organization_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_organization_mutation_response",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
@@ -11654,81 +11954,81 @@ export default {
             ]
           },
           {
-            name: "update_auth_user",
-            type: {
-              kind: "OBJECT",
-              name: "auth_user_mutation_response",
-              ofType: null
+            "name": "update_auth_session",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_session_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_user_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_user",
-              ofType: null
+            "name": "update_auth_session_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_session",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_user_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_user_mutation_response",
-                ofType: null
+            "name": "update_auth_session_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_session_mutation_response",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
@@ -11737,81 +12037,81 @@ export default {
             ]
           },
           {
-            name: "update_auth_verification",
-            type: {
-              kind: "OBJECT",
-              name: "auth_verification_mutation_response",
-              ofType: null
+            "name": "update_auth_user",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_user_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_verification_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_verification",
-              ofType: null
+            "name": "update_auth_user_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_user",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_auth_verification_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_verification_mutation_response",
-                ofType: null
+            "name": "update_auth_user_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_user_mutation_response",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
@@ -11820,81 +12120,81 @@ export default {
             ]
           },
           {
-            name: "update_chat_conversations",
-            type: {
-              kind: "OBJECT",
-              name: "chat_conversations_mutation_response",
-              ofType: null
+            "name": "update_auth_verification",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_verification_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_chat_conversations_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "chat_conversations",
-              ofType: null
+            "name": "update_auth_verification_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_verification",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_chat_conversations_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_conversations_mutation_response",
-                ofType: null
+            "name": "update_auth_verification_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_verification_mutation_response",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
@@ -11903,151 +12203,81 @@ export default {
             ]
           },
           {
-            name: "update_chat_messages",
-            type: {
-              kind: "OBJECT",
-              name: "chat_messages_mutation_response",
-              ofType: null
+            "name": "update_chat_conversations",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_conversations_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_append",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_at_path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "_delete_elem",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "_delete_key",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "_prepend",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_chat_messages_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "chat_messages",
-              ofType: null
+            "name": "update_chat_conversations_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_conversations",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_append",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_at_path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "_delete_elem",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "_delete_key",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "_prepend",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_chat_messages_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_messages_mutation_response",
-                ofType: null
+            "name": "update_chat_conversations_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_conversations_mutation_response",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
@@ -12056,151 +12286,151 @@ export default {
             ]
           },
           {
-            name: "update_resource_events",
-            type: {
-              kind: "OBJECT",
-              name: "resource_events_mutation_response",
-              ofType: null
+            "name": "update_chat_messages",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_messages_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_append",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_append",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_at_path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_at_path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_elem",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_elem",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_key",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_key",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_prepend",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_prepend",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_resource_events_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resource_events",
-              ofType: null
+            "name": "update_chat_messages_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_messages",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_append",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_append",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_at_path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_at_path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_elem",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_elem",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_key",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_key",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_prepend",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_prepend",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_resource_events_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "resource_events_mutation_response",
-                ofType: null
+            "name": "update_chat_messages_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_messages_mutation_response",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
@@ -12209,165 +12439,151 @@ export default {
             ]
           },
           {
-            name: "update_resource_versions",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_mutation_response",
-              ofType: null
+            "name": "update_resource_events",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_events_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_append",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_append",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_at_path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_at_path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_elem",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_elem",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_key",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_key",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_inc",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_prepend",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_prepend",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_resource_versions_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions",
-              ofType: null
+            "name": "update_resource_events_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_events",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_append",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_append",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_at_path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_at_path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_elem",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_elem",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_key",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_key",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_inc",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_prepend",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_prepend",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_resource_versions_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "resource_versions_mutation_response",
-                ofType: null
+            "name": "update_resource_events_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resource_events_mutation_response",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
@@ -12376,151 +12592,318 @@ export default {
             ]
           },
           {
-            name: "update_resources",
-            type: {
-              kind: "OBJECT",
-              name: "resources_mutation_response",
-              ofType: null
+            "name": "update_resource_versions",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_mutation_response",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_append",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_append",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_at_path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_at_path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_elem",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_elem",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_key",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_key",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_prepend",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_inc",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_prepend",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_resources_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resources",
-              ofType: null
+            "name": "update_resource_versions_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "_append",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_append",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_at_path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_at_path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_elem",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_elem",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_delete_key",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_delete_key",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_prepend",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_inc",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "_set",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "_prepend",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "pk_columns",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "update_resources_many",
-            type: {
-              kind: "LIST",
-              ofType: {
-                kind: "OBJECT",
-                name: "resources_mutation_response",
-                ofType: null
+            "name": "update_resource_versions_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resource_versions_mutation_response",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "updates",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "NON_NULL",
-                      ofType: {
-                        kind: "SCALAR",
-                        name: "Any"
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "update_resources",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resources_mutation_response",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "_append",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "_delete_at_path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "_delete_elem",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "_delete_key",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "_prepend",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "update_resources_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resources",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "_append",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "_delete_at_path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "_delete_elem",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "_delete_key",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "_prepend",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "_set",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "pk_columns",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "update_resources_many",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resources_mutation_response",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "updates",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
                       }
                     }
                   }
@@ -12529,5763 +12912,5763 @@ export default {
             ]
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "query_root",
-        fields: [
+        "kind": "OBJECT",
+        "name": "query_root",
+        "fields": [
           {
-            name: "auth_account",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_account",
-                    ofType: null
+            "name": "auth_account",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_account",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_account_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_account_aggregate",
-                ofType: null
+            "name": "auth_account_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_account_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_account_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_account",
-              ofType: null
+            "name": "auth_account_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_account",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_invitation",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_invitation",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_invitation_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_invitation_aggregate",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_invitation_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_invitation",
-              ofType: null
-            },
-            args: [
-              {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "auth_member",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_member",
-                    ofType: null
+            "name": "auth_invitation",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_invitation",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_member_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_member_aggregate",
-                ofType: null
+            "name": "auth_invitation_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_invitation_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_member_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_member",
-              ofType: null
+            "name": "auth_invitation_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_invitation",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_organization",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_organization",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_organization_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_organization_aggregate",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_organization_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_organization",
-              ofType: null
-            },
-            args: [
-              {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "auth_session",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_session",
-                    ofType: null
+            "name": "auth_member",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_member",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_session_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_session_aggregate",
-                ofType: null
+            "name": "auth_member_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_member_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_session_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_session",
-              ofType: null
+            "name": "auth_member_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_member",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_user",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_user",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_user_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_user_aggregate",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_user_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_user",
-              ofType: null
-            },
-            args: [
-              {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "auth_verification",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_verification",
-                    ofType: null
+            "name": "auth_organization",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_organization",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_verification_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_verification_aggregate",
-                ofType: null
+            "name": "auth_organization_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_organization_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_verification_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_verification",
-              ofType: null
+            "name": "auth_organization_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_organization",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "chat_conversations",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_conversations",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "chat_conversations_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_conversations_aggregate",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "chat_conversations_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "chat_conversations",
-              ofType: null
-            },
-            args: [
-              {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "chat_messages",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_messages",
-                    ofType: null
+            "name": "auth_session",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_session",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "chat_messages_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_messages_aggregate",
-                ofType: null
+            "name": "auth_session_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_session_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "chat_messages_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "chat_messages",
-              ofType: null
+            "name": "auth_session_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_session",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "resource_events",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resource_events",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "resource_events_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "resource_events_aggregate",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "resource_events_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resource_events",
-              ofType: null
-            },
-            args: [
-              {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "resource_versions",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resource_versions",
-                    ofType: null
+            "name": "auth_user",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_user",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "resource_versions_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "resource_versions_aggregate",
-                ofType: null
+            "name": "auth_user_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_user_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "resource_versions_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions",
-              ofType: null
+            "name": "auth_user_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_user",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "resources",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resources",
-                    ofType: null
+            "name": "auth_verification",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_verification",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "resources_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "resources_aggregate",
-                ofType: null
+            "name": "auth_verification_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_verification_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "resources_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resources",
-              ofType: null
+            "name": "auth_verification_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_verification",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_conversations",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_conversations",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_conversations_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_conversations_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_conversations_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_conversations",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_messages",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_messages",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_messages_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_messages_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_messages_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_messages",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_events",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_events",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_events_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resource_events_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_events_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_events",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_versions",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_versions",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_versions_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resource_versions_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_versions_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "resources",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resources",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resources_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resources_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resources_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resources",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_events",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_events",
+        "fields": [
           {
-            name: "actor_type",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "actor_type",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_at",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "event_type",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "event_type",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "message_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "message_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "metadata",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "metadata",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "resource_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "resource_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "resource_version_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "resource_version_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "user_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "user_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_events_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_events_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "resource_events_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_events_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resource_events",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_events",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_events_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_events_aggregate_fields",
+        "fields": [
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "resource_events_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_events_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "resource_events_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_events_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_events_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_events_max_fields",
+        "fields": [
           {
-            name: "actor_type",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "actor_type",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "event_type",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "event_type",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "message_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "message_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "resource_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "resource_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "resource_version_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "resource_version_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "user_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "user_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_events_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_events_min_fields",
+        "fields": [
           {
-            name: "actor_type",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "actor_type",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "event_type",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "event_type",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "message_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "message_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "resource_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "resource_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "resource_version_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "resource_version_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "user_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "user_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_events_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_events_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resource_events",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_events",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions",
+        "fields": [
           {
-            name: "chat_message",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_messages",
-                ofType: null
+            "name": "chat_message",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_messages",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_at",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "file_name",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "file_name",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "file_type",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "file_type",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "message_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "message_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "metadata",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "metadata",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "mime_type",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "mime_type",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "model",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "model",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "resource",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "resources",
-                ofType: null
+            "name": "resource",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resources",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "resource_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "resource_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "size_bytes",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "size_bytes",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "storage_path",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "storage_path",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "version_number",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "version_number",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resource_versions",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_versions",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_aggregate_fields",
+        "fields": [
           {
-            name: "avg",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_avg_fields",
-              ofType: null
+            "name": "avg",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_avg_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "stddev",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_stddev_fields",
-              ofType: null
+            "name": "stddev",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_stddev_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "stddev_pop",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_stddev_pop_fields",
-              ofType: null
+            "name": "stddev_pop",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_stddev_pop_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "stddev_samp",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_stddev_samp_fields",
-              ofType: null
+            "name": "stddev_samp",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_stddev_samp_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "sum",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_sum_fields",
-              ofType: null
+            "name": "sum",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_sum_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "var_pop",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_var_pop_fields",
-              ofType: null
+            "name": "var_pop",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_var_pop_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "var_samp",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_var_samp_fields",
-              ofType: null
+            "name": "var_samp",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_var_samp_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "variance",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions_variance_fields",
-              ofType: null
+            "name": "variance",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions_variance_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_avg_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_avg_fields",
+        "fields": [
           {
-            name: "size_bytes",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "size_bytes",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "version_number",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "version_number",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_max_fields",
+        "fields": [
           {
-            name: "created_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "file_name",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "file_name",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "file_type",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "file_type",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "message_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "message_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "mime_type",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "mime_type",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "model",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "model",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "resource_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "resource_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "size_bytes",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "size_bytes",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "storage_path",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "storage_path",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "version_number",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "version_number",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_min_fields",
+        "fields": [
           {
-            name: "created_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "file_name",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "file_name",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "file_type",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "file_type",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "message_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "message_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "mime_type",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "mime_type",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "model",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "model",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "resource_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "resource_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "size_bytes",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "size_bytes",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "storage_path",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "storage_path",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "version_number",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "version_number",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resource_versions",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_versions",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_stddev_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_stddev_fields",
+        "fields": [
           {
-            name: "size_bytes",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "size_bytes",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "version_number",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "version_number",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_stddev_pop_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_stddev_pop_fields",
+        "fields": [
           {
-            name: "size_bytes",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "size_bytes",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "version_number",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "version_number",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_stddev_samp_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_stddev_samp_fields",
+        "fields": [
           {
-            name: "size_bytes",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "size_bytes",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "version_number",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "version_number",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_sum_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_sum_fields",
+        "fields": [
           {
-            name: "size_bytes",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "size_bytes",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "version_number",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "version_number",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_var_pop_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_var_pop_fields",
+        "fields": [
           {
-            name: "size_bytes",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "size_bytes",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "version_number",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "version_number",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_var_samp_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_var_samp_fields",
+        "fields": [
           {
-            name: "size_bytes",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "size_bytes",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "version_number",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "version_number",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resource_versions_variance_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resource_versions_variance_fields",
+        "fields": [
           {
-            name: "size_bytes",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "size_bytes",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "version_number",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "version_number",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resources",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resources",
+        "fields": [
           {
-            name: "chat_conversation",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_conversations",
-                ofType: null
+            "name": "chat_conversation",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_conversations",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "conversation_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "conversation_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_at",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_by",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "created_by",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "current_version",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions",
-              ofType: null
+            "name": "current_version",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "current_version_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "current_version_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "is_archived",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "is_archived",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "metadata",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "metadata",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "path",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "organization",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_organization",
-                ofType: null
+            "name": "organization",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_organization",
+                "ofType": null
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "organization_id",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "organization_id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "resource_versions",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resource_versions",
-                    ofType: null
+            "name": "resource_versions",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_versions",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "resource_versions_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "resource_versions_aggregate",
-                ofType: null
+            "name": "resource_versions_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resource_versions_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "source",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "source",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resources_aggregate",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resources_aggregate",
+        "fields": [
           {
-            name: "aggregate",
-            type: {
-              kind: "OBJECT",
-              name: "resources_aggregate_fields",
-              ofType: null
+            "name": "aggregate",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resources_aggregate_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "nodes",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resources",
-                    ofType: null
+            "name": "nodes",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resources",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resources_aggregate_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resources_aggregate_fields",
+        "fields": [
           {
-            name: "count",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "count",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: [
+            "args": [
               {
-                name: "columns",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "columns",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "distinct",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "distinct",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "max",
-            type: {
-              kind: "OBJECT",
-              name: "resources_max_fields",
-              ofType: null
+            "name": "max",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resources_max_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           },
           {
-            name: "min",
-            type: {
-              kind: "OBJECT",
-              name: "resources_min_fields",
-              ofType: null
+            "name": "min",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resources_min_fields",
+              "ofType": null
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resources_max_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resources_max_fields",
+        "fields": [
           {
-            name: "conversation_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "conversation_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_by",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_by",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "current_version_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "current_version_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "organization_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "organization_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "source",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "source",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resources_min_fields",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resources_min_fields",
+        "fields": [
           {
-            name: "conversation_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "conversation_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_at",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_at",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "created_by",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "created_by",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "current_version_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "current_version_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "organization_id",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "organization_id",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           },
           {
-            name: "source",
-            type: {
-              kind: "SCALAR",
-              name: "Any"
+            "name": "source",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "resources_mutation_response",
-        fields: [
+        "kind": "OBJECT",
+        "name": "resources_mutation_response",
+        "fields": [
           {
-            name: "affected_rows",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
+            "name": "affected_rows",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
               }
             },
-            args: []
+            "args": []
           },
           {
-            name: "returning",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resources",
-                    ofType: null
+            "name": "returning",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resources",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: []
+            "args": []
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "OBJECT",
-        name: "subscription_root",
-        fields: [
+        "kind": "OBJECT",
+        "name": "subscription_root",
+        "fields": [
           {
-            name: "auth_account",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_account",
-                    ofType: null
+            "name": "auth_account",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_account",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_account_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_account_aggregate",
-                ofType: null
+            "name": "auth_account_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_account_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_account_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_account",
-              ofType: null
+            "name": "auth_account_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_account",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_account_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_account",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              },
-              {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_invitation",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_invitation",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_invitation_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_invitation_aggregate",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_invitation_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_invitation",
-              ofType: null
-            },
-            args: [
-              {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "auth_invitation_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_invitation",
-                    ofType: null
+            "name": "auth_account_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_account",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_member",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_member",
-                    ofType: null
+            "name": "auth_invitation",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_invitation",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_member_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_member_aggregate",
-                ofType: null
+            "name": "auth_invitation_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_invitation_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_member_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_member",
-              ofType: null
+            "name": "auth_invitation_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_invitation",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_member_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_member",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              },
-              {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_organization",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_organization",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_organization_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_organization_aggregate",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_organization_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_organization",
-              ofType: null
-            },
-            args: [
-              {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "auth_organization_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_organization",
-                    ofType: null
+            "name": "auth_invitation_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_invitation",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_session",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_session",
-                    ofType: null
+            "name": "auth_member",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_member",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_session_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_session_aggregate",
-                ofType: null
+            "name": "auth_member_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_member_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_session_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_session",
-              ofType: null
+            "name": "auth_member_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_member",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_session_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_session",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              },
-              {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_user",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_user",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_user_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_user_aggregate",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_user_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_user",
-              ofType: null
-            },
-            args: [
-              {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "auth_user_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_user",
-                    ofType: null
+            "name": "auth_member_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_member",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_verification",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_verification",
-                    ofType: null
+            "name": "auth_organization",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_organization",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_verification_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "auth_verification_aggregate",
-                ofType: null
+            "name": "auth_organization_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_organization_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "auth_verification_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "auth_verification",
-              ofType: null
+            "name": "auth_organization_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_organization",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "auth_verification_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "auth_verification",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              },
-              {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "chat_conversations",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_conversations",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "chat_conversations_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_conversations_aggregate",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "chat_conversations_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "chat_conversations",
-              ofType: null
-            },
-            args: [
-              {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "chat_conversations_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_conversations",
-                    ofType: null
+            "name": "auth_organization_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_organization",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "chat_messages",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_messages",
-                    ofType: null
+            "name": "auth_session",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_session",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "chat_messages_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "chat_messages_aggregate",
-                ofType: null
+            "name": "auth_session_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_session_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "chat_messages_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "chat_messages",
-              ofType: null
+            "name": "auth_session_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_session",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "chat_messages_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "chat_messages",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              },
-              {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "resource_events",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resource_events",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "resource_events_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "resource_events_aggregate",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "resource_events_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resource_events",
-              ofType: null
-            },
-            args: [
-              {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "resource_events_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resource_events",
-                    ofType: null
+            "name": "auth_session_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_session",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "resource_versions",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resource_versions",
-                    ofType: null
+            "name": "auth_user",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_user",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "resource_versions_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "resource_versions_aggregate",
-                ofType: null
+            "name": "auth_user_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_user_aggregate",
+                "ofType": null
               }
             },
-            args: [
+            "args": [
               {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               },
               {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           },
           {
-            name: "resource_versions_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resource_versions",
-              ofType: null
+            "name": "auth_user_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_user",
+              "ofType": null
             },
-            args: [
+            "args": [
               {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "resource_versions_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resource_versions",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              },
-              {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "resources",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resources",
-                    ofType: null
-                  }
-                }
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "resources_aggregate",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "resources_aggregate",
-                ofType: null
-              }
-            },
-            args: [
-              {
-                name: "distinct_on",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "limit",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "offset",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "order_by",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "NON_NULL",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
-                    }
-                  }
-                }
-              },
-              {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              }
-            ]
-          },
-          {
-            name: "resources_by_pk",
-            type: {
-              kind: "OBJECT",
-              name: "resources",
-              ofType: null
-            },
-            args: [
-              {
-                name: "id",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               }
             ]
           },
           {
-            name: "resources_stream",
-            type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "OBJECT",
-                    name: "resources",
-                    ofType: null
+            "name": "auth_user_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_user",
+                    "ofType": null
                   }
                 }
               }
             },
-            args: [
+            "args": [
               {
-                name: "batch_size",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
                   }
                 }
               },
               {
-                name: "cursor",
-                type: {
-                  kind: "NON_NULL",
-                  ofType: {
-                    kind: "LIST",
-                    ofType: {
-                      kind: "SCALAR",
-                      name: "Any"
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
                     }
                   }
                 }
               },
               {
-                name: "where",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "auth_verification",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_verification",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "auth_verification_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "auth_verification_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "auth_verification_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "auth_verification",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "auth_verification_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "auth_verification",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_conversations",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_conversations",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_conversations_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_conversations_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_conversations_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_conversations",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_conversations_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_conversations",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_messages",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_messages",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_messages_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "chat_messages_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_messages_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "chat_messages",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "chat_messages_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "chat_messages",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_events",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_events",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_events_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resource_events_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_events_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_events",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_events_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_events",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_versions",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_versions",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_versions_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resource_versions_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_versions_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resource_versions",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_versions_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_versions",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resources",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resources",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resources_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resources_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resources_by_pk",
+            "type": {
+              "kind": "OBJECT",
+              "name": "resources",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "resources_stream",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resources",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "batch_size",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "cursor",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
           }
         ],
-        interfaces: []
+        "interfaces": []
       },
       {
-        kind: "SCALAR",
-        name: "Any"
+        "kind": "SCALAR",
+        "name": "Any"
       }
     ],
-    directives: []
+    "directives": []
   }
 } as unknown as IntrospectionQuery;

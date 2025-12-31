@@ -12,7 +12,7 @@ export type ConversationProps = ComponentProps<typeof StickToBottom> & {
 };
 
 export const Conversation = ({ className, scrollBehavior = "instant", ...props }: ConversationProps) => (
-  <StickToBottom className={cn("relative flex-1 overflow-y-hidden", className)} initial="instant" resize={scrollBehavior} role="log" {...props} />
+  <StickToBottom className={cn("relative flex-1 overflow-y-hidden", className)} initial={scrollBehavior} resize={scrollBehavior} role="log" {...props} />
 );
 
 export type ConversationContentProps = ComponentProps<typeof StickToBottom.Content>;
@@ -72,3 +72,6 @@ export const ConversationScrollButton = ({ className, ...props }: ConversationSc
     )
   );
 };
+
+// Re-export the hook for use in other components
+export { useStickToBottomContext };

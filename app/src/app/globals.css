@@ -53,6 +53,7 @@
   --color-base-bg-black: #181818;
   --color-base-text-light: #afafaf;
   --color-base-active-option: #242424;
+  --color-base-link: #53a5ff;
 }
 
 :root {
@@ -130,4 +131,8 @@
 .dark-mode [data-streamdown="code-block-download-button"]:hover,
 .dark-mode [data-streamdown="code-block-copy-button"]:hover {
   color: white !important;
+}
+
+.dark-mode [data-streamdown="link"] {
+  color: #53a5ff !important;
 }

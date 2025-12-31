@@ -36,7 +36,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </div>
         </div>
       </SidebarHeader>
-      <SidebarContent>{isOpen && <NavMain />}</SidebarContent>
+      <SidebarContent className="dark-scrollbar">
+        <React.Activity mode={isOpen ? "visible" : "hidden"}>
+          <NavMain />
+        </React.Activity>
+      </SidebarContent>
       <SidebarFooter>
         <NavUser />
       </SidebarFooter>

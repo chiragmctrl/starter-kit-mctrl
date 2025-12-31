@@ -45,6 +45,7 @@ export function NavMain() {
   return (
     <SidebarGroup>
       <SidebarGroupLabel className="text-sm text-base-text-light">Your chats</SidebarGroupLabel>
+
       {(conversationData.data?.chat_conversations ?? []).map((obj) => {
         return (
           <Link

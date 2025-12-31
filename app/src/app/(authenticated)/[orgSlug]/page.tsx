@@ -4,16 +4,18 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { authClient } from "@/lib/auth-client";
 import { useParams } from "next/navigation";
 import { MessageSquare, Settings, Users, BarChart3, ArrowRight, Sparkles } from "lucide-react";
+import { useRouter } from "next/router";
 
 const OrganizationPage = () => {
   const params = useParams();
+  const router = useRouter();
   const orgSlug = params.orgSlug as string;
   const { data: activeOrganization } = authClient.useActiveOrganization();
 
   const handleNavigateToChat = () => {
     if (orgSlug) {
       // Use full page reload to ensure fresh session data in sidebar
-      window.location.href = `/${orgSlug}/chat`;
+      router.push(`/${orgSlug}/chat`);
     }
   };
 

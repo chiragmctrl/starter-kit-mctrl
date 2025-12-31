@@ -5,6 +5,7 @@ import { TRPCReactProvider } from "@/trpc/react";
 import UrqlProvider from "urql/Provider";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { Toaster } from "@/components/ui/sonner";
+import { ReduxProvider } from "@/redux/ReduxProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +31,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ErrorBoundary>
-          <TRPCReactProvider>
-            <UrqlProvider>{children}</UrqlProvider>
-            <Toaster />
-          </TRPCReactProvider>
+          <ReduxProvider>
+            <TRPCReactProvider>
+              <UrqlProvider>{children}</UrqlProvider>
+              <Toaster />
+            </TRPCReactProvider>
+          </ReduxProvider>
         </ErrorBoundary>
       </body>
     </html>

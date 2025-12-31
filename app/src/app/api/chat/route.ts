@@ -106,6 +106,7 @@ export async function POST(req: Request) {
     const contructOldMsg: UIMessage[] = constructChatMessages(oldMessages);
     const messages = [...contructOldMsg, message];
     const modelMessages = await convertToModelMessages(messages);
+    console.log(model, "model");
 
     let currentConversationId = id;
     if (isNewChat) {

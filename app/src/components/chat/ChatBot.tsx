@@ -34,6 +34,8 @@ import { DefaultChatTransport, UIMessage } from "ai";
 import { useParams } from "next/navigation";
 import { toast } from "sonner";
 import { AutoScrollManager } from "./AutoScrollManager";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 interface IChatBot {
   conversationId: string;
@@ -42,7 +44,7 @@ interface IChatBot {
 
 const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
   const [input, setInput] = useState("");
-  const [model, setModel] = useState<string>(MODEL_PROVIDERS[0]?.value as string);
+  const [model, setModel] = useState<string>(Cookies.get("activeModel") ?? (MODEL_PROVIDERS[0]?.value as string));
   const [scrollBehavior, setScrollBehavior] = useState<"instant" | "smooth">("instant");
   const [useWebSearch, setUseWebSearch] = useState<boolean>(false);
 
@@ -66,7 +68,7 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
 
   useEffect(() => {
     if (status === "ready" && messages.length > 1 && params.id === undefined) {
-      window.history.replaceState(null, "", `/mission-ctrl/chat/${conversationId}`);
+      window.history.replaceState(null, "", `/${params.orgSlug}/chat/${conversationId}`);
     }
   }, [status]);
 
@@ -111,6 +113,12 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
     },
     [sendMessage, model]
   );
+
+  const onModelChange = (value: string) => {
+    setModel(value);
+    Cookies.set("activeModel", value);
+    location.href = `/${params.orgSlug}/chat`;
+  };
 
   return (
     <div className="h-full">
@@ -202,19 +210,14 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
                     <PromptInputActionAddAttachments />
                   </PromptInputActionMenuContent>
                 </PromptInputActionMenu>
-                <PromptInputSelect
-                  onValueChange={(value) => {
-                    setModel(value);
-                  }}
-                  value={model}
-                >
+                <PromptInputSelect onValueChange={onModelChange} value={model}>
                   <PromptInputSelectTrigger className="text-base-text-color cursor-pointer aria-expanded:bg-base-hover aria-expanded:text-base-text-color hover:bg-base-hover hover:text-white outline-none focus:ring-0 focus:bg-base-hover">
                     <PromptInputSelectValue className="text-base-text-color" />
                   </PromptInputSelectTrigger>
                   <PromptInputSelectContent className="bg-base-popover font-medium border-none text-base-text-color shadow-md">
-                    {MODEL_PROVIDERS.map((model) => (
-                      <PromptInputSelectItem key={model.value} value={model.value}>
-                        {model.name}
+                    {MODEL_PROVIDERS.map((modelOp) => (
+                      <PromptInputSelectItem key={modelOp.value} value={modelOp.value}>
+                        {`${modelOp.name} ${model !== modelOp.value ? "(New Chat)" : ""}`}
                       </PromptInputSelectItem>
                     ))}
                   </PromptInputSelectContent>

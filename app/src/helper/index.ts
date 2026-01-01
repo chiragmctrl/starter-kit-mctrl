@@ -50,3 +50,12 @@ export const getInitialCharacter = (name: string) => {
     .toUpperCase()
     .slice(0, 2);
 };
+
+export function stripToolsForAnthropic(messages: UIMessage[]): UIMessage[] {
+  return messages.map((msg) => ({
+    ...msg,
+    parts: msg.parts?.filter(
+      (part: any) => part?.type !== "tool-call" && part?.type !== "tool-result" && part?.type !== "tool_use" && part?.type !== "tool_result"
+    )
+  }));
+}

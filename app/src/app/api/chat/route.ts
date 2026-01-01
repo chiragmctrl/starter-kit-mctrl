@@ -4,8 +4,8 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { chatService } from "@/services/chat.service";
 import { organizationService } from "@/services/organization.service";
-import { constructChatMessages } from "@/helper";
-import { codeExecutionTool, webFecthTool, webSearchTool } from "@/server/ai/tools";
+import { constructChatMessages, stripToolsForAnthropic } from "@/helper";
+import { webFecthTool, webSearchTool } from "@/server/ai/tools";
 import { chatSystemPrompt } from "@/server/ai/prompts/chat";
 
 // Allow streaming responses up to 30 seconds
@@ -106,7 +106,7 @@ export async function POST(req: Request) {
     const oldMessages = await chatService.getMessages(id);
     const contructOldMsg: UIMessage[] = constructChatMessages(oldMessages);
     const messages = [...contructOldMsg, message];
-    const modelMessages = await convertToModelMessages(messages);
+    const modelMessages = await convertToModelMessages(stripToolsForAnthropic(messages));
 
     let currentConversationId = id;
     if (isNewChat) {
@@ -160,40 +160,13 @@ export async function POST(req: Request) {
       model: anthropic(model),
       messages: modelMessages,
       system: chatSystemPrompt,
-      tools: {
-        code_execution: codeExecutionTool,
-        ...(useWebSearch ? { webSearchTool, web_fetch: webFecthTool } : {})
-      },
+      ...(useWebSearch ? { tools: { webSearchTool, web_fetch: webFecthTool } } : {}),
       providerOptions: {
         anthropic: {
           // thinking: {
           //   type: "enabled",
           //   budgetTokens: 10000
           // },
-          container: {
-            skills: [
-              {
-                type: "anthropic",
-                skillId: "pptx",
-                version: "latest"
-              },
-              {
-                type: "anthropic",
-                skillId: "docx",
-                version: "latest"
-              },
-              {
-                type: "anthropic",
-                skillId: "pdf",
-                version: "latest"
-              },
-              {
-                type: "anthropic",
-                skillId: "xlsx",
-                version: "latest"
-              }
-            ]
-          }
         } satisfies AnthropicProviderOptions
       },
       onFinish: async ({ text, usage, reasoning, sources, toolCalls, toolResults }) => {
@@ -292,10 +265,49 @@ export async function POST(req: Request) {
       }
     });
 
-    // Send sources and reasoning back to the client
-    return result.toUIMessageStreamResponse({
+    // Send sources and reasoning back to the client with chunking to avoid WebSocket payload limits
+    const originalStream = result.toUIMessageStreamResponse({
       sendSources: true,
       sendReasoning: true
+    });
+
+    // Create a transformed stream that splits large chunks
+    const transformedStream = new ReadableStream({
+      async start(controller) {
+        const reader = originalStream.body?.getReader();
+        if (!reader) {
+          controller.close();
+          return;
+        }
+
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            // Split into smaller chunks (8KB each) to avoid WebSocket payload limits
+            const maxChunkSize = 8 * 1024;
+            if (value.length > maxChunkSize) {
+              for (let i = 0; i < value.length; i += maxChunkSize) {
+                const chunk = value.slice(i, Math.min(i + maxChunkSize, value.length));
+                controller.enqueue(chunk);
+                // Small delay between chunks to prevent overwhelming the connection
+                await new Promise((resolve) => setTimeout(resolve, 5));
+              }
+            } else {
+              controller.enqueue(value);
+            }
+          }
+          controller.close();
+        } catch (error) {
+          console.error("Stream transform error:", error);
+          controller.error(error);
+        }
+      }
+    });
+
+    return new Response(transformedStream, {
+      headers: originalStream.headers
     });
   } catch (error) {
     console.error("Chat API error:", error);

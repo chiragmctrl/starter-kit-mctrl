@@ -24,7 +24,7 @@ import {
   PromptInputButton,
   PromptInputSpeechButton
 } from "@/components/ai-elements/prompt-input";
-import { useEffect, useState, useRef, useCallback, Activity } from "react";
+import { useEffect, useState, useRef, useCallback, Activity, Fragment } from "react";
 import { useChat } from "@ai-sdk/react";
 import { CopyIcon, GlobeIcon, PlusIcon } from "lucide-react";
 import { Source, Sources, SourcesContent, SourcesTrigger } from "@/components/ai-elements/sources";
@@ -38,6 +38,7 @@ import { toast } from "sonner";
 import { AutoScrollManager } from "./AutoScrollManager";
 import Cookies from "js-cookie";
 import { Reasoning, ReasoningContent, ReasoningTrigger } from "../ai-elements/reasoning";
+import { FileDownload } from "@/components/ai-elements/file-download";
 
 interface IChatBot {
   conversationId: string;
@@ -218,24 +219,77 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
                             part.type.startsWith("tool-result")
                           ) {
                             const toolPart = part as any;
-                            console.log("Rendering tool part:", toolPart);
+
+                            // Extract file information from tool output
+                            const extractFileInfo = (output: any) => {
+                              if (!output) return null;
+
+                              // Parse output if it's a string
+                              let parsedOutput = output;
+                              if (typeof output === "string") {
+                                try {
+                                  parsedOutput = JSON.parse(output);
+                                } catch {
+                                  // Check if stdout contains file path
+                                  const filePathMatch = output.match(/\/files\/output\/[^\s]+\.(pdf|docx|xlsx|pptx)/);
+                                  if (filePathMatch) {
+                                    return { filePath: filePathMatch[0] };
+                                  }
+                                  return null;
+                                }
+                              }
+
+                              // Check for file_id in content array
+                              if (parsedOutput?.content && Array.isArray(parsedOutput.content)) {
+                                for (const item of parsedOutput.content) {
+                                  if (item.file_id) {
+                                    return {
+                                      fileId: item.file_id,
+                                      fileName: parsedOutput.stdout?.match(/\/([^\/]+\.(pdf|docx|xlsx|pptx))/)?.[1]
+                                    };
+                                  }
+                                }
+                              }
+
+                              // Check stdout for file path
+                              if (parsedOutput?.stdout) {
+                                const filePathMatch = parsedOutput.stdout.match(/\/files\/output\/[^\s]+\/([^\s]+\.(pdf|docx|xlsx|pptx))/);
+                                if (filePathMatch) {
+                                  return { filePath: filePathMatch[0], fileName: filePathMatch[1] };
+                                }
+                              }
+
+                              return null;
+                            };
+
+                            const fileInfo = extractFileInfo(toolPart.output || toolPart.result);
 
                             return (
-                              <Tool key={`${message.id}-${i}`} defaultOpen={true} className="border-white/10 mt-3 bg-base-dark-secondary text-white mb-4">
-                                <ToolHeader
-                                  title={toolPart.toolName || toolPart.name || "Tool Execution"}
-                                  type={toolPart.type}
-                                  state={toolPart.state || "output-available"}
-                                  className="text-white hover:bg-base-hover"
-                                />
-                                <ToolContent>
-                                  {toolPart.input && <ToolInput input={toolPart.input} />}
-                                  {toolPart.args && <ToolInput input={toolPart.args} />}
-                                  {(toolPart.output || toolPart.result || toolPart.errorText) && (
-                                    <ToolOutput output={toolPart.output || toolPart.result} errorText={toolPart.errorText} />
-                                  )}
-                                </ToolContent>
-                              </Tool>
+                              <Fragment key={`${message.id}-${i}-file-container`}>
+                                {fileInfo && (fileInfo.fileId || fileInfo.filePath) && (
+                                  <FileDownload
+                                    key={`${message.id}-${i}-file`}
+                                    fileId={fileInfo.fileId || ""}
+                                    fileName={fileInfo.fileName}
+                                    filePath={fileInfo.filePath}
+                                  />
+                                )}
+                                <Tool key={`${message.id}-${i}`} defaultOpen={false} className="border-white/10 mt-3 bg-base-dark-secondary text-white mb-4">
+                                  <ToolHeader
+                                    title={toolPart.toolName || toolPart.name || "Tool Execution"}
+                                    type={toolPart.type}
+                                    state={toolPart.state || "output-available"}
+                                    className="text-white hover:bg-base-hover"
+                                  />
+                                  <ToolContent>
+                                    {toolPart.input && <ToolInput input={toolPart.input} />}
+                                    {toolPart.args && <ToolInput input={toolPart.args} />}
+                                    {(toolPart.output || toolPart.result || toolPart.errorText) && (
+                                      <ToolOutput output={toolPart.output || toolPart.result} errorText={toolPart.errorText} />
+                                    )}
+                                  </ToolContent>
+                                </Tool>
+                              </Fragment>
                             );
                           }
 

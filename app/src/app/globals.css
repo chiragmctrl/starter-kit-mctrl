@@ -111,6 +111,15 @@
   border-radius: 8px;
 }
 
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
 .dark-mode [data-streamdown="code-block"] {
   background-color: #171717 !important;
   border: none !important;

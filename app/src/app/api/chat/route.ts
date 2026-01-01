@@ -1,11 +1,12 @@
 import { streamText, UIMessage, convertToModelMessages } from "ai";
-import { anthropic } from "@ai-sdk/anthropic";
+import { anthropic, AnthropicProviderOptions } from "@ai-sdk/anthropic";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { chatService } from "@/services/chat.service";
 import { organizationService } from "@/services/organization.service";
 import { constructChatMessages } from "@/helper";
-import { webSearchTool } from "@/server/ai/tools";
+import { codeExecutionTool, webFecthTool, webSearchTool } from "@/server/ai/tools";
+import { chatSystemPrompt } from "@/server/ai/prompts/chat";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -106,7 +107,6 @@ export async function POST(req: Request) {
     const contructOldMsg: UIMessage[] = constructChatMessages(oldMessages);
     const messages = [...contructOldMsg, message];
     const modelMessages = await convertToModelMessages(messages);
-    console.log(model, "model");
 
     let currentConversationId = id;
     if (isNewChat) {
@@ -159,24 +159,121 @@ export async function POST(req: Request) {
     const result = streamText({
       model: anthropic(model),
       messages: modelMessages,
-      system: "You are a helpful assistant that can answer questions and help with tasks",
+      system: chatSystemPrompt,
       tools: {
-        ...(useWebSearch ? { webSearchTool: webSearchTool } : {})
+        code_execution: codeExecutionTool,
+        ...(useWebSearch ? { webSearchTool, web_fetch: webFecthTool } : {})
       },
-      onFinish: async ({ text, usage, reasoning, sources }) => {
+      providerOptions: {
+        anthropic: {
+          // thinking: {
+          //   type: "enabled",
+          //   budgetTokens: 10000
+          // },
+          container: {
+            skills: [
+              {
+                type: "anthropic",
+                skillId: "pptx",
+                version: "latest"
+              },
+              {
+                type: "anthropic",
+                skillId: "docx",
+                version: "latest"
+              },
+              {
+                type: "anthropic",
+                skillId: "pdf",
+                version: "latest"
+              },
+              {
+                type: "anthropic",
+                skillId: "xlsx",
+                version: "latest"
+              }
+            ]
+          }
+        } satisfies AnthropicProviderOptions
+      },
+      onFinish: async ({ text, usage, reasoning, sources, toolCalls, toolResults }) => {
         // Save assistant response to database after streaming completes
         try {
+          // Build the parts array in the same order as streaming (reasoning -> tools -> text -> sources)
+          const messageParts = [];
+
+          // Add reasoning part FIRST if exists (matches streaming order)
+          // Handle both string and array formats from the AI SDK
+          if (reasoning) {
+            let reasoningText: string | undefined;
+
+            // Check if reasoning is an array (new format)
+            if (Array.isArray(reasoning) && reasoning.length > 0) {
+              // Extract text from the first reasoning object
+              const firstReasoning = reasoning[0];
+              if (firstReasoning && typeof firstReasoning === "object" && "text" in firstReasoning) {
+                reasoningText = firstReasoning.text;
+              }
+            }
+            // Handle string format (old format or fallback)
+            else if (typeof reasoning === "string") {
+              reasoningText = reasoning;
+            }
+
+            // Add to parts if we got valid text
+            if (reasoningText && reasoningText.trim().length > 0) {
+              messageParts.push({ type: "reasoning", text: reasoningText });
+            }
+          }
+
+          // Add tool execution parts if they exist
+          if (toolCalls && toolCalls.length > 0) {
+            toolCalls.forEach((toolCall: any, index: number) => {
+              const toolResult = toolResults?.[index] as any;
+              messageParts.push({
+                type: "tool-call",
+                toolCallId: toolCall.toolCallId || toolCall.id,
+                toolName: toolCall.toolName || toolCall.name,
+                args: toolCall.args || toolCall.arguments,
+                state: toolResult ? "output-available" : "input-available",
+                result: toolResult?.result || toolResult?.output,
+                output: toolResult?.result || toolResult?.output,
+                errorText: toolResult?.error || toolResult?.errorText
+              });
+            });
+          }
+
+          // Add text part AFTER tools
+          if (text) {
+            messageParts.push({ type: "text", text });
+          }
+
+          // Add source parts if exist
+          if (sources && sources.length > 0) {
+            sources.forEach((source) => {
+              // Source can be either a string or an object with url property
+              const sourceUrl = typeof source === "string" ? source : "url" in source ? source.url : "";
+              const sourceTitle = typeof source === "object" && source.title ? source.title : sourceUrl;
+              messageParts.push({
+                type: "source-url",
+                url: sourceUrl,
+                title: sourceTitle
+              });
+            });
+          }
+
           await chatService.saveMessage({
             conversation_id: currentConversationId!,
             role: "assistant",
             content: {
+              parts: messageParts,
               text,
               reasoning: reasoning || undefined,
               sources: sources || undefined
             },
             model,
             token_usage: {
-              cachedInputTokens: usage.cachedInputTokens || 0,
+              cachedInputTokens: usage.inputTokenDetails.cacheReadTokens || 0,
               inputTokens: usage.inputTokens || 0,
               outputTokens: usage.outputTokens || 0,
               reasoningTokens: (usage as any).reasoningTokens || 0,

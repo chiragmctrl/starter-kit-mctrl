@@ -19,3 +19,15 @@ export function buildChatTitlePrompt(messages: string) {
     }
   ] as ModelMessage[];
 }
+
+export const chatSystemPrompt = `
+  You are a helpful assistant that can answer questions and help with tasks.
+  
+  IMPORTANT: Only use the code_execution tool when absolutely necessary, such as:
+  - Complex data analysis or processing
+  - Running algorithms that are difficult to compute manually
+  - Working with large datasets
+  - Creating visualizations or charts
+      
+  For simple mathematical calculations (like mean, standard deviation, basic arithmetic), please solve them step-by-step in your response instead of using code execution. Show your work so users can understand the process.
+`;

@@ -2,9 +2,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { authClient } from "@/lib/auth-client";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { MessageSquare, Settings, Users, BarChart3, ArrowRight, Sparkles } from "lucide-react";
-import { useRouter } from "next/router";
 
 const OrganizationPage = () => {
   const params = useParams();

@@ -21,13 +21,15 @@ import {
   PromptInputTextarea,
   PromptInputFooter,
   PromptInputTools,
-  PromptInputButton
+  PromptInputButton,
+  PromptInputSpeechButton
 } from "@/components/ai-elements/prompt-input";
 import { useEffect, useState, useRef, useCallback, Activity } from "react";
 import { useChat } from "@ai-sdk/react";
 import { CopyIcon, GlobeIcon, PlusIcon } from "lucide-react";
 import { Source, Sources, SourcesContent, SourcesTrigger } from "@/components/ai-elements/sources";
-import { Reasoning, ReasoningContent, ReasoningTrigger } from "@/components/ai-elements/reasoning";
+// import { ChainOfThought, ChainOfThoughtHeader, ChainOfThoughtContent, ChainOfThoughtStep } from "@/components/ai-elements/chain-of-thought";
+import { Tool, ToolHeader, ToolContent, ToolInput, ToolOutput } from "@/components/ai-elements/tool";
 import { Loader } from "@/components/ai-elements/loader";
 import { MODEL_PROVIDERS } from "@/constants";
 import { DefaultChatTransport, UIMessage } from "ai";
@@ -35,21 +37,30 @@ import { useParams } from "next/navigation";
 import { toast } from "sonner";
 import { AutoScrollManager } from "./AutoScrollManager";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
+import { Reasoning, ReasoningContent, ReasoningTrigger } from "../ai-elements/reasoning";
 
 interface IChatBot {
   conversationId: string;
   initialMessages: UIMessage[];
 }
 
+type SourceUrlPart = Extract<UIMessage["parts"][number], { type: "source-url" }>;
+
 const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
   const [input, setInput] = useState("");
   const [model, setModel] = useState<string>(Cookies.get("activeModel") ?? (MODEL_PROVIDERS[0]?.value as string));
   const [scrollBehavior, setScrollBehavior] = useState<"instant" | "smooth">("instant");
   const [useWebSearch, setUseWebSearch] = useState<boolean>(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const params = useParams();
   const isInitialMount = useRef(true);
+  const useWebSearchRef = useRef(useWebSearch);
+
+  // Keep ref in sync with state
+  useEffect(() => {
+    useWebSearchRef.current = useWebSearch;
+  }, [useWebSearch]);
 
   const { messages, sendMessage, status } = useChat({
     id: conversationId,
@@ -57,7 +68,7 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
     transport: new DefaultChatTransport({
       api: "/api/chat",
       prepareSendMessagesRequest({ messages, id }) {
-        return { body: { message: messages[messages.length - 1], id: id, model, isNewChat: messages.length <= 1 } };
+        return { body: { message: messages[messages.length - 1], id: id, model, useWebSearch: useWebSearchRef.current, isNewChat: messages.length <= 1 } };
       }
     }),
     onError: (error) => {
@@ -97,18 +108,10 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
       if (!(hasText || hasAttachments)) {
         return;
       }
-      sendMessage(
-        {
-          text: message.text || "Sent with attachments",
-          files: message.files
-        },
-        {
-          body: {
-            model: model,
-            useWebSearch
-          }
-        }
-      );
+      sendMessage({
+        text: message.text || "Sent with attachments",
+        files: message.files
+      });
       setInput("");
     },
     [sendMessage, model]
@@ -120,67 +123,130 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
     location.href = `/${params.orgSlug}/chat`;
   };
 
+  function isSourceUrlPart(part: UIMessage["parts"][number]): part is SourceUrlPart {
+    return part.type === "source-url";
+  }
+
   return (
     <div className="h-full">
       <div className="max-w-4xl mx-auto p-6 relative size-full  ">
         <div className="flex flex-col h-full dark-mode">
-          <Conversation key={conversationId} className="h-full dark-scrollbar" scrollBehavior={scrollBehavior}>
+          <Conversation key={conversationId} className={`h-full dark-scrollbar`} scrollBehavior={scrollBehavior}>
             <ConversationContent className="">
-              {messages.map((message) => (
-                <div key={message.id} className="">
-                  {message.role === "assistant" && message.parts.filter((part) => part.type === "source-url").length > 0 && (
-                    <Sources className="text-white! border rounded-lg p-3 border-white/10">
-                      <SourcesTrigger count={message.parts.filter((part) => part.type === "source-url").length} />
-                      {message.parts
-                        .filter((part) => part.type === "source-url")
-                        .map((part, i) => (
-                          <SourcesContent key={`${message.id}-${i}`}>
-                            <Source className="text-base-link! flex gap-2" key={`${message.id}-${i}`} href={part.url} title={part.url} />
-                          </SourcesContent>
-                        ))}
-                    </Sources>
-                  )}
-                  {message.parts.map((part, i) => {
-                    const isLast = message.parts.length - 1 === i;
-                    switch (part.type) {
-                      case "text":
-                        return (
-                          <Message key={`${message.id}-${i}`} from={message.role}>
-                            <MessageContent
-                              className={` text-white! ${message.role === "user" ? "group-[.is-user]:rounded-[18px] group-[.is-user]:font-medium group-[.is-user]:bg-base-msg-bg!" : ""}`}
-                            >
-                              <MessageResponse className={`text-white!`}>{part.text}</MessageResponse>
-                            </MessageContent>
-                            {message.role === "assistant" && isLast && (
-                              <MessageActions className="">
-                                <MessageAction
-                                  className="hover:bg-base-hover cursor-pointer"
-                                  onClick={() => navigator.clipboard.writeText(part.text)}
-                                  label="Copy"
-                                >
-                                  <CopyIcon color="white" className="size-3" />
-                                </MessageAction>
-                              </MessageActions>
-                            )}
-                          </Message>
-                        );
-                      case "reasoning":
-                        return (
-                          <Reasoning
-                            key={`${message.id}-${i}`}
-                            className="w-full"
-                            isStreaming={status === "streaming" && i === message.parts.length - 1 && message.id === messages.at(-1)?.id}
-                          >
-                            <ReasoningTrigger />
-                            <ReasoningContent className="text-white! ">{part.text}</ReasoningContent>
-                          </Reasoning>
-                        );
-                      default:
-                        return null;
-                    }
-                  })}
-                </div>
-              ))}
+              {messages.map((message) => {
+                // Debug: Log message parts to understand streaming behavior
+                if (message.role === "assistant" && status === "streaming") {
+                  console.log(
+                    "Streaming message parts:",
+                    message.parts.map((p) => ({ type: p.type, hasContent: !!p }))
+                  );
+                }
+
+                return (
+                  <div key={message.id} className="">
+                    {message.role === "assistant" && message.parts.filter((part) => part.type === "source-url").length > 0 && (
+                      <Sources className="text-white! border rounded-lg p-3 border-white/10">
+                        <SourcesTrigger count={message.parts.filter((part) => part.type === "source-url").length} />
+                        {message.parts.filter(isSourceUrlPart).map((part, i) => {
+                          const sourceUrl = typeof part.url === "string" ? part.url : ((part.url as { url: string }).url ?? "");
+                          const sourceTitle = part.title ?? (typeof part.url === "object" ? (part.url as { title: string })?.title : null) ?? sourceUrl;
+
+                          return (
+                            <SourcesContent key={`${message.id}-${i}`}>
+                              <Source className="text-base-link! flex gap-2" href={sourceUrl} title={sourceTitle} />
+                            </SourcesContent>
+                          );
+                        })}
+                      </Sources>
+                    )}
+                    {message.parts.map((part, i) => {
+                      const isLast = message.parts.length - 1 === i;
+
+                      // Debug: Log each part type
+                      if (status === "streaming" && message.role === "assistant") {
+                        console.log(`Part ${i} type:`, part.type, part);
+                      }
+
+                      switch (part.type) {
+                        case "text":
+                          return (
+                            <Message key={`${message.id}-${i}`} from={message.role}>
+                              <MessageContent
+                                className={` text-white! ${message.role === "user" ? "group-[.is-user]:rounded-[18px] group-[.is-user]:font-medium group-[.is-user]:bg-base-msg-bg!" : ""}`}
+                              >
+                                <MessageResponse className={`text-white!`}>{part.text}</MessageResponse>
+                              </MessageContent>
+                              {message.role === "assistant" && isLast && (
+                                <MessageActions className="">
+                                  <MessageAction
+                                    className="hover:bg-base-hover cursor-pointer"
+                                    onClick={() => navigator.clipboard.writeText(part.text)}
+                                    label="Copy"
+                                  >
+                                    <CopyIcon color="white" className="size-3" />
+                                  </MessageAction>
+                                </MessageActions>
+                              )}
+                            </Message>
+                          );
+                        case "reasoning":
+                          const isStreaming = status === "streaming" && i === message.parts.length - 1 && message.id === messages.at(-1)?.id;
+                          // return (
+                          //   <ChainOfThought key={`${message.id}-${i}`} className="w-full border rounded-lg p-3 border-white/10 mb-4" defaultOpen={true}>
+                          //     <ChainOfThoughtHeader className="text-white hover:text-white/70">Chain of Thought</ChainOfThoughtHeader>
+                          //     <ChainOfThoughtContent>
+                          //       <ChainOfThoughtStep className="text-white/40" label="Thinking process" status={isStreaming ? "active" : "complete"}>
+                          //         <div className="text-white/80 text-sm whitespace-pre-wrap">{part.text}</div>
+                          //       </ChainOfThoughtStep>
+                          //     </ChainOfThoughtContent>
+                          //   </ChainOfThought>
+                          // );
+                          return (
+                            <Reasoning isStreaming={isStreaming} className="...">
+                              <ReasoningTrigger className="text-white/70" /> {/* ← Shows "Thought for 5s" automatically */}
+                              <ReasoningContent>{part.text}</ReasoningContent>
+                            </Reasoning>
+                          );
+
+                        default:
+                          // Handle tool-related parts (code execution, web search, etc.)
+                          // Check for various tool part types from the AI SDK
+                          if (
+                            part.type.includes("tool") ||
+                            part.type.startsWith("tool-invocation") ||
+                            part.type.startsWith("tool-call") ||
+                            part.type.startsWith("tool-result")
+                          ) {
+                            const toolPart = part as any;
+                            console.log("Rendering tool part:", toolPart);
+
+                            return (
+                              <Tool key={`${message.id}-${i}`} defaultOpen={true} className="border-white/10 mt-3 bg-base-dark-secondary text-white mb-4">
+                                <ToolHeader
+                                  title={toolPart.toolName || toolPart.name || "Tool Execution"}
+                                  type={toolPart.type}
+                                  state={toolPart.state || "output-available"}
+                                  className="text-white hover:bg-base-hover"
+                                />
+                                <ToolContent>
+                                  {toolPart.input && <ToolInput input={toolPart.input} />}
+                                  {toolPart.args && <ToolInput input={toolPart.args} />}
+                                  {(toolPart.output || toolPart.result || toolPart.errorText) && (
+                                    <ToolOutput output={toolPart.output || toolPart.result} errorText={toolPart.errorText} />
+                                  )}
+                                </ToolContent>
+                              </Tool>
+                            );
+                          }
+
+                          // Log unknown part types to help debug
+                          console.log("Unknown part type:", part.type, part);
+                          return null;
+                      }
+                    })}
+                  </div>
+                );
+              })}
               <Activity mode={status === "submitted" ? "visible" : "hidden"}>
                 <Loader />
               </Activity>
@@ -198,7 +264,13 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
               <PromptInputAttachments className="">{(attachment) => <PromptInputAttachment className="" data={attachment} />}</PromptInputAttachments>
             </PromptInputHeader>
             <PromptInputBody className="">
-              <PromptInputTextarea placeholder="Ask anything" className="text-white ps-4 text-base!" onChange={(e) => setInput(e.target.value)} value={input} />
+              <PromptInputTextarea
+                placeholder="Ask anything"
+                ref={textareaRef}
+                className="text-white ps-4 text-base!"
+                onChange={(e) => setInput(e.target.value)}
+                value={input}
+              />
             </PromptInputBody>
             <PromptInputFooter className="pt-0!">
               <PromptInputTools>
@@ -222,6 +294,10 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
                     ))}
                   </PromptInputSelectContent>
                 </PromptInputSelect>
+                <PromptInputSpeechButton
+                  className="p-2! me-2 text-base-text-color hover:bg-base-hover hover:text-base-text-color cursor-pointer"
+                  textareaRef={textareaRef}
+                />
                 <PromptInputButton
                   className={`${useWebSearch ? "text-base-link bg-base-link/10 hover:bg-base-link/20 hover:text-base-link" : "text-base-text-color hover:bg-base-hover hover:text-base-text-color"} cursor-pointer `}
                   onClick={() => setUseWebSearch(!useWebSearch)}

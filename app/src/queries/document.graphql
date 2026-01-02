@@ -1,0 +1,23 @@
+mutation insertChatResource($data: resources_insert_input!) {
+  insert_resources_one(object: $data) {
+    id
+  }
+}
+
+mutation insertChatResourceVersion($data: resource_versions_insert_input!) {
+  insert_resource_versions_one(object: $data) {
+    id
+  }
+}
+
+query getLatestReourcesVersionByResourceId($id: uuid!) {
+  resource_versions(where: { resource_id: { _eq: $id } }, order_by: { version_number: desc }, limit: 1) {
+    version_number
+  }
+}
+
+mutation updateChatResource($id: uuid!, $data: resources_set_input!) {
+  update_resources(where: { id: { _eq: $id } }, _set: $data) {
+    affected_rows
+  }
+}

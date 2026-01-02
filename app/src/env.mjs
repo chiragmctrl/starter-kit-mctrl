@@ -11,7 +11,13 @@ const server = z.object({
   BETTER_AUTH_URL: z.string(),
   AUTH_DATABASE_URL: z.string(),
   HASURA_GRAPHQL_TOKEN_SECRET: z.string(),
-  ANTHROPIC_API_KEY: z.string()
+  ANTHROPIC_API_KEY: z.string(),
+  MINIO_ENDPOINT: z.string(),
+  MINIO_PORT: z.string(),
+  MINIO_USE_SSL: z.string(),
+  MINIO_ACCESS_KEY: z.string(),
+  MINIO_SECRET_KEY: z.string(),
+  MINIO_BUCKET: z.string()
 });
 
 /**
@@ -38,7 +44,13 @@ const processEnv = {
   BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
   AUTH_DATABASE_URL: process.env.AUTH_DATABASE_URL,
   HASURA_GRAPHQL_TOKEN_SECRET: process.env.HASURA_GRAPHQL_TOKEN_SECRET,
-  ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
+  ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
+  MINIO_ENDPOINT: process.env.MINIO_ENDPOINT,
+  MINIO_PORT: process.env.MINIO_PORT,
+  MINIO_USE_SSL: process.env.MINIO_USE_SSL,
+  MINIO_ACCESS_KEY: process.env.MINIO_ACCESS_KEY,
+  MINIO_SECRET_KEY: process.env.MINIO_SECRET_KEY,
+  MINIO_BUCKET: process.env.MINIO_BUCKET
 };
 
 // Don't touch the part below

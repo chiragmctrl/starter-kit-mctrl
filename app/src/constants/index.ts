@@ -8,3 +8,5 @@ export const MODEL_PROVIDERS = [
     value: "claude-sonnet-4-5"
   }
 ];
+
+export const SUPPORTED_DOC_TYPE = ["pdf", "docx", "xlsx", "pptx", "txt", "csv", "js", "py"] as const;

@@ -3576,9 +3576,9 @@ export type Query_Root = {
   chat_messages_aggregate: Chat_Messages_Aggregate;
   /** fetch data from the table: "chat_messages" using primary key columns */
   chat_messages_by_pk?: Maybe<Chat_Messages>;
-  /** fetch data from the table: "resource_events" */
+  /** An array relationship */
   resource_events: Array<Resource_Events>;
-  /** fetch aggregated fields from the table: "resource_events" */
+  /** An aggregate relationship */
   resource_events_aggregate: Resource_Events_Aggregate;
   /** fetch data from the table: "resource_events" using primary key columns */
   resource_events_by_pk?: Maybe<Resource_Events>;
@@ -3899,6 +3899,17 @@ export type Resource_Events_Aggregate = {
   nodes: Array<Resource_Events>;
 };
 
+export type Resource_Events_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Resource_Events_Aggregate_Bool_Exp_Count>;
+};
+
+export type Resource_Events_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Resource_Events_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Resource_Events_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "resource_events" */
 export type Resource_Events_Aggregate_Fields = {
   __typename?: 'resource_events_aggregate_fields';
@@ -3914,9 +3925,23 @@ export type Resource_Events_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+/** order by aggregate values of table "resource_events" */
+export type Resource_Events_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Resource_Events_Max_Order_By>;
+  min?: InputMaybe<Resource_Events_Min_Order_By>;
+};
+
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Resource_Events_Append_Input = {
   metadata?: InputMaybe<Scalars['jsonb']['input']>;
+};
+
+/** input type for inserting array relation for remote table "resource_events" */
+export type Resource_Events_Arr_Rel_Insert_Input = {
+  data: Array<Resource_Events_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Resource_Events_On_Conflict>;
 };
 
 /** Boolean expression to filter rows from the table "resource_events". All fields are combined with a logical 'AND'. */
@@ -3982,6 +4007,18 @@ export type Resource_Events_Max_Fields = {
   user_id?: Maybe<Scalars['String']['output']>;
 };
 
+/** order by max() on columns of table "resource_events" */
+export type Resource_Events_Max_Order_By = {
+  actor_type?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  event_type?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  message_id?: InputMaybe<Order_By>;
+  resource_id?: InputMaybe<Order_By>;
+  resource_version_id?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Resource_Events_Min_Fields = {
   __typename?: 'resource_events_min_fields';
@@ -3993,6 +4030,18 @@ export type Resource_Events_Min_Fields = {
   resource_id?: Maybe<Scalars['uuid']['output']>;
   resource_version_id?: Maybe<Scalars['uuid']['output']>;
   user_id?: Maybe<Scalars['String']['output']>;
+};
+
+/** order by min() on columns of table "resource_events" */
+export type Resource_Events_Min_Order_By = {
+  actor_type?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  event_type?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  message_id?: InputMaybe<Order_By>;
+  resource_id?: InputMaybe<Order_By>;
+  resource_version_id?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "resource_events" */
@@ -4144,6 +4193,10 @@ export type Resource_Versions = {
   model?: Maybe<Scalars['String']['output']>;
   /** An object relationship */
   resource: Resources;
+  /** An array relationship */
+  resource_events: Array<Resource_Events>;
+  /** An aggregate relationship */
+  resource_events_aggregate: Resource_Events_Aggregate;
   resource_id: Scalars['uuid']['output'];
   size_bytes?: Maybe<Scalars['bigint']['output']>;
   storage_path: Scalars['String']['output'];
@@ -4154,6 +4207,26 @@ export type Resource_Versions = {
 /** columns and relationships of "resource_versions" */
 export type Resource_VersionsMetadataArgs = {
   path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "resource_versions" */
+export type Resource_VersionsResource_EventsArgs = {
+  distinct_on?: InputMaybe<Array<Resource_Events_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Resource_Events_Order_By>>;
+  where?: InputMaybe<Resource_Events_Bool_Exp>;
+};
+
+
+/** columns and relationships of "resource_versions" */
+export type Resource_VersionsResource_Events_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Resource_Events_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Resource_Events_Order_By>>;
+  where?: InputMaybe<Resource_Events_Bool_Exp>;
 };
 
 /** aggregated selection of "resource_versions" */
@@ -4252,6 +4325,8 @@ export type Resource_Versions_Bool_Exp = {
   mime_type?: InputMaybe<String_Comparison_Exp>;
   model?: InputMaybe<String_Comparison_Exp>;
   resource?: InputMaybe<Resources_Bool_Exp>;
+  resource_events?: InputMaybe<Resource_Events_Bool_Exp>;
+  resource_events_aggregate?: InputMaybe<Resource_Events_Aggregate_Bool_Exp>;
   resource_id?: InputMaybe<Uuid_Comparison_Exp>;
   size_bytes?: InputMaybe<Bigint_Comparison_Exp>;
   storage_path?: InputMaybe<String_Comparison_Exp>;
@@ -4297,6 +4372,7 @@ export type Resource_Versions_Insert_Input = {
   mime_type?: InputMaybe<Scalars['String']['input']>;
   model?: InputMaybe<Scalars['String']['input']>;
   resource?: InputMaybe<Resources_Obj_Rel_Insert_Input>;
+  resource_events?: InputMaybe<Resource_Events_Arr_Rel_Insert_Input>;
   resource_id?: InputMaybe<Scalars['uuid']['input']>;
   size_bytes?: InputMaybe<Scalars['bigint']['input']>;
   storage_path?: InputMaybe<Scalars['String']['input']>;
@@ -4400,6 +4476,7 @@ export type Resource_Versions_Order_By = {
   mime_type?: InputMaybe<Order_By>;
   model?: InputMaybe<Order_By>;
   resource?: InputMaybe<Resources_Order_By>;
+  resource_events_aggregate?: InputMaybe<Resource_Events_Aggregate_Order_By>;
   resource_id?: InputMaybe<Order_By>;
   size_bytes?: InputMaybe<Order_By>;
   storage_path?: InputMaybe<Order_By>;
@@ -4632,7 +4709,7 @@ export type Resources = {
   created_by: Scalars['String']['output'];
   /** An object relationship */
   current_version?: Maybe<Resource_Versions>;
-  current_version_id: Scalars['uuid']['output'];
+  current_version_id?: Maybe<Scalars['uuid']['output']>;
   id: Scalars['uuid']['output'];
   is_archived: Scalars['Boolean']['output'];
   metadata: Scalars['jsonb']['output'];
@@ -5001,9 +5078,9 @@ export type Subscription_Root = {
   chat_messages_by_pk?: Maybe<Chat_Messages>;
   /** fetch data from the table in a streaming manner: "chat_messages" */
   chat_messages_stream: Array<Chat_Messages>;
-  /** fetch data from the table: "resource_events" */
+  /** An array relationship */
   resource_events: Array<Resource_Events>;
-  /** fetch aggregated fields from the table: "resource_events" */
+  /** An aggregate relationship */
   resource_events_aggregate: Resource_Events_Aggregate;
   /** fetch data from the table: "resource_events" using primary key columns */
   resource_events_by_pk?: Maybe<Resource_Events>;
@@ -5717,6 +5794,59 @@ export type DeleteConversationMutation = (
   }
 );
 
+export type InsertChatResourceMutationVariables = Exact<{
+  data: Resources_Insert_Input;
+}>;
+
+
+export type InsertChatResourceMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_resources_one?: Maybe<(
+    { __typename?: 'resources' }
+    & Pick<Resources, 'id'>
+  )> }
+);
+
+export type InsertChatResourceVersionMutationVariables = Exact<{
+  data: Resource_Versions_Insert_Input;
+}>;
+
+
+export type InsertChatResourceVersionMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_resource_versions_one?: Maybe<(
+    { __typename?: 'resource_versions' }
+    & Pick<Resource_Versions, 'id'>
+  )> }
+);
+
+export type GetLatestReourcesVersionByResourceIdQueryVariables = Exact<{
+  id: Scalars['uuid']['input'];
+}>;
+
+
+export type GetLatestReourcesVersionByResourceIdQuery = (
+  { __typename?: 'query_root' }
+  & { resource_versions: Array<(
+    { __typename?: 'resource_versions' }
+    & Pick<Resource_Versions, 'version_number'>
+  )> }
+);
+
+export type UpdateChatResourceMutationVariables = Exact<{
+  id: Scalars['uuid']['input'];
+  data: Resources_Set_Input;
+}>;
+
+
+export type UpdateChatResourceMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_resources?: Maybe<(
+    { __typename?: 'resources_mutation_response' }
+    & Pick<Resources_Mutation_Response, 'affected_rows'>
+  )> }
+);
+
 
 export const UpdateAuthSession = gql`
     mutation updateAuthSession($setObj: auth_session_set_input!, $sessionId: String!) {
@@ -5904,6 +6034,38 @@ export const DeleteConversation = gql`
   }
   delete_chat_conversations_by_pk(id: $id) {
     id
+  }
+}
+    `;
+export const InsertChatResource = gql`
+    mutation insertChatResource($data: resources_insert_input!) {
+  insert_resources_one(object: $data) {
+    id
+  }
+}
+    `;
+export const InsertChatResourceVersion = gql`
+    mutation insertChatResourceVersion($data: resource_versions_insert_input!) {
+  insert_resource_versions_one(object: $data) {
+    id
+  }
+}
+    `;
+export const GetLatestReourcesVersionByResourceId = gql`
+    query getLatestReourcesVersionByResourceId($id: uuid!) {
+  resource_versions(
+    where: {resource_id: {_eq: $id}}
+    order_by: {version_number: desc}
+    limit: 1
+  ) {
+    version_number
+  }
+}
+    `;
+export const UpdateChatResource = gql`
+    mutation updateChatResource($id: uuid!, $data: resources_set_input!) {
+  update_resources(where: {id: {_eq: $id}}, _set: $data) {
+    affected_rows
   }
 }
     `;
@@ -15175,6 +15337,132 @@ export default {
             "args": []
           },
           {
+            "name": "resource_events",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_events",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_events_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resource_events_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
             "name": "resource_id",
             "type": {
               "kind": "NON_NULL",
@@ -15852,11 +16140,8 @@ export default {
           {
             "name": "current_version_id",
             "type": {
-              "kind": "NON_NULL",
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Any"
-              }
+              "kind": "SCALAR",
+              "name": "Any"
             },
             "args": []
           },

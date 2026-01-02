@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import { streamText, UIMessage, convertToModelMessages } from "ai";
 import { anthropic, AnthropicProviderOptions } from "@ai-sdk/anthropic";
 import { auth } from "@/lib/auth";
@@ -5,8 +6,10 @@ import { headers } from "next/headers";
 import { chatService } from "@/services/chat.service";
 import { organizationService } from "@/services/organization.service";
 import { constructChatMessages, stripToolsForAnthropic } from "@/helper";
-import { webFecthTool, webSearchTool } from "@/server/ai/tools";
+import { generateDocumentTool, webFecthTool, webSearchTool } from "@/server/ai/tools";
 import { chatSystemPrompt } from "@/server/ai/prompts/chat";
+import { documentService } from "@/services/doc.service";
+import { CHAT_ACTOR, DOCUMENT_EVENT_TYPE, DOCUMENT_SOURCE } from "@/types/enum";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -160,7 +163,10 @@ export async function POST(req: Request) {
       model: anthropic(model),
       messages: modelMessages,
       system: chatSystemPrompt,
-      ...(useWebSearch ? { tools: { webSearchTool, web_fetch: webFecthTool } } : {}),
+      tools: {
+        generateDocumentTool
+      },
+      // ...(useWebSearch ? { tools: { webSearchTool, web_fetch: webFecthTool } } : {}),
       providerOptions: {
         anthropic: {
           // thinking: {
@@ -169,11 +175,14 @@ export async function POST(req: Request) {
           // },
         } satisfies AnthropicProviderOptions
       },
+
       onFinish: async ({ text, usage, reasoning, sources, toolCalls, toolResults }) => {
         // Save assistant response to database after streaming completes
         try {
           // Build the parts array in the same order as streaming (reasoning -> tools -> text -> sources)
           const messageParts = [];
+
+          const isDocumentGeneration = toolCalls?.some((t) => t.toolName === "generateDocumentTool") ?? false;
 
           // Add reasoning part FIRST if exists (matches streaming order)
           // Handle both string and array formats from the AI SDK
@@ -203,10 +212,11 @@ export async function POST(req: Request) {
           if (toolCalls && toolCalls.length > 0) {
             toolCalls.forEach((toolCall: any, index: number) => {
               const toolResult = toolResults?.[index] as any;
+              const toolName = toolCall.toolName || toolCall.name;
               messageParts.push({
                 type: "tool-call",
                 toolCallId: toolCall.toolCallId || toolCall.id,
-                toolName: toolCall.toolName || toolCall.name,
+                toolName: toolName,
                 args: toolCall.args || toolCall.arguments,
                 state: toolResult ? "output-available" : "input-available",
                 result: toolResult?.result || toolResult?.output,
@@ -217,10 +227,9 @@ export async function POST(req: Request) {
           }
 
           // Add text part AFTER tools
-          if (text) {
+          if (text && !isDocumentGeneration) {
             messageParts.push({ type: "text", text });
           }
-
           // Add source parts if exist
           if (sources && sources.length > 0) {
             sources.forEach((source) => {
@@ -235,7 +244,7 @@ export async function POST(req: Request) {
             });
           }
 
-          await chatService.saveMessage({
+          const chatMsg = await chatService.saveMessage({
             conversation_id: currentConversationId!,
             role: "assistant",
             content: {
@@ -253,6 +262,36 @@ export async function POST(req: Request) {
               totalTokens: usage.totalTokens || 0
             }
           });
+
+          if (toolCalls && toolCalls.length > 0) {
+            toolCalls.forEach((toolCall: any, index: number) => {
+              const toolName = toolCall.toolName || toolCall.name;
+              const toolResult = toolResults?.[index] as any;
+              const output = toolResult?.result || toolResult?.output;
+
+              if (toolName === "generateDocumentTool") {
+                const file_name = output.filename ?? "Unknown";
+                const file_type = output.fileType;
+                const mime_type = output.mime_type;
+                const size_bytes = output.size_bytes;
+                documentService.saveChatDocument({
+                  conversation_id: currentConversationId,
+                  user_id: userId,
+                  organization_id: organizationId,
+                  source: DOCUMENT_SOURCE.AI_ARTIFACT,
+                  message_id: chatMsg?.id as string,
+                  file_name,
+                  file_type,
+                  mime_type,
+                  size_bytes,
+                  storage_path: output.key,
+                  model,
+                  event_type: DOCUMENT_EVENT_TYPE.CREATED,
+                  actor_type: CHAT_ACTOR.ASSISTANT
+                });
+              }
+            });
+          }
 
           // Update conversation's updated_at timestamp
           await chatService.updateConversation({

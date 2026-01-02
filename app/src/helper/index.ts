@@ -1,4 +1,6 @@
+import { generatePDF } from "@/server/ai/helper";
 import { chatService } from "@/services/chat.service";
+import { DocGenerateOptions } from "@/types/chat";
 import { UIMessage } from "ai";
 
 type OldMessagesType = Awaited<ReturnType<typeof chatService.getMessages>>;
@@ -58,4 +60,24 @@ export function stripToolsForAnthropic(messages: UIMessage[]): UIMessage[] {
       (part: any) => part?.type !== "tool-call" && part?.type !== "tool-result" && part?.type !== "tool_use" && part?.type !== "tool_result"
     )
   }));
+}
+
+export async function generateDocument(opts: DocGenerateOptions) {
+  switch (opts.type) {
+    case "pdf":
+      return generatePDF(opts.content);
+    case "docx":
+    // return generateDOCX(opts.content);
+    case "xlsx":
+    // return generateXLSX(opts.content);
+    case "pptx":
+    // return generatePPTX(opts.content);
+    case "txt":
+    case "csv":
+    case "js":
+    case "py":
+    // return generateText(opts.content);
+    default:
+      throw new Error("Unsupported format");
+  }
 }

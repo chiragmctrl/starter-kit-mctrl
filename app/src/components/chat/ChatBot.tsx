@@ -24,12 +24,11 @@ import {
   PromptInputButton,
   PromptInputSpeechButton
 } from "@/components/ai-elements/prompt-input";
-import { useEffect, useState, useRef, useCallback, Activity, Fragment } from "react";
+import { useEffect, useState, useRef, useCallback, Activity } from "react";
 import { useChat } from "@ai-sdk/react";
 import { CopyIcon, GlobeIcon, PlusIcon } from "lucide-react";
 import { Source, Sources, SourcesContent, SourcesTrigger } from "@/components/ai-elements/sources";
 // import { ChainOfThought, ChainOfThoughtHeader, ChainOfThoughtContent, ChainOfThoughtStep } from "@/components/ai-elements/chain-of-thought";
-import { Tool, ToolHeader, ToolContent, ToolInput, ToolOutput } from "@/components/ai-elements/tool";
 import { Loader } from "@/components/ai-elements/loader";
 import { MODEL_PROVIDERS } from "@/constants";
 import { DefaultChatTransport, UIMessage } from "ai";
@@ -38,7 +37,8 @@ import { toast } from "sonner";
 import { AutoScrollManager } from "./AutoScrollManager";
 import Cookies from "js-cookie";
 import { Reasoning, ReasoningContent, ReasoningTrigger } from "../ai-elements/reasoning";
-import { FileDownload } from "@/components/ai-elements/file-download";
+import DocumentDisplay from "./tools/DocumentDisplay";
+import DocumentGeneratingLoader from "../ui/DocumentGeneratingLoader";
 
 interface IChatBot {
   conversationId: string;
@@ -135,14 +135,6 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
           <Conversation key={conversationId} className={`h-full dark-scrollbar`} scrollBehavior={scrollBehavior}>
             <ConversationContent className="">
               {messages.map((message) => {
-                // Debug: Log message parts to understand streaming behavior
-                if (message.role === "assistant" && status === "streaming") {
-                  console.log(
-                    "Streaming message parts:",
-                    message.parts.map((p) => ({ type: p.type, hasContent: !!p }))
-                  );
-                }
-
                 return (
                   <div key={message.id} className="">
                     {message.role === "assistant" && message.parts.filter((part) => part.type === "source-url").length > 0 && (
@@ -162,11 +154,6 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
                     )}
                     {message.parts.map((part, i) => {
                       const isLast = message.parts.length - 1 === i;
-
-                      // Debug: Log each part type
-                      if (status === "streaming" && message.role === "assistant") {
-                        console.log(`Part ${i} type:`, part.type, part);
-                      }
 
                       switch (part.type) {
                         case "text":
@@ -203,98 +190,23 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
                           //   </ChainOfThought>
                           // );
                           return (
-                            <Reasoning isStreaming={isStreaming} className="...">
+                            <Reasoning key={`${message.id}-reasining-${i}`} isStreaming={isStreaming} className="...">
                               <ReasoningTrigger className="text-white/70" /> {/* ← Shows "Thought for 5s" automatically */}
                               <ReasoningContent>{part.text}</ReasoningContent>
                             </Reasoning>
                           );
-
-                        default:
-                          // Handle tool-related parts (code execution, web search, etc.)
-                          // Check for various tool part types from the AI SDK
-                          if (
-                            part.type.includes("tool") ||
-                            part.type.startsWith("tool-invocation") ||
-                            part.type.startsWith("tool-call") ||
-                            part.type.startsWith("tool-result")
-                          ) {
-                            const toolPart = part as any;
-
-                            // Extract file information from tool output
-                            const extractFileInfo = (output: any) => {
-                              if (!output) return null;
-
-                              // Parse output if it's a string
-                              let parsedOutput = output;
-                              if (typeof output === "string") {
-                                try {
-                                  parsedOutput = JSON.parse(output);
-                                } catch {
-                                  // Check if stdout contains file path
-                                  const filePathMatch = output.match(/\/files\/output\/[^\s]+\.(pdf|docx|xlsx|pptx)/);
-                                  if (filePathMatch) {
-                                    return { filePath: filePathMatch[0] };
-                                  }
-                                  return null;
-                                }
-                              }
-
-                              // Check for file_id in content array
-                              if (parsedOutput?.content && Array.isArray(parsedOutput.content)) {
-                                for (const item of parsedOutput.content) {
-                                  if (item.file_id) {
-                                    return {
-                                      fileId: item.file_id,
-                                      fileName: parsedOutput.stdout?.match(/\/([^\/]+\.(pdf|docx|xlsx|pptx))/)?.[1]
-                                    };
-                                  }
-                                }
-                              }
-
-                              // Check stdout for file path
-                              if (parsedOutput?.stdout) {
-                                const filePathMatch = parsedOutput.stdout.match(/\/files\/output\/[^\s]+\/([^\s]+\.(pdf|docx|xlsx|pptx))/);
-                                if (filePathMatch) {
-                                  return { filePath: filePathMatch[0], fileName: filePathMatch[1] };
-                                }
-                              }
-
-                              return null;
-                            };
-
-                            const fileInfo = extractFileInfo(toolPart.output || toolPart.result);
-
-                            return (
-                              <Fragment key={`${message.id}-${i}-file-container`}>
-                                {fileInfo && (fileInfo.fileId || fileInfo.filePath) && (
-                                  <FileDownload
-                                    key={`${message.id}-${i}-file`}
-                                    fileId={fileInfo.fileId || ""}
-                                    fileName={fileInfo.fileName}
-                                    filePath={fileInfo.filePath}
-                                  />
-                                )}
-                                <Tool key={`${message.id}-${i}`} defaultOpen={false} className="border-white/10 mt-3 bg-base-dark-secondary text-white mb-4">
-                                  <ToolHeader
-                                    title={toolPart.toolName || toolPart.name || "Tool Execution"}
-                                    type={toolPart.type}
-                                    state={toolPart.state || "output-available"}
-                                    className="text-white hover:bg-base-hover"
-                                  />
-                                  <ToolContent>
-                                    {toolPart.input && <ToolInput input={toolPart.input} />}
-                                    {toolPart.args && <ToolInput input={toolPart.args} />}
-                                    {(toolPart.output || toolPart.result || toolPart.errorText) && (
-                                      <ToolOutput output={toolPart.output || toolPart.result} errorText={toolPart.errorText} />
-                                    )}
-                                  </ToolContent>
-                                </Tool>
-                              </Fragment>
-                            );
+                        case "tool-call":
+                        case "tool-generateDocumentTool":
+                          if (part.state === "input-streaming" || part.state === "input-available") {
+                            return <DocumentGeneratingLoader key={`${message.id}-input-streaming-${i}`} />;
+                          }
+                          if (part.output && (part.output as { type: string })?.type === "document") {
+                            return <DocumentDisplay keyUrl={(part.output as { key: string }).key} key={`${message.id}-tool-${i}`} />;
                           }
 
-                          // Log unknown part types to help debug
-                          console.log("Unknown part type:", part.type, part);
+                        default:
+                          // console.log(part, "part");
+
                           return null;
                       }
                     })}

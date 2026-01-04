@@ -10,7 +10,6 @@ import {
   UpdateAuthSessionMutationVariables
 } from "@/gql/graphql";
 import { admin, organization } from "better-auth/plugins";
-import { initCronUrqlClient } from "urql/client";
 
 // Helper function to generate JWT token for Hasura
 // Uses the expiry from Better Auth session for consistency
@@ -56,6 +55,7 @@ export const auth = betterAuth({
     session: {
       create: {
         before: async (session) => {
+          const { initCronUrqlClient } = await import("urql/client");
           const hasuraToken = generateHasuraToken(session.userId, session.expiresAt);
           const client = initCronUrqlClient();
           const res = await client.query<GetAllOrganizationsByUserIdQuery, GetAllOrganizationsByUserIdQueryVariables>(GetAllOrganizationsByUserId, {

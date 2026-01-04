@@ -1,3 +1,4 @@
+import { generateExcelDocumentTool, generatePPTXDocumentTool, generateTextDocumentTool } from "./../../../server/ai/tools/index";
 export const runtime = "nodejs";
 import { streamText, UIMessage, convertToModelMessages } from "ai";
 import { anthropic, AnthropicProviderOptions } from "@ai-sdk/anthropic";
@@ -6,7 +7,7 @@ import { headers } from "next/headers";
 import { chatService } from "@/services/chat.service";
 import { organizationService } from "@/services/organization.service";
 import { constructChatMessages, stripToolsForAnthropic } from "@/helper";
-import { generateDocumentTool, webFecthTool, webSearchTool } from "@/server/ai/tools";
+import { generateDOCXDocumentTool, generatePDFDocumentTool, webFecthTool, webSearchTool } from "@/server/ai/tools";
 import { chatSystemPrompt } from "@/server/ai/prompts/chat";
 import { documentService } from "@/services/doc.service";
 import { CHAT_ACTOR, DOCUMENT_EVENT_TYPE, DOCUMENT_SOURCE } from "@/types/enum";
@@ -158,15 +159,21 @@ export async function POST(req: Request) {
       });
     }
 
+    console.log(JSON.stringify(modelMessages), ": modelMessages");
+
     // Stream AI response
     const result = streamText({
       model: anthropic(model),
       messages: modelMessages,
       system: chatSystemPrompt,
       tools: {
-        generateDocumentTool
+        generatePDFDocumentTool,
+        generateDOCXDocumentTool,
+        generateExcelDocumentTool,
+        generatePPTXDocumentTool,
+        generateTextDocumentTool,
+        ...(useWebSearch ? { webSearchTool, web_fetch: webFecthTool } : {})
       },
-      // ...(useWebSearch ? { tools: { webSearchTool, web_fetch: webFecthTool } } : {}),
       providerOptions: {
         anthropic: {
           // thinking: {
@@ -181,8 +188,6 @@ export async function POST(req: Request) {
         try {
           // Build the parts array in the same order as streaming (reasoning -> tools -> text -> sources)
           const messageParts = [];
-
-          const isDocumentGeneration = toolCalls?.some((t) => t.toolName === "generateDocumentTool") ?? false;
 
           // Add reasoning part FIRST if exists (matches streaming order)
           // Handle both string and array formats from the AI SDK
@@ -227,7 +232,7 @@ export async function POST(req: Request) {
           }
 
           // Add text part AFTER tools
-          if (text && !isDocumentGeneration) {
+          if (text) {
             messageParts.push({ type: "text", text });
           }
           // Add source parts if exist

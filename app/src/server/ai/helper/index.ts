@@ -1,5 +1,9 @@
 "use server";
+import { GenerateDocxInputType, GenerateExcelInputType, GeneratePptxInputType } from "@/lib/schemas/toolsSchema";
 import puppeteer from "puppeteer";
+import { Document, Packer, Paragraph, HeadingLevel } from "docx";
+import PptxGenJS from "pptxgenjs";
+import ExcelJS from "exceljs";
 
 export async function generatePDF(htmlContent: string) {
   const browser = await puppeteer.launch();
@@ -71,4 +75,130 @@ export async function generatePDF(htmlContent: string) {
   });
   await browser.close();
   return Buffer.from(pdfBuffer);
+}
+
+export async function generateDOCX(sections: GenerateDocxInputType["sections"], title: string) {
+  const doc = new Document({
+    sections: [
+      {
+        children: [
+          // Document Title
+          new Paragraph({
+            text: title,
+            heading: HeadingLevel.TITLE
+          }),
+
+          // Sections
+          ...sections.flatMap((section) => {
+            const content: Paragraph[] = [];
+
+            // Section Heading
+            content.push(
+              new Paragraph({
+                text: section.heading,
+                heading: HeadingLevel.HEADING_1
+              })
+            );
+
+            // Paragraphs
+            section.paragraphs?.forEach((text) => {
+              content.push(new Paragraph(text));
+            });
+
+            // Bullet points
+            section.bullets?.forEach((text) => {
+              content.push(
+                new Paragraph({
+                  text,
+                  bullet: { level: 0 }
+                })
+              );
+            });
+
+            return content;
+          })
+        ]
+      }
+    ]
+  });
+
+  const buffer = await Packer.toBuffer(doc);
+
+  return buffer;
+}
+
+export async function generateEXCEL(sheets: GenerateExcelInputType["sheets"]) {
+  const workbook = new ExcelJS.Workbook();
+
+  sheets.forEach((sheetDef) => {
+    const sheet = workbook.addWorksheet(sheetDef.name);
+
+    sheet.columns = sheetDef.columns.map((col) => ({
+      header: col.header,
+      key: col.key,
+      width: col.width ?? 20
+    }));
+
+    sheet.getRow(1).font = { bold: true };
+
+    sheetDef.rows.forEach((row) => {
+      sheet.addRow(row);
+    });
+
+    // Apply column formatting
+    sheetDef.columns.forEach((col, index) => {
+      const column = sheet.getColumn(index + 1);
+
+      if (col.type === "number") {
+        column.numFmt = "#,##0";
+      }
+
+      if (col.type === "date") {
+        column.numFmt = "yyyy-mm-dd";
+      }
+    });
+  });
+
+  const buffer = await workbook.xlsx.writeBuffer();
+
+  return Buffer.from(buffer);
+}
+
+export async function generatePPTX(slides: GeneratePptxInputType["slides"]) {
+  const pptx = new PptxGenJS();
+
+  slides.forEach((slideData) => {
+    const slide = pptx.addSlide();
+
+    // Slide Title
+    slide.addText(slideData.title, {
+      x: 0.5,
+      y: 0.4,
+      fontSize: 28,
+      bold: true
+    });
+
+    // Bullets
+    if (slideData.bullets?.length) {
+      slide.addText(
+        slideData.bullets.map((text) => ({ text })),
+        {
+          x: 0.7,
+          y: 1.4,
+          fontSize: 16,
+          bullet: true
+        }
+      );
+    }
+  });
+
+  const buffer = (await pptx.write({
+    outputType: "nodebuffer"
+  })) as Buffer;
+
+  return buffer;
+}
+
+export async function generateTEXT(content: string) {
+  return Buffer.from(content, "utf-8");
 }

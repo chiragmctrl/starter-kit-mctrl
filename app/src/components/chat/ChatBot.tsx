@@ -196,7 +196,11 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
                             </Reasoning>
                           );
                         case "tool-call":
-                        case "tool-generateDocumentTool":
+                        case "tool-generatePDFDocumentTool":
+                        case "tool-generateDOCXDocumentTool":
+                        case "tool-generateExcelDocumentTool":
+                        case "tool-generatePPTXDocumentTool":
+                        case "tool-generateTextDocumentTool":
                           if (part.state === "input-streaming" || part.state === "input-available") {
                             return <DocumentGeneratingLoader key={`${message.id}-input-streaming-${i}`} />;
                           }

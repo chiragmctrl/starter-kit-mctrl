@@ -13,3 +13,13 @@ export enum DOCUMENT_EVENT_TYPE {
   UPLOADED = "UPLOADED",
   MODIFIED = "MODIFIED"
 }
+
+export enum DOCUMENTS_TOOLS_NAMES {
+  GENERATE_PDF_DOCUMENT_TOOL = "generatePDFDocumentTool",
+  GENERATE_DOCX_DOCUMENT_TOOL = "generateDOCXDocumentTool",
+  GENERATE_EXCEL_DOCUMENT_TOOL = "generateExcelDocumentTool",
+  GENERATE_PPTX_DOCUMENT_TOOL = "generatePPTXDocumentTool",
+  GENERATE_TEXT_DOCUMENT_TOOL = "generateTextDocumentTool"
+}
+
+export const DOCUMENTS_TOOLS_NAMES_ARRAY = Object.values(DOCUMENTS_TOOLS_NAMES);

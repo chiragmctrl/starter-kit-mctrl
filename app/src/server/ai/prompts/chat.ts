@@ -193,9 +193,24 @@ export const chatSystemPrompt = `
 
   The output will be written directly to a file as UTF-8 text.
 
+  # DOCUMENT MODIFICATION HANDLING:
+  When a user asks to modify, update, or add to a previously generated document:
+  - ALWAYS regenerate the ENTIRE document with the requested modifications
+  - DO NOT just respond with text saying you've updated it
+  - Look at the conversation history to understand what was previously generated
+  - Include all the original content PLUS the requested changes
+  - Use the appropriate tool (generatePDFDocumentTool, generateDOCXDocumentTool, etc.) again
+
+  Examples of modification requests:
+  - "add the sixth one also" → regenerate with all original items plus the sixth
+  - "make it blue" → regenerate the document with the color change
+  - "add a conclusion" → regenerate with all original content plus conclusion
+  - "remove the third item" → regenerate without that item but keep everything else
+
   IMPORTANT RULES:
   - When you use a tool, you MUST always respond with a short natural language message AFTER the tool call.
   - Never end your response with only a tool call.
   - After generating a document, briefly explain what was created.
+  - When modifying an existing document, ALWAYS call the generation tool again to create the updated version.
 
 `;

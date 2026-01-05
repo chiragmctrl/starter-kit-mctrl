@@ -1,6 +1,4 @@
-import { generatePDF } from "@/server/ai/helper";
 import { chatService } from "@/services/chat.service";
-import { DocGenerateOptions } from "@/types/chat";
 import { UIMessage } from "ai";
 
 type OldMessagesType = Awaited<ReturnType<typeof chatService.getMessages>>;
@@ -54,30 +52,40 @@ export const getInitialCharacter = (name: string) => {
 };
 
 export function stripToolsForAnthropic(messages: UIMessage[]): UIMessage[] {
-  return messages.map((msg) => ({
-    ...msg,
-    parts: msg.parts?.filter(
-      (part: any) => part?.type !== "tool-call" && part?.type !== "tool-result" && part?.type !== "tool_use" && part?.type !== "tool_result"
-    )
-  }));
-}
+  return messages
+    .map((msg) => {
+      const otherParts =
+        msg.parts
+          .map((obj) => {
+            if (obj.type === "tool-call" && obj.state === "output-available") {
+              return {
+                text: `below is generated document content for specified format.
+                       ${JSON.stringify(obj.input)}
+                `,
+                type: "text" as const
+              };
+            }
+            return obj;
+          })
+          ?.filter((part: any) => part?.type !== "tool-call" && part?.type !== "tool-result" && part?.type !== "tool_use" && part?.type !== "tool_result") ||
+        [];
 
-export async function generateDocument(opts: DocGenerateOptions) {
-  switch (opts.type) {
-    case "pdf":
-      return generatePDF(opts.content);
-    case "docx":
-    // return generateDOCX(opts.content);
-    case "xlsx":
-    // return generateXLSX(opts.content);
-    case "pptx":
-    // return generatePPTX(opts.content);
-    case "txt":
-    case "csv":
-    case "js":
-    case "py":
-    // return generateText(opts.content);
-    default:
-      throw new Error("Unsupported format");
-  }
+      // If we have both tool calls and text, keep the text parts
+      if (otherParts.length > 0) {
+        return {
+          ...msg,
+          parts: otherParts
+        };
+      }
+
+      // Otherwise return as-is
+      return {
+        ...msg,
+        parts: otherParts.length > 0 ? otherParts : msg.parts
+      };
+    })
+    .filter((msg) => {
+      // Remove messages that have no valid parts after filtering
+      return msg.parts && msg.parts.length > 0;
+    });
 }

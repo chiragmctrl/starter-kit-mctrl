@@ -10,7 +10,7 @@ import { constructChatMessages, stripToolsForAnthropic } from "@/helper";
 import { generateDOCXDocumentTool, generatePDFDocumentTool, webFecthTool, webSearchTool } from "@/server/ai/tools";
 import { chatSystemPrompt } from "@/server/ai/prompts/chat";
 import { documentService } from "@/services/doc.service";
-import { CHAT_ACTOR, DOCUMENT_EVENT_TYPE, DOCUMENT_SOURCE } from "@/types/enum";
+import { CHAT_ACTOR, DOCUMENT_EVENT_TYPE, DOCUMENT_SOURCE, DOCUMENTS_TOOLS_NAMES, DOCUMENTS_TOOLS_NAMES_ARRAY } from "@/types/enum";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -159,19 +159,17 @@ export async function POST(req: Request) {
       });
     }
 
-    console.log(JSON.stringify(modelMessages), ": modelMessages");
-
     // Stream AI response
     const result = streamText({
       model: anthropic(model),
       messages: modelMessages,
       system: chatSystemPrompt,
       tools: {
-        generatePDFDocumentTool,
-        generateDOCXDocumentTool,
-        generateExcelDocumentTool,
-        generatePPTXDocumentTool,
-        generateTextDocumentTool,
+        [DOCUMENTS_TOOLS_NAMES.GENERATE_PDF_DOCUMENT_TOOL]: generatePDFDocumentTool,
+        [DOCUMENTS_TOOLS_NAMES.GENERATE_DOCX_DOCUMENT_TOOL]: generateDOCXDocumentTool,
+        [DOCUMENTS_TOOLS_NAMES.GENERATE_EXCEL_DOCUMENT_TOOL]: generateExcelDocumentTool,
+        [DOCUMENTS_TOOLS_NAMES.GENERATE_PPTX_DOCUMENT_TOOL]: generatePPTXDocumentTool,
+        [DOCUMENTS_TOOLS_NAMES.GENERATE_TEXT_DOCUMENT_TOOL]: generateTextDocumentTool,
         ...(useWebSearch ? { webSearchTool, web_fetch: webFecthTool } : {})
       },
       providerOptions: {
@@ -218,22 +216,34 @@ export async function POST(req: Request) {
             toolCalls.forEach((toolCall: any, index: number) => {
               const toolResult = toolResults?.[index] as any;
               const toolName = toolCall.toolName || toolCall.name;
+
               messageParts.push({
                 type: "tool-call",
                 toolCallId: toolCall.toolCallId || toolCall.id,
                 toolName: toolName,
-                args: toolCall.args || toolCall.arguments,
                 state: toolResult ? "output-available" : "input-available",
                 result: toolResult?.result || toolResult?.output,
                 output: toolResult?.result || toolResult?.output,
+                input: toolResult?.input ?? {},
                 errorText: toolResult?.error || toolResult?.errorText
               });
             });
           }
 
           // Add text part AFTER tools
-          if (text) {
-            messageParts.push({ type: "text", text });
+          // If there's no text but there are tool calls, generate a default message
+          let finalText = text;
+          if (!finalText && toolCalls && toolCalls.length > 0) {
+            const toolNames = toolCalls.map((tc: any) => tc.toolName || tc.name);
+            if (toolNames.some((name: string) => name?.includes("Document"))) {
+              finalText = "I've generated the document for you. You can download it using the above link.";
+            } else {
+              finalText = "I've completed the requested action.";
+            }
+          }
+
+          if (finalText) {
+            messageParts.push({ type: "text", text: finalText });
           }
           // Add source parts if exist
           if (sources && sources.length > 0) {
@@ -274,7 +284,7 @@ export async function POST(req: Request) {
               const toolResult = toolResults?.[index] as any;
               const output = toolResult?.result || toolResult?.output;
 
-              if (toolName === "generateDocumentTool") {
+              if (DOCUMENTS_TOOLS_NAMES_ARRAY.includes(toolName)) {
                 const file_name = output.filename ?? "Unknown";
                 const file_type = output.fileType;
                 const mime_type = output.mime_type;

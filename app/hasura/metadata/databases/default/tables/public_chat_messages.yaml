@@ -5,3 +5,18 @@ object_relationships:
   - name: chat_conversation
     using:
       foreign_key_constraint_on: conversation_id
+array_relationships:
+  - name: resource_events
+    using:
+      foreign_key_constraint_on:
+        column: message_id
+        table:
+          name: resource_events
+          schema: public
+  - name: resource_versions
+    using:
+      foreign_key_constraint_on:
+        column: message_id
+        table:
+          name: resource_versions
+          schema: public

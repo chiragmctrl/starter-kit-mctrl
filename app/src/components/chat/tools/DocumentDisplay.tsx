@@ -1,27 +1,12 @@
 "use client";
 import { toast } from "sonner";
-import { api } from "@/trpc/react";
-import useSession from "@/hooks/useSession";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setActivePreview } from "@/redux/features/chatSlice";
 
 interface DocumentDisplayI {
   keyUrl: string;
   type: string;
 }
 
-const DocumentDisplay = ({ keyUrl, type }: DocumentDisplayI) => {
-  const { user, session } = useSession();
-  const getDocumentUrl = api.chat.getPresignedUrlForDocument.useMutation();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (keyUrl) {
-      getPreviewUrl();
-    }
-  }, [keyUrl]);
-
+const DocumentDisplay = ({ keyUrl }: DocumentDisplayI) => {
   const onDownloadDocument = async () => {
     try {
       const response = await fetch(`/api/chat-document/download?key=${encodeURIComponent(keyUrl)}`);
@@ -50,27 +35,6 @@ const DocumentDisplay = ({ keyUrl, type }: DocumentDisplayI) => {
       a.click();
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
-    } catch (error) {
-      console.error("Error downloading document:", error);
-      toast.error("Failed to download document. Please try again.");
-    }
-  };
-
-  const getPreviewUrl = async () => {
-    try {
-      const key = keyUrl.split("/")[1] as string;
-      const { presignedUrl } = await getDocumentUrl.mutateAsync({
-        key: key,
-        orgId: session?.activeOrganizationId as string,
-        userId: user?.id as string
-      });
-      const isOtherDoc = ["docx", "xlsx"].includes(type);
-      let previewUrl = presignedUrl ?? null;
-      if (isOtherDoc) {
-        previewUrl = `/api/chat-document/get?key=${key}&type=${type}`;
-      }
-
-      dispatch(setActivePreview({ url: previewUrl, type }));
     } catch (error) {
       console.error("Error downloading document:", error);
       toast.error("Failed to download document. Please try again.");

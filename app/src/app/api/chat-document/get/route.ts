@@ -5,7 +5,6 @@ import { convertDocToPdf } from "@/server/minio/convertDocToPdf";
 
 export async function GET(request: NextRequest) {
   try {
-    // 2️⃣ Read params
     const { searchParams } = request.nextUrl;
     const key = searchParams.get("key");
     const type = searchParams.get("type");
@@ -14,8 +13,9 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Missing key parameter" }, { status: 400 });
     }
 
-    // 3️⃣ Fetch from MinIO
     const buffer = await getObjectBuffer(MINIO_BUCKET, key);
+    const pdfBuffer = await convertDocToPdf(buffer);
+    const filename = key.replace(/\.[^/.]+$/, "");
 
     if (type === "xlsx") {
       return new NextResponse(buffer as BodyInit, {
@@ -26,14 +26,22 @@ export async function GET(request: NextRequest) {
         }
       });
     }
-    const pdfBuffer = await convertDocToPdf(buffer);
-    const filename = key.replace(/\.[^/.]+$/, "");
+    if (["docx", "pptx"].includes(type ?? "")) {
+      return new NextResponse(pdfBuffer as BodyInit, {
+        headers: {
+          "Content-Type": "application/pdf",
+          "Content-Disposition": `inline; filename="${filename}.pdf"`,
+          "Content-Length": pdfBuffer.byteLength.toString()
+        }
+      });
+    }
 
-    return new NextResponse(pdfBuffer as BodyInit, {
+    const text = buffer.toString("utf-8");
+
+    return new NextResponse(text, {
       headers: {
-        "Content-Type": "application/pdf",
-        "Content-Disposition": `inline; filename="${filename}.pdf"`,
-        "Content-Length": pdfBuffer.byteLength.toString()
+        "Content-Type": "text/plain; charset=utf-8",
+        "Content-Disposition": "inline"
       }
     });
   } catch (error) {

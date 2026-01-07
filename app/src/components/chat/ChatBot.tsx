@@ -39,6 +39,12 @@ import Cookies from "js-cookie";
 import { Reasoning, ReasoningContent, ReasoningTrigger } from "../ai-elements/reasoning";
 import DocumentDisplay from "./tools/DocumentDisplay";
 import DocumentGeneratingLoader from "../ui/DocumentGeneratingLoader";
+import { setActivePreview } from "@/redux/features/chatSlice";
+import useSession from "@/hooks/useSession";
+import { api } from "@/trpc/react";
+import { useDispatch } from "react-redux";
+import { DocumentToolObjectType } from "@/types/chat";
+import { DOCUMENTS_TOOLS_NAMES, DOCUMENTS_TOOLS_NAMES_ARRAY } from "@/types/enum";
 
 interface IChatBot {
   conversationId: string;
@@ -53,6 +59,9 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
   const [scrollBehavior, setScrollBehavior] = useState<"instant" | "smooth">("instant");
   const [useWebSearch, setUseWebSearch] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const { user, session } = useSession();
+  const getDocumentUrl = api.chat.getPresignedUrlForDocument.useMutation();
+  const dispatch = useDispatch();
 
   const params = useParams();
   const isInitialMount = useRef(true);
@@ -102,6 +111,43 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
     isInitialMount.current = true;
   }, [conversationId]);
 
+  useEffect(() => {
+    if (status === "ready" && messages.length) {
+      const lastDocumentMsg = messages
+        .filter(
+          (x) =>
+            x.role === "assistant" &&
+            x.parts.some((p) => {
+              if ("toolName" in p) {
+                return DOCUMENTS_TOOLS_NAMES_ARRAY.includes(p.toolName as DOCUMENTS_TOOLS_NAMES);
+              } else {
+                return DOCUMENTS_TOOLS_NAMES_ARRAY.includes(p.type.replace("tool-", "") as DOCUMENTS_TOOLS_NAMES);
+              }
+            })
+        )
+        .at(-1);
+      const documentTool = lastDocumentMsg?.parts.find((p) => {
+        if ("toolName" in p) {
+          return DOCUMENTS_TOOLS_NAMES_ARRAY.includes(p.toolName as DOCUMENTS_TOOLS_NAMES);
+        } else {
+          return DOCUMENTS_TOOLS_NAMES_ARRAY.includes(p.type.replace("tool-", "") as DOCUMENTS_TOOLS_NAMES);
+        }
+      });
+
+      if (lastDocumentMsg && documentTool) {
+        const type = (documentTool as DocumentToolObjectType).input?.type ?? (documentTool as DocumentToolObjectType)?.output?.fileType;
+        const keyUrl = (documentTool as DocumentToolObjectType).output?.key;
+        console.log(documentTool);
+
+        getPreviewUrl(keyUrl, type);
+      } else {
+        dispatch(setActivePreview({ url: null, type: null }));
+      }
+    } else if (status === "ready" && messages.length === 0) {
+      dispatch(setActivePreview({ url: null, type: null }));
+    }
+  }, [messages, status]);
+
   const handleSubmit = useCallback(
     async (message: PromptInputMessage) => {
       const hasText = Boolean(message.text);
@@ -122,6 +168,26 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
     setModel(value);
     Cookies.set("activeModel", value);
     location.href = `/${params.orgSlug}/chat`;
+  };
+
+  const getPreviewUrl = async (keyUrl: string, type: string) => {
+    try {
+      const key = keyUrl?.split("/")[1] as string;
+      const { presignedUrl } = await getDocumentUrl.mutateAsync({
+        key: key,
+        orgId: session?.activeOrganizationId as string,
+        userId: user?.id as string
+      });
+      let previewUrl = presignedUrl ?? null;
+      if (type !== "pdf") {
+        previewUrl = `/api/chat-document/get?key=${key}&type=${type}`;
+      }
+
+      dispatch(setActivePreview({ url: previewUrl, type }));
+    } catch (error) {
+      console.error("Error downloading document:", error);
+      toast.error("Failed to download document. Please try again.");
+    }
   };
 
   function isSourceUrlPart(part: UIMessage["parts"][number]): part is SourceUrlPart {
@@ -207,8 +273,8 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
                           if (part.output && (part.output as { type: string })?.type === "document") {
                             return (
                               <DocumentDisplay
-                                type={(part.input as { type: string }).type}
-                                keyUrl={(part.output as { key: string }).key}
+                                type={(part.input as { type: string })?.type}
+                                keyUrl={(part.output as { key: string })?.key}
                                 key={`${message.id}-tool-${i}`}
                               />
                             );

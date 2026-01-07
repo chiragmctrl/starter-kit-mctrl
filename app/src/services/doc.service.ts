@@ -25,10 +25,10 @@ export class DocumentService {
 
   async getLatestVersionNumber(resourceId: string): Promise<number> {
     const result = await this.client
-      .query<GetLatestReourcesVersionByResourceIdQuery, GetLatestReourcesVersionByResourceIdQueryVariables>(
-        GetLatestReourcesVersionByResourceId,
-        { id: resourceId }
-      )
+      .query<
+        GetLatestReourcesVersionByResourceIdQuery,
+        GetLatestReourcesVersionByResourceIdQueryVariables
+      >(GetLatestReourcesVersionByResourceId, { id: resourceId })
       .toPromise();
 
     if (result.error) {
@@ -37,7 +37,7 @@ export class DocumentService {
     }
 
     const versions = result.data?.resource_versions || [];
-    return versions.length > 0 ? versions[0].version_number : 0;
+    return versions.length > 0 ? (versions[0]!.version_number as number) : 0;
   }
 
   async saveChatDocument(params: ChatDocumentPayload) {

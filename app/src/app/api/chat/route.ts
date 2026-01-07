@@ -112,8 +112,6 @@ export async function POST(req: Request) {
     const messages = [...contructOldMsg, message];
     const modelMessages = await convertToModelMessages(stripToolsForAnthropic(messages));
 
-    console.log(JSON.stringify(modelMessages), "modelMessages");
-
     let currentConversationId = id;
     if (isNewChat) {
       // Extract text content from message parts for title generation

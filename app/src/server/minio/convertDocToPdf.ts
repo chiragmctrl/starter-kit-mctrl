@@ -1,8 +1,10 @@
 import libre from "libreoffice-convert";
-import { promisify } from "util";
 
-const convert = promisify(libre.convert);
-
-export function convertDocToPdf(docBuffer: Buffer): Promise<Buffer> {
-  return convert(docBuffer, ".pdf", undefined);
+export function convertDocToPdf(buffer: Buffer): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+    libre.convert(buffer, ".pdf", undefined, (err, done) => {
+      if (err) return reject(err);
+      resolve(done as Buffer);
+    });
+  });
 }

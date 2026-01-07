@@ -27,3 +27,8 @@ export interface ChatDocumentPayload {
   user_id: string;
   resource_id?: string; // Optional: if provided, creates new version instead of new resource
 }
+
+export type DocumentToolObjectType = {
+  input: { type: string };
+  output: { key: string; fileType: string };
+};

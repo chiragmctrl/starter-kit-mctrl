@@ -2394,6 +2394,14 @@ export type Chat_Messages = {
   id: Scalars['uuid']['output'];
   model: Scalars['String']['output'];
   provider_metadata: Scalars['jsonb']['output'];
+  /** An array relationship */
+  resource_events: Array<Resource_Events>;
+  /** An aggregate relationship */
+  resource_events_aggregate: Resource_Events_Aggregate;
+  /** An array relationship */
+  resource_versions: Array<Resource_Versions>;
+  /** An aggregate relationship */
+  resource_versions_aggregate: Resource_Versions_Aggregate;
   role: Scalars['String']['output'];
   token_usage: Scalars['jsonb']['output'];
 };
@@ -2408,6 +2416,46 @@ export type Chat_MessagesContentArgs = {
 /** columns and relationships of "chat_messages" */
 export type Chat_MessagesProvider_MetadataArgs = {
   path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "chat_messages" */
+export type Chat_MessagesResource_EventsArgs = {
+  distinct_on?: InputMaybe<Array<Resource_Events_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Resource_Events_Order_By>>;
+  where?: InputMaybe<Resource_Events_Bool_Exp>;
+};
+
+
+/** columns and relationships of "chat_messages" */
+export type Chat_MessagesResource_Events_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Resource_Events_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Resource_Events_Order_By>>;
+  where?: InputMaybe<Resource_Events_Bool_Exp>;
+};
+
+
+/** columns and relationships of "chat_messages" */
+export type Chat_MessagesResource_VersionsArgs = {
+  distinct_on?: InputMaybe<Array<Resource_Versions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Resource_Versions_Order_By>>;
+  where?: InputMaybe<Resource_Versions_Bool_Exp>;
+};
+
+
+/** columns and relationships of "chat_messages" */
+export type Chat_MessagesResource_Versions_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Resource_Versions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Resource_Versions_Order_By>>;
+  where?: InputMaybe<Resource_Versions_Bool_Exp>;
 };
 
 
@@ -2482,6 +2530,10 @@ export type Chat_Messages_Bool_Exp = {
   id?: InputMaybe<Uuid_Comparison_Exp>;
   model?: InputMaybe<String_Comparison_Exp>;
   provider_metadata?: InputMaybe<Jsonb_Comparison_Exp>;
+  resource_events?: InputMaybe<Resource_Events_Bool_Exp>;
+  resource_events_aggregate?: InputMaybe<Resource_Events_Aggregate_Bool_Exp>;
+  resource_versions?: InputMaybe<Resource_Versions_Bool_Exp>;
+  resource_versions_aggregate?: InputMaybe<Resource_Versions_Aggregate_Bool_Exp>;
   role?: InputMaybe<String_Comparison_Exp>;
   token_usage?: InputMaybe<Jsonb_Comparison_Exp>;
 };
@@ -2522,6 +2574,8 @@ export type Chat_Messages_Insert_Input = {
   id?: InputMaybe<Scalars['uuid']['input']>;
   model?: InputMaybe<Scalars['String']['input']>;
   provider_metadata?: InputMaybe<Scalars['jsonb']['input']>;
+  resource_events?: InputMaybe<Resource_Events_Arr_Rel_Insert_Input>;
+  resource_versions?: InputMaybe<Resource_Versions_Arr_Rel_Insert_Input>;
   role?: InputMaybe<Scalars['String']['input']>;
   token_usage?: InputMaybe<Scalars['jsonb']['input']>;
 };
@@ -2596,6 +2650,8 @@ export type Chat_Messages_Order_By = {
   id?: InputMaybe<Order_By>;
   model?: InputMaybe<Order_By>;
   provider_metadata?: InputMaybe<Order_By>;
+  resource_events_aggregate?: InputMaybe<Resource_Events_Aggregate_Order_By>;
+  resource_versions_aggregate?: InputMaybe<Resource_Versions_Aggregate_Order_By>;
   role?: InputMaybe<Order_By>;
   token_usage?: InputMaybe<Order_By>;
 };
@@ -5723,6 +5779,10 @@ export type GetMessagesByConversationQuery = (
       | 'provider_metadata'
       | 'created_at'
     >
+    & { resource_versions: Array<(
+      { __typename?: 'resource_versions' }
+      & Pick<Resource_Versions, 'resource_id' | 'id'>
+    )> }
   )> }
 );
 
@@ -5989,6 +6049,10 @@ export const GetMessagesByConversation = gql`
     token_usage
     model
     provider_metadata
+    resource_versions(order_by: {created_at: desc}) {
+      resource_id
+      id
+    }
     created_at
   }
 }
@@ -10318,6 +10382,258 @@ export default {
             "args": [
               {
                 "name": "path",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_events",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_events",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_events_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resource_events_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_versions",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "resource_versions",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "resource_versions_aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "resource_versions_aggregate",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "distinct_on",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "offset",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "order_by",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Any"

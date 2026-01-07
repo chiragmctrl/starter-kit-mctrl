@@ -12,7 +12,8 @@ export const generateDocxInputSchema = z.object({
         bullets: z.array(z.string()).optional()
       })
     )
-    .describe("structured content for DOCX generation")
+    .describe("structured content for DOCX generation"),
+  resource_id: z.string().optional().describe("If updating an existing document, provide the resource_id from the previous message metadata")
 });
 
 export const generateExcelInputSchema = z.object({
@@ -33,7 +34,8 @@ export const generateExcelInputSchema = z.object({
         rows: z.array(z.record(z.string(), z.any())).describe("Row data")
       })
     )
-    .describe("structured content for Excel generation")
+    .describe("structured content for Excel generation"),
+  resource_id: z.string().optional().describe("If updating an existing document, provide the resource_id from the previous message metadata")
 });
 
 export const generatePptxInputSchema = z.object({
@@ -46,19 +48,22 @@ export const generatePptxInputSchema = z.object({
         bullets: z.array(z.string()).max(6).optional().describe("Bullet points for the slide")
       })
     )
-    .describe("structured content for PPTX generation")
+    .describe("structured content for PPTX generation"),
+  resource_id: z.string().optional().describe("If updating an existing document, provide the resource_id from the previous message metadata")
 });
 
 export const generateTextInputSchema = z.object({
   type: z.string().describe("text files like txt, csv, js, py etc"),
   title: z.string().describe("kebab-case title based on the document content e.g hello-world"),
-  content: z.string().describe("Raw file content")
+  content: z.string().describe("Raw file content"),
+  resource_id: z.string().optional().describe("If updating an existing document, provide the resource_id from the previous message metadata")
 });
 
 export const generatePdfInputSchema = z.object({
   type: z.enum(SUPPORTED_DOC_TYPE),
   title: z.string().describe("kebab-case title based on the document content e.g hello-world"),
-  html_content: z.string().describe("html content as a result of user query")
+  html_content: z.string().describe("html content as a result of user query"),
+  resource_id: z.string().optional().describe("If updating an existing document, provide the resource_id from the previous message metadata")
 });
 
 export type GenerateDocxInputType = z.infer<typeof generateDocxInputSchema>;

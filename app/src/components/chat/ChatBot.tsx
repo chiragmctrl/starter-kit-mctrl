@@ -135,9 +135,6 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
           <Conversation key={conversationId} className={`h-full dark-scrollbar`} scrollBehavior={scrollBehavior}>
             <ConversationContent className="">
               {messages.map((message) => {
-                if (message.role === "assistant" && status === "streaming") {
-                  console.log(message, "message");
-                }
                 return (
                   <div key={message.id} className="">
                     {message.role === "assistant" && message.parts.filter((part) => part.type === "source-url").length > 0 && (
@@ -208,7 +205,13 @@ const ChatBot = ({ conversationId, initialMessages }: IChatBot) => {
                             return <DocumentGeneratingLoader key={`${message.id}-input-streaming-${i}`} />;
                           }
                           if (part.output && (part.output as { type: string })?.type === "document") {
-                            return <DocumentDisplay keyUrl={(part.output as { key: string }).key} key={`${message.id}-tool-${i}`} />;
+                            return (
+                              <DocumentDisplay
+                                type={(part.input as { type: string }).type}
+                                keyUrl={(part.output as { key: string }).key}
+                                key={`${message.id}-tool-${i}`}
+                              />
+                            );
                           }
 
                         case "tool-webSearchTool":

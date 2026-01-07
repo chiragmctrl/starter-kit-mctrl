@@ -9,5 +9,11 @@ export const getAllConversationsByUserAndOrgInputSchema = z.object({
   orgId: z.string()
 });
 
+export const getPresignedUrlForDocumentInputSchema = z.object({
+  userId: z.string(),
+  orgId: z.string(),
+  key: z.string()
+});
+
 export type getConversationMessagesInputType = z.infer<typeof getConversationMessagesInputSchema>;
 export type getAllConversationsByUserAndOrgInputType = z.infer<typeof getAllConversationsByUserAndOrgInputSchema>;

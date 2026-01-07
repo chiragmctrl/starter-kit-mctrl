@@ -145,3 +145,8 @@
 .dark-mode [data-streamdown="link"] {
   color: #53a5ff !important;
 }
+
+#proxy-renderer,
+#msdoc-renderer {
+  height: 100% !important;
+}

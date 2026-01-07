@@ -112,6 +112,8 @@ export async function POST(req: Request) {
     const messages = [...contructOldMsg, message];
     const modelMessages = await convertToModelMessages(stripToolsForAnthropic(messages));
 
+    console.log(JSON.stringify(modelMessages), "modelMessages");
+
     let currentConversationId = id;
     if (isNewChat) {
       // Extract text content from message parts for title generation
@@ -289,6 +291,8 @@ export async function POST(req: Request) {
                 const file_type = output.fileType;
                 const mime_type = output.mime_type;
                 const size_bytes = output.size_bytes;
+                const resource_id = output.resource_id; // Extract resource_id from tool output if provided
+
                 documentService.saveChatDocument({
                   conversation_id: currentConversationId,
                   user_id: userId,
@@ -301,8 +305,9 @@ export async function POST(req: Request) {
                   size_bytes,
                   storage_path: output.key,
                   model,
-                  event_type: DOCUMENT_EVENT_TYPE.CREATED,
-                  actor_type: CHAT_ACTOR.ASSISTANT
+                  event_type: resource_id ? DOCUMENT_EVENT_TYPE.MODIFIED : DOCUMENT_EVENT_TYPE.CREATED,
+                  actor_type: CHAT_ACTOR.ASSISTANT,
+                  resource_id // Pass resource_id to create new version if it exists
                 });
               }
             });

@@ -6,6 +6,7 @@ import { headers } from "next/headers";
 export async function GET(request: NextRequest) {
   try {
     // Authenticate user
+
     const session = await auth.api.getSession({
       headers: await headers()
     });
@@ -27,7 +28,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Missing key parameter" }, { status: 400 });
     }
 
-    // Parse bucket and object name from key (format: bucket/objectName)
     const [bucket, ...objectNameParts] = key.split("/");
     const objectName = objectNameParts.join("/");
 

@@ -25,4 +25,5 @@ export interface ChatDocumentPayload {
   event_type: string;
   actor_type: string;
   user_id: string;
+  resource_id?: string; // Optional: if provided, creates new version instead of new resource
 }

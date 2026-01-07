@@ -4,46 +4,37 @@ import puppeteer from "puppeteer";
 import { Document, Packer, Paragraph, HeadingLevel } from "docx";
 import PptxGenJS from "pptxgenjs";
 import ExcelJS from "exceljs";
+import { minioClient } from "@/server/minio/client";
 
 export async function generatePDF(htmlContent: string) {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
   const styledHtmlContent = `
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8" />
-
   <style>
-    /* 1️⃣ Remove ALL default print margins */
     @page {
       size: A4;
-      margin: 0;
+      margin: 20mm;
     }
 
     html, body {
       margin: 0;
       padding: 0;
       background: white;
-      width: 100%;
-      height: 100%;
     }
 
-    /* 2️⃣ Printable page container */
     .page {
-      box-sizing: border-box;
-      width: 210mm;          /* A4 width */
-      min-height: 297mm;     /* A4 height */
-      padding: 20mm;         /* Your safe content padding */
-      margin: 0 auto;
-      background: white;
+      width: 100%;
       max-width: 210mm;
-      overflow-wrap: break-word;
+      margin: 0 auto;
       font-family: Arial, sans-serif;
+      background: white;
     }
 
-    /* 3️⃣ Prevent overflow surprises */
     * {
       box-sizing: border-box;
     }
@@ -56,23 +47,16 @@ export async function generatePDF(htmlContent: string) {
   </div>
 </body>
 </html>
-    `;
+`;
 
   await page.setContent(styledHtmlContent, { waitUntil: "networkidle0" });
-
-  // Saves the PDF in the public folder for later use.: if its not for download
 
   const pdfBuffer = await page.pdf({
     format: "A4",
     printBackground: true,
-    margin: {
-      top: "0mm",
-      right: "0mm",
-      bottom: "0mm",
-      left: "0mm"
-    },
     preferCSSPageSize: true
   });
+
   await browser.close();
   return Buffer.from(pdfBuffer);
 }
@@ -201,4 +185,16 @@ export async function generatePPTX(slides: GeneratePptxInputType["slides"]) {
 
 export async function generateTEXT(content: string) {
   return Buffer.from(content, "utf-8");
+}
+
+export async function getObjectBuffer(bucket: string, objectName: string): Promise<Buffer> {
+  const stream = await minioClient.getObject(bucket, objectName);
+
+  return new Promise((resolve, reject) => {
+    const chunks: Buffer[] = [];
+
+    stream.on("data", (chunk) => chunks.push(chunk));
+    stream.on("end", () => resolve(Buffer.concat(chunks)));
+    stream.on("error", reject);
+  });
 }

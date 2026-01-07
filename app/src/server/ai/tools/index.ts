@@ -10,7 +10,7 @@ import {
   generatePptxInputSchema,
   generateTextInputSchema
 } from "@/lib/schemas/toolsSchema";
-import { MIME_TYPES } from "@/constants";
+import { CONTENT_TYPES, MIME_TYPES } from "@/constants";
 import type { z } from "zod";
 
 export const webSearchTool = anthropic.tools.webSearch_20250305({
@@ -60,48 +60,54 @@ function createDocumentTool<T extends z.ZodType>(config: {
 
       return {
         ...metadata,
-        format: input.type
+        format: input.type,
+        resource_id: input.resource_id // Pass through resource_id if provided
       };
     }
   });
 }
 
 export const generatePDFDocumentTool = createDocumentTool({
-  description: "Generate a pdf document in a requested format",
+  description:
+    "Generate a PDF document in a requested format. If the user wants to update/modify/regenerate an existing document from the conversation history, extract the resource_id from the previous message metadata and include it in the input.",
   inputSchema: generatePdfInputSchema,
   extension: "pdf",
-  contentType: "application/pdf",
+  contentType: CONTENT_TYPES.pdf,
   generateFn: async (input) => generatePDF(input.html_content)
 });
 
 export const generateDOCXDocumentTool = createDocumentTool({
-  description: "Generate a DOCX document from structured content",
+  description:
+    "Generate a DOCX document from structured content. If the user wants to update/modify/regenerate an existing document from the conversation history, extract the resource_id from the previous message metadata and include it in the input.",
   inputSchema: generateDocxInputSchema,
   extension: "docx",
-  contentType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  contentType: CONTENT_TYPES.docx,
   generateFn: async (input) => generateDOCX(input.sections, input.title)
 });
 
 export const generateExcelDocumentTool = createDocumentTool({
-  description: "Generate a Excel document from structured content",
+  description:
+    "Generate an Excel document from structured content. If the user wants to update/modify/regenerate an existing document from the conversation history, extract the resource_id from the previous message metadata and include it in the input.",
   inputSchema: generateExcelInputSchema,
   extension: "xlsx",
-  contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  contentType: CONTENT_TYPES.xlsx,
   generateFn: async (input) => generateEXCEL(input.sheets)
 });
 
 export const generatePPTXDocumentTool = createDocumentTool({
-  description: "Generate a PPTX document from structured content",
+  description:
+    "Generate a PPTX document from structured content. If the user wants to update/modify/regenerate an existing document from the conversation history, extract the resource_id from the previous message metadata and include it in the input.",
   inputSchema: generatePptxInputSchema,
   extension: "pptx",
-  contentType: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  contentType: CONTENT_TYPES.pptx,
   generateFn: async (input) => generatePPTX(input.slides)
 });
 
 export const generateTextDocumentTool = tool({
-  description: "Generate plain text based files like txt, csv and js, py like code files",
+  description:
+    "Generate plain text based files like txt, csv and js, py like code files. If the user wants to update/modify/regenerate an existing document from the conversation history, extract the resource_id from the previous message metadata and include it in the input.",
   inputSchema: generateTextInputSchema,
-  execute: async ({ type, title, content }) => {
+  execute: async ({ type, title, content, resource_id }) => {
     const objectName = `${title}-${Date.now()}.${type}`;
     const buffer = await generateTEXT(content);
     const contentType = MIME_TYPES[type as keyof typeof MIME_TYPES] || "text/plain; charset=utf-8";
@@ -109,7 +115,8 @@ export const generateTextDocumentTool = tool({
 
     return {
       ...metadata,
-      format: type
+      format: type,
+      resource_id // Pass through resource_id if provided
     };
   }
 });

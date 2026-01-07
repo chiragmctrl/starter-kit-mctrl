@@ -1,23 +1,24 @@
-import { MODEL_PROVIDERS } from "@/constants";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+export type ActivePreviewType = { url: null | string; type: string | null };
+
 type chatState = {
-  activeModel: string;
+  activePreview: ActivePreviewType;
 };
 
 const initialState: chatState = {
-  activeModel: MODEL_PROVIDERS[0]?.value as string
+  activePreview: { url: null, type: null }
 };
 
 const chatSlice = createSlice({
   name: "app",
   initialState,
   reducers: {
-    setActiveModel: (state, action: PayloadAction<string>) => {
-      state.activeModel = action.payload;
+    setActivePreview: (state, action: PayloadAction<ActivePreviewType>) => {
+      state.activePreview = action.payload;
     }
   }
 });
 
-export const { setActiveModel } = chatSlice.actions;
+export const { setActivePreview } = chatSlice.actions;
 export default chatSlice.reducer;

@@ -31,11 +31,16 @@ export const constructChatMessages = (oldMessages: OldMessagesType) => {
       parts = [{ type: "text", text: "" }];
     }
 
+    const metadata = {
+      ...(row.content.metadata ?? {}),
+      ...(row.resource_versions[0]?.resource_id ? { resource_id: row.resource_versions[0]?.resource_id } : {})
+    };
+
     return {
       id: row.id,
       role: row.role as "system" | "user" | "assistant",
       parts,
-      metadata: row.content.metadata ?? {}
+      metadata: metadata
     };
   });
 
@@ -58,9 +63,13 @@ export function stripToolsForAnthropic(messages: UIMessage[]): UIMessage[] {
         msg.parts
           .map((obj) => {
             if (obj.type === "tool-call" && obj.state === "output-available") {
+              // Include resource_id in content if available in metadata
+              const resourceIdInfo = (msg?.metadata as { resource_id: string })?.resource_id
+                ? `\n[Document resource_id: ${(msg?.metadata as { resource_id: string }).resource_id}]`
+                : "";
               return {
                 text: `below is generated document content for specified format.
-                       ${JSON.stringify(obj.input)}
+                       ${JSON.stringify(obj.input)}${resourceIdInfo}
                 `,
                 type: "text" as const
               };
